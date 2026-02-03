@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 720pt;
+            height: 405pt;
+            background-color: #16161F;
+            color: #FAFAFA;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 20pt 40pt 10pt 40pt;
+            border-bottom: 2px solid #262733;
+            margin-bottom: 10pt;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24pt;
+            color: #FAFAFA;
+            margin: 0;
+        }
+
+        .tag {
+            background: #6B75FF;
+            color: white;
+            padding: 4pt 8pt;
+            border-radius: 4pt;
+            font-size: 10pt;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 0 40pt;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10pt;
+            justify-content: space-between;
+        }
+
+        .card {
+            background: #1E1E29;
+            border: 1px solid #262733;
+            border-radius: 8pt;
+            padding: 10pt;
+            width: 300pt;
+            display: flex;
+            flex-direction: column;
+            height: 120pt;
+            flex: 0 0 48%;
+            /* Use percent for safety */
+        }
+
+        .card-title {
+            font-size: 14pt;
+            color: #6B75FF;
+            font-weight: bold;
+            margin-bottom: 3pt;
+        }
+
+        .stat {
+            font-size: 20pt;
+            color: #FAFAFA;
+            font-weight: bold;
+            margin: 3pt 0;
+        }
+
+        p {
+            font-size: 10pt;
+            color: #9496A8;
+            margin: 0;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>TL;DR 核心结论</h1>
+        <div class="tag">
+            <p style="margin:0">EXECUTIVE SUMMARY</p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="card">
+            <div class="card-title">
+                <p style="margin:0">市场足够大</p>
+            </div>
+            <p>2023年 $394B → 2029年 $887.6B</p>
+            <p style="color: #4CB782;">CAGR ~15%</p>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <p style="margin:0">效率足够低</p>
+            </div>
+            <div class="stat">
+                <p style="margin:0">70%</p>
+            </div>
+            <p>线索在 7 天内丢失。只有 23% 的企业能追踪 ROI。</p>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <p style="margin:0">痛点足够痛</p>
+            </div>
+            <div class="stat">
+                <p style="margin:0">~50%</p>
+            </div>
+            <p>问题展会的参展商流失率。SaaS 仅为 5-7%。</p>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <p style="margin:0">Lensmor 的机会</p>
+            </div>
+            <p style="font-size: 12pt; color: #FAFAFA;">从“数据”升级为“情报”</p>
+            <p>打破 ROI 黑盒，做展会行业的 Datadog。</p>
+        </div>
+    </div>
+</body>
+
+</html>

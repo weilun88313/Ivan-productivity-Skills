@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 720pt;
+            height: 405pt;
+            background-color: #16161F;
+            color: #FAFAFA;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 30pt 40pt 10pt 40pt;
+            border-bottom: 2px solid #262733;
+            margin-bottom: 20pt;
+        }
+
+        h1 {
+            font-size: 24pt;
+            color: #FAFAFA;
+            margin: 0;
+        }
+
+        .content {
+            padding: 0 40pt;
+            display: flex;
+            gap: 30pt;
+        }
+
+        .text-col {
+            flex: 1;
+        }
+
+        .chart-col {
+            flex: 1.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1E1E29;
+            border-radius: 12pt;
+            border: 1px solid #262733;
+            height: 280pt;
+        }
+
+        ul {
+            padding-left: 15pt;
+        }
+
+        li {
+            font-size: 14pt;
+            color: #9496A8;
+            margin-bottom: 12pt;
+            line-height: 1.4;
+        }
+
+        strong {
+            color: #FAFAFA;
+        }
+
+        .highlight {
+            color: #6B75FF;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>市场规模与增长趋势</h1>
+    </div>
+    <div class="content">
+        <div class="text-col">
+            <ul>
+                <li>全球展览市场规模 2023 年达 <strong>$394B</strong></li>
+                <li>预计 2029 年增长至 <span class="highlight">$887.6B</span></li>
+                <li><strong>疫情后强劲恢复</strong>：CEIR 指数已恢复至 95.6%</li>
+                <li>美国年展会数量约 <strong>13,000 场</strong> (每周 ~250 场)</li>
+                <li><span style="color: #4CB782;">线下不可替代</span>：73% 收入来自线下展会</li>
+            </ul>
+        </div>
+        <div class="chart-col">
+            <!-- Placeholder for Chart -->
+            <div id="market_chart" class="placeholder" style="width: 350pt; height: 250pt;"></div>
+        </div>
+    </div>
+</body>
+
+</html>

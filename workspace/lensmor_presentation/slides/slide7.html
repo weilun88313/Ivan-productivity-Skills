@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 720pt;
+            height: 405pt;
+            background-color: #16161F;
+            color: #FAFAFA;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 30pt 40pt 10pt 40pt;
+        }
+
+        h1 {
+            font-size: 24pt;
+            color: #FAFAFA;
+            margin: 0;
+        }
+
+        .content {
+            padding: 0 40pt;
+            display: flex;
+            flex-direction: column;
+            gap: 20pt;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 30pt;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 25pt;
+            left: 50pt;
+            right: 50pt;
+            height: 2px;
+            background: #262733;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            width: 30%;
+            background: #1E1E29;
+            border-radius: 8pt;
+            border: 1px solid #262733;
+            padding: 15pt;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10pt;
+        }
+
+        .step-num {
+            background: #6B75FF;
+            color: white;
+            width: 20pt;
+            height: 20pt;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 10pt;
+            font-size: 10pt;
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #FAFAFA;
+            font-size: 12pt;
+        }
+
+        .pain-point {
+            background: rgba(235, 87, 87, 0.1);
+            border-left: 3px solid #EB5757;
+            padding: 8pt;
+            margin-top: 5pt;
+            font-size: 10pt;
+            color: #FAFAFA;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>参展商作业流与痛点</h1>
+    </div>
+    <div class="content">
+        <div class="timeline">
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-num">
+                        <p style="margin:0">1</p>
+                    </div>
+                    <div class="step-title">
+                        <p style="margin:0">展前 (3-12个月)</p>
+                    </div>
+                </div>
+                <p style="font-size: 10pt; color: #9496A8; margin: 0;">设定目标、物流、预约会议</p>
+                <div class="pain-point">
+                    <p style="margin:0"><strong>目标模糊</strong>：盲目撒网，不知道谁会来，缺乏数据支持。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-num">
+                        <p style="margin:0">2</p>
+                    </div>
+                    <div class="step-title">
+                        <p style="margin:0">展中 (2-5天)</p>
+                    </div>
+                </div>
+                <p style="font-size: 10pt; color: #9496A8; margin: 0;">产品演示、线索收集、社交</p>
+                <div class="pain-point">
+                    <p style="margin:0"><strong>信息断层</strong>：销售与观众冷对话，缺乏上下文，"你是做什么的？"</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-num">
+                        <p style="margin:0">3</p>
+                    </div>
+                    <div class="step-title">
+                        <p style="margin:0">展后 (1-4周)</p>
+                    </div>
+                </div>
+                <p style="font-size: 10pt; color: #9496A8; margin: 0;">整理线索、跟进、复盘</p>
+                <div class="pain-point">
+                    <p style="margin:0"><strong>跟进灾难</strong>：87% 跟进不当，数据孤岛导致营销与销售脱节。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

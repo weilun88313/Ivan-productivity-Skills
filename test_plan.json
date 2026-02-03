@@ -1,0 +1,10 @@
+[
+    {
+        "id": "test_slide_01",
+        "prompt": "A shiny golden apple"
+    },
+    {
+        "id": "test_slide_02",
+        "prompt": "A silver robotic banana"
+    }
+]

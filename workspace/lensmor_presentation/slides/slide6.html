@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 720pt;
+            height: 405pt;
+            background-color: #16161F;
+            color: #FAFAFA;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 30pt 40pt 10pt 40pt;
+        }
+
+        h1 {
+            font-size: 24pt;
+            color: #FAFAFA;
+            margin: 0;
+        }
+
+        .content {
+            padding: 0 40pt;
+            display: flex;
+            gap: 20pt;
+        }
+
+        .table-container {
+            width: 100%;
+            border-radius: 8pt;
+            overflow: hidden;
+            border: 1px solid #262733;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid #262733;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .th {
+            background: #2C317A;
+            padding: 12pt;
+            font-weight: bold;
+        }
+
+        .td {
+            background: #1E1E29;
+            padding: 12pt;
+        }
+
+        .c1 {
+            width: 20%;
+            flex: 0 0 20%;
+        }
+
+        .c2 {
+            width: 40%;
+            flex: 0 0 40%;
+        }
+
+        .c3 {
+            width: 40%;
+            flex: 0 0 40%;
+        }
+
+        /* Text styles */
+        .th p {
+            color: #FAFAFA;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .td p {
+            color: #9496A8;
+            margin: 0;
+        }
+
+        .highlight-Text {
+            color: #FAFAFA !important;
+            font-weight: bold;
+        }
+
+        .flag {
+            font-size: 14pt;
+            /* Removed margin-right */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>区域市场差异</h1>
+    </div>
+    <div class="content">
+        <div class="table-container">
+            <!-- Header -->
+            <div class="row">
+                <div class="th c1">
+                    <p>维度</p>
+                </div>
+                <div class="th c2">
+                    <p><span class="flag">🇺🇸</span> 美国市场</p>
+                </div> <!-- Added space -->
+                <div class="th c3">
+                    <p><span class="flag">🇪🇺</span> 欧洲市场</p>
+                </div> <!-- Added space -->
+            </div>
+            <!-- Rows -->
+            <div class="row">
+                <div class="td c1">
+                    <p class="highlight-Text">核心目的</p>
+                </div>
+                <div class="td c2">
+                    <p>品牌推广、关系维护</p>
+                </div>
+                <div class="td c3">
+                    <p style="color:#4CB782">销售导向，现场成交</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="td c1">
+                    <p class="highlight-Text">成本结构</p>
+                </div>
+                <div class="td c2">
+                    <p>Drayage + 工会人工 (高昂)</p>
+                </div>
+                <div class="td c3">
+                    <p>展位租赁 + 搭建 (透明)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="td c1">
+                    <p class="highlight-Text">服务商</p>
+                </div>
+                <div class="td c2">
+                    <p style="color:#EB5757">Freeman/GES 垄断 (75%)</p>
+                </div>
+                <div class="td c3">
+                    <p>完全市场化竞争</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="td c1">
+                    <p class="highlight-Text">搭建限制</p>
+                </div>
+                <div class="td c2">
+                    <p>必须使用指定官方承包商</p>
+                </div>
+                <div class="td c3">
+                    <p>自由选择搭建商</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="td c1">
+                    <p class="highlight-Text">费用案例</p>
+                </div>
+                <div class="td c2">
+                    <p>搬运费 $100-$400/件</p>
+                </div>
+                <div class="td c3">
+                    <p>无此费用</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
