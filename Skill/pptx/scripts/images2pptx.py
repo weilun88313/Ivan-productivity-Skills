@@ -2,12 +2,13 @@
 import os
 import argparse
 from pptx import Presentation
-from pptx.util import Inches, Pt
+from pptx.util import Inches
 
 def images_to_pptx(image_dir, output_file):
     """
     Creates a PowerPoint presentation from images in a directory.
-    Each image becomes a new slide.
+    Each image becomes a new slide (full bleed).
+    Text is already embedded in the AI-generated images.
     """
     prs = Presentation()
     # 16:9 aspect ratio default
@@ -32,9 +33,7 @@ def images_to_pptx(image_dir, output_file):
         img_path = os.path.join(image_dir, img_name)
         slide = prs.slides.add_slide(blank_slide_layout)
         
-        # Add image to cover the whole slide
-        # For simplicity, we just stretch to fit. 
-        # In a real app, we might want to crop or fit-center.
+        # Add image to cover the whole slide (full bleed)
         pic = slide.shapes.add_picture(
             img_path, 
             0, 0, 
@@ -44,10 +43,13 @@ def images_to_pptx(image_dir, output_file):
         print(f"Added slide from {img_name}")
 
     prs.save(output_file)
-    print(f"Presentation saved to {output_file}")
+    print(f"\n✓ Presentation saved to {output_file}")
+    print(f"  Total slides: {len(prs.slides)}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Convert a folder of images to a PowerPoint presentation.")
+    parser = argparse.ArgumentParser(
+        description="Convert a folder of images to a PowerPoint presentation."
+    )
     parser.add_argument("image_dir", help="Directory containing images")
     parser.add_argument("output_file", help="Output .pptx file path")
     

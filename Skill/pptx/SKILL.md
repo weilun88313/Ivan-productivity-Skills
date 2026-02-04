@@ -48,13 +48,13 @@ When the user requests a PPT, **DO NOT** immediately run generation scripts. Fol
     📊 **Low Density** (Recommended for presentations):
     - 2-3 key points per slide
     - Minimal text, maximum visual impact
-    - Easy to read from a distance
+    - Clean, visual slides with key talking points to support you while you speak.
     - Best for: Executive presentations, pitches, overviews
     
     📚 **High Density** (For detailed reports):
     - 4-6 key points per slide
     - More detailed text descriptions
-    - Rich information content
+    - A comprehensive deck with full text and details, perfect for emailing or reading on its own.
     - Best for: Internal reports, documentation, comprehensive analysis
     
     Please choose: Low or High?
@@ -138,11 +138,12 @@ Once approved:
         - Example: `"Minimalist thank you slide with centered text, subtle fade-out effect"`
     
     *   **Key Requirements for `image_concept`**:
-        - **Focus on visual elements**: Describe objects, scenes, compositions
-        - **No text in the description**: Don't mention titles, labels, or data points in `image_concept`
+        - **BACKGROUND VISUALS ONLY**: Describe abstract visual elements, NOT text or labels
+        - **Focus on composition**: Describe objects, scenes, data visualizations, geometric patterns
+        - **Reserve space for text**: Visuals should be designed knowing text will overlay on top
         - **Use English**: For better AI model compatibility
-        - **Be specific**: "A 3D bar chart with two columns of different heights" instead of "a chart"
-        - **Think presentation design**: Infographic style, data visualization, concept art
+        - **Be specific**: "Floating 3D bar chart with two columns, taller on right, subtle glow" instead of "a chart"
+        - **Think abstract**: Data visualization, geometric shapes, conceptual diagrams, not literal UI
     
     *   **Examples**:
         ```json
@@ -262,30 +263,88 @@ Once approved:
         }
         ```
     
-    *   **Note**: The `image_concept` will be automatically enhanced with brand style and **4K resolution** by `ppt_img_gen.py`. Do NOT include style keywords (colors, resolution, brand) in `image_concept`.
+    *   **Note**: The `image_concept` will be automatically enhanced with:
+        - **Brand style**: Linear-inspired dark mode, #6B75FF accents, matte finish
+        - **Layout zones**: Top 25% and left 50% reserved for text overlay
+        - **4K resolution**: 3840x2160 ultra-high detail
+        - **Text constraint**: NO text will be rendered in the image (added programmatically)
+        
+        Do NOT include style keywords (colors, resolution, brand) or text instructions in `image_concept`.
 
 #### Step 3: Execution
-1.  **Generate Images**:
+1.  **Generate Background Images**:
     ```bash
     python Skill/pptx/scripts/ppt_img_gen.py workspace/ppt_plan.json workspace/project_name/images
     ```
-    This script automatically injects:
+    This script generates **background visuals only** with:
     - **Linear-Inspired Style**: Technical data visualization, dark mode, matte finish
-    - **Color Palette**: Deep charcoal background, #6B75FF violet-blue accents
+    - **Color Palette**: Deep charcoal (#1a1a1a), #6B75FF violet-blue accents
+    - **Layout Zones**: Top 25% clean for title, left 50% gradient for content
     - **Visual Structure**: Floating data clusters, interconnected nodes, abstract flow diagrams
     - **4K Resolution**: 3840x2160, ultra high detail, sharp and crisp rendering
-    - **Constraints**: NO UI chrome, NO dashboards, clean and structured
+    - **NO TEXT**: All text will be added programmatically in the next step
 
-2.  **Compile Presentation**:
+2.  **Compile Presentation with Text Overlay**:
     ```bash
-    python Skill/pptx/scripts/images2pptx.py workspace/project_name/images workspace/project_name/presentation.pptx
+    python Skill/pptx/scripts/images2pptx.py workspace/project_name/images workspace/ppt_plan.json workspace/project_name/presentation.pptx
     ```
+    This script adds text programmatically with **pixel-perfect consistency**:
+    - **Typography**: Segoe UI, 54pt titles, 28pt content, 1.5x line spacing
+    - **Layout**: Precise positioning (0.6" top margin, 0.8" left margin)
+    - **Slide Types**: Cover (centered, 72pt), Content (standard), Closing (centered, 60pt)
+    - **Styling**: White titles, 90% white content, bullet points with consistent spacing
 
 ### Manual/Single Image Generation
 For testing or single image generation:
 ```bash
 python Skill/pptx/scripts/nano_banana.py --prompt "Test image" --output_dir "output"
 ```
+
+## Design System
+
+The PPT skill uses a centralized design system (`design_system.py`) to ensure **NotebookLM-level consistency** across all slides.
+
+### Typography Standards
+
+| Element | Font | Size | Weight | Color |
+|---------|------|------|--------|-------|
+| **Cover Title** | Segoe UI | 72pt | Bold | #FFFFFF (White) |
+| **Cover Subtitle** | Segoe UI | 36pt | Regular | #B4B4B4 (Muted) |
+| **Standard Title** | Segoe UI | 54pt | Bold | #FFFFFF (White) |
+| **Standard Content** | Segoe UI | 28pt | Regular | #E6E6E6 (90% White) |
+| **Closing Title** | Segoe UI | 60pt | Bold | #FFFFFF (White) |
+| **Closing Content** | Segoe UI | 32pt | Regular | #E6E6E6 (90% White) |
+
+**Line Spacing**: 1.5x for all content text (improves readability)
+
+### Layout Standards (16:9 Slides)
+
+**Standard Content Slides**:
+- **Title**: 0.6" from top, 0.8" from left, 12" width
+- **Content**: 2.2" from top, 0.8" from left, 6.5" width (left 50% of slide)
+- **Visual Area**: Right 50% reserved for background visuals
+
+**Cover Slides**:
+- **Title**: Centered, 2.5" from top, 10.33" width
+- **Subtitle**: Centered, 4.2" from top, 10.33" width
+
+**Closing Slides**:
+- **Title**: Centered, 2.8" from top, 10.33" width
+- **Content**: Centered, 4.3" from top, 10.33" width
+
+### Why This Matters
+
+**Before** (AI-generated text in images):
+- ❌ Font sizes vary (48pt, 52pt, 56pt...)
+- ❌ Positioning inconsistent (0.5", 0.7", 0.9"...)
+- ❌ Text quality unpredictable (blurry, pixelated)
+- ❌ Style drift across slides
+
+**After** (Programmatic text overlay):
+- ✅ Pixel-perfect consistency (exactly 54pt, exactly 0.6")
+- ✅ Crisp, readable text (native PowerPoint rendering)
+- ✅ Unified visual language (NotebookLM quality)
+- ✅ Easy to customize (change one constant, update all slides)
 
 ## Reading and Analyzing Presentations
 

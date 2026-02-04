@@ -1,0 +1,11 @@
+[
+    {
+        "slide_number": 0,
+        "title": "4K 分辨率测试",
+        "content": [
+            "验证 imageSize: 4K 参数",
+            "目标分辨率: 3840x2160"
+        ],
+        "image_concept": "抽象数据网络，发光节点"
+    }
+]

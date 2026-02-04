@@ -1,0 +1,42 @@
+[
+    {
+        "slide_number": 0,
+        "title": "语义化模板系统测试",
+        "content": [
+            "无像素坐标",
+            "页面类型自动检测"
+        ],
+        "image_concept": "抽象数据网络，发光节点，连接线，深空背景"
+    },
+    {
+        "slide_number": 1,
+        "title": "内容页测试",
+        "content": [
+            "左侧文字排版",
+            "右侧视觉元素",
+            "自动左右分栏布局",
+            "无技术参数显示"
+        ],
+        "image_concept": "浮动几何形状，立方体和球体，紫色连接线"
+    },
+    {
+        "slide_number": 2,
+        "title": "数据页测试",
+        "content": [
+            "市场规模：$394B → $887.6B",
+            "增长率：CAGR 15%",
+            "ROI追踪率：仅23%",
+            "流失率：25-50%"
+        ],
+        "image_concept": "大型3D数据可视化，柱状图，环形图，紫色高亮"
+    },
+    {
+        "slide_number": 3,
+        "title": "谢谢",
+        "content": [
+            "测试完成",
+            "Semantic Template System"
+        ],
+        "image_concept": "淡出粒子效果，优雅收尾，极简背景"
+    }
+]

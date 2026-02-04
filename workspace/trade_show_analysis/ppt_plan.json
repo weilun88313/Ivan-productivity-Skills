@@ -1,0 +1,173 @@
+[
+    {
+        "slide_number": 0,
+        "title": "海外展会行业深度解析",
+        "content": [
+            "Lensmor 内部报告",
+            "2026年2月"
+        ],
+        "image_concept": "Abstract data network with glowing nodes representing global trade show connections, interconnected continents with purple accent lines"
+    },
+    {
+        "slide_number": 1,
+        "title": "核心发现",
+        "content": [
+            "市场规模：2023年 $394B → 2029年 $887.6B（CAGR 15%）",
+            "效率低下：仅23%能追踪ROI，87%线索跟进失败",
+            "痛点严重：参展商流失率25-50%（SaaS仅5-7%）",
+            "利益链不透明：主办方利润率30-50%，参展商承担隐藏成本",
+            "Lensmor机会：从\"数据\"升级为\"情报\"，打破ROI黑盒"
+        ],
+        "image_concept": "Five interconnected data clusters floating in space, each representing a key finding with glowing purple highlights and connection lines"
+    },
+    {
+        "slide_number": 2,
+        "title": "市场规模翻倍增长",
+        "content": [
+            "全球展览市场：$394B（2023）→ $887.6B（2029E）",
+            "美国B2B展会市场：$157.8B，年均13,000场展会",
+            "疫情后强劲恢复：年增长率~30%，线下占比73%",
+            "CEIR指数：已恢复至疫情前95.6%",
+            "关键判断：市场大、增长稳、线下不可替代"
+        ],
+        "image_concept": "Two ascending 3D bar columns showing market growth from 394B to 887.6B, with upward trending arrow and growth trajectory visualization"
+    },
+    {
+        "slide_number": 3,
+        "title": "核心问题：ROI黑盒",
+        "content": [
+            "决策驱动力：50%参展商因\"缺席比存在更被注意\"（FOMO）",
+            "典型案例：花费$28,000参展，成交一单$150,000，CAC=$28,000",
+            "能有效追踪ROI的公司：仅23%",
+            "Reddit投票：18%认为展会很棒，50%因恐惧参展，32%认为浪费时间",
+            "本质：参展商无法量化投入产出，基于恐惧而非数据决策"
+        ],
+        "image_concept": "Black box with question marks, surrounded by dollar signs and confused data points, representing ROI uncertainty"
+    },
+    {
+        "slide_number": 4,
+        "title": "线索转化困境",
+        "content": [
+            "70%线索在7天内丢失（Planet A Marketing）",
+            "87%参展商跟进不当（Exhibitor Magazine）",
+            "79%制造商90天内零转化（Leadstorm Marketing）",
+            "仅6%参展商认为转化良好（ColorCraft）",
+            "线索质量差：大量\"赠品猎人\"，98%参会者非行业人士",
+            "徽章扫描幻觉：只有数量无质量，数据延迟且质量差"
+        ],
+        "image_concept": "Funnel visualization showing massive lead loss, with 70% leaking out in first 7 days, declining conversion rates"
+    },
+    {
+        "slide_number": 5,
+        "title": "参展商流失率惊人",
+        "content": [
+            "成功展会流失率：25-35%",
+            "问题展会流失率：~50%",
+            "对比SaaS年流失率：仅5-7%（展会是SaaS的5-10倍）",
+            "流失原因：流程繁琐（100页服务手册）、多系统重复填报",
+            "责任分散：主办方/场馆/供应商互踢皮球",
+            "从业者描述：\"参展过程简直是狂野的西部\""
+        ],
+        "image_concept": "Comparison chart showing 25-50% exhibitor churn vs 5-7% SaaS churn, with leaking bucket metaphor"
+    },
+    {
+        "slide_number": 6,
+        "title": "利益链分析",
+        "content": [
+            "主办方利润率：30-50%（Informa案例：36%利润率）",
+            "收入来源：69%展位费，21%广告赞助，10%观众门票",
+            "美国总承包商垄断：Freeman/GES占75%市场",
+            "超额利润：吊臂操作员$891.25/小时，椅子租赁$300+",
+            "工会城市严格程度：纽约10级，芝加哥/拉斯维加斯8级",
+            "价值链结构：主办方和承包商高利润，参展商被动承担成本"
+        ],
+        "image_concept": "Profit margin visualization showing 30-50% organizer margins vs exhibitor cost burden, money flow diagram"
+    },
+    {
+        "slide_number": 7,
+        "title": "美国 vs 欧洲市场差异",
+        "content": [
+            "展会目的：美国侧重品牌推广，欧洲销售导向现场成交",
+            "所有权：美国66%行业协会，欧洲多元化",
+            "核心成本：美国Drayage+工会人工，欧洲展位空间+搭建",
+            "搭建模式：美国必须用官方承包商，欧洲自由选择",
+            "服务商：美国Freeman/GES垄断75%，欧洲市场化竞争",
+            "Drayage费用：美国$70-$200/100磅，欧洲无此费用"
+        ],
+        "image_concept": "Split screen comparison of US vs Europe trade show models, with contrasting visual elements and cost structures"
+    },
+    {
+        "slide_number": 8,
+        "title": "德国：全球展会中心",
+        "content": [
+            "2024年展会数量：322场",
+            "参展商：204,310家（同比+9.2%），海外占比52%",
+            "观众：1170万人（同比+3.2%），海外占比34%",
+            "最大参展国：中国（20,630家）",
+            "德国展馆容量：汉诺威392,453m²，法兰克福391,554m²",
+            "特点：高度专业化细分、国际化程度高、规则执行严格"
+        ],
+        "image_concept": "Map of Germany with major trade show cities highlighted, data visualization showing 322 events and 204K exhibitors"
+    },
+    {
+        "slide_number": 9,
+        "title": "参展商核心痛点",
+        "content": [
+            "ROI黑盒：仅23%能追踪，无法量化投入产出",
+            "流程繁琐：导致25-50%流失率",
+            "线索质量差：87%跟进不当，70%线索7天内丢失",
+            "信息不对称：销售缺乏观众上下文和接触理由",
+            "隐藏成本：首次参展者频繁被\"意外账单\"击垮",
+            "时间效率低：买家仅17%时间用于与供应商会面"
+        ],
+        "image_concept": "Pain points visualization with six interconnected problem nodes, each glowing with warning indicators"
+    },
+    {
+        "slide_number": 10,
+        "title": "反常识洞察",
+        "content": [
+            "真正价值不在展会本身：80%资源应花在展前准备和展后跟进",
+            "\"越窄越赚钱\"：500-1000人的垂直细分展会比大型展会更有效",
+            "徽章扫描是持续付费墙：参展商为自己的线索向主办方付费",
+            "展会流程碎片化是结构性问题：无人有动力整合",
+            "面对面仍不可替代：问题不是取代，而是让面对面更有价值",
+            "小型高端活动>大型展会：53%参展商在区域展会最成功"
+        ],
+        "image_concept": "Lightbulb moments with counterintuitive insights, showing narrow focus beats broad approach visualization"
+    },
+    {
+        "slide_number": 11,
+        "title": "Lensmor解决方案",
+        "content": [
+            "核心价值：从\"数据\"到\"情报\"",
+            "展前：基于技术栈、招聘意向识别高潜力目标（盲目撒网→精准打击）",
+            "展中：提供\"接触理由\"如\"他们刚招了VP of Sales\"（冷对话→言之有物）",
+            "展后：线索优先级排序+自动化跟进建议（70%丢失→可控转化）",
+            "差异化：不是联系人列表，是带上下文的决策依据",
+            "目标：识别5000家中的50家必赢客户"
+        ],
+        "image_concept": "Intelligence platform dashboard showing signal detection, lead prioritization, and actionable insights with purple accents"
+    },
+    {
+        "slide_number": 12,
+        "title": "战略定位",
+        "content": [
+            "定位：ZoomInfo meets Datadog for the event industry",
+            "不是线索工具，是展会表现的监控和智能平台",
+            "市场优先级：P0美国（ROI焦虑强），P1德国（专业化需求），P2中东（蓝海市场）",
+            "价值主张：从\"害怕错过\"的盲目投入→\"数据驱动\"的精准打击",
+            "目标客户：参展商（核心）、主办方（数据合作）",
+            "竞争优势：全流程情报覆盖，而非单点数据工具"
+        ],
+        "image_concept": "Strategic positioning matrix showing Lensmor at intersection of intelligence and event industry, with market priorities"
+    },
+    {
+        "slide_number": 13,
+        "title": "谢谢",
+        "content": [
+            "Lensmor Team",
+            "lensmor.com"
+        ],
+        "image_concept": "Clean minimalist closing with fading data visualization elements, elegant professional finish"
+    }
+]

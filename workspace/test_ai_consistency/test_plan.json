@@ -1,0 +1,30 @@
+[
+    {
+        "slide_number": 0,
+        "title": "Design System Test",
+        "content": [
+            "Ultra-Precise AI Generation",
+            "Pixel-Perfect Consistency"
+        ],
+        "image_concept": "Abstract network of glowing nodes connected by thin lines, floating in deep space"
+    },
+    {
+        "slide_number": 1,
+        "title": "Typography Consistency",
+        "content": [
+            "Title: 72px Segoe UI Bold at (100px, 80px)",
+            "Content: 37px Segoe UI Regular at (100px, 600px)",
+            "Line spacing: 1.5× (55px between lines)"
+        ],
+        "image_concept": "Floating geometric shapes with measurement indicators, technical blueprint aesthetic"
+    },
+    {
+        "slide_number": 2,
+        "title": "Thank You",
+        "content": [
+            "AI-Generated with Design Constraints",
+            "NotebookLM-Style Quality"
+        ],
+        "image_concept": "Elegant fade-out with dispersing particles, minimalist closing visual"
+    }
+]
