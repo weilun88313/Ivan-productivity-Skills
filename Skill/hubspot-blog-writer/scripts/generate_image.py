@@ -17,7 +17,7 @@ if not API_KEY:
 MODEL_NAME = "gemini-3-pro-image-preview"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent"
 MAX_RETRIES = 3
-TIMEOUT = 60
+TIMEOUT = 180
 
 
 def generate_image(prompt, output_dir):

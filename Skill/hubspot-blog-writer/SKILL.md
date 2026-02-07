@@ -65,9 +65,10 @@ python Skill/hubspot-blog-writer/scripts/generate_image.py --prompt "<Detailed I
 **Visual style**: Read [references/visual-style-guide.md](references/visual-style-guide.md) for the required Linear-inspired dark mode aesthetic, color palette, and constraints.
 
 ### Workflow
-1. **Generate prompts** as part of the blog writing process.
-2. **Execute script** for the cover image AND at least 3 inline images.
-3. **Embed** the resulting file paths into the final markdown.
+1. **Generate cover image** using the Cover Image Style prompt template from the visual style guide — combine the style prefix with a conceptual description of the article's theme. The cover must be purely abstract with NO text.
+2. **Generate inline images** (at least 3) using the Inline Image Style from the visual style guide.
+3. **Execute script** for each image.
+4. **Embed** the resulting file paths into the final markdown.
 
 ## Required Output Format
 

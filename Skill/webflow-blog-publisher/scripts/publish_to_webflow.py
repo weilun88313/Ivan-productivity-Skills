@@ -3,6 +3,10 @@ import re
 import json
 import argparse
 import time
+import math
+import random
+import hashlib
+from datetime import datetime, timezone
 import requests
 
 try:
@@ -14,9 +18,11 @@ except ImportError:
 API_BASE = "https://api.webflow.com/v2"
 MAX_RETRIES = 3
 TIMEOUT = 30
-
+WORDS_PER_MINUTE = 200
 
 SECRETS_PATH = os.path.expanduser("~/.claude/lensmor_secrets.json")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+WRITERS_PATH = os.path.join(SCRIPT_DIR, "..", "assets", "writers", "writers.json")
 
 
 def load_secrets():
@@ -30,48 +36,140 @@ def load_secrets():
     return {
         "token": os.environ.get("WEBFLOW_API_TOKEN") or secrets.get("WEBFLOW_API_TOKEN"),
         "collection_id": os.environ.get("WEBFLOW_BLOG_COLLECTION_ID") or secrets.get("WEBFLOW_BLOG_COLLECTION_ID"),
+        "site_id": os.environ.get("WEBFLOW_SITE_ID") or secrets.get("WEBFLOW_SITE_ID"),
     }
 
 
+def load_writers():
+    """Load writer profiles from assets/writers/writers.json."""
+    try:
+        with open(WRITERS_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
+def pick_writer(writers, name=None):
+    """Pick a writer by name, or randomly if not specified."""
+    if not writers:
+        return None
+    if name:
+        for w in writers:
+            if w["name"].lower() == name.lower():
+                return w
+        print(f"  Warning: Writer '{name}' not found. Available: {', '.join(w['name'] for w in writers)}")
+        return None
+    return random.choice(writers)
+
+
+MIME_TYPES = {
+    "png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg",
+    "gif": "image/gif", "webp": "image/webp", "avif": "image/avif",
+    "svg": "image/svg+xml",
+}
+
+
+def upload_image_to_webflow(token, site_id, file_path):
+    """Upload a local image to Webflow Assets. Returns CDN URL or None."""
+    if not os.path.isfile(file_path):
+        print(f"  Warning: Image not found: {file_path}")
+        return None
+
+    with open(file_path, "rb") as f:
+        file_bytes = f.read()
+
+    file_hash = hashlib.md5(file_bytes).hexdigest()
+    file_name = os.path.basename(file_path)
+    ext = file_name.rsplit(".", 1)[-1].lower() if "." in file_name else "png"
+    content_type = MIME_TYPES.get(ext, "application/octet-stream")
+
+    # Step 1: Request presigned upload URL from Webflow
+    resp = api_request("POST", f"/sites/{site_id}/assets", token, {
+        "fileName": file_name,
+        "fileHash": file_hash,
+    })
+    if not resp or resp.status_code not in (200, 201, 202):
+        print(f"  Error requesting upload URL: {resp.status_code if resp else 'no response'}")
+        return None
+
+    asset_data = resp.json()
+    upload_url = asset_data.get("uploadUrl")
+    upload_details = asset_data.get("uploadDetails", {})
+    cdn_url = asset_data.get("hostedUrl") or asset_data.get("assetUrl")
+
+    if not upload_url or not upload_details:
+        print(f"  Error: Missing upload URL in response")
+        return None
+
+    # Step 2: Upload file to S3 via presigned URL
+    fields = [(k, (None, str(v))) for k, v in upload_details.items()]
+    fields.append(("file", (file_name, file_bytes, content_type)))
+
+    try:
+        s3_resp = requests.post(upload_url, files=fields, timeout=120)
+        if s3_resp.status_code in (200, 201, 204):
+            print(f"  Uploaded: {file_name} → {cdn_url}")
+            return cdn_url
+        else:
+            print(f"  S3 upload failed: {s3_resp.status_code}")
+            return None
+    except requests.exceptions.RequestException as e:
+        print(f"  Upload error: {e}")
+        return None
+
+
 def parse_blog_markdown(filepath):
-    """Parse blog markdown into metadata and body content."""
+    """Parse blog markdown into metadata, body content, and image references."""
+    base_dir = os.path.dirname(os.path.abspath(filepath))
+
     with open(filepath, "r", encoding="utf-8") as f:
         text = f.read()
 
-    # Extract title from first H1
     title_match = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
     title = title_match.group(1).strip() if title_match else "Untitled"
 
-    # Extract slug
     slug_match = re.search(r"\*\*Slug\*\*:\s*(.+)", text)
     slug = ""
     if slug_match:
         raw_slug = slug_match.group(1).strip()
-        # Take the last segment of the path
         slug = raw_slug.rstrip("/").split("/")[-1]
 
-    # Extract meta description
     meta_match = re.search(r"\*\*Meta Description\*\*:\s*(.+)", text)
     meta_desc = meta_match.group(1).strip() if meta_match else ""
 
-    # Extract body: everything after the first "---" divider
+    # Extract cover image (in metadata section, before ---)
+    cover_image = None
+    cover_match = re.search(r"\*\*Cover Image\*\*:\s*\n?\s*!\[([^\]]*)\]\(([^)]+)\)", text)
+    if cover_match:
+        cover_path = cover_match.group(2).strip()
+        if not os.path.isabs(cover_path):
+            cover_path = os.path.join(base_dir, cover_path)
+        cover_image = cover_path
+
     parts = text.split("\n---\n", 1)
     body_md = parts[1].strip() if len(parts) > 1 else text
 
-    # Remove local image references (user uploads manually)
-    body_md = re.sub(r"!\[([^\]]*)\]\([^)]*\)\n?", "", body_md)
+    # Extract inline image paths and resolve to absolute paths
+    inline_images = []
+    for match in re.finditer(r"!\[([^\]]*)\]\(([^)]+)\)", body_md):
+        alt, path = match.group(1), match.group(2).strip()
+        abs_path = path if os.path.isabs(path) else os.path.join(base_dir, path)
+        inline_images.append({"alt": alt, "path": abs_path, "original": match.group(0), "raw_path": path})
 
-    # Convert markdown to HTML
-    body_html = markdown.markdown(
-        body_md,
-        extensions=["tables", "fenced_code"],
-    )
+    # Don't convert to HTML yet — images need to be uploaded first
+    plain_text = re.sub(r"!\[([^\]]*)\]\([^)]*\)", "", body_md)
+    plain_text = re.sub(r"[#*_\[\]`>|~-]", "", plain_text)
+    word_count = len(plain_text.split())
+    read_minutes = max(1, math.ceil(word_count / WORDS_PER_MINUTE))
 
     return {
         "title": title,
         "slug": slug,
         "meta_description": meta_desc,
-        "body_html": body_html,
+        "body_md": body_md,
+        "cover_image": cover_image,
+        "inline_images": inline_images,
+        "read_time": f"{read_minutes} min read",
     }
 
 
@@ -120,10 +218,47 @@ def get_collection_fields(token, collection_id):
     return resp.json().get("fields", [])
 
 
-def publish_blog(filepath, collection_id=None, publish=False):
+def get_item_count(token, collection_id):
+    """Get total number of items in a collection."""
+    resp = api_request("GET", f"/collections/{collection_id}/items?limit=1", token)
+    if not resp or resp.status_code != 200:
+        return 0
+    return resp.json().get("pagination", {}).get("total", 0)
+
+
+def resolve_category(token, ref_field, category_slug):
+    """Resolve a category slug to its Webflow item ID."""
+    ref_collection_id = ref_field.get("validations", {}).get("collectionId")
+    if not ref_collection_id:
+        return None
+    resp = api_request("GET", f"/collections/{ref_collection_id}/items", token)
+    if not resp or resp.status_code != 200:
+        return None
+    for item in resp.json().get("items", []):
+        fd = item.get("fieldData", {})
+        if fd.get("slug") == category_slug or fd.get("name", "").lower() == category_slug.lower():
+            return item["id"]
+    return None
+
+
+def list_categories(token, ref_field):
+    """List available categories for display."""
+    ref_collection_id = ref_field.get("validations", {}).get("collectionId")
+    if not ref_collection_id:
+        return []
+    resp = api_request("GET", f"/collections/{ref_collection_id}/items", token)
+    if not resp or resp.status_code != 200:
+        return []
+    return [(item["id"], item["fieldData"].get("name"), item["fieldData"].get("slug"))
+            for item in resp.json().get("items", [])]
+
+
+def publish_blog(filepath, collection_id=None, publish=False,
+                 writer_name=None, category=None):
     secrets = load_secrets()
     token = secrets["token"]
     collection_id = collection_id or secrets["collection_id"]
+    site_id = secrets.get("site_id")
 
     if not token:
         print("Error: WEBFLOW_API_TOKEN not found.")
@@ -142,7 +277,44 @@ def publish_blog(filepath, collection_id=None, publish=False):
     print(f"  Title: {data['title']}")
     print(f"  Slug: {data['slug']}")
     print(f"  Meta: {data['meta_description'][:80]}...")
-    print(f"  Body: {len(data['body_html'])} chars HTML")
+    print(f"  Cover image: {'yes' if data['cover_image'] else 'none'}")
+    print(f"  Inline images: {len(data['inline_images'])}")
+    print(f"  Read time: {data['read_time']}")
+
+    # === Upload images to Webflow Assets ===
+    cover_cdn_url = None
+    body_md = data["body_md"]
+
+    if site_id and (data["cover_image"] or data["inline_images"]):
+        print(f"\nUploading images to Webflow Assets...")
+
+        # Upload cover image
+        if data["cover_image"]:
+            cover_cdn_url = upload_image_to_webflow(token, site_id, data["cover_image"])
+
+        # Upload inline images and replace paths in markdown
+        for img in data["inline_images"]:
+            cdn_url = upload_image_to_webflow(token, site_id, img["path"])
+            if cdn_url:
+                body_md = body_md.replace(img["raw_path"], cdn_url)
+            else:
+                # Remove failed image references
+                body_md = body_md.replace(img["original"], "")
+    elif not site_id and (data["cover_image"] or data["inline_images"]):
+        print(f"\n  Warning: WEBFLOW_SITE_ID not set, skipping image uploads.")
+        print(f"  Add WEBFLOW_SITE_ID to ~/.claude/lensmor_secrets.json to enable.")
+        # Strip images if we can't upload
+        body_md = re.sub(r"!\[([^\]]*)\]\([^)]*\)\n?", "", body_md)
+
+    # Convert markdown to HTML (now with CDN URLs for uploaded images)
+    body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
+    print(f"  Body: {len(body_html)} chars HTML")
+
+    # Load writer profiles
+    writers = load_writers()
+    writer = pick_writer(writers, writer_name)
+    if writer:
+        print(f"  Writer: {writer['name']}")
 
     # Discover collection field slugs
     print(f"\nFetching collection schema ({collection_id})...")
@@ -151,30 +323,79 @@ def publish_blog(filepath, collection_id=None, publish=False):
         print("Error: Could not fetch collection schema. Check your collection_id and API token.")
         return None
 
-    # Build field mapping by type
     field_map = {f["slug"]: f for f in fields}
     print(f"  Found {len(fields)} fields: {', '.join(field_map.keys())}")
 
-    # Auto-detect field slugs for common blog fields
+    # Auto-detect sort from item count
+    total_items = get_item_count(token, collection_id)
+    sort_order = total_items + 1
+    print(f"  Existing items: {total_items}, new sort → {sort_order}")
+
+    # === Build fieldData ===
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
     field_data = {"name": data["title"]}
     if data["slug"]:
         field_data["slug"] = data["slug"]
 
-    # Map body to the first RichText field found
+    # Body → first RichText field
     richtext_fields = [f["slug"] for f in fields if f.get("type") == "RichText"]
     if richtext_fields:
-        field_data[richtext_fields[0]] = data["body_html"]
+        field_data[richtext_fields[0]] = body_html
         print(f"  Mapped body → '{richtext_fields[0]}'")
-    else:
-        print("  Warning: No RichText field found in collection. Body not mapped.")
 
-    # Map meta description to PlainText fields that look like summary/excerpt
+    # Cover image → thumbnail-image + large-image
+    if cover_cdn_url:
+        for img_field in ["thumbnail-image", "large-image"]:
+            if img_field in field_map:
+                field_data[img_field] = {"url": cover_cdn_url}
+                print(f"  Mapped {img_field} → cover image")
+
+    # Meta description
     summary_candidates = ["post-summary", "summary", "excerpt", "meta-description", "description"]
     for candidate in summary_candidates:
         if candidate in field_map:
             field_data[candidate] = data["meta_description"]
             print(f"  Mapped meta description → '{candidate}'")
             break
+
+    # Date + Recently Updated
+    if "date" in field_map:
+        field_data["date"] = now_iso
+        print(f"  Mapped date → '{now_iso}'")
+    if "recently-updated" in field_map:
+        field_data["recently-updated"] = now_iso
+
+    # Read time
+    if "read-time" in field_map:
+        field_data["read-time"] = data["read_time"]
+        print(f"  Mapped read-time → '{data['read_time']}'")
+
+    # Sort order (auto)
+    if "sort" in field_map:
+        field_data["sort"] = sort_order
+        print(f"  Mapped sort → {sort_order}")
+
+    # Writer name + image
+    if writer:
+        if "writer-name" in field_map:
+            field_data["writer-name"] = writer["name"]
+            print(f"  Mapped writer-name → '{writer['name']}'")
+        if "writer-image" in field_map and writer.get("image_url"):
+            field_data["writer-image"] = {"url": writer["image_url"]}
+            print(f"  Mapped writer-image → '{writer['image_url'][:60]}...'")
+
+    # Category (ref field)
+    if category and "ref" in field_map:
+        cat_id = resolve_category(token, field_map["ref"], category)
+        if cat_id:
+            field_data["ref"] = cat_id
+            print(f"  Mapped ref → '{category}' (ID: {cat_id})")
+        else:
+            cats = list_categories(token, field_map["ref"])
+            print(f"  Warning: Category '{category}' not found. Available:")
+            for cid, cname, cslug in cats:
+                print(f"    - {cslug} ({cname})")
 
     # Create the CMS item
     payload = {
@@ -214,6 +435,14 @@ if __name__ == "__main__":
     parser.add_argument("--file", required=True, help="Path to the blog markdown file")
     parser.add_argument("--collection_id", default=None, help="Webflow CMS collection ID (or set WEBFLOW_BLOG_COLLECTION_ID in secrets)")
     parser.add_argument("--publish", action="store_true", help="Publish immediately (default: create as draft)")
+    parser.add_argument("--writer", default=None, help="Writer name (random if not specified)")
+    parser.add_argument("--category", default=None, help="Category slug or name (e.g. 'strategy', 'playbooks', 'teardowns')")
     args = parser.parse_args()
 
-    publish_blog(args.file, args.collection_id or None, args.publish)
+    publish_blog(
+        args.file,
+        args.collection_id or None,
+        args.publish,
+        writer_name=args.writer,
+        category=args.category,
+    )
