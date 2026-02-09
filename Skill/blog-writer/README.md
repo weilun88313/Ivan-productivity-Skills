@@ -1,16 +1,16 @@
-# HubSpot Blog Writer
+# professional blog Blog Writer
 
-> Create high-ranking, SEO-friendly blog posts in professional HubSpot style
+> Create high-ranking, SEO-friendly blog posts in professional professional blog style
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
 ## Overview
 
-The **HubSpot Blog Writer** skill helps you create professional, actionable, and SEO-optimized blog posts following the HubSpot Blog's proven content formula. It combines expert content structure with AI-generated visual assets to produce publish-ready articles.
+The **professional blog Blog Writer** skill helps you create professional, actionable, and SEO-optimized blog posts following the professional blog Blog's proven content formula. It combines expert content structure with AI-generated visual assets to produce publish-ready articles.
 
 ### Key Features
 
-- ✍️ **HubSpot-Style Content** - Professional, actionable, empathetic tone
+- ✍️ **professional blog-Style Content** - Professional, actionable, empathetic tone
 - 📊 **SEO-Optimized** - Structured for search engine visibility
 - 🎨 **AI-Generated Illustrations** - High-quality 16:9 images with Linear dark mode style
 - 📝 **Structured Format** - Hook → Why → How → CTA framework
@@ -64,7 +64,7 @@ The output includes a properly formatted markdown file ready for publishing with
 
 ## Content Structure
 
-### The HubSpot Formula
+### The professional blog Formula
 
 ```
 ┌─────────────────────────────────────┐
@@ -473,7 +473,7 @@ echo '{"NANO_API_KEY": "your_key"}' > ~/.claude/lensmor_secrets.json
 
 **Solution**:
 - Explicitly request tone adjustment
-- Reference style: "Write in HubSpot Blog style"
+- Reference style: "Write in professional blog Blog style"
 - Provide tone examples
 
 **Problem**: Content is too long/short
@@ -535,7 +535,7 @@ hubspot-blog-writer/
 - ✅ Cleaner code architecture (106 → 85 lines)
 
 ### v1.0.0 (2026-02-07)
-- Initial release with HubSpot-style content structure
+- Initial release with professional blog-style content structure
 - AI-powered image generation
 - Linear dark mode visual aesthetic
 

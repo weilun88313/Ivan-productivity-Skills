@@ -9,8 +9,8 @@
 
 ### 🎨 内容创作
 
-#### [hubspot-blog-writer](./Skill/hubspot-blog-writer/)
-生成高质量、SEO优化的HubSpot风格博客文章，配备AI生成的插图。
+#### [blog-writer](./Skill/blog-writer/)
+生成高质量、SEO优化的博客文章，配备遵循Linear设计美学的AI生成插图。
 
 **功能特性：**
 - 5段式提示词模板，确保图片质量一致
@@ -87,7 +87,7 @@ cp ~/.claude/lensmor_secrets.json.example ~/.claude/lensmor_secrets.json
 
 ```bash
 # 1. 生成博客内容
-cd Skill/hubspot-blog-writer
+cd Skill/blog-writer
 python scripts/generate_blog.py --topic "邮件营销最佳实践"
 
 # 2. 生成图片（使用5段式模板）
@@ -115,9 +115,8 @@ python scripts/publish_to_webflow.py \
 
 ### 核心文档文件
 
-- [博客工作流指南](./Skill/BLOG_WORKFLOW.md) - 端到端博客创建和发布
-- [视觉风格指南](./Skill/hubspot-blog-writer/references/visual-style-guide.md) - 强制5段式提示词模板
-- [优化总结](./Skill/OPTIMIZATION_SUMMARY.md) - 技能审计和改进报告
+- [博客工作流指南](./Skill/blog-writer/WORKFLOW.md) - 端到端博客创建和发布
+- [视觉风格指南](./Skill/blog-writer/references/visual-style-guide.md) - 强制5段式提示词模板
 
 ---
 
@@ -154,12 +153,11 @@ python scripts/publish_to_webflow.py \
 ├── README.zh-CN.md                     # 本文件（中文版）
 ├── .gitignore                          # 忽略规则
 ├── Skill/
-│   ├── BLOG_WORKFLOW.md                # 博客创建指南
-│   ├── OPTIMIZATION_SUMMARY.md         # 技能报告
 │   │
-│   ├── hubspot-blog-writer/
+│   ├── blog-writer/
 │   │   ├── README.md                   # 用户指南（503行）
 │   │   ├── SKILL.md                    # AI指令
+│   │   ├── WORKFLOW.md                 # 端到端博客工作流
 │   │   ├── references/
 │   │   │   └── visual-style-guide.md   # 5段式模板（303行）
 │   │   ├── scripts/

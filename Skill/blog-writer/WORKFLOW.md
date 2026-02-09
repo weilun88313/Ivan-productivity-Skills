@@ -2,14 +2,14 @@
 
 > Complete workflow for creating and publishing SEO-optimized blog posts
 
-This document describes the end-to-end workflow using **hubspot-blog-writer** and **webflow-blog-publisher** skills.
+This document describes the end-to-end workflow using **blog-writer** and **webflow-blog-publisher** skills.
 
 ## Overview
 
 ```
 User Request → Blog Writing → Image Generation → Publishing to Webflow
      ↓              ↓                ↓                    ↓
-  Topic Idea    HubSpot Style    AI-Generated        Webflow CMS
+  Topic Idea    professional blog Style    AI-Generated        Webflow CMS
                   Content         Illustrations       (Live/Draft)
 ```
 
@@ -23,7 +23,7 @@ Ask AI to write a blog post:
 ```
 
 The AI will:
-- Create HubSpot-style content
+- Create professional blog-style content
 - Generate a metadata block (title, slug, meta description)
 - Add image placeholders
 - Save as markdown file
@@ -33,12 +33,12 @@ The AI will:
 Generate cover and inline images:
 ```bash
 # Cover image
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
+python Skill/blog-writer/scripts/generate_image.py \
   --prompt "Abstract email marketing visualization, data flow, Linear dark style" \
   --output_dir workspace/blog/images
 
 # Inline images (repeat for each)
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
+python Skill/blog-writer/scripts/generate_image.py \
   --prompt "Email inbox interface wireframe, clean UI mockup" \
   --output_dir workspace/blog/images
 ```
@@ -56,7 +56,7 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 
 ### Phase 1: Content Creation
 
-**Tool**: `hubspot-blog-writer`
+**Tool**: `blog-writer`
 
 1. **Define Topic**: Clear, specific blog topic
 2. **Generate Content**: AI creates structured blog post
@@ -71,7 +71,7 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 
 ### Phase 2: Visual Assets
 
-**Tool**: `hubspot-blog-writer/scripts/generate_image.py`
+**Tool**: `blog-writer/scripts/generate_image.py`
 
 1. **Cover Image** (Required):
    - Abstract, no text
@@ -140,7 +140,7 @@ Email marketing remains one of the most effective channels...
 
 ## Prerequisites
 
-### For HubSpot Blog Writer
+### For professional blog Blog Writer
 ```bash
 pip install requests
 
@@ -250,8 +250,8 @@ Available categories (customize in Webflow):
 
 ## Resources
 
-- [HubSpot Blog Writer SKILL.md](hubspot-blog-writer/SKILL.md) - Content guidelines
-- [HubSpot Blog Writer README.md](hubspot-blog-writer/README.md) - User guide
+- [professional blog Blog Writer SKILL.md](blog-writer/SKILL.md) - Content guidelines
+- [professional blog Blog Writer README.md](blog-writer/README.md) - User guide
 - [Webflow Blog Publisher SKILL.md](webflow-blog-publisher/SKILL.md) - Technical docs
 - [Webflow Blog Publisher README.md](webflow-blog-publisher/README.md) - User guide
 

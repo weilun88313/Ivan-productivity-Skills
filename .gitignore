@@ -18,14 +18,30 @@ build/
 .DS_Store
 Thumbs.db
 
-# Workspace (generated content)
-workspace/images/
-workspace/*.md
-workspace/**/
+# Workspace (generated content - not for version control)
+workspace/
 
-# Secrets
+# Secrets and credentials
 *.secrets.json
 *_secrets.json
+.env
+.env.local
+**/secrets/
+**/*secret*
+**/*credential*
+**/*password*
+
+# API keys and tokens (extra safety)
+*apikey*
+*api_key*
+*token*.txt
+*token*.json
 
 # Logs
 *.log
+logs/
+
+# Test and temporary files
+*.tmp
+*.temp
+test_output/

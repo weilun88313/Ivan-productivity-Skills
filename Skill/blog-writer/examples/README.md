@@ -1,6 +1,6 @@
-# HubSpot Blog Writer Examples
+# professional blog Blog Writer Examples
 
-This directory contains example blog posts demonstrating the HubSpot writing style and structure.
+This directory contains example blog posts demonstrating the professional blog writing style and structure.
 
 ## Files
 

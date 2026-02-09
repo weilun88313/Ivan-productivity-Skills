@@ -9,8 +9,8 @@ A collection of production-ready AI skills for content creation, event intellige
 
 ### 🎨 Content Creation
 
-#### [hubspot-blog-writer](./Skill/hubspot-blog-writer/)
-Generate high-quality, SEO-optimized blog posts in HubSpot style with AI-generated illustrations.
+#### [blog-writer](./Skill/blog-writer/)
+Generate high-quality, SEO-optimized blog posts with AI-generated illustrations following Linear design aesthetic.
 
 **Features:**
 - 5-paragraph prompt template for consistent image quality
@@ -87,7 +87,7 @@ cp ~/.claude/lensmor_secrets.json.example ~/.claude/lensmor_secrets.json
 
 ```bash
 # 1. Generate blog content
-cd Skill/hubspot-blog-writer
+cd Skill/blog-writer
 python scripts/generate_blog.py --topic "Email Marketing Best Practices"
 
 # 2. Generate images (using 5-paragraph template)
@@ -115,9 +115,8 @@ Each skill includes comprehensive documentation:
 
 ### Key Documentation Files
 
-- [Blog Workflow Guide](./Skill/BLOG_WORKFLOW.md) - End-to-end blog creation and publishing
-- [Visual Style Guide](./Skill/hubspot-blog-writer/references/visual-style-guide.md) - Mandatory 5-paragraph prompt templates
-- [Optimization Summary](./Skill/OPTIMIZATION_SUMMARY.md) - Skills audit and improvements
+- [Blog Workflow Guide](./Skill/blog-writer/WORKFLOW.md) - End-to-end blog creation and publishing
+- [Visual Style Guide](./Skill/blog-writer/references/visual-style-guide.md) - Mandatory 5-paragraph prompt templates
 
 ---
 
@@ -154,12 +153,11 @@ All generated images follow a **strict 5-paragraph prompt template**:
 ├── README.zh-CN.md                     # Chinese version
 ├── .gitignore                          # Ignore rules
 ├── Skill/
-│   ├── BLOG_WORKFLOW.md                # Blog creation guide
-│   ├── OPTIMIZATION_SUMMARY.md         # Skills report
 │   │
-│   ├── hubspot-blog-writer/
+│   ├── blog-writer/
 │   │   ├── README.md                   # User guide (503 lines)
 │   │   ├── SKILL.md                    # AI instructions
+│   │   ├── WORKFLOW.md                 # End-to-end blog workflow
 │   │   ├── references/
 │   │   │   └── visual-style-guide.md   # 5-paragraph templates (303 lines)
 │   │   ├── scripts/

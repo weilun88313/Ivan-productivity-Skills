@@ -1,11 +1,11 @@
 ---
 name: Blog-writer
-description: "Write high-ranking, SEO-friendly blog posts in HubSpot style. Use when the user asks to write a blog post, draft an article, create marketing content, or produce educational content in a professional, actionable tone."
+description: "Write high-ranking, SEO-friendly blog posts in professional blog style. Use when the user asks to write a blog post, draft an article, create marketing content, or produce educational content in a professional, actionable tone."
 ---
 
 # Blog Writer
 
-Create blog posts that follow the high-quality, actionable, and SEO-friendly HubSpot Blog style.
+Create high-quality, actionable, and SEO-friendly blog posts with professional content structure and engaging visuals.
 
 ## Role & Voice
 

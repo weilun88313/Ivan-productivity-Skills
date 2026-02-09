@@ -59,7 +59,7 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 
 ## Input Format
 
-The script expects markdown files with this structure (produced by [hubspot-blog-writer](../hubspot-blog-writer)):
+The script expects markdown files with this structure (produced by [blog-writer](../blog-writer)):
 
 ```markdown
 # Your Blog Post Title
@@ -335,13 +335,13 @@ This allows the script to work with different Webflow templates.
 
 ## Workflow Integration
 
-This skill works seamlessly with [hubspot-blog-writer](../hubspot-blog-writer):
+This skill works seamlessly with [blog-writer](../blog-writer):
 
 ```bash
 # Complete workflow
 # 1. Write content (AI-assisted)
 # 2. Generate images
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
+python Skill/blog-writer/scripts/generate_image.py \
   --prompt "..." --output_dir workspace/blog/images
 
 # 3. Publish to Webflow
@@ -544,7 +544,7 @@ webflow-blog-publisher/
 
 - [SKILL.md](SKILL.md) - Technical documentation and field mapping
 - [Setup Guide](references/webflow-setup-guide.md) - Webflow configuration
-- [HubSpot Blog Writer](../hubspot-blog-writer) - Content creation skill
+- [HubSpot Blog Writer](../blog-writer) - Content creation skill
 - [Blog Workflow](../BLOG_WORKFLOW.md) - End-to-end publishing guide
 - [Webflow API Docs](https://developers.webflow.com/) - Official API reference
 
