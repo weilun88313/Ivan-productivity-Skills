@@ -308,6 +308,20 @@ def publish_blog(filepath, collection_id=None, publish=False,
 
     # Convert markdown to HTML (now with CDN URLs for uploaded images)
     body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
+
+    # Add full-width styling to all images
+    body_html = re.sub(
+        r'<img\s+([^>]*?)alt="([^"]*)"([^>]*?)src="([^"]*)"([^>]*)>',
+        r'<figure style="width: 100%; margin: 2em 0;"><img \1alt="\2"\3src="\4"\5 style="width: 100%; display: block; border-radius: 8px;"></figure>',
+        body_html
+    )
+    # Handle cases where src comes before alt
+    body_html = re.sub(
+        r'<img\s+([^>]*?)src="([^"]*)"([^>]*?)alt="([^"]*)"([^>]*)>',
+        r'<figure style="width: 100%; margin: 2em 0;"><img \1src="\2"\3alt="\4"\5 style="width: 100%; display: block; border-radius: 8px;"></figure>',
+        body_html
+    )
+
     print(f"  Body: {len(body_html)} chars HTML")
 
     # Load writer profiles
