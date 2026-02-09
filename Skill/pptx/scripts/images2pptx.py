@@ -1,62 +1,106 @@
+"""
+Images to PowerPoint Converter
+Converts a directory of images into a PowerPoint presentation.
+Each image becomes a full-bleed slide (16:9 format).
+"""
 
 import os
 import argparse
 from pptx import Presentation
 from pptx.util import Inches
 
+
 def images_to_pptx(image_dir, output_file):
     """
     Creates a PowerPoint presentation from images in a directory.
-    Each image becomes a new slide (full bleed).
-    Text is already embedded in the AI-generated images.
+
+    Args:
+        image_dir: Directory containing images
+        output_file: Output .pptx file path
+
+    Returns:
+        Number of slides created, or None if error
     """
+    if not os.path.isdir(image_dir):
+        print(f"Error: Directory not found: {image_dir}")
+        return None
+
+    # Create presentation with 16:9 aspect ratio
     prs = Presentation()
-    # 16:9 aspect ratio default
     prs.slide_width = Inches(13.333)
     prs.slide_height = Inches(7.5)
 
-    # Get all images
+    # Find all images in directory
     valid_extensions = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff"}
     images = [
-        f for f in os.listdir(image_dir) 
+        f for f in os.listdir(image_dir)
         if os.path.splitext(f)[1].lower() in valid_extensions
     ]
-    images.sort() # Ensure consistent order
 
     if not images:
-        print(f"No images found in {image_dir}")
-        return
+        print(f"Error: No images found in {image_dir}")
+        return None
 
+    # Sort images for consistent ordering
+    images.sort()
+
+    # Use blank slide layout
     blank_slide_layout = prs.slide_layouts[6]
 
+    # Add each image as a full-bleed slide
     for img_name in images:
         img_path = os.path.join(image_dir, img_name)
-        slide = prs.slides.add_slide(blank_slide_layout)
-        
-        # Add image to cover the whole slide (full bleed)
-        pic = slide.shapes.add_picture(
-            img_path, 
-            0, 0, 
-            prs.slide_width, 
-            prs.slide_height
-        )
-        print(f"Added slide from {img_name}")
 
-    prs.save(output_file)
-    print(f"\n✓ Presentation saved to {output_file}")
-    print(f"  Total slides: {len(prs.slides)}")
+        try:
+            slide = prs.slides.add_slide(blank_slide_layout)
 
-if __name__ == "__main__":
+            # Add image to cover entire slide
+            slide.shapes.add_picture(
+                img_path,
+                0, 0,
+                prs.slide_width,
+                prs.slide_height
+            )
+
+            print(f"✓ Added: {img_name}")
+
+        except Exception as e:
+            print(f"✗ Failed to add {img_name}: {e}")
+
+    # Save presentation
+    try:
+        prs.save(output_file)
+        print(f"\n{'=' * 60}")
+        print(f"✓ Presentation saved: {output_file}")
+        print(f"  Total slides: {len(prs.slides)}")
+        print(f"{'=' * 60}")
+        return len(prs.slides)
+
+    except Exception as e:
+        print(f"Error saving presentation: {e}")
+        return None
+
+
+def main():
     parser = argparse.ArgumentParser(
-        description="Convert a folder of images to a PowerPoint presentation."
+        description="Convert a folder of images to a PowerPoint presentation"
     )
     parser.add_argument("image_dir", help="Directory containing images")
     parser.add_argument("output_file", help="Output .pptx file path")
-    
+
     args = parser.parse_args()
-    
-    if not os.path.isdir(args.image_dir):
-        print(f"Error: Directory {args.image_dir} does not exist.")
+
+    # Validate output filename
+    if not args.output_file.endswith('.pptx'):
+        print("Warning: Output file should have .pptx extension")
+        args.output_file += '.pptx'
+
+    # Convert images to PowerPoint
+    result = images_to_pptx(args.image_dir, args.output_file)
+
+    if result is None:
         exit(1)
-        
-    images_to_pptx(args.image_dir, args.output_file)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,31 @@
+{
+  "scenario": "Large International Trade Show",
+  "input": {
+    "homepage_url": "https://www.ces.tech"
+  },
+  "navigation_steps": [
+    "1. Loaded homepage and accepted cookie banner",
+    "2. Found 'Attend' menu item in header navigation",
+    "3. Hovered over 'Attend' to reveal dropdown menu",
+    "4. Clicked 'Exhibitor Directory' link in dropdown",
+    "5. Verified page loaded successfully"
+  ],
+  "verification_checks": {
+    "search_bar": true,
+    "filters": true,
+    "pagination": true,
+    "company_logos": true,
+    "exhibitor_count": "2000+",
+    "page_title_contains_exhibitor": true,
+    "current_year": true
+  },
+  "output": {
+    "status": "success",
+    "homepage_url": "https://www.ces.tech",
+    "found_directory_url": "https://www.ces.tech/exhibitor-directory",
+    "navigation_method": "Menu Click",
+    "verification_reason": "Page has search bar, category filters, and displays 2000+ exhibitor cards in grid format with logos and descriptions. Page title is 'Exhibitor Directory - CES 2026'.",
+    "confidence_level": "high"
+  },
+  "notes": "Ideal scenario with clear navigation and comprehensive directory features"
+}

@@ -1,0 +1,31 @@
+{
+  "scenario": "Exhibitor Directory on External Platform",
+  "input": {
+    "homepage_url": "https://www.industry-summit.com"
+  },
+  "navigation_steps": [
+    "1. Loaded homepage",
+    "2. Found 'View Exhibitors' button in hero section",
+    "3. Clicked button and was redirected to subdomain",
+    "4. Landed on directory.industry-summit.com",
+    "5. Verified external platform has exhibitor list"
+  ],
+  "verification_checks": {
+    "search_bar": true,
+    "filters": true,
+    "pagination": true,
+    "company_logos": true,
+    "exhibitor_count": "300+",
+    "page_title_contains_exhibitor": true,
+    "current_year": true
+  },
+  "output": {
+    "status": "success",
+    "homepage_url": "https://www.industry-summit.com",
+    "found_directory_url": "https://directory.industry-summit.com/exhibitors",
+    "navigation_method": "Menu Click",
+    "verification_reason": "Redirected to external platform subdomain. Page has full search functionality, category filters, and displays 300+ exhibitor profiles with detailed information.",
+    "confidence_level": "high"
+  },
+  "notes": "Successfully handled redirect to external subdomain platform"
+}

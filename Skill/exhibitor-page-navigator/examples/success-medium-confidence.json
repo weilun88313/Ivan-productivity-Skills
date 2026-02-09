@@ -1,0 +1,32 @@
+{
+  "scenario": "Regional Trade Show with URL Guessing",
+  "input": {
+    "homepage_url": "https://www.regional-tech-expo.com"
+  },
+  "navigation_steps": [
+    "1. Loaded homepage and dismissed newsletter popup",
+    "2. Scanned header and footer navigation - no exhibitor links found",
+    "3. Attempted URL guessing strategy",
+    "4. Tried /exhibitors - returned 404",
+    "5. Tried /exhibitor-list - returned 200 OK",
+    "6. Verified page content"
+  ],
+  "verification_checks": {
+    "search_bar": false,
+    "filters": false,
+    "pagination": false,
+    "company_logos": true,
+    "exhibitor_count": "50+",
+    "page_title_contains_exhibitor": true,
+    "current_year": "uncertain"
+  },
+  "output": {
+    "status": "success",
+    "homepage_url": "https://www.regional-tech-expo.com",
+    "found_directory_url": "https://www.regional-tech-expo.com/exhibitor-list",
+    "navigation_method": "URL Guessing",
+    "verification_reason": "Page displays 50+ company logos in grid layout. H1 title is 'Exhibitor List'. No advanced filters but clear exhibitor cards with company names and booth numbers.",
+    "confidence_level": "medium"
+  },
+  "notes": "URL guessing successful, but fewer visual indicators and uncertain event year"
+}

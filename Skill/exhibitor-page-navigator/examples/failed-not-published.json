@@ -1,0 +1,31 @@
+{
+  "scenario": "Directory Not Yet Published",
+  "input": {
+    "homepage_url": "https://www.upcoming-expo-2027.com"
+  },
+  "navigation_steps": [
+    "1. Loaded homepage",
+    "2. Scanned all navigation menus - no exhibitor links",
+    "3. Attempted URL guessing (/exhibitors, /directory, /exhibitor-list) - all returned 404",
+    "4. Used site search for 'exhibitor list' - found 'Coming Soon' page",
+    "5. Checked sitemap.xml - no exhibitor-related URLs"
+  ],
+  "verification_checks": {
+    "search_bar": "n/a",
+    "filters": "n/a",
+    "pagination": "n/a",
+    "company_logos": "n/a",
+    "exhibitor_count": "n/a",
+    "page_title_contains_exhibitor": false,
+    "current_year": true
+  },
+  "output": {
+    "status": "failed",
+    "homepage_url": "https://www.upcoming-expo-2027.com",
+    "found_directory_url": null,
+    "navigation_method": "None",
+    "verification_reason": "Tried menu navigation, URL guessing (/exhibitors, /directory, /exhibitor-list), and site search. No exhibitor directory page found. Site indicates 'Exhibitor list coming soon' - event is 12 months away and directory not yet published.",
+    "confidence_level": "n/a"
+  },
+  "notes": "Event too far in future, exhibitor list not yet available"
+}

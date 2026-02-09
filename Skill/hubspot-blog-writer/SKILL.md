@@ -56,19 +56,66 @@ Create blog posts that follow the high-quality, actionable, and SEO-friendly Hub
 
 ## Image Generation
 
+⚠️ **CRITICAL**: You MUST use the complete 5-paragraph prompt template from visual-style-guide.md for ALL images. Do NOT use simplified prompts.
+
 Generate images using the bundled script:
 
 ```bash
-python Skill/hubspot-blog-writer/scripts/generate_image.py --prompt "<Detailed Image Prompt>" --output_dir <Output Directory>
+python Skill/hubspot-blog-writer/scripts/generate_image.py --prompt "<Complete 5-Paragraph Prompt>" --output_dir <Output Directory>
 ```
 
-**Visual style**: Read [references/visual-style-guide.md](references/visual-style-guide.md) for the required Linear-inspired dark mode aesthetic, color palette, and constraints.
+**Visual style**: Read [references/visual-style-guide.md](references/visual-style-guide.md) for the MANDATORY 5-paragraph template structure, Linear-inspired dark mode aesthetic, color palette, and constraints.
+
+### 5-Paragraph Template Structure (MANDATORY)
+
+Every image prompt MUST include these 5 sections:
+
+1. **Style**: Define the visual approach (e.g., "Abstract high-tech cover art inspired by Linear design")
+2. **Color Palette**: Specify exact colors (e.g., "hex code #6B75FF, deep charcoal background")
+3. **Concept**: Detailed abstract description with geometric elements
+4. **Keywords Allowed**: Minimal text specification (or "NO TEXT" for covers)
+5. **Environment**: Background details (e.g., "Deep black void with subtle isometric grid")
+6. **Negative Constraints**: Explicit prohibitions (e.g., "NO UI ELEMENTS, NO DASHBOARDS")
+
+### Cover Image Requirements
+
+- **MUST** use complete 5-paragraph template from visual-style-guide.md
+- **Purely abstract** — NO text, NO UI, NO literal depictions
+- Translate article theme into visual metaphor (e.g., "scattered data signals converging into crystalline hub")
+- Always include "Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS"
+
+### Inline Image Requirements
+
+- **MUST** use complete 5-paragraph template from visual-style-guide.md
+- Choose appropriate category: Data Cluster, Data Flow, Segmentation, or Temporal visualization
+- Always abstract/conceptual — NO dashboard UI, NO browser frames, NO navigation bars
+- Minimal keywords only (e.g., "Attendee Data", "Q1 2025") — NO paragraphs
+- Always include comprehensive negative constraints
 
 ### Workflow
-1. **Generate cover image** using the Cover Image Style prompt template from the visual style guide — combine the style prefix with a conceptual description of the article's theme. The cover must be purely abstract with NO text.
-2. **Generate inline images** (at least 3) using the Inline Image Style from the visual style guide.
-3. **Execute script** for each image.
-4. **Embed** the resulting file paths into the final markdown.
+
+1. **Read visual-style-guide.md** to understand complete template structure
+2. **Select template category**: Cover (pure abstract) or Inline (data cluster/flow/segmentation/temporal)
+3. **Customize all 5 paragraphs** based on article content
+4. **Verify completeness**: Ensure all sections present (Style, Color, Concept, Keywords, Environment, Constraints)
+5. **Execute script** for each image with complete prompt
+6. **Embed** the resulting file paths into final markdown
+
+### Example Cover Image Prompt Structure
+
+```
+Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode UI, minimalist, clean, futuristic.
+
+Color Palette: Primary glowing light is hex code #6B75FF (neon violet-blue indigo). Soft, diffused glow on deep charcoal background.
+
+Theme Concept: [Translate article topic into abstract visual metaphor — e.g., "scattered event data signals flowing as glowing particle streams, converging into crystalline intelligence hub"]. Glowing geometric data streams, interconnected nodes pulsing with #6B75FF light, floating frosted glass prismatic shapes, abstract light trails.
+
+Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects.
+
+Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes.
+```
+
+See visual-style-guide.md for complete examples of all 4 inline image categories.
 
 ## Required Output Format
 

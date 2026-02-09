@@ -1,17 +1,14 @@
+"""
+PPT Image Generation Script
+Generates slide images from a plan JSON file using Gemini API.
+"""
 
 import os
-import argparse
-import requests
-import base64
-import time
 import json
-import sys
+import time
+import argparse
+from gemini_api import GeminiImageGenerator
 
-# Default API Key (User provided)
-API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyC7mreVvH_q7djnEO4MWlP94QaMEKmmz2Y")
-
-# Model
-MODEL_NAME = "models/gemini-3-pro-image-preview"
 
 # Global Visual Language - Shared by all pages
 GLOBAL_VISUAL_LANGUAGE = """
@@ -55,7 +52,7 @@ PAGE_TEMPLATES = {
 - 中等字号，标题下方
 背景：深空背景，微妙网格，延伸的抽象数据流
 """,
-    
+
     "content": """
 请生成内容页。
 
@@ -67,7 +64,7 @@ PAGE_TEMPLATES = {
 视觉：右侧50%区域，{image_concept}
 背景：左侧深色渐变利于文字阅读，右侧可有更丰富视觉元素
 """,
-    
+
     "data": """
 请生成数据页或总结页。
 
@@ -79,7 +76,7 @@ PAGE_TEMPLATES = {
 视觉：右侧60%区域，大型3D数据可视化，{image_concept}
 强调：数据图表要醒目，使用#6B75FF高亮关键数据
 """,
-    
+
     "closing": """
 请生成结束页。
 
@@ -93,8 +90,9 @@ PAGE_TEMPLATES = {
 """
 }
 
+
 def detect_page_type(slide_number, total_slides, title):
-    """Detect page type based on slide position and title keywords"""
+    """Detect page type based on slide position and title keywords."""
     if slide_number == 0:
         return "cover"
     elif slide_number == total_slides - 1:
@@ -104,123 +102,112 @@ def detect_page_type(slide_number, total_slides, title):
     else:
         return "content"
 
-def generate_image(prompt, output_dir, filename_prefix="image"):
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
 
-    # Prompt is already complete from DESIGN_SYSTEM_TEMPLATE
-    print(f"Generating: {filename_prefix}...")
+def build_prompt(slide, total_slides):
+    """Build a complete prompt for a slide."""
+    slide_number = slide.get("slide_number", 0)
+    title = slide.get("title", "")
+    content = slide.get("content", [])
+    image_concept = slide.get("image_concept", "")
 
+    # Detect page type
+    page_type = detect_page_type(slide_number, total_slides, title)
 
-    headers = {"Content-Type": "application/json"}
-    url = f"https://generativelanguage.googleapis.com/v1beta/{MODEL_NAME}:generateContent?key={API_KEY}"
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "responseModalities": ["IMAGE"],
-            "imageConfig": {
-                "aspectRatio": "16:9",
-                "imageSize": "4K"
-            }
-        }
-    }
+    # Format content as bullet points
+    content_text = "\n".join([f"• {item}" for item in content]) if content else ""
 
-    try:
-        response = requests.post(url, json=payload, headers=headers)
-        
-        if response.status_code != 200:
-            print(f"Error {response.status_code}: {response.text}")
-            return
+    # Get page-specific template
+    page_template = PAGE_TEMPLATES.get(page_type, PAGE_TEMPLATES["content"])
 
-        result = response.json()
-        
-        if "candidates" in result:
-            for i, cand in enumerate(result.get('candidates', [])):
-                for part in cand.get('content', {}).get('parts', []):
-                    inline_data = part.get('inline_data') or part.get('inlineData')
-                    if inline_data:
-                        save_image(inline_data.get('data'), output_dir, filename_prefix)
-                        return
-                    
-        print(f"No image data found for {filename_prefix}")
-        # print(result) # Silent failure preferred to reduce noise, enable if debugging needed
+    # Build page-specific prompt
+    page_prompt = page_template.format(
+        title=title,
+        content=content_text,
+        image_concept=image_concept
+    )
 
-    except Exception as e:
-        print(f"Exception: {e}")
+    # Combine global visual language + page-specific prompt
+    return GLOBAL_VISUAL_LANGUAGE + "\n\n" + page_prompt, page_type
 
-def save_image(b64_data, output_dir, filename_prefix):
-    try:
-        img_data = base64.b64decode(b64_data)
-        # Use simple numeric ordering if possible, or prefix
-        filepath = os.path.join(output_dir, f"{filename_prefix}.png")
-        with open(filepath, "wb") as f:
-            f.write(img_data)
-        print(f"Saved: {filepath}")
-    except Exception as e:
-        print(f"Error saving image: {e}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate PPT images from a Plan JSON")
-    parser.add_argument("plan_file", help="Path to the parameters/plan JSON file")
-    parser.add_argument("output_dir", help="Directory to save images")
-    
+    parser = argparse.ArgumentParser(
+        description="Generate PPT images from a plan JSON file"
+    )
+    parser.add_argument("plan_file", help="Path to the plan JSON file")
+    parser.add_argument("output_dir", help="Directory to save generated images")
+    parser.add_argument("--delay", type=float, default=1.0, help="Delay between API calls (seconds)")
+
     args = parser.parse_args()
-    
-    with open(args.plan_file, 'r', encoding='utf-8') as f:
-        plan = json.load(f)
-        
+
+    # Validate plan file
+    if not os.path.isfile(args.plan_file):
+        print(f"Error: Plan file not found: {args.plan_file}")
+        exit(1)
+
+    # Load plan
+    try:
+        with open(args.plan_file, 'r', encoding='utf-8') as f:
+            plan = json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON in plan file: {e}")
+        exit(1)
+    except Exception as e:
+        print(f"Error reading plan file: {e}")
+        exit(1)
+
+    if not isinstance(plan, list) or len(plan) == 0:
+        print("Error: Plan must be a non-empty array of slides")
+        exit(1)
+
+    # Create output directory
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    # Initialize generator
+    generator = GeminiImageGenerator()
+
     print(f"Loaded plan with {len(plan)} slides.")
-    
+    print(f"Output directory: {args.output_dir}")
+    print("=" * 60)
+
+    # Generate images for each slide
+    success_count = 0
     for slide in plan:
-        # New format: {"slide_number": 1, "title": "...", "content": [...], "image_concept": "..."}
-        # Legacy format: {"id": "slide_1", "prompt": "..."}
-        
-        slide_number = slide.get("slide_number")
-        title = slide.get("title", "")
-        content = slide.get("content", [])
-        image_concept = slide.get("image_concept")
-        
-        # Fallback to legacy format if new format not found
-        if not image_concept:
-            image_concept = slide.get("prompt", "")
-            slide_id = slide.get("id", f"slide_{slide_number}")
-            full_prompt = image_concept  # Legacy: use as-is
-        else:
-            slide_id = f"slide_{slide_number:02d}"
-            
-            # Detect page type based on position and title
-            page_type = detect_page_type(slide_number, len(plan), title)
-            
-            # Format content as bullet points or plain text
-            if content:
-                content_text = "\n".join([f"• {item}" for item in content])
+        slide_number = slide.get("slide_number", 0)
+        title = slide.get("title", "Untitled")
+
+        # Build prompt
+        full_prompt, page_type = build_prompt(slide, len(plan))
+
+        # Generate filename
+        filename = f"slide_{slide_number:02d}.png"
+        filepath = os.path.join(args.output_dir, filename)
+
+        print(f"\n[{slide_number + 1}/{len(plan)}] Generating: {title} ({page_type})")
+
+        # Generate image
+        b64_data = generator.generate_image(full_prompt)
+
+        if b64_data:
+            if generator.save_image(b64_data, filepath):
+                print(f"✓ Saved: {filepath}")
+                success_count += 1
             else:
-                content_text = ""
-            
-            # Get page-specific template
-            page_template = PAGE_TEMPLATES[page_type]
-            
-            # Build page-specific prompt
-            page_prompt = page_template.format(
-                title=title,
-                content=content_text,
-                image_concept=image_concept
-            )
-            
-            # Combine global visual language + page-specific prompt
-            full_prompt = GLOBAL_VISUAL_LANGUAGE + "\n\n" + page_prompt
-
-        
-        if full_prompt:
-            print(f"\n{'='*60}")
-            print(f"Generating slide {slide_number:02d}: {title} [{page_type if image_concept else 'legacy'}]")
-            print(f"{'='*60}")
-            generate_image(full_prompt, args.output_dir, slide_id)
-            time.sleep(1) # Rate limit courtesy
+                print(f"✗ Failed to save: {filepath}")
         else:
-            print(f"Warning: No image_concept or prompt found for slide {slide_number or slide.get('id')}")
+            print(f"✗ Failed to generate image for slide {slide_number}")
 
+        # Rate limiting
+        if slide_number < len(plan) - 1:
+            time.sleep(args.delay)
 
+    # Summary
+    print("\n" + "=" * 60)
+    print(f"Generation complete: {success_count}/{len(plan)} slides successful")
+
+    if success_count < len(plan):
+        print(f"Warning: {len(plan) - success_count} slides failed to generate")
+        exit(1)
 
 
 if __name__ == "__main__":
