@@ -180,6 +180,27 @@ my-new-skill/
 
 ## Automation Scripts
 
+### Translate README to Chinese
+
+**Using Gemini Flash (Cost-Effective)**
+
+Translate a single README:
+```bash
+python3 scripts/translate_readme.py Skill/my-skill/README.md
+```
+
+Batch translate all READMEs:
+```bash
+./scripts/translate_all_readmes.sh
+```
+
+Features:
+- ✅ Uses Gemini 2.0 Flash (low cost)
+- ✅ Preserves all code blocks and technical terms
+- ✅ Maintains markdown formatting
+- ✅ Auto-adds language switcher
+- ✅ Smart detection of existing translations
+
 ### Check Bilingual Documentation
 
 ```bash
@@ -200,6 +221,31 @@ my-new-skill/
 # Sync with documentation checks
 ./scripts/sync-to-public.sh --check-docs
 ```
+
+---
+
+## 自动化脚本 / Automation Scripts
+
+### 翻译 README 为中文
+
+**使用 Gemini Flash（成本友好）**
+
+翻译单个 README：
+```bash
+python3 scripts/translate_readme.py Skill/my-skill/README.md
+```
+
+批量翻译所有 README：
+```bash
+./scripts/translate_all_readmes.sh
+```
+
+特性：
+- ✅ 使用 Gemini 2.0 Flash（低成本）
+- ✅ 保留所有代码块和技术术语
+- ✅ 维护 markdown 格式
+- ✅ 自动添加语言切换器
+- ✅ 智能检测现有翻译
 
 ---
 
