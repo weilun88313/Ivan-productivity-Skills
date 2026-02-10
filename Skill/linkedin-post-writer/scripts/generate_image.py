@@ -7,82 +7,10 @@ This script generates images based on text prompts using Google's Gemini 3 Pro I
 
 import os
 import sys
-import json
+import time
 import argparse
-import requests
 from pathlib import Path
-
-
-def generate_image(prompt: str, api_key: str, output_path: str = None, model: str = "gemini-3-pro") -> dict:
-    """
-    Generate an image using Gemini API.
-
-    Args:
-        prompt: Text description of the image to generate
-        api_key: Gemini API key
-        output_path: Path to save the generated image (optional)
-        model: Gemini model to use (default: gemini-3-pro)
-
-    Returns:
-        dict: Response containing image data and metadata
-    """
-
-    # Gemini API endpoint (Note: As of Jan 2025, Gemini primarily focuses on text/vision understanding
-    # For image generation, you might want to use Imagen API or similar services)
-    # This is a placeholder structure - adjust based on actual API availability
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-
-    headers = {
-        "Content-Type": "application/json",
-    }
-
-    # Construct the request body
-    data = {
-        "contents": [{
-            "parts": [{
-                "text": f"Generate an image: {prompt}"
-            }]
-        }],
-        "generationConfig": {
-            "temperature": 0.7,
-            "maxOutputTokens": 2048,
-        }
-    }
-
-    # Add API key to URL
-    url_with_key = f"{url}?key={api_key}"
-
-    try:
-        response = requests.post(url_with_key, headers=headers, json=data, timeout=60)
-        response.raise_for_status()
-
-        result = response.json()
-
-        # Extract image data from response (structure depends on actual API)
-        # This is a placeholder - adjust based on actual response format
-        if output_path:
-            # Save image to file
-            output_file = Path(output_path)
-            output_file.parent.mkdir(parents=True, exist_ok=True)
-
-            # If response contains base64 image data
-            if 'image' in result:
-                import base64
-                image_data = base64.b64decode(result['image'])
-                with open(output_path, 'wb') as f:
-                    f.write(image_data)
-                print(f"✓ Image saved to: {output_path}")
-
-        return result
-
-    except requests.exceptions.RequestException as e:
-        print(f"✗ Error calling Gemini API: {e}", file=sys.stderr)
-        if hasattr(e.response, 'text'):
-            print(f"Response: {e.response.text}", file=sys.stderr)
-        sys.exit(1)
-    except Exception as e:
-        print(f"✗ Unexpected error: {e}", file=sys.stderr)
-        sys.exit(1)
+from gemini_api import GeminiImageGenerator
 
 
 def enhance_prompt_for_linkedin(post_content: str, style_hints: str = None) -> str:
@@ -98,15 +26,17 @@ def enhance_prompt_for_linkedin(post_content: str, style_hints: str = None) -> s
     """
     base_prompt = f"Create a professional, engaging image for a LinkedIn post about: {post_content[:200]}"
 
-    # Add style guidance
+    # Add LinkedIn-specific style guidance
     style_guide = """
-    Style requirements:
+    Style requirements for LinkedIn:
     - Professional yet approachable aesthetic
-    - Clean, modern design
+    - Clean, modern, minimalist design
     - Suitable for business social media
     - High quality, visually appealing
-    - Include relevant icons or visual metaphors
-    - Use vibrant but professional colors
+    - Use relevant icons or visual metaphors
+    - Vibrant but professional color palette (blues, teals, oranges)
+    - Square format (1:1) optimized for LinkedIn feed
+    - Avoid text overlay or keep minimal
     """
 
     if style_hints:
@@ -115,28 +45,72 @@ def enhance_prompt_for_linkedin(post_content: str, style_hints: str = None) -> s
     return f"{base_prompt}\n\n{style_guide}"
 
 
+def generate_linkedin_image(prompt, output_dir, filename_prefix="linkedin_post", aspect_ratio="1:1"):
+    """
+    Generate a LinkedIn post image.
+
+    Args:
+        prompt: Image generation prompt
+        output_dir: Directory to save the image
+        filename_prefix: Prefix for the output filename
+        aspect_ratio: Image aspect ratio (default: "1:1", also supports "16:9", "4:3", etc.)
+
+    Returns:
+        Path to the generated image, or None if failed
+    """
+    # Create output directory
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Initialize generator
+    generator = GeminiImageGenerator()
+
+    print(f"Generating LinkedIn image with {generator.model_name}...")
+    print(f"Aspect ratio: {aspect_ratio}")
+    print(f"Prompt: {prompt[:100]}{'...' if len(prompt) > 100 else ''}")
+
+    # Generate image with specified aspect ratio
+    b64_data = generator.generate_image(prompt, aspect_ratio=aspect_ratio, timeout=180)
+
+    if not b64_data:
+        print("✗ Image generation failed")
+        return None
+
+    # Save image with timestamp
+    timestamp = int(time.time())
+    filename = f"{filename_prefix}_{timestamp}.png"
+    filepath = os.path.join(output_dir, filename)
+
+    if generator.save_image(b64_data, filepath):
+        print(f"✓ Image saved to {filepath}")
+        return filepath
+    else:
+        print("✗ Failed to save image")
+        return None
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Generate images for LinkedIn posts using Gemini API"
     )
     parser.add_argument(
-        "prompt",
+        "--prompt",
+        required=True,
         help="Text description of the image to generate"
     )
     parser.add_argument(
-        "-o", "--output",
-        help="Output file path for the generated image",
-        default="generated_image.png"
+        "--output_dir",
+        default=".",
+        help="Directory to save the image (default: current directory)"
     )
     parser.add_argument(
-        "-k", "--api-key",
-        help="Gemini API key (or set GEMINI_API_KEY environment variable)",
-        default=os.getenv("GEMINI_API_KEY")
+        "--filename",
+        default="linkedin_post",
+        help="Filename prefix (default: linkedin_post)"
     )
     parser.add_argument(
-        "-m", "--model",
-        help="Gemini model to use",
-        default="gemini-3-pro"
+        "--aspect-ratio",
+        default="1:1",
+        help="Image aspect ratio (default: 1:1, also supports 16:9, 4:3, etc.)"
     )
     parser.add_argument(
         "--enhance",
@@ -150,28 +124,27 @@ def main():
 
     args = parser.parse_args()
 
-    # Validate API key
-    if not args.api_key:
-        print("✗ Error: Gemini API key required. Set GEMINI_API_KEY environment variable or use --api-key", file=sys.stderr)
-        sys.exit(1)
-
     # Prepare prompt
     prompt = args.prompt
     if args.enhance:
         prompt = enhance_prompt_for_linkedin(args.prompt, args.style)
-        print(f"Enhanced prompt: {prompt}\n")
+        print(f"Enhanced prompt:\n{prompt}\n")
+        print("-" * 60)
 
     # Generate image
-    print(f"Generating image with Gemini {args.model}...")
-    result = generate_image(
-        prompt=prompt,
-        api_key=args.api_key,
-        output_path=args.output,
-        model=args.model
+    result = generate_linkedin_image(
+        prompt,
+        args.output_dir,
+        args.filename,
+        aspect_ratio=args.aspect_ratio
     )
 
-    print(f"\n✓ Image generation complete!")
-    print(f"Result: {json.dumps(result, indent=2)}")
+    if result:
+        print(f"\n✓ Image generation complete!")
+        exit(0)
+    else:
+        print(f"\n✗ Image generation failed")
+        exit(1)
 
 
 if __name__ == "__main__":

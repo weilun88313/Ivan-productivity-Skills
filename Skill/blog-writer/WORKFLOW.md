@@ -7,13 +7,32 @@ This document describes the end-to-end workflow using **blog-writer** and **webf
 ## Overview
 
 ```
-User Request → Blog Writing → Image Generation → Publishing to Webflow
-     ↓              ↓                ↓                    ↓
-  Topic Idea    professional blog Style    AI-Generated        Webflow CMS
-                  Content         Illustrations       (Live/Draft)
+User Request → Brand Check → Blog Writing → Image Generation → Publishing to Webflow
+     ↓              ↓              ↓                ↓                    ↓
+  Topic Idea   Product Info   professional blog Style    AI-Generated        Webflow CMS
+              (if needed)      Content         Illustrations       (Live/Draft)
 ```
 
 ## Quick Start
+
+### 0. Brand Guidelines Check (If Product-Related)
+
+**Before writing**, determine if content references Lensmor or product features:
+
+```bash
+# If YES, read brand guidelines first:
+- /Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/SKILL.md
+- /Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/product-details.md
+
+# Extract:
+- Current product features
+- Value proposition
+- Target audience
+- Competitive positioning
+- Correct terminology
+```
+
+**If NO** (generic industry content), skip to Step 1.
 
 ### 1. Write a Blog Post
 

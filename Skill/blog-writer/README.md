@@ -1,3 +1,8 @@
+[English](README.md) | [中文](README.zh.md)
+
+---
+
+
 # professional blog Blog Writer
 
 > Create high-ranking, SEO-friendly blog posts in professional professional blog style
@@ -35,6 +40,22 @@ export GEMINI_API_KEY='your_api_key_here'
 ```
 
 ### Basic Usage
+
+**Step 0: Brand Compliance Check (If Product-Related)**
+
+If your blog post will mention Lensmor or product features, read brand guidelines first:
+
+```bash
+# Read for latest product information:
+- /Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/SKILL.md
+- /Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/product-details.md
+
+# Verify:
+- Product features are current
+- Value proposition is accurate
+- Terminology is correct
+- Competitive positioning is up-to-date
+```
 
 **Step 1: Request a Blog Post**
 
@@ -486,11 +507,12 @@ echo '{"NANO_API_KEY": "your_key"}' > ~/.claude/lensmor_secrets.json
 ## Best Practices
 
 ### Content Strategy
-1. **Research First**: Understand your topic deeply
-2. **Know Your Audience**: Write for specific reader personas
-3. **Data-Driven**: Include statistics and research
-4. **Actionable**: Every section should provide value
-5. **SEO-Conscious**: But write for humans first
+1. **Brand Compliance First**: If writing about Lensmor/product, read brand-guidelines/SKILL.md for latest product info
+2. **Research First**: Understand your topic deeply
+3. **Know Your Audience**: Write for specific reader personas
+4. **Data-Driven**: Include statistics and research
+5. **Actionable**: Every section should provide value
+6. **SEO-Conscious**: But write for humans first
 
 ### Image Strategy
 1. **Consistent Style**: Use the same visual language throughout

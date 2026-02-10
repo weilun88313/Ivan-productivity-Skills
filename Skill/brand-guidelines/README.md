@@ -1,3 +1,8 @@
+[English](README.md) | [中文](README.zh.md)
+
+---
+
+
 # Lensmor Brand Guidelines Skill
 
 A comprehensive brand guidelines skill for Lensmor that provides brand context, visual design rules, writing style guidelines, and product information to ensure brand consistency across all content and communications.

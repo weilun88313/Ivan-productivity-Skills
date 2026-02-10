@@ -1,3 +1,8 @@
+[English](README.md) | [中文](README.zh.md)
+
+---
+
+
 # PPTX Skill - AI-Powered Presentation Generator
 
 > Transform documents into stunning presentations with AI-generated slides

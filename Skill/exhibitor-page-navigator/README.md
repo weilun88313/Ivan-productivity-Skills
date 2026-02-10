@@ -1,3 +1,8 @@
+[English](README.md) | [中文](README.zh.md)
+
+---
+
+
 # Exhibitor Page Navigator
 
 > Automatically find exhibitor directory pages on trade show websites

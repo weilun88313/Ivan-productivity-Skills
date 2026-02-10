@@ -7,6 +7,103 @@ description: "Write high-ranking, SEO-friendly blog posts in professional blog s
 
 Create high-quality, actionable, and SEO-friendly blog posts with professional content structure and engaging visuals.
 
+## ⚠️ CRITICAL: Product Information Reference
+
+**BEFORE writing any blog post that mentions Lensmor, product features, or event intelligence:**
+
+### Step 1: Read Brand Guidelines
+
+**Primary Reference**: `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/SKILL.md`
+
+This contains:
+- ✅ Product Overview (What is Lensmor?)
+- ✅ Key Features (Attendee Prediction Engine, Reverse Event Discovery, Contact Enrichment, Global Event Intelligence)
+- ✅ Value Proposition (Why customers choose Lensmor)
+- ✅ Target Audience (B2B companies, event marketing managers, sales teams)
+- ✅ Competitive Differentiation (vs Vendelux, ZoomInfo, Apollo, LinkedIn Sales Navigator)
+- ✅ Mission, Vision, Core Values
+- ✅ Brand Voice Guidelines (Professional, Data-Driven, Results-Focused, Clear & Direct)
+
+### Step 2: Read Supporting Resources (When Needed)
+
+**Product Details**: `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/product-details.md`
+- Detailed feature specifications
+- Use cases and examples
+
+**Competitor Comparison**: `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/competitor-comparison.md`
+- How to position Lensmor vs competitors
+- Differentiation talking points
+
+**FAQ Responses**: `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/faq-responses.md`
+- Common customer questions
+- Approved response templates
+
+### Pre-Writing Checklist
+
+Before starting any blog post, determine:
+
+- [ ] **Is this about Lensmor product/features?**
+  - ✅ YES → Read `brand-guidelines/SKILL.md` for latest product info
+  - ❌ NO → Proceed with general content creation
+
+- [ ] **Will it mention event intelligence, trade shows, attendee prediction, or competitors?**
+  - ✅ YES → Read `product-details.md` and `competitor-comparison.md`
+  - ❌ NO → Proceed
+
+- [ ] **Will it reference Lensmor's value proposition, pricing, or positioning?**
+  - ✅ YES → Verify accuracy against `brand-guidelines/SKILL.md`
+  - ❌ NO → Proceed
+
+- [ ] **Is this industry thought leadership without product mentions?**
+  - ✅ YES → No brand-guidelines needed (but maintain brand voice)
+  - ❌ NO → Reference brand-guidelines as needed
+
+### Key Product Information to Extract
+
+When referencing Lensmor in content, ensure accuracy on:
+
+**Core Product Description:**
+- Lensmor is a B2B event intelligence and lead generation platform
+- Helps companies maximize trade show ROI
+- Uses proprietary algorithms and real-time data
+
+**Key Features (Always Current):**
+1. **Reverse Event Discovery**: Find events by searching exhibitor databases
+2. **Attendee Prediction Engine**: Forecast attendee lists before events
+3. **Contact Enrichment**: Verified contact information with downloadable data
+4. **Global Event Intelligence**: Search worldwide events with advanced filters
+5. **Real-time Data Updates**: Dynamic data vs static purchased lists
+
+**Competitive Positioning:**
+- NOT a general B2B database (like ZoomInfo, Apollo)
+- NOT as expensive as Vendelux ($20K+/year)
+- Event-vertical specialization with deeper event data
+- Starting at $499 pricing tier
+
+**Brand Voice (Must Maintain):**
+- Professional & Authoritative
+- Data-Driven & Precise
+- Results-Focused
+- Clear & Direct
+- Confident But Not Arrogant
+
+**Product Terminology (Use Correctly):**
+- Use: "event intelligence" (NOT "event data")
+- Use: "trade show" or "event" (NOT "exhibition" or "expo")
+- Use: "attendee prediction" (NOT "attendee forecasting")
+- Use: "contact enrichment" (NOT "data appending")
+- Use: "Lensmor" capitalized (NOT "lensmor" or "LENSMOR")
+
+### When Brand Guidelines Are NOT Needed
+
+You can skip brand-guidelines reference for:
+- Generic industry content (e.g., "Email Marketing Best Practices")
+- General B2B marketing thought leadership
+- Educational content without product mentions
+- Content about competitors or market trends (unless comparing to Lensmor)
+
+---
+
 ## Role & Voice
 
 **Role**: Expert Content Marketer & Blog Writer.
