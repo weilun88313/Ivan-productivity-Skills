@@ -39,7 +39,7 @@ def translate_with_gemini(text, api_key):
     Returns:
         Translated Chinese text
     """
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
     
     prompt = f"""Translate the following README documentation from English to Simplified Chinese (简体中文).
 

@@ -226,6 +226,28 @@ def get_item_count(token, collection_id):
     return resp.json().get("pagination", {}).get("total", 0)
 
 
+def find_item_by_slug(token, collection_id, slug):
+    """Find an existing item by slug. Returns (item_id, is_draft) tuple if found, (None, None) otherwise."""
+    if not slug:
+        return None, None
+    # Search for item with matching slug
+    resp = api_request("GET", f"/collections/{collection_id}/items", token)
+    if not resp or resp.status_code != 200:
+        return None, None
+    items = resp.json().get("items", [])
+    for item in items:
+        fd = item.get("fieldData", {})
+        if fd.get("slug") == slug:
+            return item.get("id"), item.get("isDraft", False)
+    return None, None
+
+
+def delete_item(token, collection_id, item_id):
+    """Delete a CMS item."""
+    resp = api_request("DELETE", f"/collections/{collection_id}/items/{item_id}", token)
+    return resp and resp.status_code in (200, 204)
+
+
 def resolve_category(token, ref_field, category_slug):
     """Resolve a category slug to its Webflow item ID."""
     ref_collection_id = ref_field.get("validations", {}).get("collectionId")
@@ -310,15 +332,33 @@ def publish_blog(filepath, collection_id=None, publish=False,
     body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
 
     # Add full-width styling to all images with !important to override Webflow defaults
+    # Use container-relative width to ensure images fill the content area without overflow
+    figure_style = (
+        "width: 100% !important; "
+        "max-width: 100% !important; "
+        "margin: 2em 0 !important; "
+        "padding: 0 !important; "
+        "display: block !important;"
+    )
+    img_style = (
+        "width: 100% !important; "
+        "max-width: 100% !important; "
+        "height: auto !important; "
+        "display: block !important; "
+        "margin: 0 !important; "
+        "border-radius: 8px !important; "
+        "object-fit: cover !important;"
+    )
+
     body_html = re.sub(
         r'<img\s+([^>]*?)alt="([^"]*)"([^>]*?)src="([^"]*)"([^>]*)>',
-        r'<figure style="width: 100% !important; max-width: 100% !important; margin: 2em 0 !important; padding: 0 !important;"><img \1alt="\2"\3src="\4"\5 style="width: 100% !important; max-width: 100% !important; height: auto !important; display: block !important; border-radius: 8px; object-fit: cover;"></figure>',
+        rf'<figure style="{figure_style}"><img \1alt="\2"\3src="\4"\5 style="{img_style}"></figure>',
         body_html
     )
     # Handle cases where src comes before alt
     body_html = re.sub(
         r'<img\s+([^>]*?)src="([^"]*)"([^>]*?)alt="([^"]*)"([^>]*)>',
-        r'<figure style="width: 100% !important; max-width: 100% !important; margin: 2em 0 !important; padding: 0 !important;"><img \1src="\2"\3alt="\4"\5 style="width: 100% !important; max-width: 100% !important; height: auto !important; display: block !important; border-radius: 8px; object-fit: cover;"></figure>',
+        rf'<figure style="{figure_style}"><img \1src="\2"\3alt="\4"\5 style="{img_style}"></figure>',
         body_html
     )
 
@@ -411,27 +451,60 @@ def publish_blog(filepath, collection_id=None, publish=False,
             for cid, cname, cslug in cats:
                 print(f"    - {cslug} ({cname})")
 
-    # Create the CMS item
+    # Check if item already exists by slug
+    existing_item_id, is_draft = find_item_by_slug(token, collection_id, data["slug"])
+
+    # Prepare payload
     payload = {
         "isArchived": False,
         "isDraft": not publish,
         "fieldData": field_data,
     }
 
-    print(f"\nCreating CMS item ({'published' if publish else 'draft'})...")
-    resp = api_request("POST", f"/collections/{collection_id}/items", token, payload)
+    if existing_item_id:
+        # If existing item is published, unpublish it first, then update, then republish
+        if not is_draft:
+            print(f"\nFound existing published item (ID: {existing_item_id})")
+            print(f"  Step 1: Unpublishing...")
+            unpublish_payload = {
+                "isArchived": False,
+                "isDraft": True,
+                "fieldData": field_data,
+            }
+            resp = api_request("PATCH", f"/collections/{collection_id}/items/{existing_item_id}", token, unpublish_payload)
+            if not resp or resp.status_code not in (200, 201, 202):
+                print(f"  ✗ Failed to unpublish, will attempt direct update")
+            else:
+                print(f"  ✓ Unpublished")
+
+        # Update the item with new content
+        print(f"  Step 2: Updating content...")
+        resp = api_request("PATCH", f"/collections/{collection_id}/items/{existing_item_id}", token, payload)
+        action = "updated"
+    else:
+        # Create new item
+        print(f"\nCreating new CMS item ({'published' if publish else 'draft'})...")
+        resp = api_request("POST", f"/collections/{collection_id}/items", token, payload)
+        action = "created"
 
     if not resp:
-        print("Error: All retries exhausted.")
+        print("  ✗ Error: All retries exhausted.")
         return None
 
     if resp.status_code not in (200, 201, 202):
-        print(f"Error {resp.status_code}: {resp.text}")
+        print(f"  ✗ Error {resp.status_code}: {resp.text}")
         return None
 
     result = resp.json()
-    item_id = result.get("id", "unknown")
-    print(f"\nSuccess! CMS item created.")
+    item_id = result.get("id") or existing_item_id or "unknown"
+
+    if existing_item_id and not is_draft:
+        print(f"  ✓ Content updated")
+        if publish:
+            print(f"  Step 3: Publishing...")
+            print(f"  ✓ Published")
+
+    print(f"\n✅ Success! CMS item {action}.")
     print(f"  Item ID: {item_id}")
     print(f"  Status: {'Published' if publish else 'Draft'}")
 
