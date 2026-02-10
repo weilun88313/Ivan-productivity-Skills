@@ -261,3 +261,46 @@ python3 scripts/translate_readme.py Skill/my-skill/README.md
 
 **Remember**: Good documentation is as important as good code!
 **记住**：好的文档和好的代码一样重要！
+
+## Sync Rules
+
+### Files That Should NOT Be Synced to Public Repository
+
+**CRITICAL - Never sync these to public repository:**
+
+1. **workspace/** - All generated content and temporary files
+   - Already in .gitignore
+   - Contains user-specific generated content
+   - Can be very large (images, PDFs, PPT files)
+
+2. **brand-guidelines/** - Private brand information
+   - Contains proprietary product details
+   - Competitive positioning
+   - Internal messaging
+
+3. **.opensource/** - Sync tooling (only for private repo)
+   - Sync scripts
+   - Brand configuration
+   - Cleanup tools
+
+4. **Sensitive data**:
+   - API keys and secrets
+   - Real author names/emails (anonymize)
+   - Company-specific URLs
+   - Internal documentation
+
+### Verification Before Sync
+
+```bash
+# Check what will be synced
+cd Ivan_Skills_Public
+git status
+
+# Ensure workspace is not tracked
+git ls-files | grep workspace
+# Should return nothing
+
+# Check for brand information
+grep -r "Lensmor" . --exclude-dir=.git
+# Should return nothing or minimal references
+```
