@@ -24,10 +24,10 @@ GLOBAL_VISUAL_LANGUAGE = """
 
 文字排版规则：
 - 标题：粗体现代无衬线字体，纯白色(#FFFFFF)，醒目
-- 内容：常规字重，90%白色(#E6E6E6)，清晰易读
-- 项目符号：使用 • 符号，与内容文字对齐
+- 内容：常规字重，90%白色(#E6E6E6)，清晰易读，自然段落排版
 - 行间距：内容行间距1.5倍，确保可读性
 - 对齐：标题和内容左对齐（封面和结束页居中）
+- 分隔：使用空行或视觉元素分隔不同要点，不使用项目符号
 
 视觉元素规则：
 - 几何形状：浮动的立方体、球体、六边形，抽象数据结构
@@ -56,25 +56,36 @@ PAGE_TEMPLATES = {
     "content": """
 请生成内容页。
 
-构图：左右分栏布局
-标题："{title}" - 粗体，左上角，留出充足顶部空间
-内容：左侧50%区域排版以下内容，项目符号列表：
+构图：自由创意布局，让文字与视觉元素自然融合
+标题："{title}" - 粗体醒目，位置灵活（可以左上、居中或右上，根据视觉需求）
+内容：以下内容需要融入画面，使用自然段落排版（不使用项目符号）：
 {content}
 
-视觉：右侧50%区域，{image_concept}
-背景：左侧深色渐变利于文字阅读，右侧可有更丰富视觉元素
+视觉设计：{image_concept}
+设计原则：
+- 文字不是孤立的文本块，而是视觉设计的一部分
+- 可以让视觉元素环绕文字，或让文字嵌入视觉元素中
+- 文字可以有渐变、发光、阴影等效果，与背景融合
+- 背景和前景应该协调统一，形成整体画面
+- 使用空行或视觉元素自然分隔不同要点
 """,
 
     "data": """
 请生成数据页或总结页。
 
-构图：分屏设计
-标题："{title}" - 粗体，左上角
-内容：左侧40%区域排版以下文字和数据：
+构图：数据驱动的创意布局，让数字与视觉叙事融为一体
+标题："{title}" - 粗体醒目，位置灵活
+内容：以下数据内容需要融入数据可视化中（不使用项目符号）：
 {content}
 
-视觉：右侧60%区域，大型3D数据可视化，{image_concept}
-强调：数据图表要醒目，使用#6B75FF高亮关键数据
+视觉设计：{image_concept}
+数据呈现原则：
+- 数字和文字应该成为视觉元素的一部分，不是单独的文本块
+- 可以让数据标签直接标注在图表上，融入3D可视化中
+- 使用#6B75FF高亮关键数据，让数字本身发光
+- 让文字、数字、图表形成统一的视觉故事
+- 避免生硬的左右分栏，追求有机的整体构图
+- 使用空行或视觉元素自然分隔不同数据点
 """,
 
     "closing": """
@@ -113,8 +124,8 @@ def build_prompt(slide, total_slides):
     # Detect page type
     page_type = detect_page_type(slide_number, total_slides, title)
 
-    # Format content as bullet points
-    content_text = "\n".join([f"• {item}" for item in content]) if content else ""
+    # Format content as natural paragraphs (no bullet points)
+    content_text = "\n\n".join(content) if content else ""
 
     # Get page-specific template
     page_template = PAGE_TEMPLATES.get(page_type, PAGE_TEMPLATES["content"])
