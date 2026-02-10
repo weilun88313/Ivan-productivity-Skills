@@ -2,32 +2,130 @@
 
 ---
 
-
 # Webflow 博客发布器
 
-> 自动发布博客文章到 Webflow CMS
+> 将 Markdown 博客文章发布到 Webflow CMS，并自动上传图片
+
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
 ## 概述
 
-**Webflow 博客发布器** 技能帮助你将 Markdown 格式的博客文章自动发布到 Webflow CMS。它处理图片上传、内容转换和 CMS 项创建。
+自动将博客文章发布到 Webflow CMS。通过 Webflow API v2 处理 Markdown 到 HTML 的转换、自动图片上传、元数据映射和 CMS 项目创建。
 
-### 核心功能
+### 主要功能
 
-- 📝 **Markdown 转 HTML** - 自动转换 Markdown 为 Webflow 富文本
-- 🖼️ **图片上传** - 上传并链接文章图片到 Webflow 资源
-- 📊 **CMS 集成** - 直接创建博客文章条目
-- 🎯 **元数据支持** - 处理标题、slug、描述等
-- 🚀 **草稿/发布** - 控制文章发布状态
+- 📝 **Markdown 转 HTML** - 自动转换，支持表格和代码块
+- 🖼️ **自动图片上传** - 本地图片上传到 Webflow Assets
+- 👤 **作者管理** - 随机或指定作者资料
+- 🏷️ **分类映射** - 智能分类解析
+- ⏱️ **自动字段** - 阅读时间、时间戳、排序顺序
+- 🔄 **重试逻辑** - 健壮的错误处理，采用指数退避机制
+- ✅ **草稿/发布** - 使用 `--publish` 标志控制状态
 
 ## 快速开始
 
-### 前置要求
+### 先决条件
 
 ```bash
-# 安装依赖
 pip install requests markdown
 
-# 配置密钥在 ~/.claude/lensmor_secrets.json:
+# Configure ~/.claude/lensmor_secrets.json
+{
+  "WEBFLOW_API_TOKEN": "your_api_token",
+  "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
+  "WEBFLOW_SITE_ID": "your_site_id"
+}
+```
+
+有关设置，请参阅 [references/webflow-setup-guide.md](references/webflow-setup-guide.md)。
+
+### 用法
+
+```bash
+# Publish as draft
+python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+  --file workspace/blog/article.md \
+  --category strategy
+
+# Publish live
+python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+  --file workspace/blog/article.md \
+  --category strategy \
+  --publish
+```
+
+## 输入格式
+
+期望来自 [blog-writer](../blog-writer) 的 Markdown 文件：
+
+```markdown
+# Your Blog Post Title
+
+**Slug**: /blog/category/your-post-slug
+**Meta Description**: SEO-friendly description
+**Cover Image**:
+![Cover](images/cover.png)
+
+---
+
+Article content with **bold** and *italic* text.
+
+![Inline image](images/diagram.png)
+```
+
+## 流程
+
+1. 解析 Markdown（标题、slug、元数据、图片、内容）
+2. 将图片上传到 Webflow Assets → CDN URL
+3. 将 Markdown 转换为 HTML
+4. 将字段映射到 CMS 架构
+5. 创建 CMS 项目（草稿或已发布）
+
+## 命令选项
+
+**必填：**
+- `--file` - Markdown 文件路径
+
+**可选：**
+- `--category` - 分类别名（strategy, playbooks, teardowns）
+- `--writer` - 作者姓名（如果未指定则随机）
+- `--publish` - 立即发布（默认为草稿）
+- `--collection_id` - 覆盖集合 ID
+
+## 作者管理
+
+作者存储在 `assets/writers/writers.json` 中：
+
+```json
+[
+  {
+    "name": "John Doe",
+    "image_url": "https://cdn.prod.website-files.com/.../avatar.jpg"
+  }
+]
+```
+
+**添加作者：**
+1. 将头像上传到 Webflow Assets
+2. 将姓名和 CDN URL 添加到 writers.json
+3. 使用 `--writer "姓名"`
+
+## 图片上传
+
+**支持的格式：** PNG, JPEG, GIF, WebP, AVIF, SVG
+
+**要求：**
+- 必须设置 `WEBFLOW_SITE_ID`
+- 图片必须是本地文件
+- 相对路径从 Markdown 文件位置解析
+
+**没有 Site ID：** 图片将从内容中移除，需要手动上传
+
+## 配置
+
+创建 `~/.claude/lensmor_secrets.json`：
+
+```json
 {
   "WEBFLOW_API_TOKEN": "your_token",
   "WEBFLOW_BLOG_COLLECTION_ID": "collection_id",
@@ -35,52 +133,23 @@ pip install requests markdown
 }
 ```
 
-### 基本使用
+或者使用环境变量（优先级更高）：
 
 ```bash
-python scripts/publish_to_webflow.py \
-  --file workspace/blog/article.md \
-  --category strategy \
-  --publish
+export WEBFLOW_API_TOKEN='your_token'
+export WEBFLOW_BLOG_COLLECTION_ID='collection_id'
+export WEBFLOW_SITE_ID='site_id'
 ```
-
-## 文章格式
-
-### Markdown 元数据块
-
-```markdown
-# 文章标题
-
-**Slug**: /blog/strategy/article-slug
-**Meta Description**: 150-160 字符的 SEO 描述
-**Cover Image**:
-![封面图描述](images/cover.png)
-
----
-
-[文章内容开始...]
-```
-
-## 命令选项
-
-- `--file` (必需): Markdown 文件路径
-- `--category`: 博客类别（strategy、playbooks、teardowns）
-- `--publish`: 直接发布（不带此参数则创建草稿）
-- `--writer`: 作者姓名
-- `--api-key`: 覆盖配置文件中的 API 密钥
 
 ## 工作流集成
 
-### 与 blog-writer 技能配合
+与 [blog-writer](../blog-writer) 无缝协作：
 
 ```bash
-# 1. 写博客文章（使用 AI）
-# 输出: workspace/blog/article.md
-
+# 1. 撰写内容（AI 辅助）
 # 2. 生成图片
 python Skill/blog-writer/scripts/generate_image.py \
-  --prompt "..." \
-  --output_dir workspace/blog/images
+  --prompt "..." --output_dir workspace/blog/images
 
 # 3. 发布到 Webflow
 python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
@@ -89,78 +158,57 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --publish
 ```
 
-## 类别
-
-可用类别（在 Webflow 中自定义）：
-- `strategy` - 战略指南和框架
-- `playbooks` - 分步战术指南
-- `teardowns` - 案例研究和分析
-
 ## 故障排除
 
-### 图片上传失败
+- **图片上传超时**：检查网络连接，减小文件大小（< 5MB）
+- **草稿不可见**：检查 CMS 过滤器，确认处于“所有项目”视图
+- **图片未上传**：将 `WEBFLOW_SITE_ID` 添加到 secrets 文件中（在 Webflow 控制台 → 站点设置中查找）
+- **API Token 错误**：验证 secrets 文件或环境变量中的 token
+- **分类未找到**：使用有效的别名（strategy, playbooks, teardowns）
 
-**问题**: 图片未上传
+## 错误处理
 
-**解决方案**:
-- 验证 WEBFLOW_SITE_ID 已设置
-- 检查 API 令牌权限
-- 确保图片文件存在
-- 尝试先手动上传一张图片
-
-### 发布为草稿而非正式发布
-
-**默认**: 脚本创建草稿
-
-**正式发布**: 添加 `--publish` 标志
-```bash
-python publish_to_webflow.py --file article.md --publish
-```
+自动重试逻辑：
+- **服务器错误 (5xx)**：最多重试 3 次，采用指数退避机制
+- **速率限制 (429)**：遵守 Retry-After 头部
+- **超时**：每个请求 30 秒超时
 
 ## 最佳实践
 
-### 内容策略
+**发布前：**
+- 校对 Markdown 文件
+- 验证图片是否存在且路径正确
+- 首先以草稿形式测试（省略 `--publish`）
 
-1. **长度**: 1500-3000 字以利于 SEO
-2. **结构**: 清晰的 H2/H3 层次结构
-3. **语气**: 专业但易于理解
-4. **CTA**: 包含 1-2 个明确的行动号召
+**安全：**
+- 切勿将 secrets 文件提交到 Git
+- 使用最小的 token 权限
+- 定期轮换 API 密钥
 
-### 图片
-
-1. **数量**: 1 张封面图 + 3-5 张内联图片
-2. **格式**: PNG，16:9 宽高比
-3. **替代文本**: 为了无障碍访问的描述性文本
-
-### SEO
-
-1. **Slug**: 关键词丰富、可读的 URL
-2. **元描述**: 150-160 字符，引人注目
-3. **标题**: 描述性、搜索友好的标题
-
-## 架构
+## 文件结构
 
 ```
 webflow-blog-publisher/
-├── README.md              # 本文件
-├── SKILL.md              # AI 工作流指令
-└── scripts/
-    └── publish_to_webflow.py  # 发布脚本
+├── README.md                     # 本文件
+├── SKILL.md                      # AI 工作流说明
+├── scripts/
+│   └── publish_to_webflow.py    # 主脚本
+├── references/
+│   └── webflow-setup-guide.md   # 设置说明
+└── assets/
+    └── writers/
+        └── writers.json          # 作者资料
 ```
 
 ## 资源
 
-- [SKILL.md](SKILL.md) - AI 具体指导
-- [博客工作流指南](../BLOG_WORKFLOW.md) - 端到端流程
-- [Webflow API 文档](https://developers.webflow.com/) - API 参考
-
-## 支持
-
-如有问题或疑问：
-1. 检查此 README
-2. 查看博客工作流指南了解集成
-3. 测试独立的图片上传
+- [SKILL.md](SKILL.md) - 技术文档
+- [Setup Guide](references/webflow-setup-guide.md) - Webflow 配置
+- [Blog Writer](../blog-writer) - 内容创作技能
+- [Webflow API Docs](https://developers.webflow.com/) - 官方参考
 
 ---
 
-**愉快发布！** 🚀✨
+**发布愉快！** 🚀📄
+
+---

@@ -9,20 +9,19 @@
 
 ## Overview
 
-The **Skill Creator** helps you scaffold new Claude Code skills with proper structure, documentation, and configuration files. It ensures consistency across skills and follows established patterns.
+Scaffold new Claude Code skills with proper structure, documentation, and configuration files. Ensures consistency and follows established patterns.
 
 ### Key Features
 
 - 📁 **Structured Templates** - Pre-configured directory structure
 - 📝 **Documentation Templates** - README, SKILL.md, and guides
 - ⚙️ **Configuration Files** - Standardized skill.json format
-- 🎨 **Best Practices** - Follow established patterns
+- 🎨 **Best Practices** - Established patterns
 - 🚀 **Quick Setup** - Get started in minutes
 
 ## Quick Start
 
 ```bash
-# Run the skill creator
 ./create_skill.sh my-new-skill
 ```
 
@@ -32,7 +31,7 @@ The **Skill Creator** helps you scaffold new Claude Code skills with proper stru
 my-new-skill/
 ├── SKILL.md           # AI instructions
 ├── README.md          # User documentation
-├── skill.json         # Skill configuration
+├── skill.json         # Configuration
 ├── scripts/           # Executable scripts
 ├── references/        # Reference materials
 └── examples/          # Usage examples
@@ -40,8 +39,8 @@ my-new-skill/
 
 ## Resources
 
-- [SKILL.md](SKILL.md) - Detailed skill instructions
-- [Skill Development Guide](../SKILL_DEVELOPMENT.md) - Best practices
+- [SKILL.md](SKILL.md) - Detailed instructions
+- [Skill Development Guide](../../SKILL_DEVELOPMENT_GUIDELINES.md) - Best practices
 
 ---
 
