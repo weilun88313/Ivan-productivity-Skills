@@ -23,44 +23,92 @@
 
 ### Digital Color Palette
 
-**Primary Colors:**
+**Primary Brand Color:**
 ```css
---lensmor-primary: #______;
---lensmor-primary-hover: #______;
---lensmor-primary-active: #______;
-
---lensmor-secondary: #______;
---lensmor-secondary-hover: #______;
---lensmor-secondary-active: #______;
+/* Main brand color - use for CTAs, links, focus states */
+--lensmor-primary: #6B75FF;
+--lensmor-primary-hover: #5563E6;    /* Darker on hover */
+--lensmor-primary-active: #4451CC;   /* Even darker when clicked */
+--lensmor-primary-light: #8B95FF;    /* Lighter variant for backgrounds */
+--lensmor-primary-subtle: #E8EAFF;   /* Very light for subtle highlights */
 ```
 
-**Accent Colors:**
+**Surface Colors:**
 ```css
---lensmor-accent-1: #______;
---lensmor-accent-2: #______;
---lensmor-accent-3: #______;
+/* Background and foreground colors */
+--lensmor-background-dark: #16161F;  /* Main dark background */
+--lensmor-foreground-light: #FAFAFA; /* Light text/surfaces */
+--lensmor-divider: #DCDDE5;          /* Borders and separators */
 ```
 
 **Semantic Colors:**
 ```css
---lensmor-success: #______;
---lensmor-warning: #______;
---lensmor-error: #______;
---lensmor-info: #______;
+/* Status and feedback colors */
+--lensmor-success: #00C853;          /* Green for success states */
+--lensmor-success-light: #E8F5E9;    /* Light green background */
+
+--lensmor-warning: #FF9800;          /* Orange for warnings */
+--lensmor-warning-light: #FFF3E0;    /* Light orange background */
+
+--lensmor-error: #FF5252;            /* Red for errors */
+--lensmor-error-light: #FFEBEE;      /* Light red background */
+
+--lensmor-info: #2196F3;             /* Blue for info */
+--lensmor-info-light: #E3F2FD;       /* Light blue background */
 ```
 
-**Neutral Colors:**
+**Neutral Grayscale:**
 ```css
---lensmor-gray-900: #______;
---lensmor-gray-800: #______;
---lensmor-gray-700: #______;
---lensmor-gray-600: #______;
---lensmor-gray-500: #______;
---lensmor-gray-400: #______;
---lensmor-gray-300: #______;
---lensmor-gray-200: #______;
---lensmor-gray-100: #______;
---lensmor-gray-50: #______;
+/* Grayscale for text, backgrounds, and UI elements */
+--lensmor-gray-900: #1A1A1A;         /* Darkest gray - primary text on light */
+--lensmor-gray-800: #2D2D2D;
+--lensmor-gray-700: #404040;
+--lensmor-gray-600: #666666;         /* Secondary text */
+--lensmor-gray-500: #808080;         /* Disabled text */
+--lensmor-gray-400: #999999;
+--lensmor-gray-300: #CCCCCC;         /* Subtle borders */
+--lensmor-gray-200: #E5E5E5;         /* Light borders, dividers */
+--lensmor-gray-100: #F5F5F5;         /* Light backgrounds */
+--lensmor-gray-50: #FAFAFA;          /* Lightest backgrounds */
+```
+
+**Complete CSS Variable Set:**
+```css
+:root {
+  /* Brand Colors */
+  --lensmor-primary: #6B75FF;
+  --lensmor-primary-hover: #5563E6;
+  --lensmor-primary-active: #4451CC;
+  --lensmor-primary-light: #8B95FF;
+  --lensmor-primary-subtle: #E8EAFF;
+
+  /* Surface Colors */
+  --lensmor-background-dark: #16161F;
+  --lensmor-foreground-light: #FAFAFA;
+  --lensmor-divider: #DCDDE5;
+
+  /* Semantic */
+  --lensmor-success: #00C853;
+  --lensmor-success-light: #E8F5E9;
+  --lensmor-warning: #FF9800;
+  --lensmor-warning-light: #FFF3E0;
+  --lensmor-error: #FF5252;
+  --lensmor-error-light: #FFEBEE;
+  --lensmor-info: #2196F3;
+  --lensmor-info-light: #E3F2FD;
+
+  /* Grays */
+  --lensmor-gray-900: #1A1A1A;
+  --lensmor-gray-800: #2D2D2D;
+  --lensmor-gray-700: #404040;
+  --lensmor-gray-600: #666666;
+  --lensmor-gray-500: #808080;
+  --lensmor-gray-400: #999999;
+  --lensmor-gray-300: #CCCCCC;
+  --lensmor-gray-200: #E5E5E5;
+  --lensmor-gray-100: #F5F5F5;
+  --lensmor-gray-50: #FAFAFA;
+}
 ```
 
 ### Print Color Palette
