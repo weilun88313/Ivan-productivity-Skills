@@ -13,15 +13,17 @@
 #### Required Files for Every Skill
 
 1. **README.md (English)**
-   - Comprehensive user documentation
-   - Installation and setup instructions
-   - Usage examples and best practices
-   - Troubleshooting guide
+   - **MUST be concise and focused** - aim for 40-50% reduction from verbose versions
+   - Overview and key features
+   - Quick start and essential usage examples (1-2 examples max)
+   - Configuration (only if needed)
+   - **NO version history, NO detailed changelogs, NO redundant examples**
 
 2. **README.zh.md (Chinese - Simplified)**
    - Complete translation of README.md
    - All technical terms in English (code, commands, file paths)
    - Natural Chinese for descriptions and explanations
+   - **Maintain same concise structure as English version**
 
 3. **Language Switcher (Both Files)**
    - Add this at the TOP of both README.md and README.zh.md:
@@ -100,15 +102,17 @@ Before committing any skill:
 #### 每个 Skill 必需的文件
 
 1. **README.md（英文）**
-   - 全面的用户文档
-   - 安装和设置说明
-   - 使用示例和最佳实践
-   - 故障排除指南
+   - **必须简洁明了** - 目标是比冗长版本减少 40-50%
+   - 概述和关键特性
+   - 快速开始和必要的使用示例（最多 1-2 个示例）
+   - 配置说明（仅在需要时）
+   - **不包含版本历史、详细更新日志、冗余示例**
 
 2. **README.zh.md（简体中文）**
    - README.md 的完整翻译
    - 所有技术术语使用英文（代码、命令、文件路径）
    - 描述和解释使用自然的中文
+   - **保持与英文版本相同的简洁结构**
 
 3. **语言切换器（两个文件）**
    - 在 README.md 和 README.zh.md 顶部添加：
