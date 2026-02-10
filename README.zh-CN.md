@@ -1,4 +1,4 @@
-# 开发者技能集合
+# Ivan 的生产力技能集合
 
 [![EN](https://img.shields.io/badge/English-blue?style=for-the-badge)](./README.md)
 [![中文](https://img.shields.io/badge/简体中文-red?style=for-the-badge)](./README.zh-CN.md)

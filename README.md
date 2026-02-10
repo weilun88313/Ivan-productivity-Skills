@@ -1,4 +1,4 @@
-# Developer Skills Collection
+# Ivan's Productivity Skills Collection
 
 [![EN](https://img.shields.io/badge/English-blue?style=for-the-badge)](./README.md)
 [![中文](https://img.shields.io/badge/简体中文-red?style=for-the-badge)](./README.zh-CN.md)
