@@ -21,9 +21,18 @@ Use this skill when:
 ### What is Lensmor?
 
 **Product Type:** SaaS Software Platform
+**Current Status:** 🚧 **Closed Beta** - Limited access for early adopters
 
 **Core Description:**
 Lensmor is a B2B event intelligence and lead generation platform that helps companies maximize their trade show ROI. Using proprietary algorithms and real-time data, Lensmor predicts attendee lists, enables reverse event discovery through exhibitor data, and provides comprehensive global event intelligence to help B2B companies connect with the right prospects at the right events.
+
+**Closed Beta Status:**
+Lensmor is currently in closed beta, meaning:
+- Access is by invitation only or application approval
+- We're actively testing features and gathering user feedback
+- Some features may be in development or refinement
+- Early adopters help shape the product roadmap
+- Beta users get special pricing and direct access to the product team
 
 **Target Audience:**
 B2B companies seeking to acquire customers through trade shows and industry events, including:
@@ -32,15 +41,22 @@ B2B companies seeking to acquire customers through trade shows and industry even
 - Business development professionals seeking qualified leads
 - Enterprise companies with significant event marketing budgets
 
-**Key Features:**
-- **Reverse Event Discovery**: Find which trade shows your target customers and competitors attend by searching exhibitor databases
-- **Attendee Prediction Engine**: Proprietary algorithms predict attendee lists by combining historical data, social media monitoring, and official event partnerships
-- **Contact Enrichment**: Access verified contact information for predicted attendees with downloadable contact data
-- **Global Event Intelligence**: Search and filter worldwide trade shows, exhibitors, and attendees with advanced criteria
-- **Real-time Data Updates**: Dynamic, continuously updated data versus static purchased lists
+**Key Features (Beta Status):**
+- **Reverse Event Discovery** ✅ *Available in Beta* - Find which trade shows your target customers and competitors attend by searching exhibitor databases
+- **Attendee Prediction Engine** ✅ *Available in Beta* - Proprietary algorithms predict attendee lists by combining historical data, social media monitoring, and official event partnerships
+- **Contact Enrichment** ✅ *Available in Beta* - Access verified contact information for predicted attendees with downloadable contact data
+- **Global Event Intelligence** ✅ *Available in Beta* - Search and filter worldwide trade shows, exhibitors, and attendees with advanced criteria
+- **Real-time Data Updates** 🚧 *In Development* - Dynamic, continuously updated data versus static purchased lists (being refined based on beta feedback)
 
 **Value Proposition:**
 Lensmor eliminates the costly trial-and-error approach to trade show participation. B2B companies struggle with not knowing who will attend events, inability to prepare effectively, limited on-site networking time, and missing key decision-makers. Lensmor solves these challenges by providing pre-event intelligence, enabling targeted preparation, and significantly improving event ROI at a fraction of the cost of alternatives like Vendelux ($20K+/year).
+
+**Closed Beta Pricing:**
+- Early adopter pricing available for beta participants
+- Special rates significantly below planned public pricing
+- Beta users locked in at their initial rate for 12 months post-launch
+- Free trial period for qualified applicants to test core features
+- Direct feedback channel to product team included
 
 ### Product Positioning
 
@@ -58,13 +74,13 @@ Become the essential event intelligence platform for every B2B company that part
 - **Transparency**: Clear pricing, honest data sourcing, and straightforward value propositions
 
 **Competitive Differentiation:**
-Unlike general B2B data platforms (LinkedIn Sales Navigator, ZoomInfo, Apollo) that lack event context, or expensive event-specific tools (Vendelux at $20K+/year), Lensmor uniquely combines:
+Unlike general B2B data platforms (LinkedIn Sales Navigator, ZoomInfo, Apollo) that lack event context, or expensive event-specific tools (Vendelux at $20K+/year), Lensmor is building unique capabilities:
 1. **Event-Vertical Specialization**: Exclusively focused on trade show intelligence with deeper, more accurate event data
 2. **Predictive Attendee Intelligence**: Proprietary algorithms forecast who will attend events before they're publicly listed
 3. **Reverse Discovery**: Find events by searching which shows your target companies exhibit at
-4. **Global Coverage**: Comprehensive worldwide event database with detailed exhibitor and attendee information
-5. **Competitive Pricing**: Premium features at a fraction of competitors' cost, starting at $499
-6. **Real-Time Updates**: Dynamic data that refreshes continuously, not static purchased lists
+4. **Global Coverage**: Growing worldwide event database with detailed exhibitor and attendee information
+5. **Accessible Pricing**: During closed beta, we're offering early adopter rates well below planned public pricing
+6. **Beta Feedback Loop**: Direct influence on product development and feature prioritization
 
 ## Visual Design Guidelines
 
@@ -234,8 +250,9 @@ Lensmor uses a combination mark logo (icon + wordmark):
 - **Clear & Direct**: Use straightforward language that busy executives can quickly understand. Avoid marketing fluff, jargon (unless industry-standard), and unnecessary wordiness.
   - Example: "Find which events your target customers attend" vs. "Leverage our comprehensive discovery paradigm to identify relevant touchpoint opportunities"
 
-- **Confident But Not Arrogant**: We're expert leaders in event intelligence, but we respect our customers' intelligence and don't oversell or hype.
-  - Example: "Unlike static purchased lists, Lensmor data updates continuously" vs. "We're revolutionizing everything with the most amazing data in the world!"
+- **Confident But Not Arrogant**: We're building expertise in event intelligence. In beta, we're transparent about our progress and limitations while highlighting our strengths.
+  - Example: "We're actively refining our data update mechanisms based on beta user feedback" vs. "We're revolutionizing everything with the most amazing data in the world!"
+  - Beta mindset: "We're in closed beta and actively improving based on your feedback"
 
 **Voice Characteristics:**
 
@@ -255,8 +272,16 @@ Lensmor uses a combination mark logo (icon + wordmark):
 
 ### Writing Principles
 
+**Beta-Specific Communication:**
+- Be transparent about beta status and what it means
+- Invite feedback and collaboration from users
+- Acknowledge work-in-progress features honestly
+- Emphasize early adopter benefits and influence
+- Manage expectations realistically while staying positive
+
 1. **Lead with Business Value**: Always start with the customer benefit, not the feature. Explain what outcomes users achieve, then how Lensmor delivers it.
    - ✅ Good: "Identify high-value prospects before the event starts, so you can schedule meetings with decision-makers instead of collecting random business cards."
+   - ✅ Beta Good: "In closed beta, you'll help us refine how we identify high-value prospects, giving you early access and influence over the product."
    - ❌ Avoid: "Our platform has an attendee prediction feature that uses algorithms."
 
 2. **Use Specific Numbers**: Replace vague claims with concrete data points. Quantify benefits whenever possible.
@@ -273,7 +298,30 @@ Lensmor uses a combination mark logo (icon + wordmark):
 
 5. **Stay Factual and Honest**: Never exaggerate capabilities. If there's a limitation, acknowledge it professionally. Build trust through transparency.
    - ✅ Good: "Attendee predictions are based on historical data and social signals – accuracy improves with event popularity and data availability"
+   - ✅ Beta Good: "During closed beta, we're refining our prediction accuracy. Current results are strong for major events, and we're expanding coverage based on user feedback"
    - ❌ Avoid: "100% perfect predictions of every single attendee at any event!"
+
+### Closed Beta Communication Guidelines
+
+**How to Talk About Beta Status:**
+- ✅ Use: "currently in closed beta" / "early access program" / "limited availability"
+- ✅ Use: "available by invitation" / "select group of early adopters"
+- ✅ Use: "actively refining based on feedback" / "improving with user input"
+- ❌ Avoid: "not ready" / "unfinished" / "incomplete" / "buggy"
+- ❌ Avoid: "experimental" / "risky" / "unstable"
+
+**Beta Benefits to Emphasize:**
+- Early access to innovative features before public launch
+- Special pricing locked in for 12 months post-launch
+- Direct influence on product roadmap and feature priority
+- Close collaboration with product team
+- Exclusive beta user community
+
+**Setting Expectations:**
+- "Some features are being refined based on user feedback"
+- "We're actively testing and improving [specific feature]"
+- "As a beta user, you'll see regular updates"
+- "Your feedback directly shapes the product"
 
 ### Word Usage
 
@@ -335,7 +383,26 @@ Lensmor uses a combination mark logo (icon + wordmark):
 
 ## Usage Examples
 
-### Example 1: Feature Documentation
+### Example 1: Beta Onboarding Message
+```
+✅ Good:
+"Welcome to Lensmor's closed beta! You're joining a select group of early adopters who are
+shaping the future of event intelligence. As a beta user, you get:
+- Early access to all features as we develop them
+- Special pricing locked in for 12 months after public launch
+- Direct line to our product team for feedback and feature requests
+- Priority support and onboarding assistance
+
+Some features are still being refined, and you may notice updates and improvements as we go.
+Your feedback is invaluable in making Lensmor the best event intelligence platform for B2B
+companies."
+
+❌ Avoid:
+"Thanks for trying our unfinished product! Things might break and we're still figuring stuff
+out, but we hope you'll stick with us anyway!"
+```
+
+### Example 2: Feature Documentation
 ```
 ✅ Good:
 "Lensmor's attendee prediction engine analyzes historical event data, social media signals,
@@ -348,18 +415,36 @@ with key decision-makers before the event begins."
 get more leads! You'll love it!"
 ```
 
-### Example 2: Marketing Copy
+### Example 3: Marketing Copy (Beta Version)
 ```
 ✅ Good:
 "Stop wasting $10K+ on the wrong trade shows. Lensmor's reverse event discovery lets you
-find which shows your target customers actually attend. Research exhibitor lists across
-12,000+ global events, predict attendee lists, and invest your event budget where it
-drives real pipeline growth."
+find which shows your target customers actually attend. Currently in closed beta with
+limited access - join select early adopters who are getting special pricing and shaping
+our product roadmap."
 
 ❌ Avoid:
 "Lensmor is the #1 revolutionary game-changing platform that will transform your entire
 business! We're disrupting the industry with our amazing technology that does everything
 you could ever dream of!"
+```
+
+### Example 4: Feature Status Communication
+```
+✅ Good:
+"Reverse Event Discovery - ✅ Available in Beta
+Search through our growing database of global events by company name or exhibitor list.
+We're actively expanding coverage based on user feedback - currently focusing on North
+American and European markets."
+
+✅ Good (In Development):
+"Real-Time Data Updates - 🚧 In Active Development
+We're building continuous data refresh capabilities based on beta user feedback. Current
+version includes manual data updates, with automated real-time sync launching Q2 2026."
+
+❌ Avoid:
+"This feature doesn't really work yet but we're trying to fix it."
+"Coming soon! (We have no idea when)"
 ```
 
 ### Example 3: UI Microcopy
@@ -420,6 +505,10 @@ When creating Lensmor content, ensure you:
 - [ ] Focus on user benefits, not just features
 - [ ] Include clear calls-to-action where appropriate
 - [ ] Proofread for brand-specific terms and capitalization
+- [ ] **Beta-Specific**: Clearly indicate closed beta status where relevant
+- [ ] **Beta-Specific**: Set realistic expectations about feature availability
+- [ ] **Beta-Specific**: Emphasize early adopter benefits and feedback opportunities
+- [ ] **Beta-Specific**: Use positive, transparent language about work-in-progress features
 
 ## Keywords
 

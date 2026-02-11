@@ -5,6 +5,8 @@
 
 # Brand Guidelines Skill
 
+> 🚧 **Lensmor Status**: Currently in Closed Beta - Limited access for early adopters
+
 Provides comprehensive brand context, visual design rules, writing style guidelines, and product information to ensure brand consistency across all content and communications.
 
 ## Overview
