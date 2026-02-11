@@ -1,0 +1,42 @@
+{
+  "replacements": {
+    "brand_name": {
+      "private": "Lensmor",
+      "public": "MyCompany"
+    },
+    "brand_name_lower": {
+      "private": "lensmor",
+      "public": "mycompany"
+    },
+    "secrets_file": {
+      "private": "lensmor_secrets.json",
+      "public": "secrets.json"
+    },
+    "company_description": {
+      "private": "Lensmor platform",
+      "public": "the platform"
+    }
+  },
+  "files_to_sanitize": {
+    "writers.json": {
+      "path": "Skill/webflow-blog-publisher/assets/writers/writers.json",
+      "action": "replace_content",
+      "content": [
+        {
+          "name": "Author Name",
+          "image_url": "https://example.com/author.jpg"
+        }
+      ]
+    }
+  },
+  "license": {
+    "private": "本项目为私有项目。保留所有权利。",
+    "public": "本项目采用 MIT 许可证。"
+  },
+  "excluded_directories": [
+    "Skill/brand-guidelines",
+    "Skill/*/output",
+    "Skill/linkedin-post-writer/output"
+  ],
+  "exclude_reason": "brand-guidelines contains company-specific information; output directories contain generated content"
+}

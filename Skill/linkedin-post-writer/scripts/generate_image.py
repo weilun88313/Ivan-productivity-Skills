@@ -32,11 +32,13 @@ def enhance_prompt_for_linkedin(post_content: str, style_hints: str = None) -> s
     - Professional yet approachable aesthetic
     - Clean, modern, minimalist design
     - Suitable for business social media
-    - High quality, visually appealing
+    - High resolution, 2K quality, professional photography quality
+    - Ultra-detailed, sharp, crisp imagery
     - Use relevant icons or visual metaphors
     - Vibrant but professional color palette (blues, teals, oranges)
-    - Square format (1:1) optimized for LinkedIn feed
+    - 16:9 widescreen format optimized for LinkedIn
     - Avoid text overlay or keep minimal
+    - Premium quality suitable for professional presentations
     """
 
     if style_hints:
@@ -45,7 +47,7 @@ def enhance_prompt_for_linkedin(post_content: str, style_hints: str = None) -> s
     return f"{base_prompt}\n\n{style_guide}"
 
 
-def generate_linkedin_image(prompt, output_dir, filename_prefix="linkedin_post", aspect_ratio="1:1"):
+def generate_linkedin_image(prompt, output_dir, filename_prefix="linkedin_post", aspect_ratio="16:9"):
     """
     Generate a LinkedIn post image.
 
@@ -53,7 +55,7 @@ def generate_linkedin_image(prompt, output_dir, filename_prefix="linkedin_post",
         prompt: Image generation prompt
         output_dir: Directory to save the image
         filename_prefix: Prefix for the output filename
-        aspect_ratio: Image aspect ratio (default: "1:1", also supports "16:9", "4:3", etc.)
+        aspect_ratio: Image aspect ratio (default: "16:9" for LinkedIn posts)
 
     Returns:
         Path to the generated image, or None if failed
@@ -99,8 +101,8 @@ def main():
     )
     parser.add_argument(
         "--output_dir",
-        default=".",
-        help="Directory to save the image (default: current directory)"
+        default="/Users/ivan/Documents/Ivan_Skills/workspace",
+        help="Directory to save the image (default: /Users/ivan/Documents/Ivan_Skills/workspace)"
     )
     parser.add_argument(
         "--filename",
@@ -109,8 +111,8 @@ def main():
     )
     parser.add_argument(
         "--aspect-ratio",
-        default="1:1",
-        help="Image aspect ratio (default: 1:1, also supports 16:9, 4:3, etc.)"
+        default="16:9",
+        help="Image aspect ratio (default: 16:9, also supports 1:1, 4:3, etc.)"
     )
     parser.add_argument(
         "--enhance",

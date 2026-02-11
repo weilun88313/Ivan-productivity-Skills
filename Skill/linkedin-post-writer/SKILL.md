@@ -13,7 +13,13 @@ This skill helps you create LinkedIn posts in two primary scenarios:
 1. **From Fragments to Post**: Convert scattered thoughts and bullet points into polished, engaging posts
 2. **From Topic to Post**: Expand a general topic into specific ideas with a complete narrative
 
-All posts follow a consistent brand voice (approachable and friendly) and include AI-generated images that reinforce the message.
+**CRITICAL Requirements**:
+- All posts must be in **English**
+- Images must be **16:9 aspect ratio**, **2K quality**
+- Output directory: `/Users/ivan/Documents/Ivan_Skills/workspace`
+- **Markdown output**: Only include post content, NO hashtags, NO metadata, NO file info
+- Posts follow a consistent brand voice (approachable and friendly)
+- AI-generated images reinforce the message
 
 ## Core Workflow
 
@@ -103,28 +109,38 @@ Identify which scenario applies:
      - Vibrant but professional colors (blues, teals, oranges)
      - Minimal text overlay
      - Suitable for business social media
+   - **CRITICAL**: Always include "high resolution, 2K quality, professional photography quality" in prompts
 
 3. **Generate Image**
+   - **Default Settings**:
+     - Aspect Ratio: **16:9** (optimized for LinkedIn)
+     - Output Directory: `/Users/ivan/Documents/Ivan_Skills/workspace`
+     - Quality: 2K, high resolution
+
    - Run the image generation script:
      ```bash
-     python scripts/generate_image.py "YOUR_PROMPT" \
+     python scripts/generate_image.py --prompt "YOUR_PROMPT" \
        --enhance \
-       --output post_image.png \
-       --api-key $GEMINI_API_KEY
+       --output_dir /Users/ivan/Documents/Ivan_Skills/workspace \
+       --filename linkedin_post \
+       --aspect-ratio 16:9
      ```
    - Or call the script with the post content to auto-enhance:
      ```bash
-     python scripts/generate_image.py "POST_CONTENT" \
+     python scripts/generate_image.py --prompt "POST_CONTENT" \
        --enhance \
-       --style "modern, professional, tech-focused"
+       --style "modern, professional, tech-focused, high resolution, 2K quality" \
+       --aspect-ratio 16:9 \
+       --output_dir /Users/ivan/Documents/Ivan_Skills/workspace
      ```
 
 4. **Review Image**
    - Ensure image aligns with message
-   - Check visual quality and professionalism
+   - Check visual quality and professionalism (2K quality)
    - Verify it matches brand aesthetic
+   - Confirm 16:9 aspect ratio
 
-### Step 4: Final Review
+### Step 4: Final Review & Output
 
 Use the quality checklist from `references/brand_persona.md`:
 
@@ -133,11 +149,16 @@ Use the quality checklist from `references/brand_persona.md`:
 - [ ] Provides clear value or takeaway
 - [ ] Length is 300-800 characters
 - [ ] Opening hooks the reader
-- [ ] Closing invites engagement
+- [ ] Closing invites engagement (question or call to action)
 - [ ] Language is accessible and relatable
 - [ ] Image aligns with message and brand aesthetic
-- [ ] Hashtags are relevant (3-5)
 - [ ] Overall feel is authentic and genuine
+
+**Output Format**:
+- Save post content as `.md` file in `/Users/ivan/Documents/Ivan_Skills/workspace`
+- **Include ONLY**: Post text content (with emojis if used)
+- **Exclude**: Hashtags, image metadata, post metrics, generated timestamp
+- Markdown file should be clean and copy-paste ready for LinkedIn
 
 ## Quick Reference
 
