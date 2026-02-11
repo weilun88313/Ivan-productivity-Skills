@@ -4,35 +4,35 @@
 
 # 博客文章撰写器
 
-> 通过AI生成的可视化内容，创作高排名、SEO友好的博客文章
+> 使用AI生成的视觉内容创作高排名、SEO友好的博客文章
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
 ## 概述
 
-遵循成熟的内容公式，创作专业、实用且经过SEO优化的博客文章。本工具将专业内容结构与AI生成的可视化素材相结合，以生成可直接发布的文章。
+遵循经验证的内容公式，创作专业、可操作且经过SEO优化的博客文章。结合专家级内容结构与AI生成的视觉素材，产出可直接发布的文章。
 
 ### 主要功能
 
-- ✍️ **专业内容** - 实用、富有同理心的语调，结构清晰
-- 📊 **SEO优化** - 针对搜索引擎可见性进行结构化
-- 🎨 **AI生成插图** - 高质量16:9图像，采用Linear暗色模式风格
+- ✍️ **专业内容** - 具有清晰结构、可操作且富有同理心的语气
+- 📊 **SEO优化** - 为搜索引擎可见性而结构化
+- 🎨 **AI生成插图** - 高质量16:9图像，采用Linear暗黑模式风格
 - 📝 **结构化格式** - 钩子 → 原因 → 方法 → CTA框架
 - 💡 **专业提示** - 全文穿插内幕建议
 - 🎯 **可供发布** - 兼容Webflow博客发布器
 
-## 快速入门
+## 快速开始
 
 ### 前提条件
 
 ```bash
-# 安装依赖
+# Install dependencies
 pip install requests
 
-# 设置Gemini API密钥
+# Set up Gemini API key
 export GEMINI_API_KEY='your_api_key_here'
 
-# 或者添加到 ~/.claude/lensmor_secrets.json
+# OR add to ~/.claude/lensmor_secrets.json
 {
   "NANO_API_KEY": "your_api_key_here"
 }
@@ -49,13 +49,13 @@ export GEMINI_API_KEY='your_api_key_here'
 **生成图片**
 
 ```bash
-# 封面图片
+# Cover image
 python Skill/hubspot-blog-writer/scripts/generate_image.py \
   --prompt "Abstract email marketing data visualization, flowing connections, Linear dark mode aesthetic" \
   --output_dir workspace/blog/images \
   --filename cover
 
-# 内联图片（重复3-5次）
+# Inline images (repeat 3-5 times)
 python Skill/hubspot-blog-writer/scripts/generate_image.py \
   --prompt "Email inbox interface wireframe, clean UI mockup, dark mode" \
   --output_dir workspace/blog/images \
@@ -64,33 +64,33 @@ python Skill/hubspot-blog-writer/scripts/generate_image.py \
 
 ## 内容结构
 
-文章遵循成熟的公式：
+文章遵循经验证的公式：
 
 1.  **钩子** - 问题、痛点、承诺
 2.  **原因** - 益处和数据
-3.  **操作指南** - 逐步说明或列表形式
-4.  **结论** - 主要要点和CTA
+3.  **方法** - 逐步指南或列表形式
+4.  **结论** - 关键要点和CTA
 
 ### 输出格式
 
 ```markdown
-# [带有关键词的吸引人标题]
+# [Engaging Title with Keywords]
 
 **Slug**: /blog/[category]/[keyword-slug]
-**Meta Description**: [150-160字符的SEO摘要]
+**Meta Description**: [150-160 chars SEO summary]
 **Cover Image**:
-![描述](images/cover.png)
+![Description](images/cover.png)
 
 ---
 
-[文章内容从此处开始]
+[Article content starts here]
 ```
 
 ## 格式标准
 
 -   **段落**：最多3-4行，每段一个想法
 -   **标题**：H2用于主要部分，H3用于子部分
--   **列表**：用于步骤的无序列表或有序列表
+-   **列表**：步骤使用项目符号或编号列表
 -   **专业提示**：每篇文章至少3个
 -   **表格**：使用Markdown表格进行比较
 
@@ -98,20 +98,20 @@ python Skill/hubspot-blog-writer/scripts/generate_image.py \
 
 ### 视觉风格
 
-所有图片均遵循**Linear暗色模式美学**：
+所有图片均遵循**Linear暗黑模式美学**：
 
 -   **风格**：极简、技术、现代、抽象
--   **颜色**：深炭灰色背景（#1a1a1a），紫蓝色点缀（#6B75FF）
+-   **颜色**：深炭灰色背景（#1a1a1a），紫蓝色调（#6B75FF）
 -   **元素**：抽象形状、数据可视化、几何图形
 -   **质量**：16:9宽高比，高分辨率（2K+）
 -   **文本**：仅限少量关键词
 
 ### 图片要求
 
--   **封面图片**：具有Linear美学风格的抽象标题图
+-   **封面图片**：具有Linear美学的抽象标题图
 -   **内联图片**：每篇文章至少3张，支持内容部分
 
-使用[references/visual-style-guide.md](references/visual-style-guide.md)中完整的5段结构模板
+使用[references/visual-style-guide.md](references/visual-style-guide.md)中完整的5段结构化模板
 
 ### 生成脚本
 
@@ -135,13 +135,13 @@ python Skill/hubspot-blog-writer/scripts/generate_image.py \
 与[webflow-blog-publisher](../webflow-blog-publisher)无缝协作：
 
 ```bash
-# 1. 撰写博客文章（使用AI）
-# 2. 生成图片
+# 1. Write blog post (using AI)
+# 2. Generate images
 python Skill/hubspot-blog-writer/scripts/generate_image.py \
   --prompt "..." \
   --output_dir workspace/blog/images
 
-# 3. 发布到Webflow
+# 3. Publish to Webflow
 python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy \
@@ -153,10 +153,10 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 ### API密钥未找到
 
 ```bash
-# 选项1：环境变量
+# Option 1: Environment variable
 export GEMINI_API_KEY='your_key'
 
-# 选项2：密钥文件
+# Option 2: Secrets file
 echo '{"NANO_API_KEY": "your_key"}' > ~/.claude/lensmor_secrets.json
 ```
 
@@ -169,25 +169,25 @@ echo '{"NANO_API_KEY": "your_key"}' > ~/.claude/lensmor_secrets.json
 ### 内容质量
 
 -   指定字数和目标受众
--   请求特定语调：“以专业博客风格撰写”
+-   请求特定语气：“以专业博客风格撰写”
 -   包含数据点和统计信息
 
 ## 文件结构
 
 ```
 blog-writer/
-├── README.md                  # 本文件
-├── SKILL.md                   # AI工作流说明
+├── README.md                  # This file
+├── SKILL.md                   # AI workflow instructions
 ├── scripts/
-│   ├── gemini_api.py         # 共享API客户端
-│   └── generate_image.py     # 图片生成工具
+│   ├── gemini_api.py         # Shared API client
+│   └── generate_image.py     # Image generation tool
 └── references/
-    └── visual-style-guide.md # 详细视觉指南
+    └── visual-style-guide.md # Detailed visual guidelines
 ```
 
 ## 资源
 
--   [SKILL.md](SKILL.md) - 详细的AI说明
+-   [SKILL.md](SKILL.md) - 详细的AI指令
 -   [视觉风格指南](references/visual-style-guide.md) - 图片模板
 -   [Webflow博客发布器](../webflow-blog-publisher) - 发布集成
 

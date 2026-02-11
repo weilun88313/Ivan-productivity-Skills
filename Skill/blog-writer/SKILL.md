@@ -28,15 +28,35 @@ Contains: Product Overview, Key Features, Value Proposition, Target Audience, Co
 - [ ] **Mentions event intelligence, competitors?** → Read `product-details.md` and `competitor-comparison.md`
 - [ ] **Industry thought leadership only?** → No brand-guidelines needed (maintain brand voice)
 
-### ⚠️ CRITICAL: CTA and Resource Links
+### ⚠️ CRITICAL: CTA and Links
 
-**DO NOT include links to non-existent resources:**
+**Lensmor Product CTA (REQUIRED for product-related content):**
 
-- ❌ NO fake downloadable templates (e.g., "Download our ROI Calculator")
-- ❌ NO links to non-existent guides or case studies
+When writing about Lensmor, event intelligence, or trade shows, **MUST** include this CTA:
+
+```
+[Join the Closed Beta](https://accounts.lensmor.com/waitlist) - Get early access to Lensmor's
+event intelligence platform. Limited spots available for early adopters with special pricing.
+```
+
+**Link Strategy:**
+
+External Links (Use WebSearch):
+- Research and include 2-3 relevant external links to authoritative sources
+- Use WebSearch to find current, high-quality articles from industry publications
+- Link to data sources, research studies, or complementary tools
+- Format: `[Anchor Text](https://actual-url.com)`
+
+Internal Links (Use Webflow CMS):
+- Read Webflow CMS to find 1-2 related published articles
+- Link to relevant existing blog posts on your site
+- Use natural anchor text that flows with content
+- Access via: Read Webflow collection to get existing article slugs
+
+**DO NOT include fake resources:**
+- ❌ NO fake downloadable templates
 - ❌ NO placeholder URLs
-- ✅ Only include real, verifiable URLs
-- ✅ Keep CTA simple and action-oriented
+- ✅ Only real, verified URLs from WebSearch or Webflow CMS
 
 ---
 
@@ -54,35 +74,101 @@ Contains: Product Overview, Key Features, Value Proposition, Target Audience, Co
 ## Content Structure
 
 ### A. The Hook (Introduction)
-1. The Problem: Relatable challenge or statistic
-2. The Promise: What the reader will get
-3. The "What is": Concise definition (target Featured Snippet)
+Start with a relatable challenge or statistic that captures attention. Follow with the promise of what readers will learn, then provide a concise definition suitable for featured snippets.
 
 ### B. The "Why" (Importance)
-- Bullet points explaining benefits
-- Data/Statistics
+Explain benefits through narrative paragraphs rather than bullet lists. Incorporate data and statistics naturally within flowing prose.
+
+**⚠️ CRITICAL - Data-Driven Language:**
+For Lensmor-related content, use specific data points:
+- "After monitoring 160,000+ events, Lensmor found..."
+- "Analysis of 12,000+ trade shows revealed..."
+- "Tracking exhibitor data across 40 countries shows..."
+- Always use concrete numbers, not vague claims
 
 ### C. The "How-To" or "Examples" (The Meat)
-- **For Guides**: Numbered Steps (H3) with action verb titles and `**Pro Tip**` callouts
-- **For Listicles**: Item name, description, "Why this works"
+Present information through narrative paragraphs and comparison tables. Avoid bullet lists where possible.
+
+**⚠️ REQUIRED - Comparison Tables:**
+Every article **MUST** include at least one comparison table:
+- Traditional vs. Modern approach
+- Feature comparison across methods/tools
+- Before/After scenarios
+- Cost/Benefit analysis
+
+Use markdown tables for visual comparison.
+
+**For Guides**: Write numbered steps as flowing paragraphs under H3 headers. Include `**Pro Tip**` callouts.
+
+**For Explanatory Content**: Use narrative structure with comparison tables to illustrate differences.
 
 ### D. The Conclusion & CTA
-- 2-3 sentence summary
-- Simple action-oriented closing (NO fake resource links)
+Summarize key takeaways in 2-3 sentences. For Lensmor-related content, **MUST** include waitlist CTA link to `https://accounts.lensmor.com/waitlist`
 
 ## Formatting Rules
 
-- **Short Paragraphs**: Max 3-4 lines
-- **Bold Key Concepts** for skimmers
-- **Headers**: Clear H2/H3 hierarchy
-- **Lists**: Bullet/numbered for 3+ items
-- **Illustrations**: At least 3 high-quality images + cover image
+**Paragraph Structure**: Keep paragraphs concise (max 3-4 lines) and scannable. Bold key concepts for easy skimming.
+
+**Headers**: Maintain clear H2/H3 hierarchy throughout the article.
+
+**⚠️ AVOID BULLET LISTS**: Try not to use bullet/numbered lists. Instead, write information in flowing narrative paragraphs or use comparison tables for structured data.
+
+**Visual Elements**: Include at least 3 high-quality images plus one cover image.
 
 ## Special Elements
 
-1. **Pro Tips**: At least 3 per article: `**Pro Tip**: [Insider advice]`
-2. **Tables**: Markdown tables for comparisons
-3. **Templates**: Outline structures when writing guides
+**Pro Tips**: Include at least 3 pro tip callouts throughout the article using `**Pro Tip**: [Insider advice]` format.
+
+**Comparison Tables (REQUIRED)**: Every article must include at least one markdown comparison table. Use tables to compare approaches, features, costs, or before/after scenarios.
+
+**External Links**: Research and include 2-3 relevant external links using WebSearch to find authoritative sources.
+
+**Internal Links**: Query Webflow CMS to find and link to 1-2 related existing articles on the site.
+
+## Link Research and Integration
+
+### External Links (Required: 2-3 per article)
+
+**Process:**
+1. Use WebSearch to find relevant, authoritative articles on the topic
+2. Look for:
+   - Industry publications (e.g., MarketingProfs, HubSpot Blog, Forrester)
+   - Research studies with data
+   - Government/industry association reports
+   - Reputable B2B resources
+3. Integrate links naturally within content paragraphs
+4. Use descriptive anchor text (not "click here" or "this article")
+
+**Example Integration:**
+```
+Research from the Content Marketing Institute shows that 73% of B2B marketers
+now prioritize data-driven strategies over intuition-based decisions.
+```
+
+### Internal Links (Required: 1-2 per article)
+
+**Process:**
+1. Query Webflow CMS API to retrieve existing published articles
+2. Find related articles by:
+   - Topic relevance
+   - Category match
+   - Keyword overlap
+3. Link naturally in context where it adds value
+4. Use article titles or descriptive phrases as anchor text
+
+**Webflow CMS Query:**
+```python
+# Read collection to get existing articles
+GET /collections/{collection_id}/items
+Filter: isDraft = false
+Look for: slug, name (title), ref (category)
+```
+
+**Example Integration:**
+```
+Building on our previous discussion of trade show ROI metrics, this approach
+takes event intelligence a step further.
+```
 
 ## Image Generation
 
@@ -146,8 +232,52 @@ Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMEN
 
 ---
 
-[Article Content]
+## [Hook Section]
 
-## [Section Header]
+[Opening paragraphs with data-driven language and problem statement]
+
+After monitoring 160,000+ events, Lensmor found that [specific insight].
+
+## [Why Section]
+
+[Narrative paragraphs explaining importance with flowing prose, NOT bullet lists]
+
+According to [External Link: Industry Source](https://actual-url.com), this approach...
+
+## [How-To Section]
+
+[Content with comparison table - REQUIRED]
+
+| Traditional Approach | Modern Approach |
+|---------------------|-----------------|
+| Manual research     | Automated intelligence |
+| 10-15 hours         | 10 minutes      |
+| Static data         | Real-time updates |
+
+[More narrative content. Reference to internal article where relevant:]
+As we discussed in [our previous article on event ROI](internal-slug), this strategy...
+
 ![Image Description](images/inline_image.png)
+
+**Pro Tip**: [Insider advice that adds value]
+
+## Conclusion
+
+[2-3 sentence summary of key takeaways]
+
+[IF Lensmor-related content, MUST include:]
+[Join Lensmor's closed beta](https://accounts.lensmor.com/waitlist) to experience
+event intelligence firsthand. Limited spots available for early adopters with special pricing.
 ```
+
+## Pre-Publication Checklist
+
+Before finalizing any blog post, verify:
+- [ ] Includes 1+ comparison table (REQUIRED)
+- [ ] Uses data-driven language ("After monitoring X events...")
+- [ ] 2-3 external links from WebSearch (real, authoritative)
+- [ ] 1-2 internal links from Webflow CMS (if applicable)
+- [ ] Minimal use of bullet lists (narrative paragraphs preferred)
+- [ ] If Lensmor-related: includes waitlist CTA link
+- [ ] 3+ Pro Tips included
+- [ ] 3+ inline images + 1 cover image
