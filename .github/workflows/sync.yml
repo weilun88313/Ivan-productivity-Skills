@@ -1,0 +1,30 @@
+name: Sync brand-guidelines to Lensmor-PM
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Skill/brand-guidelines/**' # 监听 brand-guidelines 目录的任何变动
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Repo (Ivan_Skills)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整历史，以便正确同步
+
+      - name: Push to Destination Repo (Lensmor-PM)
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.AI_TOKEN }}
+        with:
+          source-directory: 'Skill/brand-guidelines'
+          destination-github-username: 'weilun88313'
+          destination-repository-name: 'Lensmor-PM'
+          destination-repository-directory: 'brand-guidelines'
+          user-email: '1083432533@qq.com'
+          user-name: 'github-actions[bot]'
+          commit-message: 'Sync brand-guidelines from Ivan_Skills'
+          target-branch: main # 目标分支
