@@ -24,7 +24,7 @@ jobs:
           source-directory: 'Skill/brand-guidelines'
           destination-github-username: 'weilun88313'
           destination-repository-name: 'Lensmor-PM'
-          destination-repository-directory: 'brand-guidelines'
+          target-directory: 'brand-guidelines'
           user-email: '1083432533@qq.com'
           user-name: 'github-actions[bot]'
           commit-message: 'Sync brand-guidelines from Ivan_Skills'
