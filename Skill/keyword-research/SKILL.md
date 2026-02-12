@@ -7,6 +7,8 @@ description: Discovers high-value keywords with search intent analysis and conte
 
 Brainstorm, classify, and prioritize keywords for SEO and GEO content strategies.
 
+**🔥 Powered by Ahrefs**: This skill uses the Ahrefs MCP to get real keyword data (search volume, difficulty, traffic potential) instead of estimates.
+
 ## Instructions
 
 ### 1. Gather Context
@@ -36,14 +38,22 @@ Expand each seed with modifiers: `best`, `top`, `how to`, `[year]`, `for [audien
 | Commercial | best, review, vs, compare | Comparison posts |
 | Transactional | buy, price, pricing, signup | Product/pricing pages |
 
-### 4. Assess Competition (Qualitative)
+### 4. Get Keyword Metrics from Ahrefs
 
-Without SEO tool data, assess difficulty qualitatively:
-- **Low**: Long-tail, niche topics, few quality articles ranking
-- **Medium**: Some competition, opportunities for better content
-- **High**: Dominated by major brands and high-authority sites
+**CRITICAL: Use Ahrefs MCP tools to get real data:**
 
-Be honest: without tools like Ahrefs/SEMrush, these are estimates based on topic knowledge.
+For each promising keyword, query Ahrefs to get:
+- **Search Volume**: Monthly search volume
+- **Keyword Difficulty (KD)**: 0-100 score (lower = easier to rank)
+- **Traffic Potential**: Estimated traffic if you rank #1
+- **SERP Overview**: Current ranking pages and their metrics
+
+**Interpreting KD scores:**
+- **0-30**: Low difficulty - good for new/small sites
+- **31-60**: Medium difficulty - need quality content + some backlinks
+- **61-100**: High difficulty - very competitive, need strong domain authority
+
+**If Ahrefs MCP is not available**, assess difficulty qualitatively based on topic knowledge and manually check SERPs.
 
 ### 5. Identify GEO Opportunities
 
@@ -69,10 +79,10 @@ Organize keywords into 2-4 clusters, each with:
 
 ## Recommended Article Topics (Priority Order)
 
-| # | Article Topic | Target Keyword | Intent | Competition | GEO Potential |
-|---|--------------|----------------|--------|-------------|---------------|
-| 1 | [title idea] | [keyword] | [type] | Low/Med/High | Yes/No |
-| 2 | ... | ... | ... | ... | ... |
+| # | Article Topic | Target Keyword | Volume | KD | Intent | GEO Potential |
+|---|--------------|----------------|--------|-------|--------|---------------|
+| 1 | [title idea] | [keyword] | [monthly searches] | [0-100] | [type] | Yes/No |
+| 2 | ... | ... | ... | ... | ... | ... |
 
 ## Topic Clusters
 
@@ -82,9 +92,9 @@ Organize keywords into 2-4 clusters, each with:
 
 ## Full Keyword List
 
-| Keyword | Intent | Competition | Notes |
-|---------|--------|-------------|-------|
-| ... | ... | ... | ... |
+| Keyword | Volume | KD | Intent | Traffic Potential | Notes |
+|---------|--------|-----|--------|------------------|-------|
+| ... | ... | ... | ... | ... | ... |
 ```
 
 Focus the output on **actionable article recommendations** — the user's next step is picking a topic to write.

@@ -26,9 +26,15 @@ Find keyword opportunities for [industry] targeting [audience]
 
 The skill outputs a prioritized table of article topics with target keywords, intent classification, and competition estimates.
 
-## Note on Data
+## Ahrefs Integration
 
-Without connected SEO tools (Ahrefs, SEMrush, etc.), search volume and difficulty scores are qualitative estimates. The skill focuses on keyword discovery and strategic grouping rather than precise metrics.
+**This skill uses Ahrefs MCP** to provide real keyword data:
+- ✅ Accurate monthly search volume
+- ✅ Keyword Difficulty (KD) scores 0-100
+- ✅ Traffic potential estimates
+- ✅ SERP analysis
+
+**Requirements**: Ahrefs API v3 access (included in Standard plan $249/mo with 500 free queries/month)
 
 ## Related Skills
 
