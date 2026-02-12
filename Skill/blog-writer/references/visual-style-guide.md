@@ -21,46 +21,23 @@ All image generation prompts MUST follow this exact structure. Do not use simpli
 
 Cover images are **purely abstract** — NO text, NO UI, NO literal depictions. Translate the article's theme into visual metaphor.
 
-### 5-Paragraph Template for Cover Images
+### Cover Image Template (Standardized)
+
+Only **one variable**: replace `{BLOG_TITLE}` with the article title. Do NOT modify any other part of the template.
 
 ```
 Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode UI, minimalist, clean, futuristic.
 
 Color Palette: Primary glowing light is hex code #6B75FF (neon violet-blue indigo). Soft, diffused glow on deep charcoal background.
 
-Theme Concept: [DESCRIBE THE ARTICLE'S TOPIC AS ABSTRACT VISUAL ELEMENTS - e.g., "scattered event data signals flowing as glowing particle streams from all directions, converging into a central crystalline intelligence hub"]. Translate this into glowing geometric data streams, interconnected nodes pulsing with #6B75FF light, floating frosted glass prismatic shapes, and abstract light trails. Composition representing [key concept transformation - e.g., "raw chaos organizing into actionable intelligence"].
+Key content to be displayed: {BLOG_TITLE}
 
-Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects on distant [relevant elements].
+Do not render these words as text. Translate the meaning into glowing geometric data streams, interconnected nodes, floating frosted glass shapes, and abstract light trails. Composition representing data flow in a sophisticated system.
 
-Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes and light compositions.
-```
-
-### Template Variables to Customize
-
-| Variable | Purpose | Example |
-|----------|---------|---------|
-| **Theme Concept** | Abstract representation of article topic | "scattered data signals converging into intelligence hub" |
-| **Key Transformation** | The conceptual journey | "chaos organizing into intelligence" |
-| **Distant Elements** | Environment details | "data streams", "insight nodes", "connection trails" |
-
-### Cover Image Example
-
-**Article**: "Event Intelligence: The Secret Weapon for Trade Show ROI"
-
-**Complete Prompt**:
-```
-Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode UI, minimalist, clean, futuristic.
-
-Color Palette: Primary glowing light is hex code #6B75FF (neon violet-blue indigo). Soft, diffused glow on deep charcoal background.
-
-Theme Concept: Scattered event data signals—exhibitor profiles, attendee behavior patterns, competitive intelligence fragments—flowing as glowing particle streams from all directions, converging into a central crystalline intelligence hub. The hub emanates organized insight pathways radiating outward to strategic decision nodes. Translate this into glowing geometric data streams, interconnected nodes pulsing with #6B75FF light, floating frosted glass prismatic shapes representing crystallized insights, and abstract light trails showing data transformation. Composition representing raw chaos organizing into actionable intelligence.
-
-Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects on distant data streams.
+Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects on distant pathway nodes.
 
 Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes and light compositions.
 ```
-
-**Result**: Abstract data convergence visualization with #6B75FF glow (667KB)
 
 ---
 

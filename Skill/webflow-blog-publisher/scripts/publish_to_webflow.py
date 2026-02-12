@@ -331,6 +331,9 @@ def publish_blog(filepath, collection_id=None, publish=False,
     # Convert markdown to HTML (now with CDN URLs for uploaded images)
     body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
 
+    # Open all links in new tab
+    body_html = body_html.replace("<a ", '<a target="_blank" rel="noopener noreferrer" ')
+
     # Add full-width styling to all images with !important to override Webflow defaults
     # Use container-relative width to ensure images fill the content area without overflow
     figure_style = (
@@ -361,6 +364,38 @@ def publish_blog(filepath, collection_id=None, publish=False,
         rf'<figure style="{figure_style}"><img \1src="\2"\3alt="\4"\5 style="{img_style}"></figure>',
         body_html
     )
+
+    # Add styling to tables for Webflow dark theme (black background)
+    table_style = (
+        "width: 100% !important; "
+        "border-collapse: separate !important; "
+        "border-spacing: 0 !important; "
+        "margin: 1.5em 0 !important; "
+        "font-size: 0.95em !important; "
+        "border: 1px solid rgba(255,255,255,0.15) !important; "
+        "border-radius: 8px !important; "
+        "overflow: hidden !important;"
+    )
+    thead_style = (
+        "background: rgba(107,117,255,0.12) !important;"
+    )
+    th_style = (
+        "padding: 12px 16px !important; "
+        "text-align: left !important; "
+        "font-weight: 600 !important; "
+        "color: #fff !important; "
+        "border-bottom: 1px solid rgba(107,117,255,0.4) !important;"
+    )
+    td_style = (
+        "padding: 10px 16px !important; "
+        "text-align: left !important; "
+        "background: rgba(255,255,255,0.04) !important; "
+        "border-bottom: 1px solid rgba(255,255,255,0.08) !important;"
+    )
+    body_html = body_html.replace("<table>", f'<table style="{table_style}">')
+    body_html = body_html.replace("<thead>", f'<thead style="{thead_style}">')
+    body_html = re.sub(r"<th(?:\s[^>]*)?>", lambda m: f'<th style="{th_style}">', body_html)
+    body_html = re.sub(r"<td(?:\s[^>]*)?>", lambda m: f'<td style="{td_style}">', body_html)
 
     print(f"  Body: {len(body_html)} chars HTML")
 

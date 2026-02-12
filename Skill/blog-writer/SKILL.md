@@ -88,23 +88,34 @@ Images are generated **after** writing the article, using Gemini API.
 
 Target: 1 cover image + 3 inline images.
 
-**Cover Image Prompt Template** (abstract, no text):
+**Cover Image Prompt Template** — only replace `{BLOG_TITLE}`, do NOT modify anything else:
 ```
-Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode, minimalist, futuristic.
-Color Palette: #6B75FF (neon violet-blue) glow on deep charcoal background.
-Theme Concept: [Translate article topic into abstract visual metaphor].
-Environment: Deep black void, subtle isometric grid, shallow depth of field.
-Negative Constraints: NO TEXT, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS.
+Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode UI, minimalist, clean, futuristic.
+
+Color Palette: Primary glowing light is hex code #6B75FF (neon violet-blue indigo). Soft, diffused glow on deep charcoal background.
+
+Key content to be displayed: {BLOG_TITLE}
+
+Do not render these words as text. Translate the meaning into glowing geometric data streams, interconnected nodes, floating frosted glass shapes, and abstract light trails. Composition representing data flow in a sophisticated system.
+
+Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects on distant pathway nodes.
+
+Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes and light compositions.
 ```
 
-**Inline Image Prompt Template** (conceptual, minimal text):
+**Inline Image Prompt Template** — use style template + paste the actual blog section text directly as the Concept. Do NOT abstract or rewrite the content:
 ```
-Style: Technical data visualization inspired by Linear design. Dark mode, minimalist.
-Color Palette: Deep charcoal background, #6B75FF accent for highlights.
-Concept: [Describe what to visualize abstractly — floating data clusters, flowing streams, etc.]
-Keywords Allowed: [2-3 short labels only]. Clean sans-serif. NO paragraphs.
-Environment: Deep charcoal void, subtle technical grid.
-Negative Constraints: NO UI chrome, NO dashboards, NO browser frames, NO fake interfaces.
+Style: [Type of visualization] inspired by Linear design system. Dark mode, minimalist, clean conceptual schematic.
+
+Color Palette: Deep charcoal background (#1a1a1a), matte grey data structures, #6B75FF (violet-blue) accent for key highlights.
+
+Concept: [PASTE THE ACTUAL BLOG PARAGRAPH/SECTION THAT NEEDS AN ILLUSTRATION — do not rewrite or abstract it]
+
+Keywords Allowed: Simple labels only. Clean, legible sans-serif. NO paragraphs of text.
+
+Environment: Deep charcoal void with extremely subtle technical grid lines barely visible in background. No horizon line.
+
+Negative Constraints: NO product UI chrome, NO navigation bars, NO sidebars, NO browser frames, NO dashboard widgets, NO fake app interfaces.
 ```
 
 **Generation Command:**
