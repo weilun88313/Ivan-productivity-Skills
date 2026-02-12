@@ -20,7 +20,7 @@ MAX_RETRIES = 3
 TIMEOUT = 30
 WORDS_PER_MINUTE = 200
 
-SECRETS_PATH = os.path.expanduser("~/.claude/lensmor_secrets.json")
+SECRETS_PATH = os.path.expanduser("~/.claude/secrets.json")
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 WRITERS_PATH = os.path.join(SCRIPT_DIR, "..", "assets", "writers", "writers.json")
 
@@ -284,13 +284,13 @@ def publish_blog(filepath, collection_id=None, publish=False,
 
     if not token:
         print("Error: WEBFLOW_API_TOKEN not found.")
-        print("Set it via environment variable or add to ~/.claude/lensmor_secrets.json")
+        print("Set it via environment variable or add to ~/.claude/secrets.json")
         print("See references/webflow-setup-guide.md for instructions.")
         return None
 
     if not collection_id:
         print("Error: Collection ID not provided.")
-        print("Pass --collection_id or add WEBFLOW_BLOG_COLLECTION_ID to ~/.claude/lensmor_secrets.json")
+        print("Pass --collection_id or add WEBFLOW_BLOG_COLLECTION_ID to ~/.claude/secrets.json")
         return None
 
     # Parse the blog markdown
@@ -324,12 +324,15 @@ def publish_blog(filepath, collection_id=None, publish=False,
                 body_md = body_md.replace(img["original"], "")
     elif not site_id and (data["cover_image"] or data["inline_images"]):
         print(f"\n  Warning: WEBFLOW_SITE_ID not set, skipping image uploads.")
-        print(f"  Add WEBFLOW_SITE_ID to ~/.claude/lensmor_secrets.json to enable.")
+        print(f"  Add WEBFLOW_SITE_ID to ~/.claude/secrets.json to enable.")
         # Strip images if we can't upload
         body_md = re.sub(r"!\[([^\]]*)\]\([^)]*\)\n?", "", body_md)
 
     # Convert markdown to HTML (now with CDN URLs for uploaded images)
     body_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
+
+    # Open all links in new tab
+    body_html = body_html.replace("<a ", '<a target="_blank" rel="noopener noreferrer" ')
 
     # Add full-width styling to all images with !important to override Webflow defaults
     # Use container-relative width to ensure images fill the content area without overflow
@@ -361,6 +364,38 @@ def publish_blog(filepath, collection_id=None, publish=False,
         rf'<figure style="{figure_style}"><img \1src="\2"\3alt="\4"\5 style="{img_style}"></figure>',
         body_html
     )
+
+    # Add styling to tables for Webflow dark theme (black background)
+    table_style = (
+        "width: 100% !important; "
+        "border-collapse: separate !important; "
+        "border-spacing: 0 !important; "
+        "margin: 1.5em 0 !important; "
+        "font-size: 0.95em !important; "
+        "border: 1px solid rgba(255,255,255,0.15) !important; "
+        "border-radius: 8px !important; "
+        "overflow: hidden !important;"
+    )
+    thead_style = (
+        "background: rgba(107,117,255,0.12) !important;"
+    )
+    th_style = (
+        "padding: 12px 16px !important; "
+        "text-align: left !important; "
+        "font-weight: 600 !important; "
+        "color: #fff !important; "
+        "border-bottom: 1px solid rgba(107,117,255,0.4) !important;"
+    )
+    td_style = (
+        "padding: 10px 16px !important; "
+        "text-align: left !important; "
+        "background: rgba(255,255,255,0.04) !important; "
+        "border-bottom: 1px solid rgba(255,255,255,0.08) !important;"
+    )
+    body_html = body_html.replace("<table>", f'<table style="{table_style}">')
+    body_html = body_html.replace("<thead>", f'<thead style="{thead_style}">')
+    body_html = re.sub(r"<th(?:\s[^>]*)?>", lambda m: f'<th style="{th_style}">', body_html)
+    body_html = re.sub(r"<td(?:\s[^>]*)?>", lambda m: f'<td style="{td_style}">', body_html)
 
     print(f"  Body: {len(body_html)} chars HTML")
 

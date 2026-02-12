@@ -7,56 +7,11 @@ description: "Write high-ranking, SEO-friendly blog posts in professional blog s
 
 Create high-quality, actionable, and SEO-friendly blog posts with professional content structure and engaging visuals.
 
-## ⚠️ CRITICAL: Product Information Reference
+## Pre-Writing: Brand Check
 
-**BEFORE writing any blog post that mentions Lensmor, product features, or event intelligence:**
+**If the article mentions your product or features**, read your brand guidelines first.
 
-### Read Brand Guidelines
-
-**Primary Reference**: `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/SKILL.md`
-
-Contains: Product Overview, Key Features, Value Proposition, Target Audience, Competitive Differentiation, Mission, Vision, Brand Voice
-
-**Supporting Resources** (when needed):
-- `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/product-details.md`
-- `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/competitor-comparison.md`
-- `/Users/ivan/Documents/Ivan_Skills/Skill/brand-guidelines/resources/faq-responses.md`
-
-### Pre-Writing Checklist
-
-- [ ] **About Lensmor product/features?** → Read `brand-guidelines/SKILL.md`
-- [ ] **Mentions event intelligence, competitors?** → Read `product-details.md` and `competitor-comparison.md`
-- [ ] **Industry thought leadership only?** → No brand-guidelines needed (maintain brand voice)
-
-### ⚠️ CRITICAL: CTA and Links
-
-**Lensmor Product CTA (REQUIRED for product-related content):**
-
-When writing about Lensmor, event intelligence, or trade shows, **MUST** include this CTA:
-
-```
-[Join the Closed Beta](https://accounts.lensmor.com/waitlist) - Get early access to Lensmor's
-event intelligence platform. Limited spots available for early adopters with special pricing.
-```
-
-**Link Strategy:**
-
-External Links (Use WebSearch):
-- Research and include 2-3 relevant external links to authoritative sources
-- Use WebSearch to find current, high-quality articles from industry publications
-- Link to data sources, research studies, or complementary tools
-- Format: `[Anchor Text](https://actual-url.com)`
-
-Internal Links (Use Webflow CMS):
-- Read Webflow CMS to find 1-2 related published articles
-- Link to relevant existing blog posts on your site
-- Use natural anchor text that flows with content
-- Access via: Read Webflow collection to get existing article slugs
-
-**DO NOT include fake resources:**
-- ❌ NO fake downloadable templates
-- ❌ NO placeholder URLs
-- ✅ Only real, verified URLs from WebSearch or Webflow CMS
+**If industry thought leadership only** — skip brand guidelines, maintain professional voice.
 
 ---
 
@@ -79,12 +34,8 @@ Start with a relatable challenge or statistic that captures attention. Follow wi
 ### B. The "Why" (Importance)
 Explain benefits through narrative paragraphs rather than bullet lists. Incorporate data and statistics naturally within flowing prose.
 
-**⚠️ CRITICAL - Data-Driven Language:**
-For Lensmor-related content, use specific data points:
-- "After monitoring 160,000+ events, Lensmor found..."
-- "Analysis of 12,000+ trade shows revealed..."
-- "Tracking exhibitor data across 40 countries shows..."
-- Always use concrete numbers, not vague claims
+**Data-Driven Language:**
+Use specific data points and concrete numbers, not vague claims.
 
 ### C. The "How-To" or "Examples" (The Meat)
 Present information through narrative paragraphs and comparison tables. Avoid bullet lists where possible.
@@ -103,7 +54,7 @@ Use markdown tables for visual comparison.
 **For Explanatory Content**: Use narrative structure with comparison tables to illustrate differences.
 
 ### D. The Conclusion & CTA
-Summarize key takeaways in 2-3 sentences. For Lensmor-related content, **MUST** include waitlist CTA link to `https://accounts.lensmor.com/waitlist`
+Summarize key takeaways in 2-3 sentences. Include a relevant CTA if product-related.
 
 ## Formatting Rules
 
@@ -208,16 +159,20 @@ Content to visualize:
 
 ### Cover Images: Abstract Only
 
+Only replace `{BLOG_TITLE}` with the article title. Do NOT modify anything else:
+
 ```
 Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode UI, minimalist, clean, futuristic.
 
 Color Palette: Primary glowing light is hex code #6B75FF (neon violet-blue indigo). Soft, diffused glow on deep charcoal background.
 
-Theme Concept: [Translate article topic into abstract visual metaphor]. Glowing geometric data streams, interconnected nodes pulsing with #6B75FF light, floating frosted glass prismatic shapes, abstract light trails.
+Key content to be displayed: {BLOG_TITLE}
 
-Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects.
+Do not render these words as text. Translate the meaning into glowing geometric data streams, interconnected nodes, floating frosted glass shapes, and abstract light trails. Composition representing data flow in a sophisticated system.
 
-Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes.
+Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects on distant pathway nodes.
+
+Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes and light compositions.
 ```
 
 ## Required Output Format
@@ -236,7 +191,7 @@ Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMEN
 
 [Opening paragraphs with data-driven language and problem statement]
 
-After monitoring 160,000+ events, Lensmor found that [specific insight].
+[Data-driven insight with specific numbers].
 
 ## [Why Section]
 
@@ -265,19 +220,17 @@ As we discussed in [our previous article on event ROI](internal-slug), this stra
 
 [2-3 sentence summary of key takeaways]
 
-[IF Lensmor-related content, MUST include:]
-[Join Lensmor's closed beta](https://accounts.lensmor.com/waitlist) to experience
-event intelligence firsthand. Limited spots available for early adopters with special pricing.
+[If product-related, include relevant CTA]
 ```
 
 ## Pre-Publication Checklist
 
 Before finalizing any blog post, verify:
 - [ ] Includes 1+ comparison table (REQUIRED)
-- [ ] Uses data-driven language ("After monitoring X events...")
+- [ ] Uses data-driven language with specific numbers
 - [ ] 2-3 external links from WebSearch (real, authoritative)
 - [ ] 1-2 internal links from Webflow CMS (if applicable)
 - [ ] Minimal use of bullet lists (narrative paragraphs preferred)
-- [ ] If Lensmor-related: includes waitlist CTA link
+- [ ] If product-related: includes relevant CTA
 - [ ] 3+ Pro Tips included
 - [ ] 3+ inline images + 1 cover image
