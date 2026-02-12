@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'Skill/brand-guidelines/**' # 监听 brand-guidelines 目录的任何变动
+  workflow_dispatch: # 允许手动触发
 
 jobs:
   sync:
