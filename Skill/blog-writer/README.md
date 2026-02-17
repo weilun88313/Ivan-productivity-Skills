@@ -2,7 +2,6 @@
 
 ---
 
-
 # Blog Writer
 
 > Create high-ranking, SEO-friendly blog posts with AI-generated visuals
@@ -30,37 +29,30 @@ Create professional, actionable, and SEO-optimized blog posts following proven c
 # Install dependencies
 pip install requests
 
-# Set up Gemini API key
+# Set up API keys (Gemini + Fal.ai with automatic fallback)
 export GEMINI_API_KEY='your_api_key_here'
+export FAL_KEY='your_fal_key_here'
 
 # OR add to ~/.claude/lensmor_secrets.json
 {
-  "NANO_API_KEY": "your_api_key_here"
+  "NANO_API_KEY": "your_gemini_key",
+  "FAL_KEY": "your_fal_key"
 }
 ```
 
-### Basic Usage
+### Usage
 
-**Request a Blog Post**
-
+**Generate a blog post:**
 ```
-"Write a blog post about email marketing best practices"
+Write a blog post about email marketing best practices
 ```
 
-**Generate Images**
-
+**Generate images:**
 ```bash
-# Cover image
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
-  --prompt "Abstract email marketing data visualization, flowing connections, Linear dark mode aesthetic" \
+python scripts/generate_image.py \
+  --prompt "Abstract email marketing data visualization" \
   --output_dir workspace/blog/images \
   --filename cover
-
-# Inline images (repeat 3-5 times)
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
-  --prompt "Email inbox interface wireframe, clean UI mockup, dark mode" \
-  --output_dir workspace/blog/images \
-  --filename inline_1
 ```
 
 ## Content Structure
@@ -84,113 +76,62 @@ Posts follow a proven formula:
 
 ---
 
-[Article content starts here]
+[Article content]
 ```
-
-## Formatting Standards
-
-- **Paragraphs**: Maximum 3-4 lines, one idea each
-- **Headers**: H2 for main sections, H3 for subsections
-- **Lists**: Bullet points or numbered for steps
-- **Pro Tips**: Minimum 3 per article
-- **Tables**: Use markdown tables for comparisons
 
 ## Image Generation
 
-### Visual Style
-
-All images follow the **Linear dark mode aesthetic**:
-
-- **Style**: Minimalist, technical, modern, abstract
-- **Colors**: Deep charcoal backgrounds (#1a1a1a), violet-blue accents (#6B75FF)
-- **Elements**: Abstract shapes, data visualizations, geometric forms
+**Visual Style:** Linear dark mode aesthetic
+- **Colors**: Deep charcoal (#1a1a1a), violet-blue accents (#6B75FF)
 - **Quality**: 16:9 aspect ratio, high resolution (2K+)
-- **Text**: Minimal keywords only
+- **Content**: Abstract shapes, data visualizations, minimal text
 
-### Image Requirements
+**API Providers (with automatic fallback):**
+1. Gemini API (NANO_API_KEY)
+2. Fal.ai Nano Banana Pro (FAL_KEY)
 
-- **Cover Image**: Abstract header with Linear aesthetic
-- **Inline Images**: Minimum 3 per article supporting content sections
+See [visual-style-guide.md](references/visual-style-guide.md) for complete prompt templates.
 
-Use complete 5-paragraph structured templates from [references/visual-style-guide.md](references/visual-style-guide.md)
+## Related Skills
 
-### Generation Script
-
-```bash
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
-  --prompt "Your detailed prompt here" \
-  --output_dir "path/to/output" \
-  --filename "image_name"
-```
-
-## SEO Best Practices
-
-- **Title**: 50-60 characters, keyword-rich
-- **Meta Description**: 150-160 characters with benefit and CTA
-- **Slug**: `/blog/[category]/[keyword-slug]`
-- **Keywords**: Primary in title/H2/first paragraph, 1-2% density
-- **Internal Links**: 2-3 related articles per post
-
-## Workflow Integration
-
-Works seamlessly with [webflow-blog-publisher](../webflow-blog-publisher):
-
-```bash
-# 1. Write blog post (using AI)
-# 2. Generate images
-python Skill/hubspot-blog-writer/scripts/generate_image.py \
-  --prompt "..." \
-  --output_dir workspace/blog/images
-
-# 3. Publish to Webflow
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
-  --file workspace/blog/article.md \
-  --category strategy \
-  --publish
-```
+| Skill | Purpose |
+|-------|---------|
+| [keyword-research](../keyword-research/) | Find target keywords first |
+| [webflow-blog-publisher](../webflow-blog-publisher/) | Publish to Webflow |
+| [content-pipeline](../content-pipeline/) | Full automated workflow |
 
 ## Troubleshooting
 
-### API Key Not Found
-
-```bash
-# Option 1: Environment variable
-export GEMINI_API_KEY='your_key'
-
-# Option 2: Secrets file
-echo '{"NANO_API_KEY": "your_key"}' > ~/.claude/lensmor_secrets.json
-```
-
 ### Image Generation Fails
 
-- Simplify prompt if timeout occurs
-- Check internet connection
-- Avoid brand names or copyrighted content
+- **Region not supported**: Gemini API may fail in some regions. System auto-falls back to Fal.ai.
+- **Add Fal.ai key**: Configure `FAL_KEY` for reliable fallback
+- **Check API keys**: Verify both NANO_API_KEY and FAL_KEY are set
 
 ### Content Quality
 
-- Specify word count and target audience
-- Request specific tone: "Write in professional blog style"
-- Include data points and statistics
+- Specify word count: "Write 2000-2500 words"
+- Define target audience
+- Request specific tone: "professional blog style"
 
 ## File Structure
 
 ```
 blog-writer/
-├── README.md                  # This file
-├── SKILL.md                   # AI workflow instructions
+├── README.md              # This file
+├── SKILL.md               # AI instructions
 ├── scripts/
-│   ├── gemini_api.py         # Shared API client
-│   └── generate_image.py     # Image generation tool
+│   ├── image_generator.py # Unified API (Gemini + Fal.ai)
+│   └── generate_image.py  # Image generation tool
 └── references/
-    └── visual-style-guide.md # Detailed visual guidelines
+    └── visual-style-guide.md # Image templates
 ```
 
 ## Resources
 
 - [SKILL.md](SKILL.md) - Detailed AI instructions
 - [Visual Style Guide](references/visual-style-guide.md) - Image templates
-- [Webflow Blog Publisher](../webflow-blog-publisher) - Publishing integration
+- [WORKFLOW.md](WORKFLOW.md) - Complete workflow guide
 
 ---
 
