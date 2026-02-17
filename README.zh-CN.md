@@ -3,15 +3,21 @@
 
 # Ivan 的生产力技能合集
 
-用于内容创作、社交媒体和工作流自动化的生产就绪 AI 技能。
+用于内容创作、社交媒体、销售自动化和工作流自动化的生产就绪 AI 技能。
 
 ## 📚 可用技能 (14 个)
 
-### 🎨 内容创作
+### 🌐 官网博客
+
+**[keyword-research](./Skill/keyword-research/)** - 使用 Ahrefs API 集成发现高价值关键词以进行 SEO 策略
 
 **[blog-writer](./Skill/blog-writer/)** - 生成 SEO 优化博客文章，配有 AI 生成的 Linear 风格插图
 
-**[pptx](./Skill/pptx/)** - 创建遵循 Linear 设计风格的 AI 生成视觉内容的演示文稿幻灯片
+**[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - 将 Markdown 文章发布到 Webflow CMS，并自动上传图片
+
+**[content-pipeline](./Skill/content-pipeline/)** - 端到端自动化：研究 → 撰写 → 图片 → 发布
+
+### 📱 社交媒体
 
 **[linkedin-post-writer](./Skill/linkedin-post-writer/)** - 创建具有品牌一致格式的专业 LinkedIn 帖子
 
@@ -19,19 +25,13 @@
 
 **[jike-post-writer](./Skill/jike-post-writer/)** - 为即刻社交平台创建内容
 
-### 📤 发布与自动化
+### 💼 销售自动化
 
-**[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - 将 Markdown 文章发布到 Webflow CMS，并自动上传图片
-
-**[content-pipeline](./Skill/content-pipeline/)** - 端到端工作流：研究 → 撰写 → 图片 → 发布
-
-### 🔍 研究与情报
-
-**[keyword-research](./Skill/keyword-research/)** - 使用 Ahrefs API 集成发现高价值关键词以进行 SEO 策略
-
-**[50k-lead-generation-system](./Skill/50k-lead-generation-system/)** - 自动化潜在客户生成和触达系统
+**[50k-lead-generation-system](./Skill/50k-lead-generation-system/)** - 自动化 B2B 潜在客户生成和触达系统
 
 ### 🛠️ 开发工具
+
+**[pptx](./Skill/pptx/)** - 创建遵循 Linear 设计风格的 AI 生成视觉内容的演示文稿幻灯片
 
 **[skill-creator](./Skill/skill-creator/)** - 使用双语文档模板搭建新技能
 
@@ -58,7 +58,7 @@ cp ~/.claude/lensmor_secrets.json.example ~/.claude/lensmor_secrets.json
 # 编辑并添加您的密钥
 ```
 
-### 示例：内容创作工作流
+### 示例：官网博客工作流
 
 ```bash
 # 1. 研究关键词
@@ -77,6 +77,12 @@ cd ../webflow-blog-publisher
 python scripts/publish_to_webflow.py --file ../../workspace/blog/article.md --publish
 ```
 
+**或使用完整管道：**
+```bash
+cd Skill/content-pipeline
+# "Run the content pipeline for AI content marketing"
+```
+
 ---
 
 ## 📖 文档
@@ -89,7 +95,7 @@ python scripts/publish_to_webflow.py --file ../../workspace/blog/article.md --pu
 
 **关键资源：**
 - [技能开发指南](./SKILL_DEVELOPMENT_GUIDELINES.md)
-- [内容工作流指南](./Skill/content-pipeline/README.md)
+- [内容管道指南](./Skill/content-pipeline/README.md)
 
 ---
 
@@ -104,7 +110,8 @@ python scripts/publish_to_webflow.py --file ../../workspace/blog/article.md --pu
   "Ahrefs_API_TOKEN": "your_ahrefs_token",
   "WEBFLOW_API_TOKEN": "your_webflow_token",
   "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
-  "WEBFLOW_SITE_ID": "your_site_id"
+  "WEBFLOW_SITE_ID": "your_site_id",
+  "APOLLO_API_KEY": "your_apollo_key"
 }
 ```
 
@@ -123,6 +130,8 @@ export Ahrefs_API_TOKEN="your_token"
 - **Gemini API / Fal.ai** - AI 图像生成（自动回退）
 - **Ahrefs API v3** - SEO 关键词研究
 - **Webflow API v2** - CMS 发布
+- **Apollo.io** - 潜在客户数据源
+- **n8n** - 工作流自动化
 - **Markdown** - 内容格式
 
 ---
@@ -143,4 +152,4 @@ export Ahrefs_API_TOKEN="your_token"
 
 ---
 
-**用 ❤️ 构建，旨在实现高效内容创作和工作流自动化**
+**用 ❤️ 构建，旨在实现高效内容创作、社交媒体和销售自动化**
