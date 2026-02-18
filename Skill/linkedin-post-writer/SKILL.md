@@ -94,51 +94,94 @@ Identify which scenario applies:
 
 ### Step 3: Generate Image
 
-1. **Extract Visual Concept**
-   - Identify the core message or metaphor
-   - Determine appropriate image style:
-     - Concept illustration (abstract ideas)
-     - Data visualization (numbers/trends)
-     - Scene composition (scenarios)
-     - Icon-based (simple concepts)
+**IMPORTANT: Always generate BOTH image styles for the user to choose from.**
 
-2. **Create Image Prompt**
-   - Use enhancement techniques from `scripts/generate_image.py`
-   - Follow image guidelines in `references/brand_persona.md`:
-     - Clean, modern, professional aesthetic
-     - Vibrant but professional colors (blues, teals, oranges)
-     - Minimal text overlay
-     - Suitable for business social media
-   - **CRITICAL**: Always include "high resolution, 2K quality, professional photography quality" in prompts
+1. **Two Image Styles**
 
-3. **Generate Image**
-   - **Default Settings**:
-     - Aspect Ratio: **16:9** (optimized for LinkedIn)
-     - Output Directory: `/Users/ivan/Documents/Ivan_Skills/workspace`
-     - Quality: 2K, high resolution
+   Generate two images for every LinkedIn post:
 
-   - Run the image generation script:
-     ```bash
-     python scripts/generate_image.py --prompt "YOUR_PROMPT" \
-       --enhance \
-       --output_dir /Users/ivan/Documents/Ivan_Skills/workspace \
-       --filename linkedin_post \
-       --aspect-ratio 16:9
-     ```
-   - Or call the script with the post content to auto-enhance:
-     ```bash
-     python scripts/generate_image.py --prompt "POST_CONTENT" \
-       --enhance \
-       --style "modern, professional, tech-focused, high resolution, 2K quality" \
-       --aspect-ratio 16:9 \
-       --output_dir /Users/ivan/Documents/Ivan_Skills/workspace
-     ```
+   | Style | When to Use | Visual Characteristics |
+   |-------|-------------|----------------------|
+   | **Linear Dark Mode** | Tech/AI/abstract concepts, frameworks, formulas | Deep charcoal background (#1a1a1a), violet-blue accent (#6B75FF), abstract geometric shapes, glowing connections |
+   | **Photo Infographic** | Personal branding, opinionated content, human-centered | Real photo with Apple-style minimalism, clean labels, natural background |
 
-4. **Review Image**
-   - Ensure image aligns with message
-   - Check visual quality and professionalism (2K quality)
-   - Verify it matches brand aesthetic
-   - Confirm 16:9 aspect ratio
+2. **Generate Both Images with blog-image-generator**
+
+   **Image 1: Linear Dark Mode** (abstract, no person):
+   ```bash
+   cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
+
+   python scripts/generate.py \
+     --platform linkedin \
+     --type inline \
+     --prompt "[Topic description with key concepts]" \
+     --output /Users/ivan/Documents/Ivan_Skills/workspace/[post_name]_linear.png \
+     --aspect-ratio 16:9
+   ```
+
+   **Image 2: Photo Infographic** (with user's photo):
+   ```bash
+   cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
+
+   # Determine emotion based on topic mood:
+   # - thinking: for analytical, reflective content
+   # - excited: for positive news, breakthroughs
+   # - shocked: for surprising insights
+   # - worried: for challenges, problems
+   # - confused: for complex topics
+   # - amazed: for impressive results
+
+   python scripts/generate.py \
+     --platform linkedin \
+     --type photo_infographic \
+     --prompt "[Topic summary]" \
+     --labels "[LABEL1],[LABEL2],[LABEL3]" \
+     --emotion [thinking/excited/shocked/etc] \
+     --photo-url "/Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator/Avatar/1760175502370.jpeg" \
+     --output /Users/ivan/Documents/Ivan_Skills/workspace/[post_name]_photo.png \
+     --aspect-ratio 16:9
+   ```
+
+3. **Visual Style Guidelines - Linear Dark Mode**
+
+   - **Background**: Deep charcoal (#1a1a1a to #0a0a0a)
+   - **Accent color**: Violet-blue #6B75FF for highlights and connections
+   - **Elements**: Floating geometric shapes, data streams, glowing connection points
+   - **Style**: Minimalist, matte finish, abstract high-tech aesthetic
+   - **Labels allowed**: Simple short labels only (2-5 words max)
+   - **Negative constraints**: NO UI chrome, NO dashboards, NO browser frames
+
+4. **Visual Style Guidelines - Photo Infographic (Apple Minimalism)**
+
+   - **Background**: Real-life setting (office, home workspace) with natural light
+   - **Person**: User's photo as CHARACTER REFERENCE - can change expression/pose
+   - **Labels**: SF Pro style clean sans-serif, generous spacing, one accent color max
+   - **Colors**: White text, OR one accent (blue #0071E3, orange #FF6B35, green #00D68F)
+   - **Layout**: Generous negative space, precise alignment, minimal elements
+   - **Style**: Apple "Behind the Mac" aesthetic - premium, intentional, confident
+
+5. **Emotion Guide for Photo Infographic**
+
+   | Topic Mood | Emotion Parameter | Expression |
+  ------------|-------------------|------------|
+   | Analytical, reflective, explaining framework | `thinking` | Finger on chin, contemplative |
+   | Positive news, breakthrough, launch | `excited` | Warm smile, energetic, gesturing |
+   | Surprising insight, unexpected finding | `shocked` | Wide eyes, jaw dropped, surprised |
+   | Challenge, problem, concern | `worried` | Concerned, hand near face |
+   | Complex topic, uncertainty | `confused` | Head tilted, puzzled expression |
+   | Impressive result, mind-blown | `amazed` | Eyes wide, wonder, hands framing face |
+
+6. **Default Settings**
+   - Aspect Ratio: **16:9** (optimized for LinkedIn)
+   - Output Directory: `/Users/ivan/Documents/Ivan_Skills/workspace`
+   - Quality: 2K, high resolution
+   - Format: PNG
+   - User photo: `/Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator/Avatar/1760175502370.jpeg`
+
+7. **Output Both Images**
+   - Linear style: `[post_name]_linear.png`
+   - Photo style: `[post_name]_photo.png`
+   - Inform user that both styles are available for selection
 
 ### Step 4: Final Review & Output
 

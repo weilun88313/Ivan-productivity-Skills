@@ -5,13 +5,15 @@
 
 用于内容创作、社交媒体、销售自动化和工作流自动化的生产就绪 AI 技能。
 
-## 📚 可用技能 (14 个)
+## 📚 可用技能 (15 个)
 
 ### 🌐 官网博客
 
 **[keyword-research](./Skill/keyword-research/)** - 使用 Ahrefs API 集成发现高价值关键词以进行 SEO 策略
 
 **[blog-writer](./Skill/blog-writer/)** - 生成 SEO 优化博客文章，配有 AI 生成的 Linear 风格插图
+
+**[blog-image-generator](./Skill/blog-image-generator/)** - 统一 AI 图片生成服务，适用于所有平台（博客、LinkedIn、Twitter、即刻、PPTX）
 
 **[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - 将 Markdown 文章发布到 Webflow CMS，并自动上传图片
 
@@ -69,8 +71,9 @@ cd Skill/keyword-research
 cd ../blog-writer
 # "Write a blog post about AI content marketing best practices"
 
-# 3. 生成图片
-python scripts/generate_image.py --prompt "..." --output_dir workspace/blog/images
+# 3. 生成图片（使用统一的 blog-image-generator）
+cd ../blog-image-generator
+python scripts/generate.py --platform blog --type cover --prompt "AI 内容营销" --output ../../workspace/blog/images/cover.png
 
 # 4. 发布到 Webflow
 cd ../webflow-blog-publisher

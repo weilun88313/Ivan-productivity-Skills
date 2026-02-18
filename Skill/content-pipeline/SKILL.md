@@ -75,24 +75,59 @@ Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
 
 ## Phase 3: Generate Images
 
-Use Gemini API via the blog-writer image script.
+Use the unified **blog-image-generator** skill for all image generation.
 
 **Working directory**: `/Users/ivan/Documents/Ivan_Skills`
 
 **Cover image** (abstract, no text):
 ```bash
-python Skill/blog-writer/scripts/generate_image.py \
-  --prompt "Style: Abstract high-tech cover art, Linear app design. Dark mode, minimalist, futuristic. Color: #6B75FF glow on deep charcoal. Theme: [ABSTRACT METAPHOR FOR ARTICLE TOPIC]. Environment: Deep black void, subtle grid, shallow depth of field. Negative: NO TEXT, NO UI, NO DASHBOARDS, NO CHARTS." \
-  --output_dir workspace/blog/images \
-  --filename cover
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type cover \
+  --prompt "[ARTICLE TITLE]" \
+  --output workspace/blog/images/cover.png
 ```
 
 **Inline images** (conceptual, minimal labels):
 ```bash
-python Skill/blog-writer/scripts/generate_image.py \
-  --prompt "Style: Technical data visualization, Linear design. Dark mode, minimalist. Color: Charcoal background, #6B75FF accent. Concept: [DESCRIBE WHAT TO VISUALIZE]. Keywords: [2-3 SHORT LABELS ONLY]. Environment: Deep charcoal void. Negative: NO UI chrome, NO dashboards, NO browser frames." \
-  --output_dir workspace/blog/images \
-  --filename inline_N
+# Data cluster visualization
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type data_cluster \
+  --prompt "[DESCRIPTION OF DATA CLUSTERS]" \
+  --output workspace/blog/images/inline_1.png
+
+# Data flow visualization
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type data_flow \
+  --prompt "[DESCRIPTION OF DATA FLOW]" \
+  --output workspace/blog/images/inline_2.png
+
+# Segmentation visualization
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type segmentation \
+  --prompt "[DESCRIPTION OF SEGMENTS]" \
+  --output workspace/blog/images/inline_3.png
+```
+
+**Batch generation** (alternative for multiple images):
+```bash
+# Create prompts.json:
+{
+  "images": [
+    {"type": "cover", "prompt": "[ARTICLE TITLE]", "output": "cover.png"},
+    {"type": "inline", "prompt": "[CONCEPT 1]", "output": "inline_1.png"},
+    {"type": "inline", "prompt": "[CONCEPT 2]", "output": "inline_2.png"}
+  ]
+}
+
+# Run batch:
+python Skill/blog-image-generator/scripts/batch.py \
+  --platform blog \
+  --prompts prompts.json \
+  --output_dir workspace/blog/images
 ```
 
 After generating, update image paths in the markdown file to match actual filenames.

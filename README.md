@@ -5,13 +5,15 @@
 
 Production-ready AI skills for content creation, social media, sales automation, and workflow automation.
 
-## 📚 Available Skills (14 total)
+## 📚 Available Skills (15 total)
 
 ### 🌐 Official Website Blog
 
 **[keyword-research](./Skill/keyword-research/)** - Discover high-value keywords with Ahrefs API integration for SEO strategies
 
 **[blog-writer](./Skill/blog-writer/)** - Generate SEO-optimized blog posts with AI-generated Linear-style illustrations
+
+**[blog-image-generator](./Skill/blog-image-generator/)** - Unified AI image generation for all platforms (blog, LinkedIn, Twitter, Jike, PPTX)
 
 **[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - Publish markdown posts to Webflow CMS with automatic image upload
 
@@ -69,8 +71,9 @@ cd Skill/keyword-research
 cd ../blog-writer
 # "Write a blog post about AI content marketing best practices"
 
-# 3. Generate images
-python scripts/generate_image.py --prompt "..." --output_dir workspace/blog/images
+# 3. Generate images (using unified blog-image-generator)
+cd ../blog-image-generator
+python scripts/generate.py --platform blog --type cover --prompt "AI Content Marketing" --output ../../workspace/blog/images/cover.png
 
 # 4. Publish to Webflow
 cd ../webflow-blog-publisher
