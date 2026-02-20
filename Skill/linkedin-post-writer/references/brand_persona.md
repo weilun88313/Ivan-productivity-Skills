@@ -144,36 +144,42 @@ This document defines the personal brand, writing style, and content strategy fo
 
 ## Image Guidelines
 
-### Visual Style
+### Two Image Styles
+
+Every post generates two image styles for the user to choose from:
+
+#### Style 1: Linear Dark Mode
+Best for tech/AI/abstract concepts, frameworks, and formulas.
+- **Background**: Deep charcoal (#1a1a1a to #0a0a0a)
+- **Accent color**: Violet-blue #6B75FF for highlights and connections
+- **Elements**: Floating geometric shapes, data streams, glowing connection points
+- **Style**: Minimalist, matte finish, abstract high-tech aesthetic
+- **Labels**: Simple short labels only (2-5 words max)
+- **Constraints**: NO UI chrome, NO dashboards, NO browser frames
+
+#### Style 2: Photo Infographic (Apple Minimalism)
+Best for personal branding, opinionated content, and human-centered topics.
+- **Background**: Real-life setting (office, home workspace) with natural light
+- **Person**: User's photo as character reference - can change expression/pose
+- **Labels**: SF Pro style clean sans-serif, generous spacing, one accent color max
+- **Colors**: White text, OR one accent (blue #0071E3, orange #FF6B35, green #00D68F)
+- **Layout**: Generous negative space, precise alignment, minimal elements
+- **Style**: Apple "Behind the Mac" aesthetic - premium, intentional, confident
+
+### General Visual Principles
 - Clean, modern, and professional aesthetic
-- Vibrant but not overwhelming colors
-- Minimal text overlay (if any)
-- High quality and crisp imagery
+- High quality and crisp imagery (2K, 16:9)
 - Consistent visual language across posts
-- Professional but approachable feel
-
-### Image Types
-1. **Concept Illustrations**: Abstract representations of ideas using metaphors and symbols
-2. **Data Visualizations**: Charts, graphs, or infographics for data-driven posts
-3. **Scene Compositions**: Professional scenes related to tech, work, or innovation
-4. **Icon-Based**: Clean designs featuring relevant icons and minimal text
-5. **Metaphorical**: Visual metaphors that represent the core concept
-
-### Color Palette Preferences
-- **Primary**: Blues and teals (professional, tech-forward, trustworthy)
-- **Accent**: Warm oranges and yellows (approachable, energetic, optimistic)
-- **Supporting**: Purples (creative, innovative, forward-thinking)
-- **Neutral**: Clean whites and light grays (professional, clean, spacious)
-- Avoid: Dark or gloomy colors, overly saturated neon colors
+- Minimal text overlay
+- Eye-catching but not distracting from the message
+- Universal symbols that transcend language barriers
 
 ### Image Prompts Enhancement
 When generating images, consider:
 - The core message or metaphor of the post
 - Visual elements that represent the main concept
-- Professional but approachable aesthetic
+- Which style (Linear Dark Mode vs Photo Infographic) best fits the content type
 - Suitable for business social media context
-- Eye-catching but not distracting from the message
-- Universal symbols that transcend language barriers
 
 ## Quality Checklist
 

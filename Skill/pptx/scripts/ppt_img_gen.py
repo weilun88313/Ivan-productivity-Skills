@@ -4,9 +4,11 @@ Generates slide images from a plan JSON file using Gemini API.
 """
 
 import os
+import sys
 import json
 import time
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from gemini_api import GeminiImageGenerator
 
 
@@ -121,24 +123,100 @@ def build_prompt(slide, total_slides):
     content = slide.get("content", [])
     image_concept = slide.get("image_concept", "")
 
-    # Detect page type
     page_type = detect_page_type(slide_number, total_slides, title)
 
     # Format content as natural paragraphs (no bullet points)
     content_text = "\n\n".join(content) if content else ""
 
-    # Get page-specific template
     page_template = PAGE_TEMPLATES.get(page_type, PAGE_TEMPLATES["content"])
 
-    # Build page-specific prompt
     page_prompt = page_template.format(
         title=title,
         content=content_text,
         image_concept=image_concept
     )
 
-    # Combine global visual language + page-specific prompt
     return GLOBAL_VISUAL_LANGUAGE + "\n\n" + page_prompt, page_type
+
+
+def generate_single_slide(generator, slide, total_slides, output_dir, max_retries=3):
+    """Generate a single slide image with retry logic.
+
+    Returns (slide_number, title, success, filepath).
+    """
+    slide_number = slide.get("slide_number", 0)
+    title = slide.get("title", "Untitled")
+
+    full_prompt, page_type = build_prompt(slide, total_slides)
+
+    filename = f"slide_{slide_number:02d}.png"
+    filepath = os.path.join(output_dir, filename)
+
+    for attempt in range(1, max_retries + 1):
+        b64_data = generator.generate_image(full_prompt)
+        if b64_data:
+            if generator.save_image(b64_data, filepath):
+                return slide_number, title, page_type, True, filepath
+            else:
+                return slide_number, title, page_type, False, filepath
+
+        if attempt < max_retries:
+            wait = 2 ** attempt
+            print(f"  Slide {slide_number} attempt {attempt}/{max_retries} failed, retrying in {wait}s...")
+            time.sleep(wait)
+
+    return slide_number, title, page_type, False, filepath
+
+
+def run_sequential(generator, plan, output_dir, delay, max_retries):
+    """Generate slides sequentially."""
+    success_count = 0
+    for idx, slide in enumerate(plan):
+        slide_number = slide.get("slide_number", idx)
+        title = slide.get("title", "Untitled")
+        _, page_type = build_prompt(slide, len(plan))
+
+        print(f"\n[{idx + 1}/{len(plan)}] Generating: {title} ({page_type})")
+
+        sn, t, pt, success, fp = generate_single_slide(
+            generator, slide, len(plan), output_dir, max_retries
+        )
+
+        if success:
+            print(f"  ✓ Saved: {fp}")
+            success_count += 1
+        else:
+            print(f"  ✗ Failed: slide {sn}")
+
+        # Rate limiting between slides (skip after last)
+        if idx < len(plan) - 1:
+            time.sleep(delay)
+
+    return success_count
+
+
+def run_parallel(generator, plan, output_dir, max_workers, max_retries):
+    """Generate slides in parallel using a thread pool."""
+    success_count = 0
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(
+                generate_single_slide, generator, slide, len(plan), output_dir, max_retries
+            ): slide
+            for slide in plan
+        }
+
+        for future in as_completed(futures):
+            sn, title, page_type, success, fp = future.result()
+            label = f"[slide {sn}] {title} ({page_type})"
+            if success:
+                print(f"  ✓ {label} -> {fp}")
+                success_count += 1
+            else:
+                print(f"  ✗ {label} failed")
+
+    return success_count
 
 
 def main():
@@ -147,14 +225,19 @@ def main():
     )
     parser.add_argument("plan_file", help="Path to the plan JSON file")
     parser.add_argument("output_dir", help="Directory to save generated images")
-    parser.add_argument("--delay", type=float, default=1.0, help="Delay between API calls (seconds)")
+    parser.add_argument("--delay", type=float, default=1.0,
+                        help="Delay between API calls in sequential mode (seconds)")
+    parser.add_argument("--retries", type=int, default=3,
+                        help="Max retries per slide on failure (default: 3)")
+    parser.add_argument("--parallel", type=int, default=0,
+                        help="Number of parallel workers (0 = sequential, default: 0)")
 
     args = parser.parse_args()
 
     # Validate plan file
     if not os.path.isfile(args.plan_file):
         print(f"Error: Plan file not found: {args.plan_file}")
-        exit(1)
+        sys.exit(1)
 
     # Load plan
     try:
@@ -162,14 +245,14 @@ def main():
             plan = json.load(f)
     except json.JSONDecodeError as e:
         print(f"Error: Invalid JSON in plan file: {e}")
-        exit(1)
+        sys.exit(1)
     except Exception as e:
         print(f"Error reading plan file: {e}")
-        exit(1)
+        sys.exit(1)
 
     if not isinstance(plan, list) or len(plan) == 0:
         print("Error: Plan must be a non-empty array of slides")
-        exit(1)
+        sys.exit(1)
 
     # Create output directory
     os.makedirs(args.output_dir, exist_ok=True)
@@ -179,38 +262,19 @@ def main():
 
     print(f"Loaded plan with {len(plan)} slides.")
     print(f"Output directory: {args.output_dir}")
+    if args.parallel > 0:
+        print(f"Mode: parallel ({args.parallel} workers)")
+    else:
+        print(f"Mode: sequential (delay={args.delay}s)")
     print("=" * 60)
 
-    # Generate images for each slide
-    success_count = 0
-    for slide in plan:
-        slide_number = slide.get("slide_number", 0)
-        title = slide.get("title", "Untitled")
-
-        # Build prompt
-        full_prompt, page_type = build_prompt(slide, len(plan))
-
-        # Generate filename
-        filename = f"slide_{slide_number:02d}.png"
-        filepath = os.path.join(args.output_dir, filename)
-
-        print(f"\n[{slide_number + 1}/{len(plan)}] Generating: {title} ({page_type})")
-
-        # Generate image
-        b64_data = generator.generate_image(full_prompt)
-
-        if b64_data:
-            if generator.save_image(b64_data, filepath):
-                print(f"✓ Saved: {filepath}")
-                success_count += 1
-            else:
-                print(f"✗ Failed to save: {filepath}")
-        else:
-            print(f"✗ Failed to generate image for slide {slide_number}")
-
-        # Rate limiting
-        if slide_number < len(plan) - 1:
-            time.sleep(args.delay)
+    # Generate
+    if args.parallel > 0:
+        success_count = run_parallel(generator, plan, args.output_dir,
+                                     args.parallel, args.retries)
+    else:
+        success_count = run_sequential(generator, plan, args.output_dir,
+                                       args.delay, args.retries)
 
     # Summary
     print("\n" + "=" * 60)
@@ -218,7 +282,7 @@ def main():
 
     if success_count < len(plan):
         print(f"Warning: {len(plan) - success_count} slides failed to generate")
-        exit(1)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -101,8 +101,8 @@ def main():
     )
     parser.add_argument(
         "--output_dir",
-        default="/Users/ivan/Documents/Ivan_Skills/workspace",
-        help="Directory to save the image (default: /Users/ivan/Documents/Ivan_Skills/workspace)"
+        default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "workspace"),
+        help="Directory to save the image (default: ../../workspace relative to skill root)"
     )
     parser.add_argument(
         "--filename",

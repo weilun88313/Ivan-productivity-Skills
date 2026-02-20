@@ -7,6 +7,17 @@ description: "Transform fragmented ideas or topics into engaging LinkedIn posts 
 
 Transform fragmented ideas into engaging LinkedIn posts with compelling visuals that match your personal brand.
 
+## Path Configuration
+
+All paths below are relative to the skill root (`Skill/linkedin-post-writer/`).
+
+| Variable | Path |
+|----------|------|
+| `SKILL_ROOT` | The directory containing this SKILL.md |
+| `WORKSPACE` | `../../workspace` (relative to SKILL_ROOT) |
+| `BLOG_IMAGE_GENERATOR` | `../blog-image-generator` (sibling skill) |
+| `USER_PHOTO` | `../blog-image-generator/Avatar/1760175502370.jpeg` |
+
 ## Overview
 
 This skill helps you create LinkedIn posts in two primary scenarios:
@@ -16,8 +27,7 @@ This skill helps you create LinkedIn posts in two primary scenarios:
 **CRITICAL Requirements**:
 - All posts must be in **English**
 - Images must be **16:9 aspect ratio**, **2K quality**
-- Output directory: `/Users/ivan/Documents/Ivan_Skills/workspace`
-- **Markdown output**: Only include post content, NO hashtags, NO metadata, NO file info
+- Output directory: `WORKSPACE`
 - Posts follow a consistent brand voice (approachable and friendly)
 - AI-generated images reinforce the message
 
@@ -65,7 +75,6 @@ Identify which scenario applies:
    - Check tone is conversational and approachable
    - Verify clear hook and engaging closing
    - Add appropriate emojis (1-3)
-   - Include relevant hashtags (3-5)
 
 #### For Topic Development (Scenario B)
 
@@ -96,6 +105,8 @@ Identify which scenario applies:
 
 **IMPORTANT: Always generate BOTH image styles for the user to choose from.**
 
+Use the `blog-image-generator` sibling skill for all image generation.
+
 1. **Two Image Styles**
 
    Generate two images for every LinkedIn post:
@@ -105,23 +116,23 @@ Identify which scenario applies:
    | **Linear Dark Mode** | Tech/AI/abstract concepts, frameworks, formulas | Deep charcoal background (#1a1a1a), violet-blue accent (#6B75FF), abstract geometric shapes, glowing connections |
    | **Photo Infographic** | Personal branding, opinionated content, human-centered | Real photo with Apple-style minimalism, clean labels, natural background |
 
-2. **Generate Both Images with blog-image-generator**
+2. **Generate Both Images**
 
    **Image 1: Linear Dark Mode** (abstract, no person):
    ```bash
-   cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
+   cd BLOG_IMAGE_GENERATOR
 
    python scripts/generate.py \
      --platform linkedin \
      --type inline \
      --prompt "[Topic description with key concepts]" \
-     --output /Users/ivan/Documents/Ivan_Skills/workspace/[post_name]_linear.png \
+     --output WORKSPACE/[post_name]_linear.png \
      --aspect-ratio 16:9
    ```
 
    **Image 2: Photo Infographic** (with user's photo):
    ```bash
-   cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
+   cd BLOG_IMAGE_GENERATOR
 
    # Determine emotion based on topic mood:
    # - thinking: for analytical, reflective content
@@ -137,10 +148,12 @@ Identify which scenario applies:
      --prompt "[Topic summary]" \
      --labels "[LABEL1],[LABEL2],[LABEL3]" \
      --emotion [thinking/excited/shocked/etc] \
-     --photo-url "/Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator/Avatar/1760175502370.jpeg" \
-     --output /Users/ivan/Documents/Ivan_Skills/workspace/[post_name]_photo.png \
+     --photo-url "USER_PHOTO" \
+     --output WORKSPACE/[post_name]_photo.png \
      --aspect-ratio 16:9
    ```
+
+   > **Note**: Replace `BLOG_IMAGE_GENERATOR`, `WORKSPACE`, and `USER_PHOTO` with the actual paths from the Path Configuration table above.
 
 3. **Visual Style Guidelines - Linear Dark Mode**
 
@@ -163,7 +176,7 @@ Identify which scenario applies:
 5. **Emotion Guide for Photo Infographic**
 
    | Topic Mood | Emotion Parameter | Expression |
-  ------------|-------------------|------------|
+   |------------|-------------------|------------|
    | Analytical, reflective, explaining framework | `thinking` | Finger on chin, contemplative |
    | Positive news, breakthrough, launch | `excited` | Warm smile, energetic, gesturing |
    | Surprising insight, unexpected finding | `shocked` | Wide eyes, jaw dropped, surprised |
@@ -173,10 +186,10 @@ Identify which scenario applies:
 
 6. **Default Settings**
    - Aspect Ratio: **16:9** (optimized for LinkedIn)
-   - Output Directory: `/Users/ivan/Documents/Ivan_Skills/workspace`
+   - Output Directory: `WORKSPACE`
    - Quality: 2K, high resolution
    - Format: PNG
-   - User photo: `/Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator/Avatar/1760175502370.jpeg`
+   - User photo: `USER_PHOTO`
 
 7. **Output Both Images**
    - Linear style: `[post_name]_linear.png`
@@ -185,86 +198,30 @@ Identify which scenario applies:
 
 ### Step 4: Final Review & Output
 
-Use the quality checklist from `references/brand_persona.md`:
-
-- [ ] Tone is conversational and approachable
-- [ ] Contains personal insight or experience
-- [ ] Provides clear value or takeaway
-- [ ] Length is 300-800 characters
-- [ ] Opening hooks the reader
-- [ ] Closing invites engagement (question or call to action)
-- [ ] Language is accessible and relatable
-- [ ] Image aligns with message and brand aesthetic
-- [ ] Overall feel is authentic and genuine
+Run through the quality checklist in `references/brand_persona.md` to verify tone, structure, length, and engagement elements.
 
 **Output Format**:
-- Save post content as `.md` file in `/Users/ivan/Documents/Ivan_Skills/workspace`
-- **Include ONLY**: Post text content (with emojis if used)
-- **Exclude**: Hashtags, image metadata, post metrics, generated timestamp
+- Save post content as `.md` file in `WORKSPACE`
+- **Include**: Post text content (with emojis if used) and hashtags (3-5, placed at end of post)
+- **Exclude**: Image metadata, post metrics, generated timestamp
 - Markdown file should be clean and copy-paste ready for LinkedIn
 
 ## Quick Reference
 
 ### Post Structure Patterns
 
-See `references/post_templates.md` for detailed templates. Common patterns:
+See `references/post_templates.md` for detailed templates and examples.
 
-1. **Personal Story → Insight**: Share experience, extract lesson
-2. **Observation → Analysis**: Notice pattern, provide interpretation
-3. **Question → Exploration**: Pose question, explore perspectives
-4. **Tip List → Value**: Share actionable advice with context
-5. **Contrarian View → Debate**: Challenge assumption, invite discussion
+### Tone & Style
 
-### Tone Guidelines
-
-**Do**:
-- Use conversational language ("I recently discovered...", "Here's the thing...")
-- Share personal experiences and observations
-- Be authentic and show vulnerability
-- Invite engagement with questions
-- Use everyday language mixed with professional terms
-
-**Don't**:
-- Use overly formal or academic language
-- Write purely promotional content
-- Use excessive jargon without explanation
-- Present only theory without practical application
-- Write in a negative tone without constructive insight
-
-### Image Generation
-
-For image generation, the skill uses Gemini API through `scripts/generate_image.py`.
-
-**Basic usage**:
-```bash
-python scripts/generate_image.py "your image description" -o output.png
-```
-
-**With LinkedIn enhancement**:
-```bash
-python scripts/generate_image.py "your post content" --enhance --style "professional, tech-focused"
-```
-
-**Environment setup**:
-Set `GEMINI_API_KEY` environment variable or use `--api-key` flag.
+See `references/brand_persona.md` for complete voice guidelines, language patterns, and content themes.
 
 ## Resources
-
-### References
 
 - **`references/brand_persona.md`**: Complete brand voice, writing style, content themes, and quality standards
 - **`references/post_templates.md`**: Detailed post structures, templates, examples, and engagement optimization techniques
 
-### Scripts
-
-- **`scripts/generate_image.py`**: Generate images using Gemini API with LinkedIn-specific enhancements
-
-Load these references when you need:
-- Detailed guidance on writing style and tone
-- Specific post structure templates and examples
-- Image generation patterns and prompts
-- Quality assessment criteria
-- Hashtag strategies and engagement techniques
+Load these references when you need detailed guidance on writing style, post structure, or quality assessment.
 
 ## Examples
 

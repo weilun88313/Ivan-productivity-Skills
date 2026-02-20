@@ -27,7 +27,7 @@ Create professional, engaging LinkedIn posts from scattered thoughts or general 
 # Install dependencies
 pip install requests
 
-# Set up Gemini API key
+# Set up Gemini API key (or configure via secrets file)
 export GEMINI_API_KEY='your_api_key_here'
 ```
 
@@ -46,13 +46,25 @@ export GEMINI_API_KEY='your_api_key_here'
 "Write a LinkedIn post about team collaboration"
 ```
 
-**Generate Image:**
+**Generate Image (standalone):**
 ```bash
 python scripts/generate_image.py \
   --prompt "Your post content or description" \
   --aspect-ratio 16:9 \
-  --output_dir output
+  --output_dir output \
+  --filename my_post
 ```
+
+**With LinkedIn prompt enhancement:**
+```bash
+python scripts/generate_image.py \
+  --prompt "Your post content" \
+  --enhance \
+  --style "professional, tech-focused" \
+  --aspect-ratio 16:9
+```
+
+> **Note**: The primary image generation workflow uses the sibling `blog-image-generator` skill. The local `scripts/generate_image.py` is available as a standalone fallback.
 
 ## Post Templates
 

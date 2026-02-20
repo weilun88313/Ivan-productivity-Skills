@@ -26,7 +26,7 @@
 # 安装依赖
 pip install requests
 
-# 设置 Gemini API 密钥
+# 设置 Gemini API 密钥（或通过 secrets 文件配置）
 export GEMINI_API_KEY='your_api_key_here'
 ```
 
@@ -45,13 +45,25 @@ export GEMINI_API_KEY='your_api_key_here'
 "写一篇关于团队协作的 LinkedIn 帖子"
 ```
 
-**生成图片：**
+**生成图片（独立使用）：**
 ```bash
 python scripts/generate_image.py \
   --prompt "你的帖子内容或描述" \
   --aspect-ratio 16:9 \
-  --output_dir output
+  --output_dir output \
+  --filename my_post
 ```
+
+**使用 LinkedIn 增强提示词：**
+```bash
+python scripts/generate_image.py \
+  --prompt "你的帖子内容" \
+  --enhance \
+  --style "professional, tech-focused" \
+  --aspect-ratio 16:9
+```
+
+> **注意**：主要的图片生成流程使用同级的 `blog-image-generator` Skill。本地的 `scripts/generate_image.py` 作为独立备用方案。
 
 ## 帖子模板
 

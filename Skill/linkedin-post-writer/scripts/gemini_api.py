@@ -12,7 +12,7 @@ try:
     # Try to import from the shared skill
     import sys
     import os
-    skill_path = os.path.expanduser("~/Documents/Ivan_Skills/Skill/blog-image-generator/scripts")
+    skill_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "blog-image-generator", "scripts")
     if skill_path not in sys.path:
         sys.path.insert(0, skill_path)
 
@@ -53,18 +53,19 @@ except ImportError:
             self.base_url = "https://generativelanguage.googleapis.com/v1beta"
 
         def _load_api_key(self):
-            key = os.environ.get("GEMINI_API_KEY")
-            if key:
-                return key
+            # Priority: secrets file first, then environment variable (consistent with primary class)
             try:
                 secrets_path = os.path.expanduser("~/.claude/lensmor_secrets.json")
                 with open(secrets_path, "r") as f:
                     secrets = json.load(f)
-                    return secrets.get("NANO_API_KEY")
+                    key = secrets.get("NANO_API_KEY")
+                    if key:
+                        return key
             except Exception:
-                return None
+                pass
+            return os.environ.get("GEMINI_API_KEY")
 
-        def generate_image(self, prompt, aspect_ratio="1:1", max_retries=3, timeout=180):
+        def generate_image(self, prompt, aspect_ratio="16:9", max_retries=3, timeout=180):
             url = f"{self.base_url}/{self.model_name}:generateContent?key={self.api_key}"
             payload = {
                 "contents": [{"parts": [{"text": prompt}]}],
