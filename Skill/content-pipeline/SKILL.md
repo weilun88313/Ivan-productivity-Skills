@@ -5,7 +5,7 @@ description: "End-to-end content pipeline: keyword research → blog writing →
 
 # Content Pipeline
 
-Orchestrates the full content workflow: keyword research → article writing → image generation → quality check → Webflow publishing.
+Orchestrates the full content workflow: CMS review → keyword research → article writing → image generation → quality check → Webflow publishing.
 
 ## When to Use
 
@@ -16,12 +16,35 @@ Orchestrates the full content workflow: keyword research → article writing →
 ## Workflow
 
 ```
-Phase 1: Keyword Research    →  User picks a topic + content type
-Phase 2: Write Article       →  Save to workspace/blog/
-Phase 3: Generate Images     →  Cover + inline (count based on article)
-Phase 4: Quality Gate        →  Auto-check before publishing
+Phase 0: CMS Review          →  Fetch existing articles, identify gaps
+Phase 1: Keyword Research     →  User picks a topic + content type
+Phase 2: Write Article        →  Save to workspace/blog/
+Phase 3: Generate Images      →  Cover + inline (count based on article)
+Phase 4: Quality Gate         →  Auto-check before publishing
 Phase 5: Publish to Webflow
 ```
+
+## Phase 0: CMS Review
+
+**Always run this first.** Fetch existing published articles to prevent content overlap and SEO cannibalization.
+
+```bash
+python Skill/webflow-blog-publisher/scripts/list_articles.py --published-only
+```
+
+After fetching, build a mental map of:
+
+1. **Existing topics and keywords** — list each article's title and target keyword
+2. **Content gaps** — what topics are missing from the current blog?
+3. **Cannibalization risks** — which existing articles could compete with a new topic for the same search queries?
+
+Keep this list available throughout Phase 1 and Phase 2. When proposing new topics in Phase 1, **cross-reference against existing articles** and flag any overlap.
+
+### Cannibalization Rules
+
+- **Same primary keyword**: Do NOT write a new article targeting the same primary keyword as an existing one. Either update the existing article or pick a different angle.
+- **Overlapping long-tail keywords**: Acceptable only if the new article has a clearly different search intent (e.g., existing = "what is X" informational, new = "X vs Y" commercial).
+- **Same topic cluster**: New articles in the same cluster should link to existing ones as internal links and cover a distinct subtopic.
 
 ## Phase 1: Keyword Research
 
@@ -42,9 +65,9 @@ Do this inline when the user has a clear topic in mind.
 
 3. Present a **short table** of top 5-8 article topic recommendations:
 
-   | # | Article Topic | Target Keyword | Intent | Competition |
-   |---|--------------|----------------|--------|-------------|
-   | 1 | ... | ... | ... | Low/Med/High |
+   | # | Article Topic | Target Keyword | Intent | Competition | Overlap with Existing? |
+   |---|--------------|----------------|--------|-------------|----------------------|
+   | 1 | ... | ... | ... | Low/Med/High | None / [article title] |
 
 ### Deep Mode (starting from scratch or SEO-critical content)
 
@@ -57,9 +80,9 @@ Invoke the **keyword-research** skill (`Skill/keyword-research/SKILL.md`) for re
 
 2. Present results in the keyword-research output format:
 
-   | # | Article Topic | Target Keyword | Volume | KD | Intent | GEO Potential |
-   |---|--------------|----------------|--------|-----|--------|---------------|
-   | 1 | ... | ... | ... | ... | ... | Yes/No |
+   | # | Article Topic | Target Keyword | Volume | KD | Intent | GEO Potential | Overlap with Existing? |
+   |---|--------------|----------------|--------|-----|--------|---------------|----------------------|
+   | 1 | ... | ... | ... | ... | ... | Yes/No | None / [article title] |
 
 If Ahrefs MCP is unavailable, fall back to Quick Mode with qualitative estimates.
 
@@ -75,6 +98,10 @@ If Ahrefs MCP is unavailable, fall back to Quick Mode with qualitative estimates
    | List article | 1,800–2,200 | Grouped items with narrative |
    | Comparison post | 2,200–2,800 | Side-by-side analysis + tables |
    | Pillar content | 2,800–3,000 | Comprehensive deep-dive |
+
+If the chosen topic overlaps with an existing article, explicitly confirm with the user whether to:
+- **Differentiate**: Write with a distinct angle/intent (explain the angle)
+- **Update**: Revise the existing article instead of creating a new one
 
 ## Phase 2: Write Article
 
@@ -102,12 +129,17 @@ Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
    - If Lensmor-related: include waitlist CTA (`https://accounts.lensmor.com/waitlist`)
    - No fake links — only include real, verified URLs
 
-3. Add image placeholders (`![description](images/filename.png)`) where visuals would enhance the content. Place them based on article needs:
+3. **Content differentiation** (informed by Phase 0):
+   - Do NOT reuse the same examples, statistics, or anecdotes as existing articles
+   - If covering a related topic, take a different angle (different audience segment, different use case, different stage of the funnel)
+   - Add internal links to related existing articles where natural
+
+4. Add image placeholders (`![description](images/filename.png)`) where visuals would enhance the content. Place them based on article needs:
    - Short articles (< 2,200 words): cover + 1-2 inline
    - Medium articles (2,200-2,800 words): cover + 2-3 inline
    - Long articles (> 2,800 words): cover + 3-4 inline
 
-4. Save to `workspace/blog/article.md` (relative to repository root).
+5. Save to `workspace/blog/article.md` (relative to repository root).
 
 **PAUSE (optional)**: If the user requested a review, or if the article topic is complex/sensitive, show a summary (title, structure outline, word count) and ask to confirm before generating images. Otherwise, continue directly.
 
@@ -149,6 +181,13 @@ python Skill/blog-image-generator/scripts/generate.py \
   --output workspace/blog/images/inline_N.png
 ```
 
+### Image differentiation
+
+To avoid visual repetition across blog posts:
+- **Vary the `--type`**: If a recent article used `data_cluster` + `data_flow`, try `segmentation` + `temporal` for the new one.
+- **Vary the concept prompt**: Even for similar topics, describe different visual metaphors. E.g., for two articles about lead generation, one could visualize "funnel stages as layered geometric platforms" while another visualizes "network graph of interconnected prospect nodes."
+- **Vary composition**: Alternate between horizontal flow layouts, radial/centered layouts, and layered depth layouts across articles.
+
 ### Batch generation (alternative for multiple images)
 
 ```bash
@@ -183,6 +222,8 @@ Before publishing, automatically verify these checks against the article:
 | Image files | All `![...](images/...)` paths resolve to existing files | List missing images |
 | CTA (Lensmor only) | Waitlist link present if article is Lensmor-related | Warn user |
 | No fake links | All URLs are real (verified via WebFetch if needed) | Flag suspicious URLs |
+| Content overlap | No major paragraph-level duplication with existing CMS articles | Flag overlapping sections |
+| SEO cannibalization | Primary keyword is not the same as any existing article's target keyword | Warn user, suggest differentiating |
 
 - If **all checks pass**: proceed to Phase 5.
 - If **any check fails**: report the failures and **PAUSE** for user decision (fix or publish anyway).
@@ -203,11 +244,15 @@ Optional flags:
 - `--writer [NAME]` — assign a specific writer persona (random if omitted)
 - `--collection_id [ID]` — override the default blog collection
 
+The sort field is automatically set to the number of published articles + 1.
+
 ## Decision Points (Where to Pause)
 
 | When | Question | Skip Condition |
 |------|----------|----------------|
+| After Phase 0 | None — informational only | Never skip the review itself |
 | After Phase 1 | "Which topic and content type?" | Never skip |
+| After Phase 1 (if overlap) | "Differentiate or update existing?" | Skip if no overlap detected |
 | After Phase 2 (optional) | "Article looks good? Continue to images?" | Skip unless user requested review or topic is sensitive |
 | After Phase 4 (if failures) | "Quality checks failed. Fix or publish anyway?" | Skip if all checks pass |
 | After Phase 5 | Report success/failure, share the result | Never skip |
@@ -226,6 +271,7 @@ workspace/blog/
 
 ## Error Handling
 
+- **CMS fetch fails**: Warn user that dedup check is unavailable, proceed with caution.
 - **Ahrefs MCP unavailable**: Fall back to Quick Mode keyword research with qualitative estimates.
 - **Image generation fails**: Log the error, continue with remaining images. Report failed images in Phase 4 quality gate.
 - **Webflow publish fails**: Print error details (status code, response). Check API token/secrets. Do not retry automatically.

@@ -218,12 +218,34 @@ def get_collection_fields(token, collection_id):
     return resp.json().get("fields", [])
 
 
-def get_item_count(token, collection_id):
-    """Get total number of items in a collection."""
-    resp = api_request("GET", f"/collections/{collection_id}/items?limit=1", token)
-    if not resp or resp.status_code != 200:
-        return 0
-    return resp.json().get("pagination", {}).get("total", 0)
+def get_item_count(token, collection_id, published_only=False):
+    """Get number of items in a collection.
+
+    Args:
+        published_only: If True, count only published (non-draft) items.
+    """
+    if not published_only:
+        resp = api_request("GET", f"/collections/{collection_id}/items?limit=1", token)
+        if not resp or resp.status_code != 200:
+            return 0
+        return resp.json().get("pagination", {}).get("total", 0)
+
+    # Count only published items by paginating through all items
+    count = 0
+    offset = 0
+    limit = 100
+    while True:
+        resp = api_request("GET", f"/collections/{collection_id}/items?limit={limit}&offset={offset}", token)
+        if not resp or resp.status_code != 200:
+            break
+        data = resp.json()
+        items = data.get("items", [])
+        count += sum(1 for item in items if not item.get("isDraft", True))
+        total = data.get("pagination", {}).get("total", 0)
+        offset += limit
+        if offset >= total or not items:
+            break
+    return count
 
 
 def find_item_by_slug(token, collection_id, slug):
@@ -415,10 +437,10 @@ def publish_blog(filepath, collection_id=None, publish=False,
     field_map = {f["slug"]: f for f in fields}
     print(f"  Found {len(fields)} fields: {', '.join(field_map.keys())}")
 
-    # Auto-detect sort from item count
-    total_items = get_item_count(token, collection_id)
-    sort_order = total_items + 1
-    print(f"  Existing items: {total_items}, new sort → {sort_order}")
+    # Auto-detect sort from published item count (drafts don't count)
+    published_count = get_item_count(token, collection_id, published_only=True)
+    sort_order = published_count + 1
+    print(f"  Published articles: {published_count}, new sort → {sort_order}")
 
     # === Build fieldData ===
     now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
