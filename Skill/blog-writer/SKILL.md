@@ -81,49 +81,35 @@ Lensmor's event intelligence platform. Limited spots available for early adopter
 
 ## Image Generation
 
-Images are generated **after** writing the article, using Gemini API.
+Images are generated **after** writing the article, using the unified **blog-image-generator** skill.
 
-**Script**: `Skill/blog-writer/scripts/generate_image.py`
+**Skill**: `Skill/blog-image-generator/SKILL.md`
 **Style Reference**: `Skill/blog-writer/references/visual-style-guide.md`
 
-Target: 1 cover image + 3 inline images.
+Target image count depends on article length:
+- Short (< 2,200 words): cover + 1-2 inline
+- Medium (2,200-2,800 words): cover + 2-3 inline
+- Long (> 2,800 words): cover + 3-4 inline
 
-**Cover Image Prompt Template** — only replace `{BLOG_TITLE}`, do NOT modify anything else:
-```
-Style: Abstract high-tech cover art, inspired by "Linear" app design. Dark mode UI, minimalist, clean, futuristic.
-
-Color Palette: Primary glowing light is hex code #6B75FF (neon violet-blue indigo). Soft, diffused glow on deep charcoal background.
-
-Key content to be displayed: {BLOG_TITLE}
-
-Do not render these words as text. Translate the meaning into glowing geometric data streams, interconnected nodes, floating frosted glass shapes, and abstract light trails. Composition representing data flow in a sophisticated system.
-
-Environment: Deep black void. Very subtle, barely visible isometric grid fading into darkness. Shallow depth of field with soft bokeh effects on distant pathway nodes.
-
-Negative Constraints: NO TEXT, NO LETTERS, NO WORDS, NO CHARACTERS, NO UI ELEMENTS, NO DASHBOARDS, NO CHARTS. Purely abstract visual shapes and light compositions.
-```
-
-**Inline Image Prompt Template** — use style template + paste the actual blog section text directly as the Concept. Do NOT abstract or rewrite the content:
-```
-Style: [Type of visualization] inspired by Linear design system. Dark mode, minimalist, clean conceptual schematic.
-
-Color Palette: Deep charcoal background (#1a1a1a), matte grey data structures, #6B75FF (violet-blue) accent for key highlights.
-
-Concept: [PASTE THE ACTUAL BLOG PARAGRAPH/SECTION THAT NEEDS AN ILLUSTRATION — do not rewrite or abstract it]
-
-Keywords Allowed: Simple labels only. Clean, legible sans-serif. NO paragraphs of text.
-
-Environment: Deep charcoal void with extremely subtle technical grid lines barely visible in background. No horizon line.
-
-Negative Constraints: NO product UI chrome, NO navigation bars, NO sidebars, NO browser frames, NO dashboard widgets, NO fake app interfaces.
-```
-
-**Generation Command:**
+**Cover image** (abstract, no text):
 ```bash
-python Skill/blog-writer/scripts/generate_image.py \
-  --prompt "FULL PROMPT HERE" \
-  --output_dir workspace/blog/images
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type cover \
+  --prompt "[ARTICLE TITLE]" \
+  --output workspace/blog/images/cover.png
 ```
+
+**Inline images** — choose `--type` based on content being visualized (`data_cluster`, `data_flow`, `segmentation`, `temporal`, or `inline` for general concepts):
+```bash
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type [CHOSEN_TYPE] \
+  --prompt "[DESCRIPTION]" \
+  --output workspace/blog/images/inline_N.png
+```
+
+See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-paragraph template format.
 
 ## Required Output Format
 

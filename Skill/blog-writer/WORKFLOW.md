@@ -26,21 +26,25 @@ The blog-writer skill creates a markdown file with metadata (title, slug, meta d
 
 ### 2. Generate Images
 
+Use the unified **blog-image-generator** skill:
+
 ```bash
 # Cover image (abstract, no text)
-python Skill/blog-writer/scripts/generate_image.py \
-  --prompt "FULL PROMPT" \
-  --output_dir workspace/blog/images \
-  --filename cover
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type cover \
+  --prompt "[ARTICLE TITLE]" \
+  --output workspace/blog/images/cover.png
 
-# Inline images (repeat for each)
-python Skill/blog-writer/scripts/generate_image.py \
-  --prompt "FULL PROMPT" \
-  --output_dir workspace/blog/images \
-  --filename inline_1
+# Inline images (repeat for each, choose --type per content)
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform blog \
+  --type [data_cluster|data_flow|segmentation|temporal|inline] \
+  --prompt "[DESCRIPTION]" \
+  --output workspace/blog/images/inline_1.png
 ```
 
-See `references/visual-style-guide.md` for prompt templates.
+See `references/visual-style-guide.md` for prompt templates and `Skill/blog-image-generator/SKILL.md` for the full API.
 
 ### 3. Publish to Webflow
 
