@@ -56,8 +56,8 @@
 pip install -r requirements.txt
 
 # 配置 API 密钥
-cp ~/.claude/lensmor_secrets.json.example ~/.claude/lensmor_secrets.json
-# 编辑并添加您的密钥
+cp .env.example .env
+# 编辑 .env 并添加您的密钥
 ```
 
 ### 示例：官网博客工作流
@@ -104,25 +104,25 @@ cd Skill/content-pipeline
 
 ## 🔐 配置
 
-将 API 密钥存储在 `~/.claude/lensmor_secrets.json` 中：
+将 `.env.example` 复制为 `.env` 并填入密钥：
 
-```json
-{
-  "NANO_API_KEY": "your_gemini_api_key",
-  "FAL_KEY": "your_fal_api_key",
-  "Ahrefs_API_TOKEN": "your_ahrefs_token",
-  "WEBFLOW_API_TOKEN": "your_webflow_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
-  "WEBFLOW_SITE_ID": "your_site_id",
-  "APOLLO_API_KEY": "your_apollo_key"
-}
+```bash
+cp .env.example .env
 ```
 
-或使用环境变量：
+```dotenv
+# .env
+GEMINI_API_KEY=your_gemini_api_key
+FAL_KEY=your_fal_api_key
+WEBFLOW_API_TOKEN=your_webflow_token
+WEBFLOW_BLOG_COLLECTION_ID=your_collection_id
+WEBFLOW_SITE_ID=your_site_id
+```
+
+或导出为环境变量：
 ```bash
 export GEMINI_API_KEY="your_key"
 export FAL_KEY="your_key"
-export Ahrefs_API_TOKEN="your_token"
 ```
 
 ---

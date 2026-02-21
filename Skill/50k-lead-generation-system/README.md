@@ -30,13 +30,10 @@ Automated B2B lead generation system that combines multiple data sources (Apollo
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure API keys
-# Add to ~/.claude/lensmor_secrets.json:
-{
-  "APOLLO_API_KEY": "your_apollo_key",
-  "LINKEDIN_COOKIE": "your_linkedin_session",
-  "OPENAI_API_KEY": "your_openai_key"
-}
+# Configure API keys — add to .env in the repository root:
+#   APOLLO_API_KEY=your_apollo_key
+#   LINKEDIN_COOKIE=your_linkedin_session
+#   OPENAI_API_KEY=your_openai_key
 ```
 
 ### Usage

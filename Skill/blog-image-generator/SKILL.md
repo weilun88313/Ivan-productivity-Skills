@@ -43,7 +43,7 @@ Each platform has unique requirements:
 
 ### Primary: Gemini API
 - Model: `models/gemini-3-pro-image-preview`
-- API key from: `NANO_API_KEY` or `GEMINI_API_KEY`
+- API key from: `GEMINI_API_KEY` (in `.env`)
 - Supports: 16:9, 1:1, 9:16, 4:3 aspect ratios
 
 ### Fallback: Fal.ai Nano Banana Pro

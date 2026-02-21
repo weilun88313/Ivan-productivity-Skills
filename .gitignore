@@ -21,6 +21,9 @@ Thumbs.db
 # Workspace (generated content - not for version control)
 workspace/
 
+# MCP config (contains API keys)
+.mcp.json
+
 # Secrets and credentials
 *.secrets.json
 *_secrets.json

@@ -25,7 +25,7 @@ try:
             """Initialize with backward-compatible API."""
             super().__init__()
             self.model_name = model_name
-            self.api_key = self.secrets.get("NANO_API_KEY") or os.environ.get("GEMINI_API_KEY")
+            self.api_key = os.environ.get("GEMINI_API_KEY")
 
         # Alias for backward compatibility
         def generate_image(self, prompt, aspect_ratio="16:9", max_retries=3, timeout=180):
@@ -36,34 +36,25 @@ except ImportError:
     # Fallback to local implementation if shared skill is not available
     import os
     import sys
-    import json
     import requests
     import base64
     import time
+
+    # Initialize environment from .env (with legacy JSON fallback)
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "scripts"))
+    import env_setup; env_setup.init_env()
 
     class GeminiImageGenerator:
         """Fallback local implementation when shared skill is unavailable."""
 
         def __init__(self, api_key=None, model_name="models/gemini-3-pro-image-preview"):
-            self.api_key = api_key or self._load_api_key()
+            self.api_key = api_key or os.environ.get("GEMINI_API_KEY")
             if not self.api_key:
                 print("Error: GEMINI_API_KEY not found.")
+                print("Add GEMINI_API_KEY to .env in the repository root. See .env.example.")
                 sys.exit(1)
             self.model_name = model_name
             self.base_url = "https://generativelanguage.googleapis.com/v1beta"
-
-        def _load_api_key(self):
-            # Priority: secrets file first, then environment variable (consistent with primary class)
-            try:
-                secrets_path = os.path.expanduser("~/.claude/lensmor_secrets.json")
-                with open(secrets_path, "r") as f:
-                    secrets = json.load(f)
-                    key = secrets.get("NANO_API_KEY")
-                    if key:
-                        return key
-            except Exception:
-                pass
-            return os.environ.get("GEMINI_API_KEY")
 
         def generate_image(self, prompt, aspect_ratio="16:9", max_retries=3, timeout=180):
             url = f"{self.base_url}/{self.model_name}:generateContent?key={self.api_key}"

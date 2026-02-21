@@ -30,7 +30,7 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 | `--publish` | No | Publish immediately (default: draft) |
 | `--collection_id` | No | Override collection ID from secrets |
 
-Credentials (`WEBFLOW_API_TOKEN`, `WEBFLOW_BLOG_COLLECTION_ID`, `WEBFLOW_SITE_ID`) are read from `~/.claude/lensmor_secrets.json` automatically.
+Credentials (`WEBFLOW_API_TOKEN`, `WEBFLOW_BLOG_COLLECTION_ID`, `WEBFLOW_SITE_ID`) are read from `.env` in the repository root automatically.
 
 ### What the Script Does
 

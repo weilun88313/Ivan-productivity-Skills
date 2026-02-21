@@ -30,12 +30,10 @@ Automates publishing blog posts to Webflow CMS. Handles markdown-to-HTML convers
 ```bash
 pip install requests markdown
 
-# Configure ~/.claude/lensmor_secrets.json
-{
-  "WEBFLOW_API_TOKEN": "your_api_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
-  "WEBFLOW_SITE_ID": "your_site_id"
-}
+# Configure .env in the repository root (see .env.example)
+#   WEBFLOW_API_TOKEN=your_api_token
+#   WEBFLOW_BLOG_COLLECTION_ID=your_collection_id
+#   WEBFLOW_SITE_ID=your_site_id
 ```
 
 See [references/webflow-setup-guide.md](references/webflow-setup-guide.md) for setup.
@@ -124,17 +122,15 @@ Writers stored in `assets/writers/writers.json`:
 
 ## Configuration
 
-Create `~/.claude/lensmor_secrets.json`:
+Add to `.env` in the repository root (see `.env.example`):
 
-```json
-{
-  "WEBFLOW_API_TOKEN": "your_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "collection_id",
-  "WEBFLOW_SITE_ID": "site_id"
-}
+```dotenv
+WEBFLOW_API_TOKEN=your_token
+WEBFLOW_BLOG_COLLECTION_ID=collection_id
+WEBFLOW_SITE_ID=site_id
 ```
 
-Or use environment variables (takes precedence):
+Or export as environment variables:
 
 ```bash
 export WEBFLOW_API_TOKEN='your_token'

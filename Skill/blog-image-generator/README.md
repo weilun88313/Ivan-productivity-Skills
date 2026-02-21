@@ -26,18 +26,12 @@ cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
 pip install requests
 ```
 
-3. Configure API keys in `~/.claude/lensmor_secrets.json`:
-```json
-{
-  "NANO_API_KEY": "your-gemini-api-key",
-  "FAL_KEY": "your-fal-ai-key"
-}
-```
-
-Or set environment variables:
+3. Configure API keys — copy `.env.example` to `.env` and fill in your keys:
 ```bash
-export GEMINI_API_KEY="your-gemini-api-key"
-export FAL_KEY="your-fal-ai-key"
+cp .env.example .env
+# Edit .env:
+#   GEMINI_API_KEY=your-gemini-api-key
+#   FAL_KEY=your-fal-ai-key
 ```
 
 ## Usage
@@ -210,7 +204,7 @@ python scripts/generate.py \
 
 The generator automatically tries providers in order:
 
-1. **Gemini API** (NANO_API_KEY / GEMINI_API_KEY)
+1. **Gemini API** (GEMINI_API_KEY)
 2. **Fal.ai Nano Banana Pro** (FAL_KEY)
 
 If one fails, it automatically tries the next available provider.

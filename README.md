@@ -56,8 +56,8 @@ Production-ready AI skills for content creation, social media, sales automation,
 pip install -r requirements.txt
 
 # Configure API keys
-cp ~/.claude/lensmor_secrets.json.example ~/.claude/lensmor_secrets.json
-# Edit and add your keys
+cp .env.example .env
+# Edit .env and add your keys
 ```
 
 ### Example: Official Website Blog Workflow
@@ -104,25 +104,25 @@ Each skill includes:
 
 ## 🔐 Configuration
 
-Store API keys in `~/.claude/lensmor_secrets.json`:
+Copy `.env.example` to `.env` and fill in your keys:
 
-```json
-{
-  "NANO_API_KEY": "your_gemini_api_key",
-  "FAL_KEY": "your_fal_api_key",
-  "Ahrefs_API_TOKEN": "your_ahrefs_token",
-  "WEBFLOW_API_TOKEN": "your_webflow_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
-  "WEBFLOW_SITE_ID": "your_site_id",
-  "APOLLO_API_KEY": "your_apollo_key"
-}
+```bash
+cp .env.example .env
 ```
 
-Or use environment variables:
+```dotenv
+# .env
+GEMINI_API_KEY=your_gemini_api_key
+FAL_KEY=your_fal_api_key
+WEBFLOW_API_TOKEN=your_webflow_token
+WEBFLOW_BLOG_COLLECTION_ID=your_collection_id
+WEBFLOW_SITE_ID=your_site_id
+```
+
+Or export as environment variables:
 ```bash
 export GEMINI_API_KEY="your_key"
 export FAL_KEY="your_key"
-export Ahrefs_API_TOKEN="your_token"
 ```
 
 ---

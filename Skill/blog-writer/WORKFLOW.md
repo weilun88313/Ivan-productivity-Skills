@@ -74,8 +74,8 @@ workspace/blog/
 pip install requests markdown
 ```
 
-Secrets in `~/.claude/lensmor_secrets.json`:
-- `NANO_API_KEY` — Gemini API
+API keys in `.env` (repository root):
+- `GEMINI_API_KEY` — Gemini API
 - `WEBFLOW_API_TOKEN` — Webflow API
 - `WEBFLOW_BLOG_COLLECTION_ID` — Blog collection
 - `WEBFLOW_SITE_ID` — Site for image uploads

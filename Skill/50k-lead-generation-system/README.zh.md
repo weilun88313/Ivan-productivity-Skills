@@ -30,13 +30,10 @@
 # 安装依赖
 pip install -r requirements.txt
 
-# 配置 API 密钥
-# 添加到 ~/.claude/lensmor_secrets.json：
-{
-  "APOLLO_API_KEY": "your_apollo_key",
-  "LINKEDIN_COOKIE": "your_linkedin_session",
-  "OPENAI_API_KEY": "your_openai_key"
-}
+# 配置 API 密钥 — 添加到仓库根目录的 .env：
+#   APOLLO_API_KEY=your_apollo_key
+#   LINKEDIN_COOKIE=your_linkedin_session
+#   OPENAI_API_KEY=your_openai_key
 ```
 
 ### 使用方法

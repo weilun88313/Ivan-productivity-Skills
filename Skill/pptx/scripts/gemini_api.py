@@ -8,6 +8,10 @@ import sys
 import base64
 import requests
 
+# Initialize environment from .env (with legacy JSON fallback)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "scripts"))
+import env_setup; env_setup.init_env()
+
 
 class GeminiImageGenerator:
     """Gemini API client for generating slide images."""

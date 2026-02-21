@@ -29,15 +29,11 @@ Create professional, actionable, and SEO-optimized blog posts following proven c
 # Install dependencies
 pip install requests
 
-# Set up API keys (Gemini + Fal.ai with automatic fallback)
-export GEMINI_API_KEY='your_api_key_here'
-export FAL_KEY='your_fal_key_here'
-
-# OR add to ~/.claude/lensmor_secrets.json
-{
-  "NANO_API_KEY": "your_gemini_key",
-  "FAL_KEY": "your_fal_key"
-}
+# Set up API keys — copy .env.example to .env and fill in your keys
+cp .env.example .env
+# Edit .env:
+#   GEMINI_API_KEY=your_api_key_here
+#   FAL_KEY=your_fal_key_here
 ```
 
 ### Usage
@@ -87,7 +83,7 @@ Posts follow a proven formula:
 - **Content**: Abstract shapes, data visualizations, minimal text
 
 **API Providers (with automatic fallback):**
-1. Gemini API (NANO_API_KEY)
+1. Gemini API (GEMINI_API_KEY)
 2. Fal.ai Nano Banana Pro (FAL_KEY)
 
 See [visual-style-guide.md](references/visual-style-guide.md) for complete prompt templates.
@@ -106,7 +102,7 @@ See [visual-style-guide.md](references/visual-style-guide.md) for complete promp
 
 - **Region not supported**: Gemini API may fail in some regions. System auto-falls back to Fal.ai.
 - **Add Fal.ai key**: Configure `FAL_KEY` for reliable fallback
-- **Check API keys**: Verify both NANO_API_KEY and FAL_KEY are set
+- **Check API keys**: Verify both GEMINI_API_KEY and FAL_KEY are set in .env
 
 ### Content Quality
 

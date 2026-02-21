@@ -9,8 +9,8 @@
       "public": "mycompany"
     },
     "secrets_file": {
-      "private": "lensmor_secrets.json",
-      "public": "secrets.json"
+      "private": ".env",
+      "public": ".env"
     },
     "company_description": {
       "private": "Lensmor platform",

@@ -93,7 +93,7 @@ git push origin main
 ### 1. 品牌名称替换
 - `Lensmor` → `MyCompany`
 - `lensmor` → `mycompany`
-- `lensmor_secrets.json` → `secrets.json`
+- `.env` (unchanged)
 
 ### 2. 作者信息匿名化
 - 真实姓名和头像 → 示例占位符

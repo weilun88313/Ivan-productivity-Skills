@@ -105,7 +105,7 @@ def main():
 
     if not token or not collection_id:
         print("Error: WEBFLOW_API_TOKEN and WEBFLOW_BLOG_COLLECTION_ID required.")
-        print("Set in ~/.claude/lensmor_secrets.json or as environment variables.")
+        print("Add them to .env in the repository root. See .env.example.")
         return 1
 
     print(f"Fetching articles from collection {collection_id}...")

@@ -17,54 +17,44 @@ import requests
 import base64
 import time
 
+# Initialize environment from .env (with legacy JSON fallback)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "scripts"))
+import env_setup; env_setup.init_env()
+
 
 class ImageGenerator:
     """Unified image generation client with automatic fallback."""
 
     def __init__(self, secrets_path=None):
         """
-        Initialize with API keys from secrets file.
+        Initialize with API keys from environment variables.
 
         Args:
-            secrets_path: Optional path to secrets file (default: ~/.claude/lensmor_secrets.json)
+            secrets_path: Deprecated, ignored. Keys are loaded from .env.
         """
-        self.secrets = self._load_secrets(secrets_path)
         self.providers = self._get_available_providers()
         self.model_name = "models/gemini-3-pro-image-preview"
 
         if not self.providers:
             print("Error: No image generation API keys found.")
-            print("Please add to ~/.claude/lensmor_secrets.json:")
-            print("  - NANO_API_KEY (Gemini)")
-            print("  - FAL_KEY (Fal.ai Nano Banana Pro)")
-            print("\nOr set environment variables:")
-            print("  - GEMINI_API_KEY")
-            print("  - FAL_KEY")
+            print("Please add to .env in the repository root:")
+            print("  GEMINI_API_KEY=your_key")
+            print("  FAL_KEY=your_key")
+            print("\nSee .env.example for the expected format.")
             sys.exit(1)
 
         print(f"Available providers: {', '.join(self.providers)}")
-
-    def _load_secrets(self, secrets_path=None):
-        """Load API keys from secrets file."""
-        try:
-            if secrets_path is None:
-                secrets_path = os.path.expanduser("~/.claude/lensmor_secrets.json")
-            with open(secrets_path, "r") as f:
-                return json.load(f)
-        except Exception as e:
-            # Silently return empty dict - will check environment variables
-            return {}
 
     def _get_available_providers(self):
         """Check which image generation providers are available."""
         providers = []
 
-        # Check Gemini (NANO_API_KEY or GEMINI_API_KEY)
-        if self.secrets.get("NANO_API_KEY") or os.environ.get("GEMINI_API_KEY"):
+        # Check Gemini
+        if os.environ.get("GEMINI_API_KEY"):
             providers.append("gemini")
 
-        # Check Fal.ai (FAL_KEY)
-        if self.secrets.get("FAL_KEY") or os.environ.get("FAL_KEY"):
+        # Check Fal.ai
+        if os.environ.get("FAL_KEY"):
             providers.append("fal")
 
         return providers
@@ -123,7 +113,7 @@ class ImageGenerator:
         Returns:
             Base64-encoded image data, or None if failed
         """
-        api_key = self.secrets.get("NANO_API_KEY") or os.environ.get("GEMINI_API_KEY")
+        api_key = os.environ.get("GEMINI_API_KEY")
         model = "models/gemini-3-pro-image-preview"
         url = f"https://generativelanguage.googleapis.com/v1beta/{model}:generateContent?key={api_key}"
 
@@ -205,7 +195,7 @@ class ImageGenerator:
         Returns:
             Base64-encoded image data, or None if failed
         """
-        api_key = self.secrets.get("FAL_KEY") or os.environ.get("FAL_KEY")
+        api_key = os.environ.get("FAL_KEY")
         url = "https://queue.fal.run/fal-ai/nano-banana-pro"
 
         # Map aspect ratio to Fal's format
@@ -350,7 +340,7 @@ class ImageGenerator:
         Returns:
             Base64-encoded image data, or None if failed
         """
-        api_key = self.secrets.get("FAL_KEY") or os.environ.get("FAL_KEY")
+        api_key = os.environ.get("FAL_KEY")
 
         # Load input image
         image_b64 = self._load_image_as_base64(image_path)
@@ -497,7 +487,7 @@ class GeminiImageGenerator(ImageGenerator):
         """
         super().__init__()
         self.model_name = model_name
-        self.api_key = self.secrets.get("NANO_API_KEY") or os.environ.get("GEMINI_API_KEY")
+        self.api_key = os.environ.get("GEMINI_API_KEY")
 
     def generate_image(self, prompt, aspect_ratio="16:9", max_retries=3, timeout=180):
         """

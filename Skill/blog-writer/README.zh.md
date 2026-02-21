@@ -29,13 +29,10 @@
 # Install dependencies
 pip install requests
 
-# Set up Gemini API key
-export GEMINI_API_KEY='your_api_key_here'
-
-# OR add to ~/.claude/lensmor_secrets.json
-{
-  "NANO_API_KEY": "your_api_key_here"
-}
+# Set up API keys — copy .env.example to .env and fill in your keys
+cp .env.example .env
+# Edit .env:
+#   GEMINI_API_KEY=your_api_key_here
 ```
 
 ### 基本用法
@@ -153,11 +150,11 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 ### API密钥未找到
 
 ```bash
-# Option 1: Environment variable
-export GEMINI_API_KEY='your_key'
+# Option 1: Add to .env in repository root
+# GEMINI_API_KEY=your_key
 
-# Option 2: Secrets file
-echo '{"NANO_API_KEY": "your_key"}' > ~/.claude/lensmor_secrets.json
+# Option 2: Environment variable
+export GEMINI_API_KEY='your_key'
 ```
 
 ### 图片生成失败

@@ -5,9 +5,12 @@ Shared module for hubspot-blog-writer skill.
 
 import os
 import sys
-import json
 import requests
 import base64
+
+# Initialize environment from .env (with legacy JSON fallback)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "scripts"))
+import env_setup; env_setup.init_env()
 
 
 class GeminiImageGenerator:
@@ -19,29 +22,16 @@ class GeminiImageGenerator:
 
         if not self.api_key:
             print("Error: GEMINI_API_KEY not found.")
-            print("Please set it via:")
-            print("  1. Environment variable: export GEMINI_API_KEY='your_key'")
-            print("  2. Secrets file: ~/.claude/lensmor_secrets.json (key: NANO_API_KEY)")
+            print("Add GEMINI_API_KEY to .env in the repository root.")
+            print("See .env.example for the expected format.")
             sys.exit(1)
 
         self.model_name = model_name
         self.base_url = "https://generativelanguage.googleapis.com/v1beta"
 
     def _load_api_key(self):
-        """Load API key from environment or secrets file."""
-        # Try environment variable first
-        key = os.environ.get("GEMINI_API_KEY")
-        if key:
-            return key
-
-        # Try secrets file
-        try:
-            secrets_path = os.path.expanduser("~/.claude/lensmor_secrets.json")
-            with open(secrets_path, "r") as f:
-                secrets = json.load(f)
-                return secrets.get("NANO_API_KEY")
-        except Exception:
-            return None
+        """Load API key from environment (populated by env_setup)."""
+        return os.environ.get("GEMINI_API_KEY")
 
     def generate_image(self, prompt, aspect_ratio="16:9", max_retries=3, timeout=180):
         """

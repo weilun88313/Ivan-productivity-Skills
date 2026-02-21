@@ -26,16 +26,14 @@
 
 ## 3. Add Credentials to Secrets
 
-Add both values to `~/.claude/lensmor_secrets.json`:
+Add both values to `.env` in the repository root:
 
-```json
-{
-  "WEBFLOW_API_TOKEN": "your-token-here",
-  "WEBFLOW_BLOG_COLLECTION_ID": "your-collection-id-here"
-}
+```dotenv
+WEBFLOW_API_TOKEN=your-token-here
+WEBFLOW_BLOG_COLLECTION_ID=your-collection-id-here
 ```
 
-Or set as environment variables:
+Or export as environment variables:
 ```bash
 export WEBFLOW_API_TOKEN=your-token-here
 export WEBFLOW_BLOG_COLLECTION_ID=your-collection-id-here

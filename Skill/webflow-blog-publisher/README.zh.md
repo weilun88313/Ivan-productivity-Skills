@@ -29,12 +29,10 @@
 ```bash
 pip install requests markdown
 
-# Configure ~/.claude/lensmor_secrets.json
-{
-  "WEBFLOW_API_TOKEN": "your_api_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
-  "WEBFLOW_SITE_ID": "your_site_id"
-}
+# 配置仓库根目录的 .env（参考 .env.example）
+#   WEBFLOW_API_TOKEN=your_api_token
+#   WEBFLOW_BLOG_COLLECTION_ID=your_collection_id
+#   WEBFLOW_SITE_ID=your_site_id
 ```
 
 有关设置，请参阅 [references/webflow-setup-guide.md](references/webflow-setup-guide.md)。
@@ -123,17 +121,15 @@ Article content with **bold** and *italic* text.
 
 ## 配置
 
-创建 `~/.claude/lensmor_secrets.json`：
+在仓库根目录的 `.env` 中添加（参考 `.env.example`）：
 
-```json
-{
-  "WEBFLOW_API_TOKEN": "your_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "collection_id",
-  "WEBFLOW_SITE_ID": "site_id"
-}
+```dotenv
+WEBFLOW_API_TOKEN=your_token
+WEBFLOW_BLOG_COLLECTION_ID=collection_id
+WEBFLOW_SITE_ID=site_id
 ```
 
-或者使用环境变量（优先级更高）：
+或者导出为环境变量：
 
 ```bash
 export WEBFLOW_API_TOKEN='your_token'

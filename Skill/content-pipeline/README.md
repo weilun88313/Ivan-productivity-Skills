@@ -39,8 +39,8 @@ The pipeline will:
 pip install requests markdown
 ```
 
-API keys in `~/.claude/lensmor_secrets.json`:
-- `NANO_API_KEY` (Gemini image generation)
+API keys in `.env` (repository root):
+- `GEMINI_API_KEY` (Gemini image generation)
 - `WEBFLOW_API_TOKEN`
 - `WEBFLOW_BLOG_COLLECTION_ID`
 - `WEBFLOW_SITE_ID`

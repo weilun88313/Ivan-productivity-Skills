@@ -39,8 +39,8 @@ Research keywords, write an article, and publish to Webflow about [topic]
 pip install requests markdown
 ```
 
-API 密钥位于 `~/.claude/lensmor_secrets.json` 中：
-- `NANO_API_KEY` (Gemini 图像生成)
+API 密钥位于 `.env`（仓库根目录）中：
+- `GEMINI_API_KEY`（Gemini 图像生成）
 - `WEBFLOW_API_TOKEN`
 - `WEBFLOW_BLOG_COLLECTION_ID`
 - `WEBFLOW_SITE_ID`

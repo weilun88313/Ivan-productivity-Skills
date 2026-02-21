@@ -1,4 +1,5 @@
 import os
+import sys
 import re
 import json
 import argparse
@@ -8,6 +9,10 @@ import random
 import hashlib
 from datetime import datetime, timezone
 import requests
+
+# Initialize environment from .env (with legacy JSON fallback)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "scripts"))
+import env_setup; env_setup.init_env()
 
 try:
     import markdown
@@ -20,23 +25,16 @@ MAX_RETRIES = 3
 TIMEOUT = 30
 WORDS_PER_MINUTE = 200
 
-SECRETS_PATH = os.path.expanduser("~/.claude/lensmor_secrets.json")
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 WRITERS_PATH = os.path.join(SCRIPT_DIR, "..", "assets", "writers", "writers.json")
 
 
 def load_secrets():
-    """Load secrets from env vars, falling back to secrets file."""
-    secrets = {}
-    try:
-        with open(SECRETS_PATH, "r") as f:
-            secrets = json.load(f)
-    except Exception:
-        pass
+    """Load secrets from environment variables (populated by env_setup)."""
     return {
-        "token": os.environ.get("WEBFLOW_API_TOKEN") or secrets.get("WEBFLOW_API_TOKEN"),
-        "collection_id": os.environ.get("WEBFLOW_BLOG_COLLECTION_ID") or secrets.get("WEBFLOW_BLOG_COLLECTION_ID"),
-        "site_id": os.environ.get("WEBFLOW_SITE_ID") or secrets.get("WEBFLOW_SITE_ID"),
+        "token": os.environ.get("WEBFLOW_API_TOKEN"),
+        "collection_id": os.environ.get("WEBFLOW_BLOG_COLLECTION_ID"),
+        "site_id": os.environ.get("WEBFLOW_SITE_ID"),
     }
 
 
@@ -306,13 +304,13 @@ def publish_blog(filepath, collection_id=None, publish=False,
 
     if not token:
         print("Error: WEBFLOW_API_TOKEN not found.")
-        print("Set it via environment variable or add to ~/.claude/lensmor_secrets.json")
-        print("See references/webflow-setup-guide.md for instructions.")
+        print("Add WEBFLOW_API_TOKEN to .env in the repository root.")
+        print("See .env.example and references/webflow-setup-guide.md for instructions.")
         return None
 
     if not collection_id:
         print("Error: Collection ID not provided.")
-        print("Pass --collection_id or add WEBFLOW_BLOG_COLLECTION_ID to ~/.claude/lensmor_secrets.json")
+        print("Pass --collection_id or add WEBFLOW_BLOG_COLLECTION_ID to .env")
         return None
 
     # Parse the blog markdown
@@ -346,7 +344,7 @@ def publish_blog(filepath, collection_id=None, publish=False,
                 body_md = body_md.replace(img["original"], "")
     elif not site_id and (data["cover_image"] or data["inline_images"]):
         print(f"\n  Warning: WEBFLOW_SITE_ID not set, skipping image uploads.")
-        print(f"  Add WEBFLOW_SITE_ID to ~/.claude/lensmor_secrets.json to enable.")
+        print(f"  Add WEBFLOW_SITE_ID to .env to enable.")
         # Strip images if we can't upload
         body_md = re.sub(r"!\[([^\]]*)\]\([^)]*\)\n?", "", body_md)
 

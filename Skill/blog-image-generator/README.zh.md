@@ -26,18 +26,12 @@ cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
 pip install requests
 ```
 
-3. 在 `~/.claude/lensmor_secrets.json` 中配置 API 密钥：
-```json
-{
-  "NANO_API_KEY": "你的-gemini-api-密钥",
-  "FAL_KEY": "你的-fal-ai-密钥"
-}
-```
-
-或设置环境变量：
+3. 配置 API 密钥 — 将 `.env.example` 复制为 `.env` 并填入密钥：
 ```bash
-export GEMINI_API_KEY="你的-gemini-api-密钥"
-export FAL_KEY="你的-fal-ai-密钥"
+cp .env.example .env
+# 编辑 .env：
+#   GEMINI_API_KEY=你的-gemini-api-密钥
+#   FAL_KEY=你的-fal-ai-密钥
 ```
 
 ## 使用方法
@@ -170,7 +164,7 @@ slide_prompt = PPTPrompts.slide(
 
 生成器自动按顺序尝试提供商：
 
-1. **Gemini API** (NANO_API_KEY / GEMINI_API_KEY)
+1. **Gemini API** (GEMINI_API_KEY)
 2. **Fal.ai Nano Banana Pro** (FAL_KEY)
 
 如果一个失败，会自动尝试下一个可用的提供商。

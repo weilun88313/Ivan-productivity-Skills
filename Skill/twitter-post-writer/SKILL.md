@@ -32,7 +32,7 @@ python3 scripts/generate_twitter_image.py "your image prompt" --aspect-ratio 16:
 ```
 
 The script will:
-1. Load API key from `~/.claude/lensmor_secrets.json` (NANO_API_KEY)
+1. Load API key from `.env` (GEMINI_API_KEY)
 2. Generate high-quality image using Gemini 3 Pro
 3. Save to `twitter_image.png` in current directory
 4. Provide image for attachment to tweet
