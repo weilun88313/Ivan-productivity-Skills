@@ -59,6 +59,8 @@ The script expects markdown files with this header structure (produced by the Bl
 
 **Slug**: /blog/category/slug-name
 **Meta Description**: Summary text here
+**Primary Keywords**: keyword one, keyword two, keyword three
+**Reading Time**: 8
 **Cover Image**:
 ![description](images/cover.png)
 
@@ -74,6 +76,8 @@ The script expects markdown files with this header structure (produced by the Bl
 | `# Title` | `name` |
 | `**Slug**` | `slug` (last path segment) |
 | `**Meta Description**` | `meta-description` |
+| `**Primary Keywords**` | `primary-keywords` (PlainText, comma-separated) |
+| `**Reading Time**` | `reading-time` (Number, minutes only; falls back to auto-calc from word count) |
 | `**Cover Image**` | `thumbnail-image` + `large-image` (auto-uploaded to Webflow Assets) |
 | Body content (with images) | First `RichText` field (`details-01`), inline images auto-uploaded |
 | Current timestamp | `date`, `recently-updated` |

@@ -135,6 +135,12 @@ def parse_blog_markdown(filepath):
     meta_match = re.search(r"\*\*Meta Description\*\*:\s*(.+)", text)
     meta_desc = meta_match.group(1).strip() if meta_match else ""
 
+    keywords_match = re.search(r"\*\*Primary Keywords\*\*:\s*(.+)", text)
+    primary_keywords = keywords_match.group(1).strip() if keywords_match else ""
+
+    reading_time_match = re.search(r"\*\*Reading Time\*\*:\s*(\d+)", text)
+    reading_time = int(reading_time_match.group(1)) if reading_time_match else None
+
     # Extract cover image (in metadata section, before ---)
     cover_image = None
     cover_match = re.search(r"\*\*Cover Image\*\*:\s*\n?\s*!\[([^\]]*)\]\(([^)]+)\)", text)
@@ -164,6 +170,8 @@ def parse_blog_markdown(filepath):
         "title": title,
         "slug": slug,
         "meta_description": meta_desc,
+        "primary_keywords": primary_keywords,
+        "reading_time": reading_time if reading_time is not None else read_minutes,
         "body_md": body_md,
         "cover_image": cover_image,
         "inline_images": inline_images,
@@ -321,6 +329,8 @@ def publish_blog(filepath, collection_id=None, publish=False,
     print(f"  Meta: {data['meta_description'][:80]}...")
     print(f"  Cover image: {'yes' if data['cover_image'] else 'none'}")
     print(f"  Inline images: {len(data['inline_images'])}")
+    print(f"  Primary keywords: {data['primary_keywords'] or '(none)'}")
+    print(f"  Reading time: {data['reading_time']} min")
     print(f"  Read time: {data['read_time']}")
 
     # === Upload images to Webflow Assets ===
@@ -475,10 +485,20 @@ def publish_blog(filepath, collection_id=None, publish=False,
     if "recently-updated" in field_map:
         field_data["recently-updated"] = now_iso
 
-    # Read time
+    # Read time (legacy text field)
     if "read-time" in field_map:
         field_data["read-time"] = data["read_time"]
         print(f"  Mapped read-time → '{data['read_time']}'")
+
+    # Reading time (number field, minutes only)
+    if "reading-time" in field_map:
+        field_data["reading-time"] = data["reading_time"]
+        print(f"  Mapped reading-time → {data['reading_time']}")
+
+    # Primary keywords
+    if "primary-keywords" in field_map and data["primary_keywords"]:
+        field_data["primary-keywords"] = data["primary_keywords"]
+        print(f"  Mapped primary-keywords → '{data['primary_keywords']}'")
 
     # Sort order (auto)
     if "sort" in field_map:

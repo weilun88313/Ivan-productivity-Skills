@@ -113,6 +113,8 @@ Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
 
    **Slug**: /blog/[category]/[keyword-slug]
    **Meta Description**: [150-160 chars]
+   **Primary Keywords**: [primary keyword, secondary keyword, ...]
+   **Reading Time**: [estimated minutes, number only]
    **Cover Image**:
    ![description](images/cover.png)
 

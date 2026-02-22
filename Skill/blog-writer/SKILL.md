@@ -163,6 +163,8 @@ See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-pa
 
 **Slug**: /blog/[category]/[keyword-slug]
 **Meta Description**: [150-160 chars with keyword]
+**Primary Keywords**: [primary keyword, secondary keyword, ...]
+**Reading Time**: [estimated minutes, number only, e.g. 8]
 **Cover Image**:
 ![Cover description](images/cover.png)
 
@@ -193,6 +195,8 @@ See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-pa
 
 - [ ] 1+ comparison table
 - [ ] 3+ Pro Tips
+- [ ] Primary Keywords specified (comma-separated)
+- [ ] Reading Time specified (number of minutes)
 - [ ] If Lensmor-related: waitlist CTA link included
 - [ ] No fake URLs or placeholder links
 - [ ] Word count within target range
