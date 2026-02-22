@@ -226,6 +226,9 @@ Before publishing, automatically verify these checks against the article:
 | No fake links | All URLs are real (verified via WebFetch if needed) | Flag suspicious URLs |
 | Content overlap | No major paragraph-level duplication with existing CMS articles | Flag overlapping sections |
 | SEO cannibalization | Primary keyword is not the same as any existing article's target keyword | Warn user, suggest differentiating |
+| List syntax | All `1.` / `-` lists have a blank line before and after; no inline `<br>-` patterns | Fix lists to use standard markdown syntax |
+| Table syntax | All tables use pipe `\|` syntax with `\|---\|` header separator; no run-on text tables | Rebuild as proper markdown tables |
+| Heading syntax | No per-word `**bold**` in headings (e.g. `### **How** **do**...` is wrong) | Remove bold wrapping from heading text |
 
 - If **all checks pass**: proceed to Phase 5.
 - If **any check fails**: report the failures and **PAUSE** for user decision (fix or publish anyway).

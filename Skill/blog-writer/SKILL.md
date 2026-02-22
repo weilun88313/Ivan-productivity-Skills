@@ -107,9 +107,55 @@ Lensmor's event intelligence platform. Limited spots available for early adopter
 ## Formatting Rules
 
 - **Paragraphs**: Max 3-4 lines, bold key concepts
-- **Headers**: Clear H2/H3 hierarchy
+- **Headers**: Clear H2/H3 hierarchy; never bold every word in a heading (e.g., `### **How** **do** **you**...` is wrong — just write `### How do you...`)
 - **Avoid bullet lists** where possible — use narrative paragraphs or tables
 - **Pro Tips**: `**Pro Tip**: [Insider advice]` — include 3+ per article
+
+### Markdown Syntax (Critical for Webflow Publishing)
+
+The blog is published to Webflow via a markdown → HTML conversion pipeline. Incorrect markdown syntax produces broken formatting on the live site. Follow these rules strictly:
+
+**Lists must use standard markdown syntax with blank lines:**
+```markdown
+Introductory sentence:
+
+1. **Bold lead-in** followed by explanation text
+2. **Another item** with its details
+3. **Third item** and so on
+
+Next paragraph continues here.
+```
+
+Never write lists inline with `<br>` tags or embed list items inside a `<p>` block:
+```markdown
+<!-- WRONG — will break in Webflow -->
+Reps should record four things:
+1. the pain they described
+2. solutions they mentioned
+```
+
+The blank line before and after the list is **required** — without it the markdown parser treats the items as continuation of the paragraph.
+
+**Unordered lists follow the same rule:**
+```markdown
+The tool supports:
+
+- Feature one with description
+- Feature two with description
+- Feature three with description
+
+Next paragraph here.
+```
+
+**Tables must use pipe syntax with a header separator:**
+```markdown
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+```
+
+Never write table data as a run-on sentence. Every table needs the `|---|` header separator row or the markdown parser will not recognize it as a table.
 
 ## Links
 
@@ -200,6 +246,9 @@ See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-pa
 - [ ] If Lensmor-related: waitlist CTA link included
 - [ ] No fake URLs or placeholder links
 - [ ] Word count within target range
+- [ ] All lists (ordered/unordered) use standard markdown syntax with blank lines before and after
+- [ ] All tables use pipe `|` syntax with `|---|` header separator row
+- [ ] Headings contain plain text only — no per-word `**bold**` wrapping
 
 ## Related Skills
 
