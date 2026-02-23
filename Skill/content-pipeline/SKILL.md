@@ -34,16 +34,23 @@ python Skill/webflow-blog-publisher/scripts/list_articles.py --published-only
 
 After fetching, build a mental map of:
 
-1. **Existing topics and keywords** — list each article's title and target keyword
+1. **Existing primary keywords** — the script now shows each article's primary keyword in a dedicated column. This is the first keyword in the `primary-keywords` CMS field and must be unique across all articles.
 2. **Content gaps** — what topics are missing from the current blog?
 3. **Cannibalization risks** — which existing articles could compete with a new topic for the same search queries?
 
-Keep this list available throughout Phase 1 and Phase 2. When proposing new topics in Phase 1, **cross-reference against existing articles** and flag any overlap.
+Keep this list available throughout Phase 1 and Phase 2. When proposing new topics in Phase 1, **cross-reference against existing articles' primary keywords** and flag any overlap.
+
+### Keyword Convention
+
+Each article's `**Primary Keywords**` field uses a comma-separated list with a strict convention:
+- **First keyword** = the unique primary target keyword. This must not duplicate any existing article's primary keyword (the first keyword in their list).
+- **Remaining keywords** = secondary/supporting keywords. These may overlap across articles within the same topic cluster.
 
 ### Cannibalization Rules
 
 - **Same primary keyword**: Do NOT write a new article targeting the same primary keyword as an existing one. Either update the existing article or pick a different angle.
-- **Overlapping long-tail keywords**: Acceptable only if the new article has a clearly different search intent (e.g., existing = "what is X" informational, new = "X vs Y" commercial).
+- **Same intent, different wording**: Two primary keywords that map to the same search intent count as a conflict (e.g., "trade show lead capture" vs "how to capture leads at trade shows"). Check by asking: would Google show the same results for both queries?
+- **Overlapping secondary keywords**: Acceptable as long as the articles have clearly different primary keywords and search intents (e.g., existing = "what is X" informational, new = "X vs Y" commercial).
 - **Same topic cluster**: New articles in the same cluster should link to existing ones as internal links and cover a distinct subtopic.
 
 ## Phase 1: Keyword Research
@@ -114,6 +121,7 @@ Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
    **Slug**: /blog/[category]/[keyword-slug]
    **Meta Description**: [150-160 chars]
    **Primary Keywords**: [primary keyword, secondary keyword, ...]
+     ↑ First = unique primary target; rest = secondary (see Keyword Convention in Phase 0)
    **Reading Time**: [estimated minutes, number only]
    **Cover Image**:
    ![description](images/cover.png)

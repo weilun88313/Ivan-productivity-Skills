@@ -210,6 +210,8 @@ See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-pa
 **Slug**: /blog/[category]/[keyword-slug]
 **Meta Description**: [150-160 chars with keyword]
 **Primary Keywords**: [primary keyword, secondary keyword, ...]
+  ↑ First keyword = the unique primary target (must not duplicate any existing article's primary keyword).
+  Remaining keywords = secondary variations (may overlap across articles).
 **Reading Time**: [estimated minutes, number only, e.g. 8]
 **Cover Image**:
 ![Cover description](images/cover.png)

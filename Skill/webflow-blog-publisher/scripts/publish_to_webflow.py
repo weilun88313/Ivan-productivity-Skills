@@ -138,8 +138,11 @@ def parse_blog_markdown(filepath):
     keywords_match = re.search(r"\*\*Primary Keywords\*\*:\s*(.+)", text)
     primary_keywords = keywords_match.group(1).strip() if keywords_match else ""
 
-    reading_time_match = re.search(r"\*\*Reading Time\*\*:\s*(\d+)", text)
-    reading_time = int(reading_time_match.group(1)) if reading_time_match else None
+    reading_time_match = re.search(r"\*\*Reading Time\*\*:\s*(.+)", text)
+    reading_time = None
+    if reading_time_match:
+        digits = re.sub(r"[^\d]", "", reading_time_match.group(1))
+        reading_time = int(digits) if digits else None
 
     # Extract cover image (in metadata section, before ---)
     cover_image = None
