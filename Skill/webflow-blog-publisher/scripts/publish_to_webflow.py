@@ -156,6 +156,10 @@ def parse_blog_markdown(filepath):
     parts = text.split("\n---\n", 1)
     body_md = parts[1].strip() if len(parts) > 1 else text
 
+    # Strip FAQ section (appended after a horizontal rule at the end of the article)
+    faq_split = re.split(r"\n---\s*\n+## FAQ\b", body_md, maxsplit=1)
+    body_md = faq_split[0].rstrip()
+
     # Extract inline image paths and resolve to absolute paths
     inline_images = []
     for match in re.finditer(r"!\[([^\]]*)\]\(([^)]+)\)", body_md):

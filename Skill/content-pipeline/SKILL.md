@@ -156,12 +156,17 @@ Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
    - If covering a related topic, take a different angle (different audience segment, different use case, different stage of the funnel)
    - Add internal links to related existing articles where natural
 
-4. Add image placeholders (`![description](images/filename.png)`) where visuals would enhance the content. Place them based on article needs:
+4. Write a **FAQ section** at the end of the article (after the Conclusion, separated by `---`). Follow the FAQ format from `Skill/blog-writer/SKILL.md`:
+   - 3-7 questions derived from the article content
+   - Answers must be single-line plain text, under 256 characters each
+   - Target "People Also Ask" style queries
+
+5. Add image placeholders (`![description](images/filename.png)`) where visuals would enhance the content. Place them based on article needs:
    - Short articles (< 2,200 words): cover + 1-2 inline
    - Medium articles (2,200-2,800 words): cover + 2-3 inline
    - Long articles (> 2,800 words): cover + 3-4 inline
 
-5. Save to `workspace/blog/article.md` (relative to repository root).
+6. Save to `workspace/blog/article.md` (relative to repository root).
 
 **PAUSE (optional)**: If the user requested a review, or if the article topic is complex/sensitive, show a summary (title, structure outline, word count) and ask to confirm before generating images. Otherwise, continue directly.
 
@@ -249,6 +254,9 @@ Before publishing, automatically verify these checks against the article:
 | List syntax | All `1.` / `-` lists have a blank line before and after; no inline `<br>-` patterns | Fix lists to use standard markdown syntax |
 | Table syntax | All tables use pipe `\|` syntax with `\|---\|` header separator; no run-on text tables | Rebuild as proper markdown tables |
 | Heading syntax | No per-word `**bold**` in headings (e.g. `### **How** **do**...` is wrong) | Remove bold wrapping from heading text |
+| FAQ present | `## FAQ` section exists after `---` separator with 3-7 Q&A pairs | Add FAQ section |
+| FAQ answer format | All FAQ answers are single-line plain text (no HTML/markdown) | Rewrite as plain text |
+| FAQ answer length | All FAQ answers are under 256 characters | Shorten answers |
 
 - If **all checks pass**: proceed to Phase 6.
 - If **any check fails**: report the failures and **PAUSE** for user decision (fix or publish anyway).
@@ -262,6 +270,18 @@ python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
 ```
 
 Add `--publish` flag only if user confirms they want to go live immediately. Default is draft.
+
+### Publish FAQs
+
+After the blog post is published successfully, publish its FAQ items. Use the **blog item ID** returned by the blog publish step:
+
+```bash
+python Skill/webflow-blog-publisher/scripts/publish_faqs.py \
+  --file workspace/blog/article.md \
+  --blog-item-id <BLOG_ITEM_ID>
+```
+
+Add `--publish` if the blog was also published live. The script parses the `## FAQ` section from the markdown file, creates/updates FAQ CMS items linked to the blog via a reference field, and cleans up orphaned FAQs if the count decreased.
 
 The `--category` value is resolved dynamically against Webflow CMS. If the provided category doesn't match, the script lists all available categories. Common categories include `strategy`, `playbooks`, `teardowns`, but check Webflow for the current list.
 

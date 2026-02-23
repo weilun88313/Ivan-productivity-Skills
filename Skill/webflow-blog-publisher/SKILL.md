@@ -86,6 +86,62 @@ The script expects markdown files with this header structure (produced by the Bl
 | `--category` flag | `ref` (resolved to item ID) |
 | Auto: existing item count + 1 | `sort` |
 
+### Publish FAQs
+
+After publishing a blog post, publish its FAQ items to the FAQ CMS collection:
+
+```bash
+python Skill/webflow-blog-publisher/scripts/publish_faqs.py \
+  --file <blog-markdown-file> \
+  --blog-item-id <BLOG_ITEM_ID>
+```
+
+| Flag | Required | Description |
+|------|----------|-------------|
+| `--file` | Yes | Path to blog markdown file (same file used for blog publishing) |
+| `--blog-item-id` | Yes | Webflow item ID of the parent blog post (returned by `publish_to_webflow.py`) |
+| `--collection_id` | No | FAQ collection ID (default: `699bdef9a464252e0ab59b60`, or `WEBFLOW_FAQ_COLLECTION_ID` env var) |
+| `--publish` | No | Publish immediately (default: draft) |
+
+#### What the Script Does
+
+1. **Parses** the `## FAQ` section from the markdown file (after the `---` separator at the end)
+2. **Generates** deterministic slugs: `{blog-slug}-faq-{N}`
+3. **Creates or updates** FAQ CMS items (idempotent — safe to re-run)
+4. **Links** each FAQ to the parent blog post via the `related-blog-2` reference field
+5. **Cleans up** orphaned FAQs when the FAQ count decreases between runs
+
+#### FAQ CMS Field Mapping
+
+| Source | Webflow Field | Type |
+|--------|---------------|------|
+| Question text | `name` | PlainText |
+| Generated slug | `slug` | PlainText |
+| Answer text | `answer` | PlainText (singleLine) |
+| Blog item ID | `related-blog-2` | Reference → Blog |
+| Sequential index | `order` | Number |
+
+#### FAQ Format in Markdown
+
+The FAQ section must appear at the end of the article, after a horizontal rule:
+
+```markdown
+## Conclusion
+[conclusion content]
+
+---
+
+## FAQ
+
+**Q: Question text here?**
+A: Single-line plain text answer here.
+
+**Q: Another question?**
+A: Another answer (max 256 chars, no HTML/markdown).
+```
+
+The blog publisher (`publish_to_webflow.py`) automatically strips the FAQ section from the blog body HTML, so it won't appear in the published article.
+
 ### Notes
 
 - **Images**: Local images are auto-uploaded to Webflow Assets and replaced with CDN URLs. Requires `WEBFLOW_SITE_ID` in secrets. If Site ID is missing, images are stripped and must be uploaded manually.

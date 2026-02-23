@@ -157,6 +157,42 @@ Next paragraph here.
 
 Never write table data as a run-on sentence. Every table needs the `|---|` header separator row or the markdown parser will not recognize it as a table.
 
+## FAQ Generation
+
+Every article must include a FAQ section at the end, separated from the body by a horizontal rule (`---`). FAQs are published to a separate Webflow CMS collection, so the format must be exact.
+
+### Rules
+
+- **3-7 questions** per article, based on complexity.
+- Questions should target real search queries readers might ask (think "People Also Ask" on Google).
+- Answers must be **single-line plain text** — no HTML, no markdown formatting, no line breaks.
+- Each answer should be **under 256 characters**.
+- Place the FAQ section **after the Conclusion**, separated by `---`.
+
+### Format
+
+```markdown
+## Conclusion
+[Conclusion content]
+
+---
+
+## FAQ
+
+**Q: Question text here?**
+A: Single-line plain text answer here.
+
+**Q: Another question?**
+A: Another concise answer under 256 characters.
+```
+
+### Writing Tips
+
+- Derive questions naturally from the article's content — what would a reader still wonder after reading?
+- Front-load the answer with the key fact; keep it concise.
+- Avoid repeating the article body verbatim — summarize or rephrase.
+- Include a mix of definitional ("What is..."), practical ("How do you..."), and comparative ("What's the difference between...") questions.
+
 ## Links
 
 **External Links (2-3 per article):**
@@ -237,6 +273,19 @@ See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-pa
 
 ## Conclusion
 [2-3 sentence summary + CTA if Lensmor-related]
+
+---
+
+## FAQ
+
+**Q: First question derived from the article?**
+A: Concise single-line plain text answer under 256 characters.
+
+**Q: Second question?**
+A: Another concise answer.
+
+**Q: Third question?**
+A: Another concise answer.
 ```
 
 ## Pre-Publication Checklist
@@ -251,6 +300,9 @@ See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-pa
 - [ ] All lists (ordered/unordered) use standard markdown syntax with blank lines before and after
 - [ ] All tables use pipe `|` syntax with `|---|` header separator row
 - [ ] Headings contain plain text only — no per-word `**bold**` wrapping
+- [ ] FAQ section present with 3-7 Q&A pairs after `---` separator
+- [ ] All FAQ answers are single-line plain text (no markdown/HTML)
+- [ ] All FAQ answers are under 256 characters
 
 ## Related Skills
 
