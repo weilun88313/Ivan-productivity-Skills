@@ -9,13 +9,13 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 
 ## 路径配置
 
-所有路径相对于 Skill 根目录（`Skill/jike-post-writer/`）。
+所有路径相对于 Skill 根目录（`Skill/social-media/jike-post-writer/`）。
 
 | 变量 | 路径 |
 |------|------|
 | `SKILL_ROOT` | 本 SKILL.md 所在目录 |
-| `WORKSPACE` | `../../workspace`（相对于 SKILL_ROOT） |
-| `BLOG_IMAGE_GENERATOR` | `../blog-image-generator`（兄弟 Skill） |
+| `WORKSPACE` | `../../../workspace`（相对于 SKILL_ROOT） |
+| `BLOG_IMAGE_GENERATOR` | `../../blog-image-generator`（兄弟 Skill） |
 
 ## 关键要求
 

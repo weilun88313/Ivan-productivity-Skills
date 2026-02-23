@@ -9,14 +9,14 @@ Transform fragmented ideas into engaging LinkedIn posts with compelling visuals 
 
 ## Path Configuration
 
-All paths below are relative to the skill root (`Skill/linkedin-post-writer/`).
+All paths below are relative to the skill root (`Skill/social-media/linkedin-post-writer/`).
 
 | Variable | Path |
 |----------|------|
 | `SKILL_ROOT` | The directory containing this SKILL.md |
-| `WORKSPACE` | `../../workspace` (relative to SKILL_ROOT) |
-| `BLOG_IMAGE_GENERATOR` | `../blog-image-generator` (sibling skill) |
-| `USER_PHOTO` | `../blog-image-generator/Avatar/未标题-1.jpg` |
+| `WORKSPACE` | `../../../workspace` (relative to SKILL_ROOT) |
+| `BLOG_IMAGE_GENERATOR` | `../../blog-image-generator` (sibling skill) |
+| `USER_PHOTO` | `../../blog-image-generator/Avatar/未标题-1.jpg` |
 
 ## Overview
 

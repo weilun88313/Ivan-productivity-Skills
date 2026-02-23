@@ -266,6 +266,6 @@ Part of Ivan's Skills collection.
 ## See Also
 
 - [blog-writer](../blog-writer/) - Generate SEO-optimized blog posts
-- [linkedin-post-writer](../linkedin-post-writer/) - Generate LinkedIn content
-- [twitter-post-writer](../twitter-post-writer/) - Generate Twitter content
+- [linkedin-post-writer](../social-media/linkedin-post-writer/) - Generate LinkedIn content
+- [twitter-post-writer](../social-media/twitter-post-writer/) - Generate Twitter content
 - [content-pipeline](../content-pipeline/) - End-to-end automation workflow

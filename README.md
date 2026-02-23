@@ -21,11 +21,11 @@ Production-ready AI skills for content creation, social media, sales automation,
 
 ### 📱 Social Media
 
-**[linkedin-post-writer](./Skill/linkedin-post-writer/)** - Create professional LinkedIn posts with brand-consistent formatting
+**[linkedin-post-writer](./Skill/social-media/linkedin-post-writer/)** - Create professional LinkedIn posts with brand-consistent formatting
 
-**[twitter-post-writer](./Skill/twitter-post-writer/)** - Generate engaging Twitter/X posts with viral optimization
+**[twitter-post-writer](./Skill/social-media/twitter-post-writer/)** - Generate engaging Twitter/X posts with viral optimization
 
-**[jike-post-writer](./Skill/jike-post-writer/)** - Create content for Jike (即刻) social platform
+**[jike-post-writer](./Skill/social-media/jike-post-writer/)** - Create content for Jike (即刻) social platform
 
 ### 💼 Sales Automation
 

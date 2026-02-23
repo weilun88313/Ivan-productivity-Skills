@@ -21,11 +21,11 @@
 
 ### 📱 社交媒体
 
-**[linkedin-post-writer](./Skill/linkedin-post-writer/)** - 创建具有品牌一致格式的专业 LinkedIn 帖子
+**[linkedin-post-writer](./Skill/social-media/linkedin-post-writer/)** - 创建具有品牌一致格式的专业 LinkedIn 帖子
 
-**[twitter-post-writer](./Skill/twitter-post-writer/)** - 生成具有病毒式传播优化的引人入胜的 Twitter/X 帖子
+**[twitter-post-writer](./Skill/social-media/twitter-post-writer/)** - 生成具有病毒式传播优化的引人入胜的 Twitter/X 帖子
 
-**[jike-post-writer](./Skill/jike-post-writer/)** - 为即刻社交平台创建内容
+**[jike-post-writer](./Skill/social-media/jike-post-writer/)** - 为即刻社交平台创建内容
 
 ### 💼 销售自动化
 
