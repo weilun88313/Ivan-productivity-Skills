@@ -11,9 +11,20 @@ Brainstorm, classify, and prioritize keywords for SEO and GEO content strategies
 
 ## Instructions
 
+### 0. Check for Content Brief
+
+If a **Content Brief** was passed from the content-strategy skill (via the content-pipeline), extract the following and skip the context-gathering step:
+
+- **Topic** → from `Topic` + `Angle` fields
+- **Target audience** → from `Target Persona` field
+- **Seed keywords** → from `Keyword Direction` field (2-3 directions to start with)
+- **Content type** → from `Content Type` field
+
+When a Content Brief is present, go directly to **Step 2** using the brief's keyword directions as seed keywords. This is **Focused Mode** — you already know the topic, you just need to find the best target keyword.
+
 ### 1. Gather Context
 
-If not already provided, ask the user:
+If no Content Brief was provided, ask the user:
 - Topic / product / service
 - Target audience
 - Business goal (traffic, leads, sales)
@@ -101,6 +112,7 @@ Focus the output on **actionable article recommendations** — the user's next s
 
 ## Related Skills
 
+- [content-strategy](../content-strategy/) — Upstream: provides Content Brief with seed keyword directions
 - [blog-writer](../blog-writer/) — Write the article
 - [brand-guidelines](../brand-guidelines/) — Product info for Lensmor content
 - [webflow-blog-publisher](../webflow-blog-publisher/) — Publish to Webflow
