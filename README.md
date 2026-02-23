@@ -5,7 +5,7 @@
 
 Production-ready AI skills for content creation, social media, sales automation, and workflow automation.
 
-## 📚 Available Skills (14 total)
+## 📚 Available Skills (15 total)
 
 ### 🌐 Official Website Blog
 
@@ -20,6 +20,8 @@ Production-ready AI skills for content creation, social media, sales automation,
 **[content-pipeline](./Skill/website/content-pipeline/)** - End-to-end automation: research → write → images → publish
 
 ### 📱 Social Media
+
+**[personal-brand](./Skill/social-media/personal-brand/)** - Unified personal brand definition: identity, voice, content pillars (referenced by all social media skills)
 
 **[linkedin-post-writer](./Skill/social-media/linkedin-post-writer/)** - Create professional LinkedIn posts with brand-consistent formatting
 

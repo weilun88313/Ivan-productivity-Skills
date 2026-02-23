@@ -7,6 +7,11 @@ description: "Transform fragmented ideas or topics into engaging LinkedIn posts 
 
 Transform fragmented ideas into engaging LinkedIn posts with compelling visuals that match your personal brand.
 
+## Prerequisites
+
+Load the unified personal brand definition before writing:
+- `Skill/social-media/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+
 ## Path Configuration
 
 All paths below are relative to the skill root (`Skill/social-media/linkedin-post-writer/`).

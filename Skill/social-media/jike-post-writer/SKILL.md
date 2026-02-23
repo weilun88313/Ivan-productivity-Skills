@@ -7,6 +7,11 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 
 将碎片想法转化为即刻风格的中文帖子，配合可选配图。
 
+## 前置依赖
+
+写作前必须加载个人品牌定义：
+- `Skill/social-media/personal-brand/SKILL.md` — 个人信息、内容方向、语气风格
+
 ## 路径配置
 
 所有路径相对于 Skill 根目录（`Skill/social-media/jike-post-writer/`）。

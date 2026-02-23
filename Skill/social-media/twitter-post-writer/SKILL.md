@@ -5,6 +5,11 @@ description: Write high-engagement X (Twitter) posts optimized for the recommend
 
 # Twitter Post Writer
 
+## Prerequisites
+
+Load the unified personal brand definition before writing:
+- `Skill/social-media/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+
 ## Overview
 
 This skill helps create X (Twitter) posts optimized for maximum engagement and algorithmic visibility. Based on understanding of the X recommendation algorithm (Home Mixer system), it guides the creation of content that maximizes impressions, interactions, and reach.
