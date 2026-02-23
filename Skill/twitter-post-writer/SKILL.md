@@ -21,21 +21,19 @@ This skill helps create X (Twitter) posts optimized for maximum engagement and a
 ### 2. Visual Content Generation
 When visual content would enhance engagement:
 
-- Use **Gemini 3 Pro Image** API for image generation
+- Use the unified **blog-image-generator** engine for image generation
 - Optimize images for Twitter: 16:9 aspect ratio (recommended for maximum visibility)
 - Alternative ratios: 1:1 (square) or 4:3 for specific use cases
-- Run `scripts/generate_twitter_image.py` with appropriate prompt
 
 **Image Generation Workflow**:
 ```bash
-python3 scripts/generate_twitter_image.py "your image prompt" --aspect-ratio 16:9
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform twitter \
+  --type post \
+  --prompt "your image prompt" \
+  --output WORKSPACE/twitter_image.png \
+  --aspect-ratio 16:9
 ```
-
-The script will:
-1. Load API key from `.env` (GEMINI_API_KEY)
-2. Generate high-quality image using Gemini 3 Pro
-3. Save to `twitter_image.png` in current directory
-4. Provide image for attachment to tweet
 
 ## How X Algorithm Works
 
@@ -137,7 +135,7 @@ Determine if an image would boost engagement:
 - **Educational Content**: Visual diagrams increase retention
 - **News/Commentary**: Context images can boost clicks
 
-If visual would help, use: `scripts/generate_twitter_image.py`
+If visual would help, use the `blog-image-generator` with `--platform twitter`
 
 ### Step 4: Draft Content (English Only)
 
@@ -195,19 +193,37 @@ Visual content significantly boosts engagement rates on Twitter. Generate images
 
 **Basic Usage**:
 ```bash
-python3 scripts/generate_twitter_image.py "Modern infographic showing AI adoption trends in 2026"
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform twitter \
+  --type post \
+  --prompt "Modern infographic showing AI adoption trends in 2026" \
+  --output WORKSPACE/twitter_image.png
 ```
 
 **With Options**:
 ```bash
 # Square format (1:1) for profile-optimized posts
-python3 scripts/generate_twitter_image.py "Product feature comparison table" --aspect-ratio 1:1
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform twitter \
+  --type post \
+  --prompt "Product feature comparison table" \
+  --output WORKSPACE/twitter_image.png \
+  --aspect-ratio 1:1
 
 # Standard format (4:3) for traditional composition
-python3 scripts/generate_twitter_image.py "Data visualization chart" --aspect-ratio 4:3
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform twitter \
+  --type post \
+  --prompt "Data visualization chart" \
+  --output WORKSPACE/twitter_image.png \
+  --aspect-ratio 4:3
 
 # Custom output path
-python3 scripts/generate_twitter_image.py "Team milestone celebration graphic" --output milestone.png
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform twitter \
+  --type post \
+  --prompt "Team milestone celebration graphic" \
+  --output WORKSPACE/milestone.png
 ```
 
 ### Image Prompt Best Practices
@@ -224,11 +240,9 @@ python3 scripts/generate_twitter_image.py "Team milestone celebration graphic" -
 
 ### Technical Specifications
 
-- **API**: Gemini 3 Pro Image
+- **Engine**: `blog-image-generator`（统一图片生成引擎，`--platform twitter`）
 - **Default Aspect Ratio**: 16:9 (optimal for Twitter timeline)
-- **Quality**: 4K (high resolution for clarity)
-- **Format**: PNG (transparent background support)
-- **Generation Time**: 30-90 seconds
+- **Format**: PNG
 
 ## Common Pitfalls to Avoid
 

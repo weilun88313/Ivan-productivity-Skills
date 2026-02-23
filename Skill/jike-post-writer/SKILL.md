@@ -7,13 +7,23 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 
 将碎片想法转化为即刻风格的中文帖子，配合可选配图。
 
+## 路径配置
+
+所有路径相对于 Skill 根目录（`Skill/jike-post-writer/`）。
+
+| 变量 | 路径 |
+|------|------|
+| `SKILL_ROOT` | 本 SKILL.md 所在目录 |
+| `WORKSPACE` | `../../workspace`（相对于 SKILL_ROOT） |
+| `BLOG_IMAGE_GENERATOR` | `../blog-image-generator`（兄弟 Skill） |
+
 ## 关键要求
 
 - 所有帖子用**中文**写作
 - 风格**口语化、随意**，像朋友聊天
 - 长度 **50-500字**，根据内容灵活调整
 - 配图**可选**，用户要求时才生成（1:1 正方形）
-- 输出目录：`/Users/ivan/Documents/Ivan_Skills/workspace`
+- 输出目录：`WORKSPACE`
 - Markdown 输出：只包含帖子正文，不加标签或元数据
 
 ## 工作流程
@@ -45,10 +55,11 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 仅在用户明确要求配图时执行。
 
 ```bash
-python scripts/generate_image.py --prompt "图片描述" \
-  --enhance \
-  --output_dir /Users/ivan/Documents/Ivan_Skills/workspace \
-  --filename jike_post \
+python Skill/blog-image-generator/scripts/generate.py \
+  --platform jike \
+  --type post \
+  --prompt "图片描述" \
+  --output WORKSPACE/jike_post.png \
   --aspect-ratio 1:1
 ```
 
@@ -57,11 +68,11 @@ python scripts/generate_image.py --prompt "图片描述" \
 
 ### 第四步：输出
 
-- 保存为 `.md` 文件到 `/Users/ivan/Documents/Ivan_Skills/workspace`
+- 保存为 `.md` 文件到 `WORKSPACE`
 - 只包含帖子正文，直接可复制到即刻
 
 ## 资源
 
 - **`references/brand_persona.md`**：写作风格和人设指南
 - **`references/post_templates.md`**：帖子结构模板和示例
-- **`scripts/generate_image.py`**：Gemini API 配图生成
+- **`blog-image-generator`**：统一图片生成引擎（兄弟 Skill，支持 `--platform jike`）
