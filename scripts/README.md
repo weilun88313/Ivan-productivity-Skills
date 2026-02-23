@@ -67,7 +67,7 @@ Using: Gemini Flash (Cost-effective)
 ✅ Translation complete!
   ✅ Translated successfully
 
-[2/7] 📁 brand-guidelines
+[2/7] 📁 lensmor-brand-guideline
 ...
 ```
 

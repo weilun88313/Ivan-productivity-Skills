@@ -1,5 +1,5 @@
 ---
-name: brand-guidelines
+name: lensmor-brand-guideline
 description: Lensmor brand guidelines skill that provides brand context, product information, visual design rules, and writing style guidelines. Use this skill when creating content, designs, or communications related to Lensmor to ensure brand consistency.
 ---
 

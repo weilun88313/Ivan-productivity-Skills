@@ -52,4 +52,4 @@ API keys in `.env` (repository root):
 | [keyword-research](../keyword-research/) | Standalone keyword research |
 | [blog-writer](../blog-writer/) | Standalone article writing |
 | [webflow-blog-publisher](../webflow-blog-publisher/) | Standalone Webflow publishing |
-| [brand-guidelines](../brand-guidelines/) | Lensmor brand context |
+| [lensmor-brand-guideline](../lensmor-brand-guideline/) | Lensmor brand context |

@@ -39,7 +39,7 @@
 
 **[github-to-skills](./Skill/github-to-skills/)** - 将 GitHub 仓库转换为 Claude Code 技能
 
-**[brand-guidelines](./Skill/brand-guidelines/)** - 集中化的品牌信息和产品详情参考
+**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - 集中化的品牌信息和产品详情参考
 
 ---
 

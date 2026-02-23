@@ -39,7 +39,7 @@ Production-ready AI skills for content creation, social media, sales automation,
 
 **[github-to-skills](./Skill/github-to-skills/)** - Convert GitHub repos to Claude Code skills
 
-**[brand-guidelines](./Skill/brand-guidelines/)** - Centralized brand information and product details reference
+**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - Centralized brand information and product details reference
 
 ---
 

@@ -37,7 +37,7 @@
 4. **SKILL.md**
    - AI instructions and workflow
    - English only (AI instructions)
-   - Include brand-guidelines reference if product-related
+   - Include lensmor-brand-guideline reference if product-related
 
 #### Skill Structure Template
 
@@ -59,7 +59,7 @@ my-new-skill/
 - [ ] Create README.md with language switcher
 - [ ] Create README.zh.md with language switcher
 - [ ] Create SKILL.md with AI instructions
-- [ ] If product-related, reference brand-guidelines in SKILL.md
+- [ ] If product-related, reference lensmor-brand-guideline in SKILL.md
 - [ ] Test all code examples in documentation
 - [ ] Add skill to main repository
 
@@ -89,7 +89,7 @@ Before committing any skill:
 - [ ] No sensitive information (API keys, credentials)
 - [ ] Translations are accurate and natural
 - [ ] File structure follows template
-- [ ] SKILL.md references brand-guidelines if needed
+- [ ] SKILL.md references lensmor-brand-guideline if needed
 
 ---
 
@@ -126,7 +126,7 @@ Before committing any skill:
 4. **SKILL.md**
    - AI 指令和工作流
    - 仅英文（AI 指令）
-   - 如果与产品相关，包含 brand-guidelines 引用
+   - 如果与产品相关，包含 lensmor-brand-guideline 引用
 
 #### Skill 结构模板
 
@@ -148,7 +148,7 @@ my-new-skill/
 - [ ] 创建带语言切换器的 README.md
 - [ ] 创建带语言切换器的 README.zh.md
 - [ ] 创建带 AI 指令的 SKILL.md
-- [ ] 如果与产品相关，在 SKILL.md 中引用 brand-guidelines
+- [ ] 如果与产品相关，在 SKILL.md 中引用 lensmor-brand-guideline
 - [ ] 测试文档中的所有代码示例
 - [ ] 将技能添加到主仓库
 
@@ -178,7 +178,7 @@ my-new-skill/
 - [ ] 没有敏感信息（API 密钥、凭据）
 - [ ] 翻译准确自然
 - [ ] 文件结构遵循模板
-- [ ] SKILL.md 如需要已引用 brand-guidelines
+- [ ] SKILL.md 如需要已引用 lensmor-brand-guideline
 
 ---
 
@@ -277,7 +277,7 @@ python3 scripts/translate_readme.py Skill/my-skill/README.md
    - Contains user-specific generated content
    - Can be very large (images, PDFs, PPT files)
 
-2. **brand-guidelines/** - Private brand information
+2. **lensmor-brand-guideline/** - Private brand information
    - Contains proprietary product details
    - Competitive positioning
    - Internal messaging

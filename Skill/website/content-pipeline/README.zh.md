@@ -52,4 +52,4 @@ API 密钥位于 `.env`（仓库根目录）中：
 | [keyword-research](../keyword-research/) | 独立关键词研究 |
 | [blog-writer](../blog-writer/) | 独立文章撰写 |
 | [webflow-blog-publisher](../webflow-blog-publisher/) | 独立 Webflow 发布 |
-| [brand-guidelines](../brand-guidelines/) | Lensmor 品牌上下文 |
+| [lensmor-brand-guideline](../lensmor-brand-guideline/) | Lensmor 品牌上下文 |

@@ -57,7 +57,7 @@
 ## 文件结构
 
 ```
-brand-guidelines/
+lensmor-brand-guideline/
 ├── README.md                       # 此文件
 ├── SKILL.md                       # 主要技能说明
 └── resources/

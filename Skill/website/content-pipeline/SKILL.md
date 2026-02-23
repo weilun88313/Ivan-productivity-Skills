@@ -80,8 +80,8 @@ Choose scope based on context:
 When Phase 1 produced a Content Brief, pass its `Keyword Direction` field to the keyword-research skill. This automatically triggers **Focused Mode** — the skill uses the brief's seed keyword directions instead of starting from scratch.
 
 1. If the topic is Lensmor-related, read brand context:
-   - `Skill/brand-guidelines/SKILL.md`
-   - `Skill/brand-guidelines/resources/product-details.md`
+   - `Skill/lensmor-brand-guideline/SKILL.md`
+   - `Skill/lensmor-brand-guideline/resources/product-details.md`
 
 2. Brainstorm 10-15 keyword variations around the Content Brief's keyword directions (core terms, problem/solution angles, long-tail, questions).
 

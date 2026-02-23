@@ -58,7 +58,7 @@ Replace `[TODO: ...]` markers with your brand information:
 ## File Structure
 
 ```
-brand-guidelines/
+lensmor-brand-guideline/
 ├── README.md                       # This file
 ├── SKILL.md                       # Main skill instructions
 └── resources/

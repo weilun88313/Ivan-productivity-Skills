@@ -10,8 +10,8 @@ Create high-quality, actionable, SEO-friendly blog posts.
 ## Pre-Writing: Brand Check
 
 **If the article mentions Lensmor or product features**, read these first:
-- `Skill/brand-guidelines/SKILL.md`
-- `Skill/brand-guidelines/resources/product-details.md`
+- `Skill/lensmor-brand-guideline/SKILL.md`
+- `Skill/lensmor-brand-guideline/resources/product-details.md`
 
 **If industry thought leadership only** — skip brand guidelines, maintain professional voice.
 
@@ -307,6 +307,6 @@ A: Another concise answer.
 ## Related Skills
 
 - [keyword-research](../keyword-research/) — Find target keywords first
-- [brand-guidelines](../brand-guidelines/) — Lensmor product info
+- [lensmor-brand-guideline](../lensmor-brand-guideline/) — Lensmor product info
 - [webflow-blog-publisher](../webflow-blog-publisher/) — Publish to Webflow
 - [content-pipeline](../content-pipeline/) — Run the full workflow end-to-end

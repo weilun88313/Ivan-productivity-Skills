@@ -103,7 +103,7 @@ git push origin main
 - 私有项目声明 → MIT开源许可证
 
 ### 4. 排除私有内容
-- `Skill/brand-guidelines/` - 包含公司特定品牌信息
+- `Skill/lensmor-brand-guideline/` - 包含公司特定品牌信息
 - `Skill/*/output/` - 所有Skills的输出目录
 - 这些目录完全不会出现在公开仓库中
 
