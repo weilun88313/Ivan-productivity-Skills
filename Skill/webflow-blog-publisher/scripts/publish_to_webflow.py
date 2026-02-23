@@ -371,36 +371,24 @@ def publish_blog(filepath, collection_id=None, publish=False,
     # Open all links in new tab
     body_html = body_html.replace("<a ", '<a target="_blank" rel="noopener noreferrer" ')
 
-    # Add full-width styling to all images with !important to override Webflow defaults
-    # Use container-relative width to ensure images fill the content area without overflow
-    figure_style = (
-        "width: 100% !important; "
-        "max-width: 100% !important; "
-        "margin: 2em 0 !important; "
-        "padding: 0 !important; "
-        "display: block !important;"
-    )
-    img_style = (
-        "width: 100% !important; "
-        "max-width: 100% !important; "
-        "height: auto !important; "
-        "display: block !important; "
-        "margin: 0 !important; "
-        "border-radius: 8px !important; "
-        "object-fit: cover !important;"
-    )
+    # Wrap images in Webflow richtext fullwidth figure structure.
+    # Webflow sanitizes richtext HTML and strips inline styles, so we use
+    # their native data attributes (data-rt-type, data-rt-align) instead.
+    def _wrap_img_fullwidth(m):
+        """Replace a bare <img> with Webflow richtext fullwidth figure."""
+        full_tag = m.group(0)
+        # Strip self-closing slash for consistency
+        inner = re.sub(r'\s*/\s*>$', '>', full_tag.strip())
+        if not inner.endswith('>'):
+            inner += '>'
+        return (
+            '<figure class="w-richtext-figure-type-image w-richtext-align-fullwidth" '
+            'data-rt-type="image" data-rt-align="fullwidth">'
+            f'<div>{inner}</div>'
+            '</figure>'
+        )
 
-    body_html = re.sub(
-        r'<img\s+([^>]*?)alt="([^"]*)"([^>]*?)src="([^"]*)"([^>]*)>',
-        rf'<figure style="{figure_style}"><img \1alt="\2"\3src="\4"\5 style="{img_style}"></figure>',
-        body_html
-    )
-    # Handle cases where src comes before alt
-    body_html = re.sub(
-        r'<img\s+([^>]*?)src="([^"]*)"([^>]*?)alt="([^"]*)"([^>]*)>',
-        rf'<figure style="{figure_style}"><img \1src="\2"\3alt="\4"\5 style="{img_style}"></figure>',
-        body_html
-    )
+    body_html = re.sub(r'<img\s+[^>]*>', _wrap_img_fullwidth, body_html)
 
     # Add styling to tables for Webflow dark theme (black background)
     table_style = (
