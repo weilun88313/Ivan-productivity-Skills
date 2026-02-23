@@ -41,12 +41,12 @@ pip install requests markdown
 
 ```bash
 # Publish as draft
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy
 
 # Publish live
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy \
   --publish
@@ -144,11 +144,11 @@ export WEBFLOW_SITE_ID='site_id'
 ```bash
 # 1. 撰写内容（AI 辅助）
 # 2. 生成图片
-python Skill/blog-writer/scripts/generate_image.py \
+python Skill/website/blog-writer/scripts/generate_image.py \
   --prompt "..." --output_dir workspace/blog/images
 
 # 3. 发布到 Webflow
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy \
   --publish

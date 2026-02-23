@@ -18,7 +18,7 @@ This skill consolidates image generation functionality from multiple skills (blo
 
 1. Clone this skill to your `Skill/` directory:
 ```bash
-cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
+cd /Users/ivan/Documents/Ivan_Skills/Skill/website/blog-image-generator
 ```
 
 2. Install dependencies:
@@ -125,7 +125,7 @@ photo_prompt = LinkedInPrompts.photo_infographic(
     topic="AI Revolution in 2025",
     emotion="thinking",
     labels=["1M TOKENS", "AGENT PLANNING", "CODE EXECUTION"],
-    photo_url="/Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator/Avatar/1760175502370.jpeg"
+    photo_url="/Users/ivan/Documents/Ivan_Skills/Skill/website/blog-image-generator/Avatar/1760175502370.jpeg"
 )
 
 # Twitter
@@ -266,6 +266,6 @@ Part of Ivan's Skills collection.
 ## See Also
 
 - [blog-writer](../blog-writer/) - Generate SEO-optimized blog posts
-- [linkedin-post-writer](../social-media/linkedin-post-writer/) - Generate LinkedIn content
-- [twitter-post-writer](../social-media/twitter-post-writer/) - Generate Twitter content
+- [linkedin-post-writer](../../social-media/linkedin-post-writer/) - Generate LinkedIn content
+- [twitter-post-writer](../../social-media/twitter-post-writer/) - Generate Twitter content
 - [content-pipeline](../content-pipeline/) - End-to-end automation workflow

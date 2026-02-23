@@ -5,7 +5,7 @@ Updates only the Published section and Pillar Coverage table in
 workspace/content-calendar.md. Does not modify Backlog or Updates Log.
 
 Usage:
-    python Skill/content-strategy/scripts/sync_calendar.py
+    python Skill/website/content-strategy/scripts/sync_calendar.py
 """
 
 import json
@@ -16,10 +16,10 @@ import sys
 from datetime import datetime
 
 # Paths relative to repository root
-REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
 CALENDAR_PATH = os.path.join(REPO_ROOT, "workspace", "content-calendar.md")
 LIST_ARTICLES_SCRIPT = os.path.join(
-    REPO_ROOT, "Skill", "webflow-blog-publisher", "scripts", "list_articles.py"
+    REPO_ROOT, "Skill", "website", "webflow-blog-publisher", "scripts", "list_articles.py"
 )
 
 # ---------------------------------------------------------------------------

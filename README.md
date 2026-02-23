@@ -9,15 +9,15 @@ Production-ready AI skills for content creation, social media, sales automation,
 
 ### 🌐 Official Website Blog
 
-**[keyword-research](./Skill/keyword-research/)** - Discover high-value keywords with Ahrefs API integration for SEO strategies
+**[keyword-research](./Skill/website/keyword-research/)** - Discover high-value keywords with Ahrefs API integration for SEO strategies
 
-**[blog-writer](./Skill/blog-writer/)** - Generate SEO-optimized blog posts with AI-generated Linear-style illustrations
+**[blog-writer](./Skill/website/blog-writer/)** - Generate SEO-optimized blog posts with AI-generated Linear-style illustrations
 
-**[blog-image-generator](./Skill/blog-image-generator/)** - Unified AI image generation for all platforms (blog, LinkedIn, Twitter, Jike, PPTX)
+**[blog-image-generator](./Skill/website/blog-image-generator/)** - Unified AI image generation for all platforms (blog, LinkedIn, Twitter, Jike, PPTX)
 
-**[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - Publish markdown posts to Webflow CMS with automatic image upload
+**[webflow-blog-publisher](./Skill/website/webflow-blog-publisher/)** - Publish markdown posts to Webflow CMS with automatic image upload
 
-**[content-pipeline](./Skill/content-pipeline/)** - End-to-end automation: research → write → images → publish
+**[content-pipeline](./Skill/website/content-pipeline/)** - End-to-end automation: research → write → images → publish
 
 ### 📱 Social Media
 
@@ -64,7 +64,7 @@ cp .env.example .env
 
 ```bash
 # 1. Research keywords
-cd Skill/keyword-research
+cd Skill/website/keyword-research
 # "Research keywords for AI content marketing"
 
 # 2. Write blog post
@@ -73,16 +73,16 @@ cd ../blog-writer
 
 # 3. Generate images (using unified blog-image-generator)
 cd ../blog-image-generator
-python scripts/generate.py --platform blog --type cover --prompt "AI Content Marketing" --output ../../workspace/blog/images/cover.png
+python scripts/generate.py --platform blog --type cover --prompt "AI Content Marketing" --output ../../../workspace/blog/images/cover.png
 
 # 4. Publish to Webflow
 cd ../webflow-blog-publisher
-python scripts/publish_to_webflow.py --file ../../workspace/blog/article.md --publish
+python scripts/publish_to_webflow.py --file ../../../workspace/blog/article.md --publish
 ```
 
 **Or use the full pipeline:**
 ```bash
-cd Skill/content-pipeline
+cd Skill/website/content-pipeline
 # "Run the content pipeline for AI content marketing"
 ```
 
@@ -98,7 +98,7 @@ Each skill includes:
 
 **Key Resources:**
 - [Skill Development Guidelines](./SKILL_DEVELOPMENT_GUIDELINES.md)
-- [Content Pipeline Guide](./Skill/content-pipeline/README.md)
+- [Content Pipeline Guide](./Skill/website/content-pipeline/README.md)
 
 ---
 

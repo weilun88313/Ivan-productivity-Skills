@@ -9,15 +9,15 @@
 
 ### 🌐 官网博客
 
-**[keyword-research](./Skill/keyword-research/)** - 使用 Ahrefs API 集成发现高价值关键词以进行 SEO 策略
+**[keyword-research](./Skill/website/keyword-research/)** - 使用 Ahrefs API 集成发现高价值关键词以进行 SEO 策略
 
-**[blog-writer](./Skill/blog-writer/)** - 生成 SEO 优化博客文章，配有 AI 生成的 Linear 风格插图
+**[blog-writer](./Skill/website/blog-writer/)** - 生成 SEO 优化博客文章，配有 AI 生成的 Linear 风格插图
 
-**[blog-image-generator](./Skill/blog-image-generator/)** - 统一 AI 图片生成服务，适用于所有平台（博客、LinkedIn、Twitter、即刻、PPTX）
+**[blog-image-generator](./Skill/website/blog-image-generator/)** - 统一 AI 图片生成服务，适用于所有平台（博客、LinkedIn、Twitter、即刻、PPTX）
 
-**[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - 将 Markdown 文章发布到 Webflow CMS，并自动上传图片
+**[webflow-blog-publisher](./Skill/website/webflow-blog-publisher/)** - 将 Markdown 文章发布到 Webflow CMS，并自动上传图片
 
-**[content-pipeline](./Skill/content-pipeline/)** - 端到端自动化：研究 → 撰写 → 图片 → 发布
+**[content-pipeline](./Skill/website/content-pipeline/)** - 端到端自动化：研究 → 撰写 → 图片 → 发布
 
 ### 📱 社交媒体
 
@@ -64,7 +64,7 @@ cp .env.example .env
 
 ```bash
 # 1. 研究关键词
-cd Skill/keyword-research
+cd Skill/website/keyword-research
 # "Research keywords for AI content marketing"
 
 # 2. 撰写博客文章
@@ -73,16 +73,16 @@ cd ../blog-writer
 
 # 3. 生成图片（使用统一的 blog-image-generator）
 cd ../blog-image-generator
-python scripts/generate.py --platform blog --type cover --prompt "AI 内容营销" --output ../../workspace/blog/images/cover.png
+python scripts/generate.py --platform blog --type cover --prompt "AI 内容营销" --output ../../../workspace/blog/images/cover.png
 
 # 4. 发布到 Webflow
 cd ../webflow-blog-publisher
-python scripts/publish_to_webflow.py --file ../../workspace/blog/article.md --publish
+python scripts/publish_to_webflow.py --file ../../../workspace/blog/article.md --publish
 ```
 
 **或使用完整管道：**
 ```bash
-cd Skill/content-pipeline
+cd Skill/website/content-pipeline
 # "Run the content pipeline for AI content marketing"
 ```
 
@@ -98,7 +98,7 @@ cd Skill/content-pipeline
 
 **关键资源：**
 - [技能开发指南](./SKILL_DEVELOPMENT_GUIDELINES.md)
-- [内容管道指南](./Skill/content-pipeline/README.md)
+- [内容管道指南](./Skill/website/content-pipeline/README.md)
 
 ---
 

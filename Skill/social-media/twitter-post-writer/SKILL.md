@@ -27,7 +27,7 @@ When visual content would enhance engagement:
 
 **Image Generation Workflow**:
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform twitter \
   --type post \
   --prompt "your image prompt" \
@@ -193,7 +193,7 @@ Visual content significantly boosts engagement rates on Twitter. Generate images
 
 **Basic Usage**:
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform twitter \
   --type post \
   --prompt "Modern infographic showing AI adoption trends in 2026" \
@@ -203,7 +203,7 @@ python Skill/blog-image-generator/scripts/generate.py \
 **With Options**:
 ```bash
 # Square format (1:1) for profile-optimized posts
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform twitter \
   --type post \
   --prompt "Product feature comparison table" \
@@ -211,7 +211,7 @@ python Skill/blog-image-generator/scripts/generate.py \
   --aspect-ratio 1:1
 
 # Standard format (4:3) for traditional composition
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform twitter \
   --type post \
   --prompt "Data visualization chart" \
@@ -219,7 +219,7 @@ python Skill/blog-image-generator/scripts/generate.py \
   --aspect-ratio 4:3
 
 # Custom output path
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform twitter \
   --type post \
   --prompt "Team milestone celebration graphic" \

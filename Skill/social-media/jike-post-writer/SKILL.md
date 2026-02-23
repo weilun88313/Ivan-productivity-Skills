@@ -15,7 +15,7 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 |------|------|
 | `SKILL_ROOT` | 本 SKILL.md 所在目录 |
 | `WORKSPACE` | `../../../workspace`（相对于 SKILL_ROOT） |
-| `BLOG_IMAGE_GENERATOR` | `../../blog-image-generator`（兄弟 Skill） |
+| `BLOG_IMAGE_GENERATOR` | `../../website/blog-image-generator`（兄弟 Skill） |
 
 ## 关键要求
 
@@ -55,7 +55,7 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 仅在用户明确要求配图时执行。
 
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform jike \
   --type post \
   --prompt "图片描述" \

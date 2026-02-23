@@ -30,26 +30,26 @@ Use the unified **blog-image-generator** skill:
 
 ```bash
 # Cover image (abstract, no text)
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform blog \
   --type cover \
   --prompt "[ARTICLE TITLE]" \
   --output workspace/blog/images/cover.png
 
 # Inline images (repeat for each, choose --type per content)
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform blog \
   --type [data_cluster|data_flow|segmentation|temporal|inline] \
   --prompt "[DESCRIPTION]" \
   --output workspace/blog/images/inline_1.png
 ```
 
-See `references/visual-style-guide.md` for prompt templates and `Skill/blog-image-generator/SKILL.md` for the full API.
+See `references/visual-style-guide.md` for prompt templates and `Skill/website/blog-image-generator/SKILL.md` for the full API.
 
 ### 3. Publish to Webflow
 
 ```bash
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy
 ```

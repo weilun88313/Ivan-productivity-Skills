@@ -139,7 +139,7 @@ python Skill/hubspot-blog-writer/scripts/generate_image.py \
   --output_dir workspace/blog/images
 
 # 3. Publish to Webflow
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy \
   --publish

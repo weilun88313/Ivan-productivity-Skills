@@ -17,7 +17,7 @@ Publish markdown blog posts to Webflow CMS via API V2.
 ### Publish a Blog Post
 
 ```bash
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file <blog-markdown-file> \
   --category strategy
 ```
@@ -91,7 +91,7 @@ The script expects markdown files with this header structure (produced by the Bl
 After publishing a blog post, publish its FAQ items to the FAQ CMS collection:
 
 ```bash
-python Skill/webflow-blog-publisher/scripts/publish_faqs.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_faqs.py \
   --file <blog-markdown-file> \
   --blog-item-id <BLOG_ITEM_ID>
 ```

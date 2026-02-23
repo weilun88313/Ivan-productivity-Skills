@@ -18,7 +18,7 @@
 
 1. 将此技能克隆到 `Skill/` 目录：
 ```bash
-cd /Users/ivan/Documents/Ivan_Skills/Skill/blog-image-generator
+cd /Users/ivan/Documents/Ivan_Skills/Skill/website/blog-image-generator
 ```
 
 2. 安装依赖：
@@ -226,6 +226,6 @@ Ivan's Skills 集合的一部分。
 ## 相关技能
 
 - [blog-writer](../blog-writer/) - 生成 SEO 优化的博客文章
-- [linkedin-post-writer](../social-media/linkedin-post-writer/) - 生成 LinkedIn 内容
-- [twitter-post-writer](../social-media/twitter-post-writer/) - 生成 Twitter 内容
+- [linkedin-post-writer](../../social-media/linkedin-post-writer/) - 生成 LinkedIn 内容
+- [twitter-post-writer](../../social-media/twitter-post-writer/) - 生成 Twitter 内容
 - [content-pipeline](../content-pipeline/) - 端到端自动化工作流

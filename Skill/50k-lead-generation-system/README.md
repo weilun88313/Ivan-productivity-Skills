@@ -86,8 +86,8 @@ Leads are stored in Airtable with fields:
 
 | Skill | Purpose |
 |-------|---------|
-| [keyword-research](../keyword-research/) | Research target markets |
-| [content-pipeline](../content-pipeline/) | Full content automation |
+| [keyword-research](../website/keyword-research/) | Research target markets |
+| [content-pipeline](../website/content-pipeline/) | Full content automation |
 
 ## Troubleshooting
 

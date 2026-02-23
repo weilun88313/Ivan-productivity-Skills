@@ -42,12 +42,12 @@ See [references/webflow-setup-guide.md](references/webflow-setup-guide.md) for s
 
 ```bash
 # Publish as draft
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy
 
 # Publish live
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy \
   --publish
@@ -145,11 +145,11 @@ Works seamlessly with [blog-writer](../blog-writer):
 ```bash
 # 1. Write content (AI-assisted)
 # 2. Generate images
-python Skill/blog-writer/scripts/generate_image.py \
+python Skill/website/blog-writer/scripts/generate_image.py \
   --prompt "..." --output_dir workspace/blog/images
 
 # 3. Publish to Webflow
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category strategy \
   --publish

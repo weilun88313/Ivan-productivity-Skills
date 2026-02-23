@@ -20,10 +20,10 @@ Options:
 **Example:**
 ```bash
 # Translate a single README
-python3 translate_readme.py ../Skill/blog-writer/README.md
+python3 translate_readme.py ../Skill/website/blog-writer/README.md
 
 # Specify custom output
-python3 translate_readme.py ../Skill/blog-writer/README.md -o /tmp/README.zh.md
+python3 translate_readme.py ../Skill/website/blog-writer/README.md -o /tmp/README.zh.md
 ```
 
 **Features:**
@@ -63,7 +63,7 @@ Using: Gemini Flash (Cost-effective)
 
 [1/7] 📁 blog-writer
 🔄 Translating with Gemini Flash...
-💾 Writing to ../Skill/blog-writer/README.zh.md...
+💾 Writing to ../Skill/website/blog-writer/README.zh.md...
 ✅ Translation complete!
   ✅ Translated successfully
 

@@ -97,7 +97,7 @@ git push origin main
 
 ### 2. 作者信息匿名化
 - 真实姓名和头像 → 示例占位符
-- 位置：`Skill/webflow-blog-publisher/assets/writers/writers.json`
+- 位置：`Skill/website/webflow-blog-publisher/assets/writers/writers.json`
 
 ### 3. 许可证更新
 - 私有项目声明 → MIT开源许可证

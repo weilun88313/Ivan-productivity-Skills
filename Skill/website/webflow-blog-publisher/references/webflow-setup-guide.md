@@ -43,7 +43,7 @@ export WEBFLOW_BLOG_COLLECTION_ID=your-collection-id-here
 
 Run a quick test (will fail gracefully if token is invalid):
 ```bash
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/event-intelligence-blog/event-intelligence.md
 ```
 

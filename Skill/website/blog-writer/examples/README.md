@@ -78,7 +78,7 @@ python Skill/hubspot-blog-writer/scripts/generate_image.py \
 # Edit workspace/test-post.md to point to generated images
 
 # 4. Publish to Webflow (if configured)
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/test-post.md \
   --category strategy
 ```

@@ -16,8 +16,8 @@ Decides **what to write and why** by analyzing content gaps, pillar coverage, an
 
 ## Dependencies
 
-- `Skill/webflow-blog-publisher/scripts/list_articles.py` — CMS data source
-- `Skill/content-strategy/references/content-pillars.md` — pillar definitions
+- `Skill/website/webflow-blog-publisher/scripts/list_articles.py` — CMS data source
+- `Skill/website/content-strategy/references/content-pillars.md` — pillar definitions
 - `workspace/content-calendar.md` — persistent content calendar (auto-created)
 
 ## Topic Selection Process
@@ -27,7 +27,7 @@ Decides **what to write and why** by analyzing content gaps, pillar coverage, an
 Run the sync script to pull latest CMS data into the content calendar:
 
 ```bash
-python Skill/content-strategy/scripts/sync_calendar.py
+python Skill/website/content-strategy/scripts/sync_calendar.py
 ```
 
 This updates the **Published** section and **Pillar Coverage** table in `workspace/content-calendar.md`. If the calendar doesn't exist, it creates one from the template.
@@ -37,7 +37,7 @@ This updates the **Published** section and **Pillar Coverage** table in `workspa
 Read both files to understand the landscape:
 
 1. `workspace/content-calendar.md` — current coverage, backlog, and published articles
-2. `Skill/content-strategy/references/content-pillars.md` — pillar definitions and topic directions
+2. `Skill/website/content-strategy/references/content-pillars.md` — pillar definitions and topic directions
 
 Pay attention to:
 - Which pillars have the most/fewest articles

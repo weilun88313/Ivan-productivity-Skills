@@ -210,8 +210,8 @@ A: Another concise answer under 256 characters.
 
 Images are generated **after** writing the article, using the unified **blog-image-generator** skill.
 
-**Skill**: `Skill/blog-image-generator/SKILL.md`
-**Style Reference**: `Skill/blog-writer/references/visual-style-guide.md`
+**Skill**: `Skill/website/blog-image-generator/SKILL.md`
+**Style Reference**: `Skill/website/blog-writer/references/visual-style-guide.md`
 
 Target image count depends on article length:
 - Short (< 2,200 words): cover + 1-2 inline
@@ -220,7 +220,7 @@ Target image count depends on article length:
 
 **Cover image** (abstract, no text):
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform blog \
   --type cover \
   --prompt "[ARTICLE TITLE]" \
@@ -229,14 +229,14 @@ python Skill/blog-image-generator/scripts/generate.py \
 
 **Inline images** — choose `--type` based on content being visualized (`data_cluster`, `data_flow`, `segmentation`, `temporal`, or `inline` for general concepts):
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform blog \
   --type [CHOSEN_TYPE] \
   --prompt "[DESCRIPTION]" \
   --output workspace/blog/images/inline_N.png
 ```
 
-See `Skill/blog-image-generator/SKILL.md` for prompt templates and the full 5-paragraph template format.
+See `Skill/website/blog-image-generator/SKILL.md` for prompt templates and the full 5-paragraph template format.
 
 ## Required Output Format
 

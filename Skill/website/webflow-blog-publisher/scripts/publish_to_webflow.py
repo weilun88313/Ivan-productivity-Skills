@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 import requests
 
 # Initialize environment from .env (with legacy JSON fallback)
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "scripts"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "..", "..", "scripts"))
 import env_setup; env_setup.init_env()
 
 try:

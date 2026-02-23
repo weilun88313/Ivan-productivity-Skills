@@ -30,7 +30,7 @@ Phase 6: Publish to Webflow
 **Always run this first.** Fetch existing published articles to prevent content overlap and SEO cannibalization.
 
 ```bash
-python Skill/webflow-blog-publisher/scripts/list_articles.py --published-only
+python Skill/website/webflow-blog-publisher/scripts/list_articles.py --published-only
 ```
 
 After fetching, build a mental map of:
@@ -56,7 +56,7 @@ Each article's `**Primary Keywords**` field uses a comma-separated list with a s
 
 ## Phase 1: Content Strategy
 
-**Use the content-strategy skill** (`Skill/content-strategy/SKILL.md`) to decide what to write and why.
+**Use the content-strategy skill** (`Skill/website/content-strategy/SKILL.md`) to decide what to write and why.
 
 This phase ensures topic selection is driven by content gaps and audience needs, not just keyword opportunity.
 
@@ -71,7 +71,7 @@ If the user already has a specific topic in mind, this phase can be abbreviated 
 
 ## Phase 2: Keyword Research
 
-**All keyword decisions must be data-driven.** Always use the **keyword-research** skill (`Skill/keyword-research/SKILL.md`) with Ahrefs MCP to get real search volume, difficulty, and traffic potential. Never rely on AI-estimated competition levels.
+**All keyword decisions must be data-driven.** Always use the **keyword-research** skill (`Skill/website/keyword-research/SKILL.md`) with Ahrefs MCP to get real search volume, difficulty, and traffic potential. Never rely on AI-estimated competition levels.
 
 Choose scope based on context:
 
@@ -124,7 +124,7 @@ If the chosen topic overlaps with an existing article, explicitly confirm with t
 
 ## Phase 3: Write Article
 
-Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
+Follow the blog-writer guidelines (`Skill/website/blog-writer/SKILL.md`):
 
 1. Write the article in markdown with this header format:
    ```
@@ -156,7 +156,7 @@ Follow the blog-writer guidelines (`Skill/blog-writer/SKILL.md`):
    - If covering a related topic, take a different angle (different audience segment, different use case, different stage of the funnel)
    - Add internal links to related existing articles where natural
 
-4. Write a **FAQ section** at the end of the article (after the Conclusion, separated by `---`). Follow the FAQ format from `Skill/blog-writer/SKILL.md`:
+4. Write a **FAQ section** at the end of the article (after the Conclusion, separated by `---`). Follow the FAQ format from `Skill/website/blog-writer/SKILL.md`:
    - 3-7 questions derived from the article content
    - Answers must be single-line plain text, under 256 characters each
    - Target "People Also Ask" style queries
@@ -179,7 +179,7 @@ All commands below use paths relative to the repository root.
 ### Cover image (abstract, no text)
 
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform blog \
   --type cover \
   --prompt "[ARTICLE TITLE]" \
@@ -201,7 +201,7 @@ Choose the image `--type` that best matches the content being visualized:
 | `inline` | General concepts that don't fit above categories |
 
 ```bash
-python Skill/blog-image-generator/scripts/generate.py \
+python Skill/website/blog-image-generator/scripts/generate.py \
   --platform blog \
   --type [CHOSEN_TYPE] \
   --prompt "[DESCRIPTION FROM PLACEHOLDER ALT TEXT OR SURROUNDING CONTENT]" \
@@ -228,7 +228,7 @@ To avoid visual repetition across blog posts:
 }
 
 # Run batch:
-python Skill/blog-image-generator/scripts/batch.py \
+python Skill/website/blog-image-generator/scripts/batch.py \
   --platform blog \
   --prompts prompts.json \
   --output_dir workspace/blog/images
@@ -264,7 +264,7 @@ Before publishing, automatically verify these checks against the article:
 ## Phase 6: Publish to Webflow
 
 ```bash
-python Skill/webflow-blog-publisher/scripts/publish_to_webflow.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_to_webflow.py \
   --file workspace/blog/article.md \
   --category [CATEGORY]
 ```
@@ -276,7 +276,7 @@ Add `--publish` flag only if user confirms they want to go live immediately. Def
 After the blog post is published successfully, publish its FAQ items. Use the **blog item ID** returned by the blog publish step:
 
 ```bash
-python Skill/webflow-blog-publisher/scripts/publish_faqs.py \
+python Skill/website/webflow-blog-publisher/scripts/publish_faqs.py \
   --file workspace/blog/article.md \
   --blog-item-id <BLOG_ITEM_ID>
 ```

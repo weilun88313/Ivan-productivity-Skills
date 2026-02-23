@@ -86,8 +86,8 @@ python scripts/wrapper.py \
 
 | Skill | 用途 |
 |-------|---------|
-| [keyword-research](../keyword-research/) | 研究目标市场 |
-| [content-pipeline](../content-pipeline/) | 完整内容自动化 |
+| [keyword-research](../website/keyword-research/) | 研究目标市场 |
+| [content-pipeline](../website/content-pipeline/) | 完整内容自动化 |
 
 ## 故障排除
 
