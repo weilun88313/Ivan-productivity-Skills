@@ -55,43 +55,39 @@ Each article's `**Primary Keywords**` field uses a comma-separated list with a s
 
 ## Phase 1: Keyword Research
 
-Choose the appropriate depth based on context:
+**All keyword decisions must be data-driven.** Always use the **keyword-research** skill (`Skill/keyword-research/SKILL.md`) with Ahrefs MCP to get real search volume, difficulty, and traffic potential. Never rely on AI-estimated competition levels.
 
-### Quick Mode (user already has a topic direction)
+Choose scope based on context:
 
-Do this inline when the user has a clear topic in mind.
+### Focused Mode (user already has a topic direction)
+
+Use when the user knows the general topic but needs to find the best keyword to target.
 
 1. If the topic is Lensmor-related, read brand context:
    - `Skill/brand-guidelines/SKILL.md`
    - `Skill/brand-guidelines/resources/product-details.md`
 
-2. Brainstorm 15-20 keywords across:
-   - Core terms, problem keywords, solution keywords
-   - Comparison keywords ("X vs Y"), question keywords ("how to...")
-   - Long-tail variations
+2. Brainstorm 10-15 keyword variations within the user's topic (core terms, problem/solution angles, long-tail, questions).
 
-3. Present a **short table** of top 5-8 article topic recommendations:
+3. Query Ahrefs for each keyword to get Volume, KD, and Traffic Potential.
 
-   | # | Article Topic | Target Keyword | Intent | Competition | Overlap with Existing? |
-   |---|--------------|----------------|--------|-------------|----------------------|
-   | 1 | ... | ... | ... | Low/Med/High | None / [article title] |
-
-### Deep Mode (starting from scratch or SEO-critical content)
-
-Invoke the **keyword-research** skill (`Skill/keyword-research/SKILL.md`) for real data:
-
-1. Run keyword research with Ahrefs MCP to get:
-   - Real search volume, Keyword Difficulty (KD 0-100), Traffic Potential
-   - GEO opportunity flags (queries likely to trigger AI-generated answers)
-   - Topic cluster organization (pillar + supporting articles)
-
-2. Present results in the keyword-research output format:
+4. Present a **short table** of top 5-8 keyword candidates with real data:
 
    | # | Article Topic | Target Keyword | Volume | KD | Intent | GEO Potential | Overlap with Existing? |
    |---|--------------|----------------|--------|-----|--------|---------------|----------------------|
    | 1 | ... | ... | ... | ... | ... | Yes/No | None / [article title] |
 
-If Ahrefs MCP is unavailable, fall back to Quick Mode with qualitative estimates.
+### Exploratory Mode (starting from scratch)
+
+Use when the user has no specific topic in mind, or needs to identify the highest-opportunity content gaps.
+
+1. Run the full keyword-research skill workflow: broad seed generation → Ahrefs data → topic cluster organization.
+
+2. Present results grouped by topic cluster with prioritized recommendations.
+
+### If Ahrefs MCP is unavailable
+
+Fall back to manual SERP checks and clearly label all metrics as estimates. Flag this limitation to the user so they can validate before committing to a topic.
 
 ### After either mode
 
