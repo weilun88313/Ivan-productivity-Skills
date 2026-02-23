@@ -5,7 +5,7 @@
 
 Production-ready AI skills for content creation, social media, sales automation, and workflow automation.
 
-## 📚 Available Skills (15 total)
+## 📚 Available Skills (14 total)
 
 ### 🌐 Official Website Blog
 
@@ -26,10 +26,6 @@ Production-ready AI skills for content creation, social media, sales automation,
 **[twitter-post-writer](./Skill/social-media/twitter-post-writer/)** - Generate engaging Twitter/X posts with viral optimization
 
 **[jike-post-writer](./Skill/social-media/jike-post-writer/)** - Create content for Jike (即刻) social platform
-
-### 💼 Sales Automation
-
-**[50k-lead-generation-system](./Skill/50k-lead-generation-system/)** - Automated B2B lead generation and outreach system
 
 ### 🛠️ Development Tools
 
