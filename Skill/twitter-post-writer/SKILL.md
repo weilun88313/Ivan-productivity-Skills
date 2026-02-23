@@ -87,7 +87,7 @@ The "For You" feed uses a three-stage pipeline:
 - Create curiosity gaps that require reading further
 
 **Structure Patterns**:
-- **Thread Format**: Break complex ideas into 3-7 connected posts
+- **Thread Format**: Break complex ideas into 3-5 connected posts
 - **List Format**: "5 ways to..." or "3 reasons why..."
 - **Story Format**: Problem → Insight → Solution
 - **Controversial Take**: Strong opinion + supporting evidence
@@ -167,7 +167,7 @@ N/ [Conclusion - summary + CTA]
 - ✅ **Engagement**: Invites at least one interaction type (like/reply/retweet)
 - ✅ **Tone**: No elements that might trigger negative feedback
 - ✅ **Visual**: Includes image if appropriate (use Gemini for generation)
-- ✅ **Length**: Optimized (single: 100-280 chars, threads: 3-7 posts)
+- ✅ **Length**: Optimized (single: 100-280 chars, threads: 3-5 posts)
 - ✅ **Quality**: Typo-free and professionally formatted
 - ✅ **Translation**: If source was non-English, verify natural English phrasing
 
@@ -270,32 +270,26 @@ python Skill/blog-image-generator/scripts/generate.py \
 
 Attention is the scarcest resource in 2026. Here's how to respect it:
 
-2/ Most brands dump information. They explain every feature, every benefit, every reason.
+2/ Most brands dump information. Every feature, every benefit, every reason.
 
 But attention doesn't scale with information. It shrinks.
 
-3/ Instead, use the "One Thing" rule:
+Instead, use the "One Thing" rule: ONE core insight per piece of content.
 
-Every piece of content should communicate ONE core insight. Not three. Not five. One.
-
-4/ Why this works:
+3/ Why this works:
 
 • Easier to remember
 • Simpler to share
 • Faster to consume
 • Harder to misunderstand
 
-5/ Example: Apple never lists 47 features. They show you ONE thing you couldn't do before.
+4/ Apple never lists 47 features. They show you ONE thing you couldn't do before.
 
 The iPhone reveal? "This is your phone, iPod, and internet device. In one."
 
-6/ Your action step:
-
-Before publishing, ask: "What's the ONE thing I want them to remember?"
+5/ Before publishing, ask: "What's the ONE thing I want them to remember?"
 
 If you can't answer, you're not ready to publish.
-
-7/ That's it. One insight. Respect attention, and it respects you back.
 
 What's YOUR "one thing" this week? Reply below 👇
 ```
@@ -376,7 +370,7 @@ For detailed mechanics and additional guidance:
 
 **Post Length**:
 - Optimal: 100-280 characters (full tweet)
-- Threads: 3-7 tweets maximum
+- Threads: 3-5 tweets maximum
 - First tweet: Most critical, strongest hook
 
 **Engagement Formula**:
