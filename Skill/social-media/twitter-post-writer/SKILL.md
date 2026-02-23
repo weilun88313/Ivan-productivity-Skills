@@ -8,7 +8,7 @@ description: Write high-engagement X (Twitter) posts optimized for the recommend
 ## Prerequisites
 
 Load the unified personal brand definition before writing:
-- `Skill/social-media/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+- `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
 
 ## Overview
 

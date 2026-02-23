@@ -172,7 +172,7 @@ description: "Ivan 的社媒个人品牌统一定义，包含个人信息、内�
 ## 前置依赖
 
 写作前必须加载个人品牌定义：
-- `Skill/social-media/personal-brand/SKILL.md` — 个人信息、内容方向、语气风格
+- `Skill/personal-brand/SKILL.md` — 个人信息、内容方向、语气风格
 ```
 
 各平台 Skill 仍可保留自己的 `references/brand_persona.md` 用于**平台特有**的细节（如 LinkedIn 的双图片风格、Twitter 的算法策略），但核心人设以本文件为准。

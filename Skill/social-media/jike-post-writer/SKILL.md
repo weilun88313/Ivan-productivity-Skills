@@ -10,7 +10,7 @@ description: "将零散想法或主题转化为即刻（Jike）帖子，可选�
 ## 前置依赖
 
 写作前必须加载个人品牌定义：
-- `Skill/social-media/personal-brand/SKILL.md` — 个人信息、内容方向、语气风格
+- `Skill/personal-brand/SKILL.md` — 个人信息、内容方向、语气风格
 
 ## 路径配置
 

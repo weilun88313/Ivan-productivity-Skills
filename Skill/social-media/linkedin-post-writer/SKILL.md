@@ -10,7 +10,7 @@ Transform fragmented ideas into engaging LinkedIn posts with compelling visuals 
 ## Prerequisites
 
 Load the unified personal brand definition before writing:
-- `Skill/social-media/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+- `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
 
 ## Path Configuration
 

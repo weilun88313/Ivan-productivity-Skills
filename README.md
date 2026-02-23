@@ -19,9 +19,13 @@ Production-ready AI skills for content creation, social media, sales automation,
 
 **[content-pipeline](./Skill/website/content-pipeline/)** - End-to-end automation: research → write → images → publish
 
-### 📱 Social Media
+### 🎨 Brand
 
-**[personal-brand](./Skill/social-media/personal-brand/)** - Unified personal brand definition: identity, voice, content pillars (referenced by all social media skills)
+**[personal-brand](./Skill/personal-brand/)** - Unified personal brand definition: identity, voice, content pillars (referenced by all social media skills)
+
+**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - Centralized brand information and product details reference
+
+### 📱 Social Media
 
 **[linkedin-post-writer](./Skill/social-media/linkedin-post-writer/)** - Create professional LinkedIn posts with brand-consistent formatting
 
@@ -40,8 +44,6 @@ Production-ready AI skills for content creation, social media, sales automation,
 **[skill-evolution-manager](./Skill/skill-evolution-manager/)** - Track and evolve skill capabilities over time
 
 **[github-to-skills](./Skill/github-to-skills/)** - Convert GitHub repos to Claude Code skills
-
-**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - Centralized brand information and product details reference
 
 ---
 

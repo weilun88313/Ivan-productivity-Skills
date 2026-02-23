@@ -19,9 +19,13 @@
 
 **[content-pipeline](./Skill/website/content-pipeline/)** - 端到端自动化：研究 → 撰写 → 图片 → 发布
 
-### 📱 社交媒体
+### 🎨 品牌
 
-**[personal-brand](./Skill/social-media/personal-brand/)** - 统一个人品牌定义：身份、语气、内容方向（所有社媒 Skill 的共享引用）
+**[personal-brand](./Skill/personal-brand/)** - 统一个人品牌定义：身份、语气、内容方向（所有社媒 Skill 的共享引用）
+
+**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - 集中化的品牌信息和产品详情参考
+
+### 📱 社交媒体
 
 **[linkedin-post-writer](./Skill/social-media/linkedin-post-writer/)** - 创建具有品牌一致格式的专业 LinkedIn 帖子
 
@@ -40,8 +44,6 @@
 **[skill-evolution-manager](./Skill/skill-evolution-manager/)** - 跟踪和演进技能能力
 
 **[github-to-skills](./Skill/github-to-skills/)** - 将 GitHub 仓库转换为 Claude Code 技能
-
-**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - 集中化的品牌信息和产品详情参考
 
 ---
 
