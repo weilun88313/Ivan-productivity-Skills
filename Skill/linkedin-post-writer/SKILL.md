@@ -225,72 +225,75 @@ Load these references when you need detailed guidance on writing style, post str
 
 ## Examples
 
+> Full example posts and voice samples are in `references/brand_persona.md` and `references/post_templates.md`. Below demonstrates the **end-to-end process** for each scenario.
+
 ### Example 1: From Fragments to Post
 
 **Input**:
 ```
-- AI changes product design workflow
-- Useful for brainstorming
-- Can also analyze user interviews
-- But can't completely rely on it
+- Tried 3 different AI coding tools this month
+- Cursor is fast but sometimes hallucinates
+- Claude Code is best for complex refactoring
+- None of them replace thinking about architecture
 ```
 
 **Process**:
-1. Core message: Practical AI use in product design
-2. Template: Tip List → Value Delivery
-3. Add personal context and examples
-4. Create conversational flow
-5. Generate relevant image
+1. Core message: AI coding tools are powerful but each has a sweet spot
+2. Template: Observation → Analysis
+3. Add personal context and honest assessment
+4. Keep it conversational, avoid "tool review" format
 
 **Output**:
 ```
-After using AI for product design for 6 months, here are my 3 most practical use cases:
+Tried 3 AI coding tools this month. Here's what surprised me:
 
-1. Brainstorming phase
-Not asking AI for answers, but letting it help you ask the right questions
+They're all good. But they're good at completely different things.
 
-2. User research analysis
-Feed interview transcripts to AI, quickly identify common insights
+One nails quick prototyping. Another handles complex refactoring like magic. A third writes tests better than most humans.
 
-3. Documentation writing
-Generate framework quickly, then refine details manually
+The real skill isn't picking the "best" tool.
 
-Key takeaway: AI isn't a replacement, it's an accelerator ✨
+It's knowing which problem you're actually solving before you open any of them.
 
-How are you using AI in your work? Any unique use cases?
+Because none of them replace the 20 minutes of thinking that saves 20 hours of coding.
 
-#ProductDesign #AIApplications #ProductThinking
+What's your go-to AI tool for coding? And what do you still do manually? 🧠
+
+#AITools #ProductDevelopment #SoftwareEngineering
 ```
 
 ### Example 2: From Topic to Post
 
-**Input**: "I want to write a post about team collaboration"
+**Input**: "I want to write about hiring mistakes"
 
 **Process**:
-1. Explore: Ask what aspect of collaboration interests them
-2. Find angle: Recent experience or observation
+1. Explore: Ask what specific hiring mistake they experienced
+2. Find angle: A concrete story with a counterintuitive lesson
 3. Choose structure: Personal Story → Insight
-4. Develop narrative with specific example
-5. Create image showing team/collaboration concept
+4. Develop narrative with specific detail
+5. Generate image: Photo Infographic with "worried" emotion
 
 **Output**:
 ```
-An intern asked me a question last week that stopped the entire room.
+My worst hire had the best resume.
 
-"Why are we spending 3 weeks perfecting a feature only 2% of users will touch?"
+Perfect background. Great interview. Checked every box.
 
-That moment made me realize:
-• We often chase perfection at the cost of priority
-• Sometimes outside perspective beats internal experience
-• Courage doesn't come from seniority—it comes from authenticity
+6 months in, I realized the problem:
 
-The best teams aren't the ones where everyone says "yes."
+I hired for skills, not for how they handle ambiguity.
 
-They're the ones where people feel safe asking "why."
+In a startup, 80% of the job is figuring things out with incomplete information. No resume tests for that.
 
-Ever had a moment like this on your team? 💭
+Now I ask one question in every interview:
 
-#TeamManagement #ProductThinking #Entrepreneurship
+"Tell me about a time you had to make a decision with almost no data."
+
+The answer tells me more than any portfolio ever could.
+
+What's the one interview question you swear by? 💭
+
+#Hiring #Entrepreneurship #StartupLessons
 ```
 
 ## Notes

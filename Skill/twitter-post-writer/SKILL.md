@@ -362,6 +362,7 @@ Engaging in your own replies can:
 ## References
 
 For detailed mechanics and additional guidance:
+- [references/brand_persona.md](references/brand_persona.md) - Brand voice, writing style, and quality checklist
 - [references/algorithm-deep-dive.md](references/algorithm-deep-dive.md) - Technical ranking system details
 - [references/content-examples.md](references/content-examples.md) - Post examples by category
 - [references/thread-strategy.md](references/thread-strategy.md) - Thread optimization and algorithm analysis
