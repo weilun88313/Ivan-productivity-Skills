@@ -7,8 +7,84 @@ description: Write high-engagement X (Twitter) posts optimized for the recommend
 
 ## Prerequisites
 
-Load the unified personal brand definition before writing:
-- `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+Load the brand definition matching the account mode before writing:
+- **Personal mode**: `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+- **Company mode**: `Skill/lensmor-brand-guideline/SKILL.md` — Brand voice, product positioning, visual guidelines
+
+## Account Mode
+
+Twitter posts can be written for two distinct accounts. The mode determines voice, content direction, and style.
+
+### Personal Mode (Default)
+
+**Account**: Ivan's personal X/Twitter
+**Brand source**: `Skill/personal-brand/SKILL.md`
+
+- Sharp, direct, opinionated — personal voice with "I"
+- Observations from real experience, contrarian takes, practical insights
+- Tone: like a smart friend giving you the real take
+- Hook style: bold claim, surprising observation, "unpopular opinion"
+- Threads: personal narratives with specific details
+
+### Company Mode (Lensmor)
+
+**Account**: Lensmor company X/Twitter
+**Brand source**: `Skill/lensmor-brand-guideline/SKILL.md`
+**Style reference**: Stripe's X presence — concise, authoritative, data-first, zero fluff
+
+- Voice: "Lensmor" or no subject — never "I". Can use "we" sparingly.
+- Data-first: lead with numbers, statistics, or concrete results
+- Professional but not corporate — clean and confident, not stiff
+- Content: industry data, product updates, event intelligence insights
+- No emojis (or 1 max, functional only)
+- Hashtags: 0-1, only if highly relevant
+
+**Company Tweet Templates:**
+
+**Template A: Data Drop**
+```
+[Statistic or data point — the hook]
+
+[One-line context or implication]
+
+[Link to blog/report if available]
+```
+
+**Template B: Product Update**
+```
+[What's new — one clear sentence]
+
+[Why it matters — user benefit]
+
+[Link or waitlist CTA]
+```
+
+**Template C: Industry Observation**
+```
+[Trend or pattern — stated as fact]
+
+[What most people get wrong about it]
+
+[Lensmor's data-backed perspective — 1-2 lines]
+```
+
+**Company Thread Template (3-4 tweets max):**
+```
+1/ [Data hook — the most compelling number]
+
+2/ [Context — why this matters to B2B event marketers]
+
+3/ [Insight — what the data reveals that's not obvious]
+
+4/ [Takeaway + CTA — what to do about it, link if relevant]
+```
+
+### Mode Selection
+
+The pipeline's Content Brief specifies the account. When writing directly:
+- If the user says "Lensmor tweet" or "company post" → Company mode
+- If the user mentions Lensmor product features or company data → Company mode
+- All other cases → Personal mode (default)
 
 ## Overview
 
@@ -171,10 +247,22 @@ N/ [Conclusion - summary + CTA]
 - ✅ **Hook**: First line grabs attention immediately
 - ✅ **Engagement**: Invites at least one interaction type (like/reply/retweet)
 - ✅ **Tone**: No elements that might trigger negative feedback
-- ✅ **Visual**: Includes image if appropriate (use Gemini for generation)
+- ✅ **Visual**: Includes image if appropriate (use blog-image-generator)
 - ✅ **Length**: Optimized (single: 100-280 chars, threads: 3-5 posts)
 - ✅ **Quality**: Typo-free and professionally formatted
 - ✅ **Translation**: If source was non-English, verify natural English phrasing
+
+**Account Mode Checks (in addition to above)**:
+
+| Check | Personal Mode | Company Mode |
+|-------|--------------|--------------|
+| Voice | Uses "I", personal opinions | Uses "Lensmor"/"we", never "I" |
+| Brand source | Matches personal-brand | Matches lensmor-brand-guideline |
+| Content | Personal experience/take | Data, product value, industry insight |
+| Tone | Sharp, opinionated, conversational | Concise, authoritative, Stripe-like |
+| Emojis | 0-2 functional | 0-1 max, functional only |
+| Hashtags | 0-2 | 0-1 |
+| CTA | Provocative question or none | Link to product/blog or none |
 
 ### Step 6: Timing Considerations
 While not strictly algorithm-based, consider:

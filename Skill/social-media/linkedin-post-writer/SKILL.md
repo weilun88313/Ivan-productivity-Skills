@@ -9,8 +9,86 @@ Transform fragmented ideas into engaging LinkedIn posts with compelling visuals 
 
 ## Prerequisites
 
-Load the unified personal brand definition before writing:
-- `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+Load the brand definition matching the account mode before writing:
+- **Personal mode**: `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
+- **Company mode**: `Skill/lensmor-brand-guideline/SKILL.md` — Brand voice, product positioning, visual guidelines
+
+## Account Mode
+
+LinkedIn posts can be written for two distinct accounts. The mode determines voice, content direction, and visual style.
+
+### Personal Mode (Default)
+
+**Account**: Ivan's personal LinkedIn
+**Brand source**: `Skill/personal-brand/SKILL.md`
+
+- First-person voice: "I", "me", "my"
+- Conversational, approachable tone — like a friend sharing experiences
+- Content: personal stories, observations, opinions, lessons learned
+- Hook style: specific moment, surprising insight, provocative question
+- CTA: open questions that invite discussion
+- Image style: Both Linear Dark Mode and Photo Infographic available
+
+### Company Mode (Lensmor)
+
+**Account**: Lensmor company LinkedIn page
+**Brand source**: `Skill/lensmor-brand-guideline/SKILL.md`
+
+- Third-person or "we" voice: "Lensmor", "we", "our" — never "I"
+- Professional, data-driven, results-focused tone
+- Content: industry data, product value, customer stories, thought leadership
+- Hook style: data point, industry problem, results statement
+- CTA: link to blog, waitlist, or product page when relevant
+- Image style: **Linear Dark Mode only** (no Photo Infographic — that's personal brand)
+- Brand accent color: `#6B75FF` (Lensmor violet-blue)
+
+**Company Post Templates:**
+
+**Template A: Industry Data + Insight**
+```
+[Data hook: surprising statistic or industry number]
+
+[Context: why this matters to B2B event marketers]
+
+[Lensmor's perspective: what the data reveals]
+
+[Takeaway: actionable insight for the reader]
+
+[CTA: link to blog/report or question for engagement]
+```
+
+**Template B: Product Value Story**
+```
+[Problem statement: common pain point in event marketing]
+
+[Traditional approach: how most companies handle it]
+
+[Better approach: how data/intelligence changes the game]
+
+[Result: specific outcome or metric improvement]
+
+[CTA: learn more / join beta / read the case study]
+```
+
+**Template C: Trend Commentary**
+```
+[Trend observation: what's changing in the industry]
+
+[Data backing: numbers that support the trend]
+
+[Implication: what this means for B2B companies]
+
+[Lensmor's take: unique perspective from event data]
+
+[CTA: question or link to deeper analysis]
+```
+
+### Mode Selection
+
+The pipeline's Content Brief specifies the account. When writing directly:
+- If the user says "Lensmor post" or "company post" → Company mode
+- If the user mentions Lensmor product features or company news → Company mode
+- All other cases → Personal mode (default)
 
 ## Path Configuration
 
@@ -108,13 +186,16 @@ Identify which scenario applies:
 
 ### Step 3: Generate Image
 
-**IMPORTANT: Always generate BOTH image styles for the user to choose from.**
+**Image generation depends on account mode.**
 
 Use the `blog-image-generator` sibling skill for all image generation.
 
-1. **Two Image Styles**
+- **Personal mode**: Generate BOTH image styles for the user to choose from.
+- **Company mode**: Generate Linear Dark Mode ONLY (no Photo Infographic — personal photos don't belong on a company page).
 
-   Generate two images for every LinkedIn post:
+1. **Two Image Styles (Personal Mode) / One Image Style (Company Mode)**
+
+   Generate images based on account mode:
 
    | Style | When to Use | Visual Characteristics |
    |-------|-------------|----------------------|
@@ -204,6 +285,18 @@ Use the `blog-image-generator` sibling skill for all image generation.
 ### Step 4: Final Review & Output
 
 Run through the quality checklist in `references/brand_persona.md` to verify tone, structure, length, and engagement elements.
+
+**Account Mode Checks (in addition to standard checklist)**:
+
+| Check | Personal Mode | Company Mode |
+|-------|--------------|--------------|
+| Voice | Uses "I/me/my", personal tone | Uses "Lensmor/we/our", never "I" |
+| Brand source | Matches personal-brand guidelines | Matches lensmor-brand-guideline |
+| Content | Personal experience/opinion present | Data/value/results present |
+| Image | Both styles generated | Linear Dark Mode only |
+| CTA | Discussion question | Link to blog/waitlist/product (when relevant) |
+| Emoji | 1-3 decorative | 0-2 functional, professional |
+| Hashtags | 3-5, personal/industry mix | 3-5, industry/brand focused |
 
 **Output Format**:
 - Save post content as `.md` file in `WORKSPACE`
