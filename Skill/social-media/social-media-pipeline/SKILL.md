@@ -35,7 +35,7 @@ Phase 4: Output            →  Save to workspace, update calendar
 **Content Brief format**:
 ```
 Topic: [specific post topic]
-Account: Personal (Ivan) / Company (Lensmor)
+Account: Personal (Your Name) / Company (MyCompany)
 Platform: LinkedIn / Twitter / Jike
 Content Pillar: [pillar name]
 Source Type: Original / Blog Repurpose / Hot Take / Community
@@ -56,11 +56,11 @@ Route to the correct writer skill and brand guideline based on the Content Brief
 
 | Account | Platform | Writer Skill | Brand Guideline |
 |---------|----------|-------------|-----------------|
-| Personal (Ivan) | LinkedIn | `social-media/linkedin-post-writer/SKILL.md` | `personal-brand/SKILL.md` |
-| Company (Lensmor) | LinkedIn | `social-media/linkedin-post-writer/SKILL.md` (Company Mode) | `lensmor-brand-guideline/SKILL.md` |
-| Personal (Ivan) | Twitter/X | `social-media/twitter-post-writer/SKILL.md` | `personal-brand/SKILL.md` |
-| Company (Lensmor) | Twitter/X | `social-media/twitter-post-writer/SKILL.md` (Company Mode) | `lensmor-brand-guideline/SKILL.md` |
-| Personal (Ivan) | Jike | `social-media/jike-post-writer/SKILL.md` | `personal-brand/SKILL.md` |
+| Personal (Your Name) | LinkedIn | `social-media/linkedin-post-writer/SKILL.md` | `personal-brand/SKILL.md` |
+| Company (MyCompany) | LinkedIn | `social-media/linkedin-post-writer/SKILL.md` (Company Mode) | `mycompany-brand-guideline/SKILL.md` |
+| Personal (Your Name) | Twitter/X | `social-media/twitter-post-writer/SKILL.md` | `personal-brand/SKILL.md` |
+| Company (MyCompany) | Twitter/X | `social-media/twitter-post-writer/SKILL.md` (Company Mode) | `mycompany-brand-guideline/SKILL.md` |
+| Personal (Your Name) | Jike | `social-media/jike-post-writer/SKILL.md` | `personal-brand/SKILL.md` |
 
 **Routing rules**:
 - LinkedIn and Twitter writers both support Account Mode — pass the mode from the Content Brief
@@ -113,14 +113,14 @@ workspace/social-media/
 
 **File naming convention**: `YYYY-MM-DD-platform-account-topic.md`
 - Example: `2026-02-24-linkedin-personal-ai-coding-tools.md`
-- Example: `2026-02-24-twitter-lensmor-event-data-insight.md`
+- Example: `2026-02-24-twitter-mycompany-event-data-insight.md`
 
 **File content**:
 ```markdown
 # [Platform] Post — [Account]
 
 **Date**: [date]
-**Account**: Personal (Ivan) / Company (Lensmor)
+**Account**: Personal (Your Name) / Company (MyCompany)
 **Platform**: LinkedIn / Twitter / Jike
 **Pillar**: [pillar name]
 **Status**: Ready
@@ -187,7 +187,7 @@ When planning a full week of social media:
    |-----|----------|---------|-------|--------|--------|
    | Mon | LinkedIn | Personal | ... | ... | Original |
    | Tue | Twitter | Personal | ... | ... | Blog repurpose |
-   | Wed | LinkedIn | Lensmor | ... | ... | Original |
+   | Wed | LinkedIn | MyCompany | ... | ... | Original |
    | ... | ... | ... | ... | ... | ... |
 
 3. **Phase 2-4**: Execute each approved brief
@@ -219,4 +219,4 @@ When planning a full week of social media:
 - [twitter-post-writer](../twitter-post-writer/) — Phase 2: Twitter post writing
 - [jike-post-writer](../jike-post-writer/) — Phase 2: Jike post writing
 - [personal-brand](../../personal-brand/) — Personal account brand definition
-- [lensmor-brand-guideline](../../lensmor-brand-guideline/) — Company account brand definition
+- [mycompany-brand-guideline](../../mycompany-brand-guideline/) — Company account brand definition

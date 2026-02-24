@@ -159,4 +159,4 @@ Phase 6: Publish to Webflow
 - [content-pipeline](../content-pipeline/) — Orchestrates the full workflow
 - [keyword-research](../keyword-research/) — Validates keyword targets from Content Brief
 - [blog-writer](../blog-writer/) — Writes the article
-- [lensmor-brand-guideline](../lensmor-brand-guideline/) — Brand context for Lensmor content
+- [mycompany-brand-guideline](../mycompany-brand-guideline/) — Brand context for MyCompany content

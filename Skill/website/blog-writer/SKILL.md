@@ -9,9 +9,9 @@ Create high-quality, actionable, SEO-friendly blog posts.
 
 ## Pre-Writing: Brand Check
 
-**If the article mentions Lensmor or product features**, read these first:
-- `Skill/lensmor-brand-guideline/SKILL.md`
-- `Skill/lensmor-brand-guideline/resources/product-details.md`
+**If the article mentions MyCompany or product features**, read these first:
+- `Skill/mycompany-brand-guideline/SKILL.md`
+- `Skill/mycompany-brand-guideline/resources/product-details.md`
 
 **If industry thought leadership only** — skip brand guidelines, maintain professional voice.
 
@@ -79,7 +79,7 @@ Example opening:
 
 Build the case through **narrative and data**, not bullet lists. Connect the reader's pain to the stakes.
 
-- Ground claims in specifics: "After monitoring 160,000+ events, Lensmor found that companies who research attendees pre-show convert at 3× the rate of those who don't."
+- Ground claims in specifics: "After monitoring 160,000+ events, MyCompany found that companies who research attendees pre-show convert at 3× the rate of those who don't."
 - Use contrast to create urgency: "The average booth costs $15K. Most teams walk away with fewer than 5 qualified leads. That's $3,000 per conversation — and most of those conversations go nowhere."
 
 ### C. The How-To / Examples (Main Body)
@@ -98,10 +98,10 @@ Don't mechanically restate every point. Instead:
 - Give a **forward-looking takeaway** — what should the reader do *next*?
 - End with energy, not a whimper. A strong closing line sticks.
 
-**For Lensmor-related content, MUST include:**
+**For MyCompany-related content, MUST include:**
 ```
-[Join the Closed Beta](https://accounts.lensmor.com/waitlist) - Get early access to
-Lensmor's event intelligence platform. Limited spots available for early adopters.
+[Join the Closed Beta](https://accounts.mycompany.com/waitlist) - Get early access to
+MyCompany's event intelligence platform. Limited spots available for early adopters.
 ```
 
 ## Formatting Rules
@@ -272,7 +272,7 @@ See `Skill/website/blog-image-generator/SKILL.md` for prompt templates and the f
 ![Image Description](images/inline_image.png)
 
 ## Conclusion
-[2-3 sentence summary + CTA if Lensmor-related]
+[2-3 sentence summary + CTA if MyCompany-related]
 
 ---
 
@@ -294,7 +294,7 @@ A: Another concise answer.
 - [ ] 3+ Pro Tips
 - [ ] Primary Keywords specified (comma-separated)
 - [ ] Reading Time specified (number of minutes)
-- [ ] If Lensmor-related: waitlist CTA link included
+- [ ] If MyCompany-related: waitlist CTA link included
 - [ ] No fake URLs or placeholder links
 - [ ] Word count within target range
 - [ ] All lists (ordered/unordered) use standard markdown syntax with blank lines before and after
@@ -307,6 +307,6 @@ A: Another concise answer.
 ## Related Skills
 
 - [keyword-research](../keyword-research/) — Find target keywords first
-- [lensmor-brand-guideline](../lensmor-brand-guideline/) — Lensmor product info
+- [mycompany-brand-guideline](../mycompany-brand-guideline/) — MyCompany product info
 - [webflow-blog-publisher](../webflow-blog-publisher/) — Publish to Webflow
 - [content-pipeline](../content-pipeline/) — Run the full workflow end-to-end

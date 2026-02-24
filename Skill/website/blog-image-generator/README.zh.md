@@ -18,7 +18,7 @@
 
 1. 将此技能克隆到 `Skill/` 目录：
 ```bash
-cd /Users/ivan/Documents/Ivan_Skills/Skill/website/blog-image-generator
+cd /Users/ivan/Documents/Your Name_Skills/Skill/website/blog-image-generator
 ```
 
 2. 安装依赖：
@@ -221,7 +221,7 @@ image = gen.generate(prompt, style="blog")
 
 ## 许可证
 
-Ivan's Skills 集合的一部分。
+Your Name's Skills 集合的一部分。
 
 ## 相关技能
 

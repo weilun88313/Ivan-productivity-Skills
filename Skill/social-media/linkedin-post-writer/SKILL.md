@@ -11,7 +11,7 @@ Transform fragmented ideas into engaging LinkedIn posts with compelling visuals 
 
 Load the brand definition matching the account mode before writing:
 - **Personal mode**: `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
-- **Company mode**: `Skill/lensmor-brand-guideline/SKILL.md` — Brand voice, product positioning, visual guidelines
+- **Company mode**: `Skill/mycompany-brand-guideline/SKILL.md` — Brand voice, product positioning, visual guidelines
 
 ## Account Mode
 
@@ -19,7 +19,7 @@ LinkedIn posts can be written for two distinct accounts. The mode determines voi
 
 ### Personal Mode (Default)
 
-**Account**: Ivan's personal LinkedIn
+**Account**: Your Name's personal LinkedIn
 **Brand source**: `Skill/personal-brand/SKILL.md`
 
 - First-person voice: "I", "me", "my"
@@ -29,18 +29,18 @@ LinkedIn posts can be written for two distinct accounts. The mode determines voi
 - CTA: open questions that invite discussion
 - Image style: Both Linear Dark Mode and Photo Infographic available
 
-### Company Mode (Lensmor)
+### Company Mode (MyCompany)
 
-**Account**: Lensmor company LinkedIn page
-**Brand source**: `Skill/lensmor-brand-guideline/SKILL.md`
+**Account**: MyCompany company LinkedIn page
+**Brand source**: `Skill/mycompany-brand-guideline/SKILL.md`
 
-- Third-person or "we" voice: "Lensmor", "we", "our" — never "I"
+- Third-person or "we" voice: "MyCompany", "we", "our" — never "I"
 - Professional, data-driven, results-focused tone
 - Content: industry data, product value, customer stories, thought leadership
 - Hook style: data point, industry problem, results statement
 - CTA: link to blog, waitlist, or product page when relevant
 - Image style: **Linear Dark Mode only** (no Photo Infographic — that's personal brand)
-- Brand accent color: `#6B75FF` (Lensmor violet-blue)
+- Brand accent color: `#6B75FF` (MyCompany violet-blue)
 
 **Company Post Templates:**
 
@@ -50,7 +50,7 @@ LinkedIn posts can be written for two distinct accounts. The mode determines voi
 
 [Context: why this matters to B2B event marketers]
 
-[Lensmor's perspective: what the data reveals]
+[MyCompany's perspective: what the data reveals]
 
 [Takeaway: actionable insight for the reader]
 
@@ -78,7 +78,7 @@ LinkedIn posts can be written for two distinct accounts. The mode determines voi
 
 [Implication: what this means for B2B companies]
 
-[Lensmor's take: unique perspective from event data]
+[MyCompany's take: unique perspective from event data]
 
 [CTA: question or link to deeper analysis]
 ```
@@ -86,8 +86,8 @@ LinkedIn posts can be written for two distinct accounts. The mode determines voi
 ### Mode Selection
 
 The pipeline's Content Brief specifies the account. When writing directly:
-- If the user says "Lensmor post" or "company post" → Company mode
-- If the user mentions Lensmor product features or company news → Company mode
+- If the user says "MyCompany post" or "company post" → Company mode
+- If the user mentions MyCompany product features or company news → Company mode
 - All other cases → Personal mode (default)
 
 ## Path Configuration
@@ -290,8 +290,8 @@ Run through the quality checklist in `references/brand_persona.md` to verify ton
 
 | Check | Personal Mode | Company Mode |
 |-------|--------------|--------------|
-| Voice | Uses "I/me/my", personal tone | Uses "Lensmor/we/our", never "I" |
-| Brand source | Matches personal-brand guidelines | Matches lensmor-brand-guideline |
+| Voice | Uses "I/me/my", personal tone | Uses "MyCompany/we/our", never "I" |
+| Brand source | Matches personal-brand guidelines | Matches mycompany-brand-guideline |
 | Content | Personal experience/opinion present | Data/value/results present |
 | Image | Both styles generated | Linear Dark Mode only |
 | CTA | Discussion question | Link to blog/waitlist/product (when relevant) |

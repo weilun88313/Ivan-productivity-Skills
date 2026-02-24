@@ -1,6 +1,6 @@
-# Ivan Skills - Automation Scripts
+# Your Name Skills - Automation Scripts
 
-Utility scripts for managing Ivan Skills repository.
+Utility scripts for managing Your Name Skills repository.
 
 ## Translation Scripts
 
@@ -67,7 +67,7 @@ Using: Gemini Flash (Cost-effective)
 ✅ Translation complete!
   ✅ Translated successfully
 
-[2/7] 📁 lensmor-brand-guideline
+[2/7] 📁 mycompany-brand-guideline
 ...
 ```
 

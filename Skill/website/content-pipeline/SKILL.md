@@ -79,9 +79,9 @@ Choose scope based on context:
 
 When Phase 1 produced a Content Brief, pass its `Keyword Direction` field to the keyword-research skill. This automatically triggers **Focused Mode** — the skill uses the brief's seed keyword directions instead of starting from scratch.
 
-1. If the topic is Lensmor-related, read brand context:
-   - `Skill/lensmor-brand-guideline/SKILL.md`
-   - `Skill/lensmor-brand-guideline/resources/product-details.md`
+1. If the topic is MyCompany-related, read brand context:
+   - `Skill/mycompany-brand-guideline/SKILL.md`
+   - `Skill/mycompany-brand-guideline/resources/product-details.md`
 
 2. Brainstorm 10-15 keyword variations around the Content Brief's keyword directions (core terms, problem/solution angles, long-tail, questions).
 
@@ -148,7 +148,7 @@ Follow the blog-writer guidelines (`Skill/website/blog-writer/SKILL.md`):
    - 1+ comparison table
    - 3+ Pro Tips
    - Narrative paragraphs (avoid bullet lists)
-   - If Lensmor-related: include waitlist CTA (`https://accounts.lensmor.com/waitlist`)
+   - If MyCompany-related: include waitlist CTA (`https://accounts.mycompany.com/waitlist`)
    - No fake links — only include real, verified URLs
 
 3. **Content differentiation** (informed by Phase 0):
@@ -247,7 +247,7 @@ Before publishing, automatically verify these checks against the article:
 | Pro Tips | At least 3 `**Pro Tip**` callouts | Warn user |
 | Meta description | 150-160 characters | Warn user, suggest revision |
 | Image files | All `![...](images/...)` paths resolve to existing files | List missing images |
-| CTA (Lensmor only) | Waitlist link present if article is Lensmor-related | Warn user |
+| CTA (MyCompany only) | Waitlist link present if article is MyCompany-related | Warn user |
 | No fake links | All URLs are real (verified via WebFetch if needed) | Flag suspicious URLs |
 | Content overlap | No major paragraph-level duplication with existing CMS articles | Flag overlapping sections |
 | SEO cannibalization | Primary keyword is not the same as any existing article's target keyword | Warn user, suggest differentiating |

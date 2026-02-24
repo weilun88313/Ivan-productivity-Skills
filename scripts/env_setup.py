@@ -19,7 +19,7 @@ def init_env():
     """
     Load environment variables from .env at the repository root.
 
-    Falls back to ~/.claude/lensmor_secrets.json if .env is missing or
+    Falls back to ~/.claude/mycompany_secrets.json if .env is missing or
     python-dotenv is not installed, printing a deprecation warning.
     """
     global _initialized
@@ -52,12 +52,12 @@ def _fallback_json():
     """Load secrets from legacy JSON file and inject into os.environ."""
     import json
 
-    secrets_path = os.path.expanduser("~/.claude/lensmor_secrets.json")
+    secrets_path = os.path.expanduser("~/.claude/mycompany_secrets.json")
     if not os.path.isfile(secrets_path):
         return
 
     print(
-        "WARNING: Loading secrets from ~/.claude/lensmor_secrets.json is deprecated.\n"
+        "WARNING: Loading secrets from ~/.claude/mycompany_secrets.json is deprecated.\n"
         "         Please migrate to a .env file in the repository root.\n"
         "         See .env.example for the expected format.",
         file=sys.stderr,

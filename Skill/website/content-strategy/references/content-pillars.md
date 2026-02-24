@@ -1,6 +1,6 @@
 # Content Pillars
 
-Five strategic content pillars that guide topic selection for the Lensmor blog. Each pillar represents a distinct value area for our audience.
+Five strategic content pillars that guide topic selection for the MyCompany blog. Each pillar represents a distinct value area for our audience.
 
 These pillars are a starting point — adjust as the business evolves and new audience needs emerge.
 
@@ -26,7 +26,7 @@ These pillars are a starting point — adjust as the business evolves and new au
 6. Pre-event outreach and appointment setting
 7. Budgeting and resource allocation for events
 
-**Lensmor Product Tie-in**: Lensmor's event intelligence features help teams research exhibitors, attendees, and event history before committing resources. Pre-event data reduces wasted spend.
+**MyCompany Product Tie-in**: MyCompany's event intelligence features help teams research exhibitors, attendees, and event history before committing resources. Pre-event data reduces wasted spend.
 
 ---
 
@@ -49,7 +49,7 @@ These pillars are a starting point — adjust as the business evolves and new au
 5. Post-event reporting templates and frameworks
 6. When to cut an underperforming event from the calendar
 
-**Lensmor Product Tie-in**: Lensmor tracks engagement metrics per event, enabling accurate ROI calculations and cross-event benchmarking. Data replaces gut feeling in budget decisions.
+**MyCompany Product Tie-in**: MyCompany tracks engagement metrics per event, enabling accurate ROI calculations and cross-event benchmarking. Data replaces gut feeling in budget decisions.
 
 ---
 
@@ -74,7 +74,7 @@ These pillars are a starting point — adjust as the business evolves and new au
 7. Booth engagement tactics that generate quality conversations
 8. Converting event leads vs. inbound leads — what's different
 
-**Lensmor Product Tie-in**: Lensmor captures and enriches lead data in real time during events, with automatic CRM sync. This eliminates manual data entry and accelerates follow-up.
+**MyCompany Product Tie-in**: MyCompany captures and enriches lead data in real time during events, with automatic CRM sync. This eliminates manual data entry and accelerates follow-up.
 
 ---
 
@@ -97,7 +97,7 @@ These pillars are a starting point — adjust as the business evolves and new au
 5. Market trend signals from trade show themes and sessions
 6. Building a competitive events database
 
-**Lensmor Product Tie-in**: Lensmor aggregates exhibitor data across events, making it easy to track which competitors show up where, how their presence changes over time, and what messaging they use.
+**MyCompany Product Tie-in**: MyCompany aggregates exhibitor data across events, making it easy to track which competitors show up where, how their presence changes over time, and what messaging they use.
 
 ---
 
@@ -121,7 +121,7 @@ These pillars are a starting point — adjust as the business evolves and new au
 6. Virtual and hybrid event technology
 7. Event analytics and reporting tools
 
-**Lensmor Product Tie-in**: Lensmor fits into the event tech stack as the intelligence and data layer — it connects with existing CRM and marketing automation tools, adding event-specific data that other platforms don't capture.
+**MyCompany Product Tie-in**: MyCompany fits into the event tech stack as the intelligence and data layer — it connects with existing CRM and marketing automation tools, adding event-specific data that other platforms don't capture.
 
 ---
 

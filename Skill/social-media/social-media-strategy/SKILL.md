@@ -18,7 +18,7 @@ Decides **what to post, where, with which account, and why** — the strategy br
 ## Dependencies
 
 - `Skill/personal-brand/SKILL.md` — Personal account voice and pillars
-- `Skill/lensmor-brand-guideline/SKILL.md` — Company account voice and positioning
+- `Skill/mycompany-brand-guideline/SKILL.md` — Company account voice and positioning
 - `Skill/social-media/social-media-strategy/references/social-content-pillars.md` — Pillar definitions for both accounts
 - `workspace/social-media-calendar.md` — Persistent social media calendar (auto-created if missing)
 - `workspace/social-media-analytics.md` — Performance data (if available, from analytics skill)
@@ -27,33 +27,33 @@ Decides **what to post, where, with which account, and why** — the strategy br
 
 Two account types with different content directions:
 
-| Dimension | Personal (Ivan) | Company (Lensmor) |
+| Dimension | Personal (Your Name) | Company (MyCompany) |
 |-----------|----------------|-------------------|
-| Brand source | `personal-brand/SKILL.md` | `lensmor-brand-guideline/SKILL.md` |
+| Brand source | `personal-brand/SKILL.md` | `mycompany-brand-guideline/SKILL.md` |
 | Platforms | LinkedIn, Twitter/X, Jike | LinkedIn, Twitter/X |
 | Voice | Conversational, personal stories, opinions | Professional, data-driven, results-focused |
-| Pronouns | "I", "me", "my" | "Lensmor", "we", "our" (or no pronoun) |
+| Pronouns | "I", "me", "my" | "MyCompany", "we", "our" (or no pronoun) |
 | Content source | Personal experience, observations | Product value, industry data, customer stories |
 | CTA style | Questions, invite discussion | Links to product, waitlist, blog |
 
 ### Account Selection Decision Tree
 
 ```
-Is this about Lensmor's product, features, or company news?
-  → Yes → Company account (Lensmor)
+Is this about MyCompany's product, features, or company news?
+  → Yes → Company account (MyCompany)
 
-Is this industry data/insight that positions Lensmor's expertise?
-  → Yes → Company account (Lensmor)
-  → But told through personal founder experience? → Personal account (Ivan)
+Is this industry data/insight that positions MyCompany's expertise?
+  → Yes → Company account (MyCompany)
+  → But told through personal founder experience? → Personal account (Your Name)
 
 Is this a personal opinion, story, or experience?
-  → Yes → Personal account (Ivan)
+  → Yes → Personal account (Your Name)
 
 Is this for Jike?
-  → Yes → Always personal account (Ivan), always Chinese
+  → Yes → Always personal account (Your Name), always Chinese
 
 When unclear:
-  → Default to personal account (Ivan) — personal content outperforms brand content for solo founders
+  → Default to personal account (Your Name) — personal content outperforms brand content for solo founders
 ```
 
 ## Content Source Types
@@ -119,7 +119,7 @@ For each approved topic, produce a Content Brief:
 
 ```
 Topic: [specific post topic]
-Account: Personal (Ivan) / Company (Lensmor)
+Account: Personal (Your Name) / Company (MyCompany)
 Platform: LinkedIn / Twitter / Jike
 Content Pillar: [pillar name from social-content-pillars.md]
 Source Type: Original / Blog Repurpose / Hot Take / Community
@@ -155,8 +155,8 @@ From one blog post, look for:
 
 ### Assignment Rules
 
-- **Data-heavy angles** → Company account (positions Lensmor as data authority)
-- **Personal story angles** → Personal account (builds Ivan's thought leadership)
+- **Data-heavy angles** → Company account (positions MyCompany as data authority)
+- **Personal story angles** → Personal account (builds Your Name's thought leadership)
 - **How-to angles** → Platform with most space (LinkedIn > Twitter)
 - **Contrarian takes** → Twitter (thrives on sharp opinions)
 - **Chinese adaptation** → Jike (personal account, culturally adapted, not translated)
@@ -255,4 +255,4 @@ Phase 4: Output            →  Save to workspace, update calendar
 - **No calendar file**: Create one using the template above. Start fresh with an empty Published section.
 - **User has no topic idea**: Run the full 5-step selection process. Use pillar gaps and timeliness as primary drivers.
 - **User has a specific topic**: Abbreviate Steps 1-3. Still produce a Content Brief to maintain structured handoff.
-- **Conflicting account choice**: When a topic could work for either account, default to personal unless the content is specifically about Lensmor's product or company data.
+- **Conflicting account choice**: When a topic could work for either account, default to personal unless the content is specifically about MyCompany's product or company data.

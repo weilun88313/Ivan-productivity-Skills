@@ -9,7 +9,7 @@ description: Write high-engagement X (Twitter) posts optimized for the recommend
 
 Load the brand definition matching the account mode before writing:
 - **Personal mode**: `Skill/personal-brand/SKILL.md` — Identity, content pillars, voice & tone
-- **Company mode**: `Skill/lensmor-brand-guideline/SKILL.md` — Brand voice, product positioning, visual guidelines
+- **Company mode**: `Skill/mycompany-brand-guideline/SKILL.md` — Brand voice, product positioning, visual guidelines
 
 ## Account Mode
 
@@ -17,7 +17,7 @@ Twitter posts can be written for two distinct accounts. The mode determines voic
 
 ### Personal Mode (Default)
 
-**Account**: Ivan's personal X/Twitter
+**Account**: Your Name's personal X/Twitter
 **Brand source**: `Skill/personal-brand/SKILL.md`
 
 - Sharp, direct, opinionated — personal voice with "I"
@@ -26,13 +26,13 @@ Twitter posts can be written for two distinct accounts. The mode determines voic
 - Hook style: bold claim, surprising observation, "unpopular opinion"
 - Threads: personal narratives with specific details
 
-### Company Mode (Lensmor)
+### Company Mode (MyCompany)
 
-**Account**: Lensmor company X/Twitter
-**Brand source**: `Skill/lensmor-brand-guideline/SKILL.md`
+**Account**: MyCompany company X/Twitter
+**Brand source**: `Skill/mycompany-brand-guideline/SKILL.md`
 **Style reference**: Stripe's X presence — concise, authoritative, data-first, zero fluff
 
-- Voice: "Lensmor" or no subject — never "I". Can use "we" sparingly.
+- Voice: "MyCompany" or no subject — never "I". Can use "we" sparingly.
 - Data-first: lead with numbers, statistics, or concrete results
 - Professional but not corporate — clean and confident, not stiff
 - Content: industry data, product updates, event intelligence insights
@@ -65,7 +65,7 @@ Twitter posts can be written for two distinct accounts. The mode determines voic
 
 [What most people get wrong about it]
 
-[Lensmor's data-backed perspective — 1-2 lines]
+[MyCompany's data-backed perspective — 1-2 lines]
 ```
 
 **Company Thread Template (3-4 tweets max):**
@@ -82,8 +82,8 @@ Twitter posts can be written for two distinct accounts. The mode determines voic
 ### Mode Selection
 
 The pipeline's Content Brief specifies the account. When writing directly:
-- If the user says "Lensmor tweet" or "company post" → Company mode
-- If the user mentions Lensmor product features or company data → Company mode
+- If the user says "MyCompany tweet" or "company post" → Company mode
+- If the user mentions MyCompany product features or company data → Company mode
 - All other cases → Personal mode (default)
 
 ## Overview
@@ -256,8 +256,8 @@ N/ [Conclusion - summary + CTA]
 
 | Check | Personal Mode | Company Mode |
 |-------|--------------|--------------|
-| Voice | Uses "I", personal opinions | Uses "Lensmor"/"we", never "I" |
-| Brand source | Matches personal-brand | Matches lensmor-brand-guideline |
+| Voice | Uses "I", personal opinions | Uses "MyCompany"/"we", never "I" |
+| Brand source | Matches personal-brand | Matches mycompany-brand-guideline |
 | Content | Personal experience/take | Data, product value, industry insight |
 | Tone | Sharp, opinionated, conversational | Concise, authoritative, Stripe-like |
 | Emojis | 0-2 functional | 0-1 max, functional only |

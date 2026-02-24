@@ -114,6 +114,6 @@ Focus the output on **actionable article recommendations** — the user's next s
 
 - [content-strategy](../content-strategy/) — Upstream: provides Content Brief with seed keyword directions
 - [blog-writer](../blog-writer/) — Write the article
-- [lensmor-brand-guideline](../lensmor-brand-guideline/) — Product info for Lensmor content
+- [mycompany-brand-guideline](../mycompany-brand-guideline/) — Product info for MyCompany content
 - [webflow-blog-publisher](../webflow-blog-publisher/) — Publish to Webflow
 - [content-pipeline](../content-pipeline/) — Run the full workflow end-to-end

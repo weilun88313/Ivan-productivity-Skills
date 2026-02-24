@@ -10,7 +10,7 @@
 
 - **一个命令，完整流水线**：研究 → 撰写 → 图像 → 发布
 - **智能编排**：仅在关键决策（主题选择）时暂停
-- **品牌感知**：自动加载 Lensmor 品牌指南以用于产品内容
+- **品牌感知**：自动加载 MyCompany 品牌指南以用于产品内容
 - **集成图像生成**：Gemini API 采用一致的 Linear 暗色模式风格
 - **Webflow 发布**：直接 CMS 集成，支持草稿/发布选项
 
@@ -52,4 +52,4 @@ API 密钥位于 `.env`（仓库根目录）中：
 | [keyword-research](../keyword-research/) | 独立关键词研究 |
 | [blog-writer](../blog-writer/) | 独立文章撰写 |
 | [webflow-blog-publisher](../webflow-blog-publisher/) | 独立 Webflow 发布 |
-| [lensmor-brand-guideline](../lensmor-brand-guideline/) | Lensmor 品牌上下文 |
+| [mycompany-brand-guideline](../mycompany-brand-guideline/) | MyCompany 品牌上下文 |

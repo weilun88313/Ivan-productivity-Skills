@@ -6,21 +6,21 @@ Two account systems with distinct content directions. All social media skills re
 
 ## Account Model
 
-### Personal Account (Ivan)
+### Personal Account (Your Name)
 
 **Platforms**: LinkedIn, Twitter/X, Jike
 **Brand Reference**: `Skill/personal-brand/SKILL.md`
 **Voice**: A friend doing the work, sharing real experiences. Not a KOL building a persona.
 
-### Company Account (Lensmor)
+### Company Account (MyCompany)
 
 **Platforms**: LinkedIn, Twitter/X
-**Brand Reference**: `Skill/lensmor-brand-guideline/SKILL.md`
+**Brand Reference**: `Skill/mycompany-brand-guideline/SKILL.md`
 **Voice**: Professional, data-driven, results-focused. The product speaking through insights and value.
 
 ---
 
-## Personal Account Pillars (Ivan)
+## Personal Account Pillars (Your Name)
 
 Shared across LinkedIn, Twitter/X, and Jike. Sourced from `Skill/personal-brand/SKILL.md`.
 
@@ -74,7 +74,7 @@ Shared across LinkedIn, Twitter/X, and Jike. Sourced from `Skill/personal-brand/
 **What**: Trade show industry digitization and data insights.
 **Angles**:
 - Industry observations and trend analysis
-- Lensmor product journey stories (building in public)
+- MyCompany product journey stories (building in public)
 - Data points and contrarian takes about the event industry
 - Behind-the-scenes of building for a niche market
 
@@ -85,9 +85,9 @@ Shared across LinkedIn, Twitter/X, and Jike. Sourced from `Skill/personal-brand/
 
 ---
 
-## Company Account Pillars (Lensmor)
+## Company Account Pillars (MyCompany)
 
-LinkedIn and Twitter/X only. Sourced from `Skill/lensmor-brand-guideline/SKILL.md`.
+LinkedIn and Twitter/X only. Sourced from `Skill/mycompany-brand-guideline/SKILL.md`.
 
 ### L1: Event Intelligence & Data — 40%
 
@@ -106,7 +106,7 @@ LinkedIn and Twitter/X only. Sourced from `Skill/lensmor-brand-guideline/SKILL.m
 
 ### L2: Product Value & Updates — 25%
 
-**What**: What Lensmor does and why it matters.
+**What**: What MyCompany does and why it matters.
 **Angles**:
 - Feature announcements with user benefit framing
 - Use case stories (how customers solve problems)
@@ -117,7 +117,7 @@ LinkedIn and Twitter/X only. Sourced from `Skill/lensmor-brand-guideline/SKILL.m
 **Example topics**:
 - "Reverse event discovery: find events by searching exhibitors"
 - "New: attendee prediction for 500+ events now live in beta"
-- "How [company type] uses Lensmor to cut event research from weeks to hours"
+- "How [company type] uses MyCompany to cut event research from weeks to hours"
 
 ### L3: Customer Success & Use Cases — 20%
 
@@ -137,7 +137,7 @@ LinkedIn and Twitter/X only. Sourced from `Skill/lensmor-brand-guideline/SKILL.m
 **What**: Perspectives on the future of B2B events and sales.
 **Angles**:
 - Trend commentary with original data
-- Industry report highlights with Lensmor's take
+- Industry report highlights with MyCompany's take
 - Predictions backed by event data patterns
 - Contrarian views on event marketing conventional wisdom
 

@@ -138,7 +138,7 @@ Run this every week to stay on track.
 4. **Output 2-3 actionable adjustments** for next week:
    - e.g., "Double down on [topic type] — all 3 top posts were in this area"
    - e.g., "Try posting threads on Twitter — single tweets underperformed this week"
-   - e.g., "Lensmor account needs more posts — only 1 this week vs. 5 personal"
+   - e.g., "MyCompany account needs more posts — only 1 this week vs. 5 personal"
 
 5. **Write to `workspace/social-media-analytics.md`** (see Output Format below)
 
@@ -162,7 +162,7 @@ Run this at month's end for strategic adjustments.
 
 2. **Account Comparison**
 
-   | Metric | Personal (Ivan) | Company (Lensmor) |
+   | Metric | Personal (Your Name) | Company (MyCompany) |
    |--------|----------------|-------------------|
    | Total posts | ... | ... |
    | Avg engagement rate | ...% | ...% |
@@ -225,7 +225,7 @@ For testing specific hypotheses about what works.
 **Example experiments**:
 - "Do posts with images get 2x more engagement than text-only on LinkedIn?"
 - "Does posting at 8 AM vs 12 PM affect Twitter impressions?"
-- "Do data-first hooks outperform story-first hooks for Lensmor's account?"
+- "Do data-first hooks outperform story-first hooks for MyCompany's account?"
 
 Track active experiments in the analytics file. Max 2 concurrent experiments to keep things manageable.
 
@@ -282,7 +282,7 @@ Check → Are you including links?
 This is expected. Company accounts get 30-60% lower organic reach.
 
 Mitigation strategies:
-1. Personal account amplification — Ivan shares/comments on Lensmor posts
+1. Personal account amplification — Your Name shares/comments on MyCompany posts
 2. Data-first content — company accounts perform best with unique data
 3. Employee advocacy — team members reshare company content
 4. Lower expectations — benchmark against company-page metrics, not personal
@@ -334,4 +334,4 @@ Review type: Weekly / Monthly
 - [social-media-strategy](../social-media-strategy/) — Consumes analytics output for topic selection
 - [social-media-pipeline](../social-media-pipeline/) — Orchestrates the full content workflow
 - [personal-brand](../../personal-brand/) — Personal account brand definition
-- [lensmor-brand-guideline](../../lensmor-brand-guideline/) — Company account brand definition
+- [mycompany-brand-guideline](../../mycompany-brand-guideline/) — Company account brand definition

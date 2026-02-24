@@ -18,7 +18,7 @@ This skill consolidates image generation functionality from multiple skills (blo
 
 1. Clone this skill to your `Skill/` directory:
 ```bash
-cd /Users/ivan/Documents/Ivan_Skills/Skill/website/blog-image-generator
+cd /Users/ivan/Documents/Your Name_Skills/Skill/website/blog-image-generator
 ```
 
 2. Install dependencies:
@@ -125,7 +125,7 @@ photo_prompt = LinkedInPrompts.photo_infographic(
     topic="AI Revolution in 2025",
     emotion="thinking",
     labels=["1M TOKENS", "AGENT PLANNING", "CODE EXECUTION"],
-    photo_url="/Users/ivan/Documents/Ivan_Skills/Skill/website/blog-image-generator/Avatar/1760175502370.jpeg"
+    photo_url="/Users/ivan/Documents/Your Name_Skills/Skill/website/blog-image-generator/Avatar/1760175502370.jpeg"
 )
 
 # Twitter
@@ -261,7 +261,7 @@ The generator handles common errors:
 
 ## License
 
-Part of Ivan's Skills collection.
+Part of Your Name's Skills collection.
 
 ## See Also
 

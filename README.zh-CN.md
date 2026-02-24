@@ -1,7 +1,7 @@
 [![EN](https://img.shields.io/badge/English-blue?style=for-the-badge)](./README.md)
 [![中文](https://img.shields.io/badge/简体中文-red?style=for-the-badge)](./README.zh-CN.md)
 
-# Ivan 的生产力技能合集
+# Your Name 的生产力技能合集
 
 用于内容创作、社交媒体、销售自动化和工作流自动化的生产就绪 AI 技能。
 
@@ -23,7 +23,7 @@
 
 **[personal-brand](./Skill/personal-brand/)** - 统一个人品牌定义：身份、语气、内容方向（所有社媒 Skill 的共享引用）
 
-**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - 集中化的品牌信息和产品详情参考
+**[mycompany-brand-guideline](./Skill/mycompany-brand-guideline/)** - 集中化的品牌信息和产品详情参考
 
 ### 📱 社交媒体
 
@@ -151,7 +151,7 @@ export FAL_KEY="your_key"
 
 ## 📄 许可证
 
-本项目为私有项目。保留所有权利。
+本项目采用 MIT 许可证。
 
 ---
 

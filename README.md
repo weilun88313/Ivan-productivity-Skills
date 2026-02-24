@@ -1,7 +1,7 @@
 [![EN](https://img.shields.io/badge/English-blue?style=for-the-badge)](./README.md)
 [![中文](https://img.shields.io/badge/简体中文-red?style=for-the-badge)](./README.zh-CN.md)
 
-# Ivan's Productivity Skills Collection
+# Your Name's Productivity Skills Collection
 
 Production-ready AI skills for content creation, social media, sales automation, and workflow automation.
 
@@ -23,7 +23,7 @@ Production-ready AI skills for content creation, social media, sales automation,
 
 **[personal-brand](./Skill/personal-brand/)** - Unified personal brand definition: identity, voice, content pillars (referenced by all social media skills)
 
-**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - Centralized brand information and product details reference
+**[mycompany-brand-guideline](./Skill/mycompany-brand-guideline/)** - Centralized brand information and product details reference
 
 ### 📱 Social Media
 
