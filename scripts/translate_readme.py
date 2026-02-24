@@ -10,22 +10,12 @@ import json
 import argparse
 import requests
 
+import env_setup; env_setup.init_env()
+
 
 def load_api_key():
-    """Load Gemini API key from secrets file or environment."""
-    # Try environment variable first
-    key = os.environ.get("GEMINI_API_KEY")
-    if key:
-        return key
-    
-    # Try secrets file
-    try:
-        secrets_path = os.path.expanduser("~/.claude/lensmor_secrets.json")
-        with open(secrets_path, "r") as f:
-            secrets = json.load(f)
-            return secrets.get("NANO_API_KEY")
-    except Exception:
-        return None
+    """Load Gemini API key from environment (populated by env_setup)."""
+    return os.environ.get("GEMINI_API_KEY")
 
 
 def translate_with_gemini(text, api_key):
@@ -162,7 +152,7 @@ def main():
     api_key = args.api_key or load_api_key()
     if not api_key:
         print("❌ Error: Gemini API key required.")
-        print("Set GEMINI_API_KEY environment variable or add to ~/.claude/lensmor_secrets.json")
+        print("Add GEMINI_API_KEY to .env in the repository root. See .env.example.")
         sys.exit(1)
     
     # Read README.md

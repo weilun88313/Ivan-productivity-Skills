@@ -1,33 +1,49 @@
-# Ivan's Productivity Skills Collection
-
 [![EN](https://img.shields.io/badge/English-blue?style=for-the-badge)](./README.md)
 [![中文](https://img.shields.io/badge/简体中文-red?style=for-the-badge)](./README.zh-CN.md)
 
-Production-ready AI skills for content creation, event intelligence, and workflow automation.
+# Ivan's Productivity Skills Collection
 
-## 📚 Available Skills
+Production-ready AI skills for content creation, social media, sales automation, and workflow automation.
 
-### 🎨 Content Creation
+## 📚 Available Skills (15 total)
 
-**[blog-writer](./Skill/blog-writer/)** - Generate SEO-optimized blog posts with AI-generated Linear-style illustrations
+### 🌐 Official Website Blog
 
-**[pptx](./Skill/pptx/)** - Create presentation slides with AI-generated visuals following Linear design
+**[keyword-research](./Skill/website/keyword-research/)** - Discover high-value keywords with Ahrefs API integration for SEO strategies
 
-**[linkedin-post-writer](./Skill/linkedin-post-writer/)** - Create professional LinkedIn posts with brand-consistent formatting
+**[blog-writer](./Skill/website/blog-writer/)** - Generate SEO-optimized blog posts with AI-generated Linear-style illustrations
 
-### 📤 Publishing
+**[blog-image-generator](./Skill/website/blog-image-generator/)** - Unified AI image generation for all platforms (blog, LinkedIn, Twitter, Jike, PPTX)
 
-**[webflow-blog-publisher](./Skill/webflow-blog-publisher/)** - Publish markdown posts to Webflow CMS with automatic image upload
+**[webflow-blog-publisher](./Skill/website/webflow-blog-publisher/)** - Publish markdown posts to Webflow CMS with automatic image upload
 
-### 🔍 Research & Intelligence
+**[content-pipeline](./Skill/website/content-pipeline/)** - End-to-end automation: research → write → images → publish
 
-**[exhibitor-page-navigator](./Skill/exhibitor-page-navigator/)** - Extract product and company information from exhibitor websites
+### 🎨 Brand
+
+**[personal-brand](./Skill/personal-brand/)** - Unified personal brand definition: identity, voice, content pillars (referenced by all social media skills)
+
+**[lensmor-brand-guideline](./Skill/lensmor-brand-guideline/)** - Centralized brand information and product details reference
+
+### 📱 Social Media
+
+**[linkedin-post-writer](./Skill/social-media/linkedin-post-writer/)** - Create professional LinkedIn posts with brand-consistent formatting
+
+**[twitter-post-writer](./Skill/social-media/twitter-post-writer/)** - Generate engaging Twitter/X posts with viral optimization
+
+**[jike-post-writer](./Skill/social-media/jike-post-writer/)** - Create content for Jike (即刻) social platform
 
 ### 🛠️ Development Tools
 
+**[pptx](./Skill/pptx/)** - Create presentation slides with AI-generated visuals following Linear design
+
 **[skill-creator](./Skill/skill-creator/)** - Scaffold new skills with bilingual documentation templates
 
-**[brand-guidelines](./Skill/brand-guidelines/)** - Centralized brand information and product details reference
+**[skill-manager](./Skill/skill-manager/)** - Manage and organize skills repository
+
+**[skill-evolution-manager](./Skill/skill-evolution-manager/)** - Track and evolve skill capabilities over time
+
+**[github-to-skills](./Skill/github-to-skills/)** - Convert GitHub repos to Claude Code skills
 
 ---
 
@@ -40,20 +56,34 @@ Production-ready AI skills for content creation, event intelligence, and workflo
 pip install -r requirements.txt
 
 # Configure API keys
-cp ~/.claude/lensmor_secrets.json.example ~/.claude/lensmor_secrets.json
-# Edit and add your keys: GEMINI_API_KEY, WEBFLOW_API_TOKEN, etc.
+cp .env.example .env
+# Edit .env and add your keys
 ```
 
-### Example: Blog Post Workflow
+### Example: Official Website Blog Workflow
 
 ```bash
-# Generate blog with images
-cd Skill/blog-writer
-python scripts/generate_blog.py --topic "Your Topic"
+# 1. Research keywords
+cd Skill/website/keyword-research
+# "Research keywords for AI content marketing"
 
-# Publish to Webflow
+# 2. Write blog post
+cd ../blog-writer
+# "Write a blog post about AI content marketing best practices"
+
+# 3. Generate images (using unified blog-image-generator)
+cd ../blog-image-generator
+python scripts/generate.py --platform blog --type cover --prompt "AI Content Marketing" --output ../../../workspace/blog/images/cover.png
+
+# 4. Publish to Webflow
 cd ../webflow-blog-publisher
-python scripts/publish_to_webflow.py --file ../../workspace/your-blog.md --publish
+python scripts/publish_to_webflow.py --file ../../../workspace/blog/article.md --publish
+```
+
+**Or use the full pipeline:**
+```bash
+cd Skill/website/content-pipeline
+# "Run the content pipeline for AI content marketing"
 ```
 
 ---
@@ -63,33 +93,36 @@ python scripts/publish_to_webflow.py --file ../../workspace/your-blog.md --publi
 Each skill includes:
 - **README.md** / **README.zh.md** - User guide (bilingual)
 - **SKILL.md** - AI agent instructions
-- **examples/** - Sample usage
+- **examples/** - Sample usage (optional)
 - **scripts/** - Executable tools
 
 **Key Resources:**
 - [Skill Development Guidelines](./SKILL_DEVELOPMENT_GUIDELINES.md)
-- [Blog Workflow Guide](./Skill/blog-writer/WORKFLOW.md)
+- [Content Pipeline Guide](./Skill/website/content-pipeline/README.md)
 
 ---
 
 ## 🔐 Configuration
 
-Store API keys in `~/.claude/lensmor_secrets.json`:
-
-```json
-{
-  "NANO_API_KEY": "your_gemini_api_key",
-  "WEBFLOW_API_TOKEN": "your_webflow_token",
-  "WEBFLOW_BLOG_COLLECTION_ID": "your_collection_id",
-  "WEBFLOW_SITE_ID": "your_site_id"
-}
-```
-
-Or use environment variables:
+Copy `.env.example` to `.env` and fill in your keys:
 
 ```bash
+cp .env.example .env
+```
+
+```dotenv
+# .env
+GEMINI_API_KEY=your_gemini_api_key
+FAL_KEY=your_fal_api_key
+WEBFLOW_API_TOKEN=your_webflow_token
+WEBFLOW_BLOG_COLLECTION_ID=your_collection_id
+WEBFLOW_SITE_ID=your_site_id
+```
+
+Or export as environment variables:
+```bash
 export GEMINI_API_KEY="your_key"
-export WEBFLOW_API_TOKEN="your_token"
+export FAL_KEY="your_key"
 ```
 
 ---
@@ -97,8 +130,11 @@ export WEBFLOW_API_TOKEN="your_token"
 ## 🛠️ Tech Stack
 
 - **Python 3.8+** - Core language
-- **Gemini API** - AI image generation
+- **Gemini API / Fal.ai** - AI image generation (with automatic fallback)
+- **Ahrefs API v3** - SEO keyword research
 - **Webflow API v2** - CMS publishing
+- **Apollo.io** - Lead data source
+- **n8n** - Workflow automation
 - **Markdown** - Content format
 
 ---
@@ -107,7 +143,7 @@ export WEBFLOW_API_TOKEN="your_token"
 
 1. Fork the repository
 2. Create feature branch
-3. Follow existing code style and bilingual documentation standards
+3. Follow [Skill Development Guidelines](./SKILL_DEVELOPMENT_GUIDELINES.md)
 4. Test thoroughly
 5. Submit Pull Request
 
@@ -119,4 +155,4 @@ This project is private. All rights reserved.
 
 ---
 
-**Built with ❤️ for efficient content creation and workflow automation**
+**Built with ❤️ for efficient content creation, social media, and sales automation**

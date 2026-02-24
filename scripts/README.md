@@ -20,10 +20,10 @@ Options:
 **Example:**
 ```bash
 # Translate a single README
-python3 translate_readme.py ../Skill/blog-writer/README.md
+python3 translate_readme.py ../Skill/website/blog-writer/README.md
 
 # Specify custom output
-python3 translate_readme.py ../Skill/blog-writer/README.md -o /tmp/README.zh.md
+python3 translate_readme.py ../Skill/website/blog-writer/README.md -o /tmp/README.zh.md
 ```
 
 **Features:**
@@ -34,13 +34,11 @@ python3 translate_readme.py ../Skill/blog-writer/README.md -o /tmp/README.zh.md
 
 **API Key Setup:**
 ```bash
-# Option 1: Environment variable
-export GEMINI_API_KEY='your_key'
+# Option 1: Add to .env in the repository root
+GEMINI_API_KEY=your_key
 
-# Option 2: Add to ~/.claude/lensmor_secrets.json
-{
-  "NANO_API_KEY": "your_key"
-}
+# Option 2: Environment variable
+export GEMINI_API_KEY='your_key'
 ```
 
 ### translate_all_readmes.sh
@@ -65,11 +63,11 @@ Using: Gemini Flash (Cost-effective)
 
 [1/7] 📁 blog-writer
 🔄 Translating with Gemini Flash...
-💾 Writing to ../Skill/blog-writer/README.zh.md...
+💾 Writing to ../Skill/website/blog-writer/README.zh.md...
 ✅ Translation complete!
   ✅ Translated successfully
 
-[2/7] 📁 brand-guidelines
+[2/7] 📁 lensmor-brand-guideline
 ...
 ```
 
@@ -96,8 +94,8 @@ pip install requests
 **Error:** `❌ Error: Gemini API key required.`
 
 **Solution:**
-1. Check environment variable: `echo $GEMINI_API_KEY`
-2. Check secrets file: `cat ~/.claude/lensmor_secrets.json`
+1. Check .env file exists in repo root with `GEMINI_API_KEY=...`
+2. Check environment variable: `echo $GEMINI_API_KEY`
 3. Set the key using one of the methods above
 
 ### Translation Failed

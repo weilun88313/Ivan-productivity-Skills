@@ -5,6 +5,7 @@ Each image becomes a full-bleed slide (16:9 format).
 """
 
 import os
+import sys
 import argparse
 from pptx import Presentation
 from pptx.util import Inches
@@ -67,6 +68,11 @@ def images_to_pptx(image_dir, output_file):
         except Exception as e:
             print(f"✗ Failed to add {img_name}: {e}")
 
+    # Ensure output directory exists
+    output_parent = os.path.dirname(output_file)
+    if output_parent:
+        os.makedirs(output_parent, exist_ok=True)
+
     # Save presentation
     try:
         prs.save(output_file)
@@ -99,7 +105,7 @@ def main():
     result = images_to_pptx(args.image_dir, args.output_file)
 
     if result is None:
-        exit(1)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
