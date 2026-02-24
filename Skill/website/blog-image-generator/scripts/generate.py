@@ -213,7 +213,8 @@ Examples:
 
     # Check if using local photo
     photo_url = getattr(args, 'photo_url', None)
-    if photo_url and photo_url.startswith('/') and args.type == "photo_infographic":
+    if photo_url and not photo_url.startswith(('http://', 'https://')) and args.type == "photo_infographic":
+        photo_url = os.path.abspath(photo_url)
         # Use image-to-image generation
         print(f"Using photo as CHARACTER REFERENCE: {photo_url}")
         print()
